@@ -57,7 +57,7 @@ public class TestController extends AbstractController{
 		ModelAndView mav= new ModelAndView();
 		mav.setViewName("hello");
 		Emp emp =new Emp();
-		emp.setEmpName("zhangsan");
+		emp.setEmpName("张三");
 		emp.setEmpAge("14");
 		empService.insertEmpInfo(emp);
 		return mav;
