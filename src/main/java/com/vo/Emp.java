@@ -1,6 +1,7 @@
 package com.vo;
 
 public class Emp {
+	
 	private Integer empId;
 	private String empName;
 	private String  empAge;

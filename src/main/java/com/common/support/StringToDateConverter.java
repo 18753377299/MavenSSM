@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
 
+
 public class StringToDateConverter implements Converter {
 
 	private static Logger logger = LoggerFactory.getLogger("StringToDateConverter");
@@ -15,7 +16,6 @@ public class StringToDateConverter implements Converter {
 			"yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM-dd HH",
 			"yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm",
 			"yyyy/MM/dd HH", "yyyy-MM-dd HH:mm:ss.SSS"};
-	
 
 	public Date convert(String str) throws ParseException
     {
@@ -24,7 +24,6 @@ public class StringToDateConverter implements Converter {
         return DateUtils.parseDate(str, parsePatterns);
     }
 	
-	@Override
 	public  Object convert(Object obj) {
 		Object object = null;
 		try {
