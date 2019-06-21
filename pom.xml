@@ -69,12 +69,18 @@
 		<version>1.2.0</version>
 	</dependency> 
 	
-	<!-- hibernate配置-->
+	<!-- hibernate配置 begin-->
     <dependency>
-        <groupId>org.hibernate</groupId>
+       <groupId>org.hibernate</groupId>
         <artifactId>hibernate-core</artifactId>
-        <version>${hibernateVersion}</version>
+        <version>5.3.4.Final</version>
     </dependency>
+    <dependency> 
+		<groupId>org.springframework</groupId> 
+		<artifactId>spring-orm</artifactId> 
+		<version>4.3.0.RELEASE</version> 
+	</dependency> 
+	<!-- hibernate配置 end-->
     
 
 	<dependency>
