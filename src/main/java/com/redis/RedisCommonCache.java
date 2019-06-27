@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.concurrent.Callable;
 
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.SimpleValueWrapper;
@@ -12,14 +13,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
-/**
-* @author  作者 E-mail: 
-* @date 创建时间：2019年6月27日 下午8:18:28
-* @version 1.0 
-* @parameter 
-* @since  
-* @return  */
-public class RedisCache implements Cache {
+
+public class RedisCommonCache implements Cache {
 
     private RedisTemplate<String, Object> redisTemplate;
     private String name;
@@ -162,4 +157,10 @@ public class RedisCache implements Cache {
         // TODO Auto-generated method stub
         return null;
     }
+
+	@Override
+	public <T> T get(Object key, Callable<T> valueLoader) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

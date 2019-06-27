@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class EmpServiceImpl implements EmpService{
 	JdbcTemplate jdbcTemplate;
 	
 	
+	@Cacheable(value="common",key="#id")
 	public Emp getEMpById(Integer id){
 		return empDao.getEMpById(id);
 	}
