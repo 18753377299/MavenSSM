@@ -47,7 +47,7 @@
    <!-- 针对于get方式的请求乱码情况处理  begin-->
    <filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
-		<filter-class>com.picc.riskctrl.common.filter.CharacterEncodingFilter</filter-class>
+		<filter-class>com.common.CharacterEncodingFilter</filter-class>
 	</filter>
 	 <filter-mapping>
        <filter-name>CharacterEncodingFilter</filter-name>
