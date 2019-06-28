@@ -13,6 +13,11 @@
 		select emp_name,emp_age from icss_emp where emp_id = #{empId}
 	</select>
 	
+	<select id="getEmpNameById"  resultType="String" 
+						parameterType="java.lang.Integer">
+		select emp_name from icss_emp where emp_id = #{empId}
+	</select>
+	
 	<!--根据指定的id来删除 -->	
 	<delete id="deleteEmpById" parameterType="Integer">
 		delete from icss_emp where emp_id =#{empId}

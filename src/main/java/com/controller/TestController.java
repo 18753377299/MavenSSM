@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
@@ -61,13 +62,15 @@ public class TestController extends AbstractController{
 	
 	// 根据id来查找
 	@RequestMapping(value="/emp",method={RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView getEMp(){
+	public ModelAndView getEMp(@RequestParam Integer id ){
 		ModelAndView mav =new ModelAndView();
 		mav.setViewName("hello");
 		System.out.println("getEMp");
-		Integer id =1;
+//		Integer id =1;
 		Emp emp = empService.getEMpById(id);
 		System.out.println("success:"+emp.getEmpName());
+		String empName= empService.getEmpNameById(id);
+//		System.out.println("================"+empName);
 		return mav;
 	}
 	@RequestMapping(value="/insertEmp",method={RequestMethod.GET,RequestMethod.POST})

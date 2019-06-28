@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,13 @@ public class EmpServiceImpl implements EmpService{
 	public Emp getEMpById(Integer id){
 		return empDao.getEMpById(id);
 	}
+	
+	@CacheEvict(value="common",key="'id_'+#id")
+	public String getEmpNameById(Integer id){
+		System.out.println("===========getEmpNameById=======");
+		return empDao.getEmpNameById(id);
+	}
+	
 	public void insertEmpInfo(Emp emp){
 		empDao.insertEmpInfo(emp);
 	}
