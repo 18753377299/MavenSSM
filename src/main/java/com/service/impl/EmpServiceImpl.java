@@ -22,12 +22,12 @@ public class EmpServiceImpl implements EmpService{
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	
 	@Cacheable(value="common",key="#id")
 	public Emp getEMpById(Integer id){
+		System.out.println("===========getEMpById=======");
 		return empDao.getEMpById(id);
 	}
-	
+	/*@CacheEvict是用来标注在需要清除缓存元素的方法或类上的*/
 	@CacheEvict(value="common",key="'id_'+#id")
 	public String getEmpNameById(Integer id){
 		System.out.println("===========getEmpNameById=======");
