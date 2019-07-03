@@ -66,7 +66,6 @@ public class TestController extends AbstractController{
 		ModelAndView mav =new ModelAndView();
 		mav.setViewName("hello");
 		System.out.println("getEMp");
-//		Integer id =1;
 		Emp emp = empService.getEMpById(id);
 		System.out.println("success:"+emp.getEmpName());
 		String empName= empService.getEmpNameById(id);

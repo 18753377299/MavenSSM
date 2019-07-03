@@ -3,6 +3,8 @@ package com.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -22,9 +24,19 @@ public class EmpServiceImpl implements EmpService{
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
+	public static final Logger logger = LoggerFactory.getLogger(EmpServiceImpl.class);
+	
+	
 	@Cacheable(value="common",key="#id")
 	public Emp getEMpById(Integer id){
 		System.out.println("===========getEMpById=======");
+		try {
+			int a = 1/0;
+		} catch (Exception e) {
+			logger.error("getEMpById异常：" + e.getMessage(), e);
+			
+			e.printStackTrace();
+		}
 		return empDao.getEMpById(id);
 	}
 	/*@CacheEvict是用来标注在需要清除缓存元素的方法或类上的*/
