@@ -43,7 +43,7 @@
 		</property> -->
 	</bean>
 	 
-    <context:component-scan base-package="com.controller,com.common"/>
+    <context:component-scan base-package="com.**.controller,com.**.common"/>
 
 	<!-- 需要配置controller，handlerMapping，ViewResolver, interceptor -->
 			 

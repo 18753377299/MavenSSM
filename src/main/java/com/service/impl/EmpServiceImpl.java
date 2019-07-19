@@ -31,10 +31,9 @@ public class EmpServiceImpl implements EmpService{
 	public Emp getEMpById(Integer id){
 		System.out.println("===========getEMpById=======");
 		try {
-			int a = 1/0;
+//			int a = 1/0;
 		} catch (Exception e) {
 			logger.error("getEMpById异常：" + e.getMessage(), e);
-			
 			e.printStackTrace();
 		}
 		return empDao.getEMpById(id);
