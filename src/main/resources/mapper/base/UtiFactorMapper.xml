@@ -198,4 +198,20 @@
       and factorNo = #{factorNo,jdbcType=CHAR}
       and dangerType = #{dangerType,jdbcType=CHAR}
   </update>
+  
+  <!-- <select id="getUtiFactorList" resultMap="BaseResultMap"  parameterType="java.util.HashMap">
+		select * from  utifactor
+		<where>
+			<include refid="queryUtiFactor"></include>
+		</where>
+	</select>
+	
+	<sql id="queryUtiFactor">
+		<if test="riskModel !=null and riskModel!=''">
+			and riskModel= #{riskModel}
+		</if> 
+		<if test="dangerType !=null and dangerType !=''">
+			and dangerType in (#{dangerType})
+		</if>
+	</sql> -->
 </mapper>

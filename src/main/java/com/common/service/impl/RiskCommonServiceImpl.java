@@ -8,7 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.common.dao.RiskCommonDao;
+import com.common.dao.UtiFactorMapper;
 import com.common.service.RiskCommonService;
 import com.vo.UtiFactor;
 	/**
@@ -20,14 +20,18 @@ import com.vo.UtiFactor;
  * @return  */
 @Service(value="riskCommonService")
 public class RiskCommonServiceImpl implements RiskCommonService{
+//	
+//	@Autowired
+//	private RiskCommonDao riskCommonDao;
 	
 	@Autowired
-	private RiskCommonDao riskCommonDao;
+	private UtiFactorMapper utiFactorMapper;
+	
 	
 	public  Map<String, List<UtiFactor>>   getUtiFactorList(Map<String, String> map){
 		
 		 Map<String, List<UtiFactor>>  utiFactorMap = new HashMap<String, List<UtiFactor>>();
-		 List<UtiFactor>  utiFactorList=   riskCommonDao.getUtiFactorList(map);
+		 List<UtiFactor>  utiFactorList=   utiFactorMapper.getUtiFactorList(map);
 		 
 		 if(utiFactorList!=null&&utiFactorList.size()>0){
 			 for(UtiFactor utiFactor:utiFactorList){

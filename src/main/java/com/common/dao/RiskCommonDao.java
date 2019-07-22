@@ -13,7 +13,6 @@ import com.vo.UtiFactor;
  * @return  */
 public interface RiskCommonDao {
 	
-	/*查询出UtiFactor的集合*/
-	public  List<UtiFactor> getUtiFactorList(Map<String, String> map);
+	
 	
 }
