@@ -1,54 +1,52 @@
-CREATE TABLE  utifactor(
-        riskmodel CHAR(3) NOT NULL,
-        factorno CHAR(6) NOT NULL,
-        dangertype CHAR(2) NOT NULL,
-        factortype CHAR(2) NOT NULL,
-        fromtable VARCHAR(30),
-        fromcolumn VARCHAR(30),
-        nullable VARCHAR(1),
-        columntype VARCHAR(2),
-        columncname VARCHAR(60),
-        factorexttype CHAR(2) NOT NULL,
-        factorext DECIMAL(5,2),
-        validstatus CHAR(1) NOT NULL,
-        inserttimeforhis DATETIME DEFAULT NOW(),
-        operatetimeforhis DATETIME DEFAULT NOW(),
-        PRIMARY KEY (riskmodel, factorno, dangertype) CONSTRAINT pk_utifactor,
-        CHECK (factortype IN ('' ,
-                              '01' ,
-                              '02' ,
-                              '03' ,
-                              '04' )) CONSTRAINT utifactor_ck1
-    );
+CREATE TABLE
+    utifactor
+    (
+        riskModel CHAR(3) NOT NULL,
+        factorNo CHAR(6) NOT NULL,
+        dangerType CHAR(2) NOT NULL,
+        factorType CHAR(2) NOT NULL,
+        fromTable VARCHAR(30),
+        fromColumn VARCHAR(30),
+        nullAble VARCHAR(1),
+        columnType VARCHAR(2),
+        columnCname VARCHAR(60),
+        factorExtType CHAR(2) NOT NULL,
+        factorExt DECIMAL(5,2),
+        validStatus CHAR(1) NOT NULL,
+        insertTimeForHis DATETIME DEFAULT CURRENT_TIMESTAMP,
+        operateTimeForHis DATETIME DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (riskModel, factorNo, dangerType)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
-    CREATE TABLE
-    utiformula
+    
+    
+    
+      CREATE TABLE utiformula
     (
         riskmodel CHAR(3) NOT NULL,
         factorno CHAR(6) NOT NULL,
         dangertype CHAR(2) NOT NULL,
-        content LVARCHAR(300) NOT NULL,
+        content TEXT NOT NULL,
         listtype CHAR(2) NOT NULL,
         validstatus CHAR(1) NOT NULL,
-        inserttimeforhis DATETIME YEAR TO SECOND,
-        operatetimeforhis DATETIME YEAR TO SECOND,
-        PRIMARY KEY (riskmodel, factorno, dangertype) CONSTRAINT pkt_utiformula
-    );
+        inserttimeforhis DATETIME  default NOW(),
+        operatetimeforhis DATETIME default NOW(),
+        PRIMARY KEY (riskmodel, factorno, dangertype)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
-    CREATE TABLE
-    utihighlightrisk
+         CREATE TABLE  utihighlightrisk
     (
         riskmodel CHAR(3) NOT NULL,
         fromtable VARCHAR(30) NOT NULL,
         fromcolumn VARCHAR(30) NOT NULL,
         riskvalue VARCHAR(5) NOT NULL,
         riskflag CHAR(1) NOT NULL,
-        riskreminder LVARCHAR(200),
+        riskreminder text,
         validstatus CHAR(1) NOT NULL,
-        inserttimeforhis DATETIME YEAR TO SECOND,
-        operatetimeforhis DATETIME YEAR TO SECOND,
-        PRIMARY KEY (riskmodel, fromtable, fromcolumn, riskvalue) CONSTRAINT pk_utihighlightrisk
-    );
+        inserttimeforhis DATETIME  default NOW(),
+        operatetimeforhis DATETIME   default NOW(),
+        PRIMARY KEY (riskmodel, fromtable, fromcolumn, riskvalue) 
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
     CREATE TABLE
     utiscore
@@ -61,8 +59,8 @@ CREATE TABLE  utifactor(
         validstatus CHAR(1) NOT NULL,
         inserttimeforhis DATETIME YEAR TO SECOND,
         operatetimeforhis DATETIME YEAR TO SECOND,
-        PRIMARY KEY (riskmodel, factorno, dangertype, factorvalue) CONSTRAINT pk_utiscore
-    );
+        PRIMARY KEY (riskmodel, factorno, dangertype, factorvalue) 
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
     CREATE TABLE
     utiweight
@@ -80,11 +78,11 @@ CREATE TABLE  utifactor(
         earthquakeweight DECIMAL(5,4),
         geologyweight DECIMAL(5,4),
         validstatus CHAR(1) NOT NULL,
-        inserttimeforhis DATETIME YEAR TO SECOND,
-        operatetimeforhis DATETIME YEAR TO SECOND,
+        inserttimeforhis DATETIME  default NOW(),
+        operatetimeforhis DATETIME  default NOW(),
         riskmodel VARCHAR(3),
         PRIMARY KEY (id) CONSTRAINT pk_utiweight
-    );
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
  ------------------------------------------------------------  
     
@@ -151,8 +149,8 @@ CREATE TABLE  utifactor(
         valuation VARCHAR(1),
         proposalno CHAR(22),
         policyno CHAR(22),
-        PRIMARY KEY (riskfileno) CONSTRAINT pk_riskreport_main
-    );
+        PRIMARY KEY (riskfileno) 
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
     CREATE TABLE
     riskreport_firedanger
@@ -198,6 +196,6 @@ CREATE TABLE  utifactor(
         inserttimeforhis DATETIME YEAR TO SECOND,
         operatetimeforhis DATETIME YEAR TO SECOND,
         PRIMARY KEY (riskfileno) CONSTRAINT pk_riskreport_firedanger
-    );
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
     

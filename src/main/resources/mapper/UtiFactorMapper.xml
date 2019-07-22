@@ -1,19 +1,201 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.riskfire.dao.RiskFireDao">
-	<resultMap id="utiFactorMap" type="com.vo.UtiFactor" >
-	     <!-- 设置联合主键 -->
-		<id column="riskmodel" property="riskModel" jdbcType="VARCHAR"/>
-		<id column="factorno" property="factorNo" jdbcType="VARCHAR"/>
-		<id column="dangertype" property="dangerType" jdbcType="VARCHAR"/>
-		
-		<result column="factortype" property="factorType" jdbcType="VARCHAR"/>
-		
-	</resultMap>
-	
-	<select id="getUtiFactorById" resultMap="utiFactorMap"  parameterType="java.util.HashMap">
-		select * from  utifactor where riskmodel=#{riskModel}
-	</select>
-	
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.common.dao.UtiFactorMapper" >
+  <resultMap id="BaseResultMap" type="com.vo.UtiFactor" >
+    <id column="riskModel" property="riskModel" jdbcType="CHAR" />
+    <id column="factorNo" property="factorNo" jdbcType="CHAR" />
+    <id column="dangerType" property="dangerType" jdbcType="CHAR" />
+    <result column="factorType" property="factorType" jdbcType="CHAR" />
+    <result column="fromTable" property="fromTable" jdbcType="VARCHAR" />
+    <result column="fromColumn" property="fromColumn" jdbcType="VARCHAR" />
+    <result column="nullAble" property="nullAble" jdbcType="VARCHAR" />
+    <result column="columnType" property="columnType" jdbcType="VARCHAR" />
+    <result column="columnCname" property="columnCname" jdbcType="VARCHAR" />
+    <result column="factorExtType" property="factorExtType" jdbcType="CHAR" />
+    <result column="factorExt" property="factorExt" jdbcType="DECIMAL" />
+    <result column="validStatus" property="validStatus" jdbcType="CHAR" />
+    <result column="insertTimeForHis" property="insertTimeForHis" jdbcType="TIMESTAMP" />
+    <result column="operateTimeForHis" property="operateTimeForHis" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    riskModel, factorNo, dangerType, factorType, fromTable, fromColumn, nullAble, columnType, 
+    columnCname, factorExtType, factorExt, validStatus, insertTimeForHis, operateTimeForHis
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from utifactor
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from utifactor
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vo.UtiFactor" >
+    insert into utifactor (riskModel, factorNo, dangerType, 
+      factorType, fromTable, fromColumn, 
+      nullAble, columnType, columnCname, 
+      factorExtType, factorExt, validStatus, 
+      insertTimeForHis, operateTimeForHis
+      )
+    values (#{riskModel,jdbcType=CHAR}, #{factorNo,jdbcType=CHAR}, #{dangerType,jdbcType=CHAR}, 
+      #{factorType,jdbcType=CHAR}, #{fromTable,jdbcType=VARCHAR}, #{fromColumn,jdbcType=VARCHAR}, 
+      #{nullAble,jdbcType=VARCHAR}, #{columnType,jdbcType=VARCHAR}, #{columnCname,jdbcType=VARCHAR}, 
+      #{factorExtType,jdbcType=CHAR}, #{factorExt,jdbcType=DECIMAL}, #{validStatus,jdbcType=CHAR}, 
+      #{insertTimeForHis,jdbcType=TIMESTAMP}, #{operateTimeForHis,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.UtiFactor" >
+    insert into utifactor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="riskModel != null" >
+        riskModel,
+      </if>
+      <if test="factorNo != null" >
+        factorNo,
+      </if>
+      <if test="dangerType != null" >
+        dangerType,
+      </if>
+      <if test="factorType != null" >
+        factorType,
+      </if>
+      <if test="fromTable != null" >
+        fromTable,
+      </if>
+      <if test="fromColumn != null" >
+        fromColumn,
+      </if>
+      <if test="nullAble != null" >
+        nullAble,
+      </if>
+      <if test="columnType != null" >
+        columnType,
+      </if>
+      <if test="columnCname != null" >
+        columnCname,
+      </if>
+      <if test="factorExtType != null" >
+        factorExtType,
+      </if>
+      <if test="factorExt != null" >
+        factorExt,
+      </if>
+      <if test="validStatus != null" >
+        validStatus,
+      </if>
+      <if test="insertTimeForHis != null" >
+        insertTimeForHis,
+      </if>
+      <if test="operateTimeForHis != null" >
+        operateTimeForHis,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="riskModel != null" >
+        #{riskModel,jdbcType=CHAR},
+      </if>
+      <if test="factorNo != null" >
+        #{factorNo,jdbcType=CHAR},
+      </if>
+      <if test="dangerType != null" >
+        #{dangerType,jdbcType=CHAR},
+      </if>
+      <if test="factorType != null" >
+        #{factorType,jdbcType=CHAR},
+      </if>
+      <if test="fromTable != null" >
+        #{fromTable,jdbcType=VARCHAR},
+      </if>
+      <if test="fromColumn != null" >
+        #{fromColumn,jdbcType=VARCHAR},
+      </if>
+      <if test="nullAble != null" >
+        #{nullAble,jdbcType=VARCHAR},
+      </if>
+      <if test="columnType != null" >
+        #{columnType,jdbcType=VARCHAR},
+      </if>
+      <if test="columnCname != null" >
+        #{columnCname,jdbcType=VARCHAR},
+      </if>
+      <if test="factorExtType != null" >
+        #{factorExtType,jdbcType=CHAR},
+      </if>
+      <if test="factorExt != null" >
+        #{factorExt,jdbcType=DECIMAL},
+      </if>
+      <if test="validStatus != null" >
+        #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null" >
+        #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.UtiFactor" >
+    update utifactor
+    <set >
+      <if test="factorType != null" >
+        factorType = #{factorType,jdbcType=CHAR},
+      </if>
+      <if test="fromTable != null" >
+        fromTable = #{fromTable,jdbcType=VARCHAR},
+      </if>
+      <if test="fromColumn != null" >
+        fromColumn = #{fromColumn,jdbcType=VARCHAR},
+      </if>
+      <if test="nullAble != null" >
+        nullAble = #{nullAble,jdbcType=VARCHAR},
+      </if>
+      <if test="columnType != null" >
+        columnType = #{columnType,jdbcType=VARCHAR},
+      </if>
+      <if test="columnCname != null" >
+        columnCname = #{columnCname,jdbcType=VARCHAR},
+      </if>
+      <if test="factorExtType != null" >
+        factorExtType = #{factorExtType,jdbcType=CHAR},
+      </if>
+      <if test="factorExt != null" >
+        factorExt = #{factorExt,jdbcType=DECIMAL},
+      </if>
+      <if test="validStatus != null" >
+        validStatus = #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null" >
+        insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.UtiFactor" >
+    update utifactor
+    set factorType = #{factorType,jdbcType=CHAR},
+      fromTable = #{fromTable,jdbcType=VARCHAR},
+      fromColumn = #{fromColumn,jdbcType=VARCHAR},
+      nullAble = #{nullAble,jdbcType=VARCHAR},
+      columnType = #{columnType,jdbcType=VARCHAR},
+      columnCname = #{columnCname,jdbcType=VARCHAR},
+      factorExtType = #{factorExtType,jdbcType=CHAR},
+      factorExt = #{factorExt,jdbcType=DECIMAL},
+      validStatus = #{validStatus,jdbcType=CHAR},
+      insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP}
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </update>
 </mapper>

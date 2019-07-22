@@ -1,17 +1,19 @@
 package com.riskfire.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.common.service.RiskCommonService;
 import com.po.request.RiskRequestVo;
 import com.po.response.RiskGradeVo;
 import com.riskfire.dao.RiskFireDao;
 import com.riskfire.service.RiskFireService;
-import com.vo.RiskReportMain;
 import com.vo.UtiFactor;
+import com.vo.UtiFormula;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年7月19日 下午3:03:41
@@ -30,7 +32,11 @@ import com.vo.UtiFactor;
 public class RiskFireServiceImpl implements RiskFireService{
 	
 	@Autowired
-	private RiskFireDao riskFireDao;
+	RiskFireDao riskFireDao;
+	
+	@Autowired 
+	RiskCommonService riskCommonService;
+	
 	/**
 	 * @功能：打分功能实现
 	 * @param 
@@ -41,15 +47,28 @@ public class RiskFireServiceImpl implements RiskFireService{
 	 */
 	public RiskGradeVo  assessScore(RiskRequestVo riskRequestVo){
 		RiskGradeVo riskGradeVo =new RiskGradeVo();
-		RiskReportMain riskReportMain = riskRequestVo.getRiskReportMain();
+//		RiskReportMain riskReportMain = riskRequestVo.getRiskReportMain();
 		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("riskModel", "001");
+		map.put("dangeType", "01,02");
+		Map<String, List<UtiFactor>>  mapUtiFactorF =  riskCommonService.getUtiFactorList(map);
+		
+		map.put("dangeType", "03,04");
+		Map<String, List<UtiFactor>>  mapUtiFactorY =  riskCommonService.getUtiFactorList(map);
+		// 公示表
+//		Map<String, List<UtiFormula>>  mapUtiFormula =  riskCommonService.getUtiFactorList(map);
+		
+		
+				
 		return riskGradeVo;
 	}
 	
 	public 	List<UtiFactor> getUtiFactorById(Map<String, String> map){
-		List<UtiFactor>  utiFactorList =  riskFireDao.getUtiFactorById(map);
+//		List<UtiFactor>  utiFactorList =  riskFireDao.getUtiFactorById(map);
 		
-		return utiFactorList;
+//		return utiFactorList;
+		return null;
 	}
 	
 } 

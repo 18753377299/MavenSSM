@@ -2,6 +2,14 @@ package com.vo;
 
 import java.util.Date;
 
+/**
+ * @功能：公式表
+ * @param 
+ * @author 
+ * @throws Exception
+ * @时间：20190719
+ * @修改记录：
+ */
 @lombok.Data
 public class UtiFormula implements java.io.Serializable{
 	
@@ -15,6 +23,8 @@ public class UtiFormula implements java.io.Serializable{
 	private String factorNo;
 	/**灾因*/
 	private String dangerType;
+	
+	
 	/**计算公式*/
 	private String content;
 	/**集合类型*/
