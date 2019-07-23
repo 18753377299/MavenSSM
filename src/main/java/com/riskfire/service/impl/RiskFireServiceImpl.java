@@ -13,13 +13,8 @@ import com.po.response.RiskGradeVo;
 import com.riskfire.dao.RiskFireDao;
 import com.riskfire.service.RiskFireService;
 import com.vo.UtiFactor;
-	/**
- * @author  作者 E-mail: 
- * @date 创建时间：2019年7月19日 下午3:03:41
- * @version 1.0 
- * @parameter 
- * @since  
- * @return  */
+import com.vo.UtiFormula;
+
 /**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年7月19日 下午3:03:41
@@ -55,8 +50,9 @@ public class RiskFireServiceImpl implements RiskFireService{
 		
 		map.put("dangeType", "03,04");
 		Map<String, List<UtiFactor>>  mapUtiFactorY =  riskCommonService.getUtiFactorList(map);
-		// 公示表
-//		Map<String, List<UtiFormula>>  mapUtiFormula =  riskCommonService.getUtiFactorList(map);
+		map.remove("dangeType");
+		// 获取公式表信息
+		Map<String, Map<String,List<UtiFormula>> >  mapUtiFormula =  riskCommonService.getUtiFormulaList(map);
 		
 		
 				

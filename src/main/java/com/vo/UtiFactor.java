@@ -6,32 +6,47 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class UtiFactor implements Serializable {
+	
+    @ApiModelProperty(value = "风控模板号")
     private String riskModel;
 
+    @ApiModelProperty(value = "因子编号")
     private String factorNo;
 
+    @ApiModelProperty(value = "灾因")
     private String dangerType;
 
+    @ApiModelProperty(value = "因子类型")
     private String factorType;
 
+    @ApiModelProperty(value = "存储表名")
     private String fromTable;
 
+    @ApiModelProperty(value = "存储字段名")
     private String fromColumn;
 
+    @ApiModelProperty(value = "是否允许为空")
     private String nullAble;
 
+    @ApiModelProperty(value = "字段类型")
     private String columnType;
 
+    @ApiModelProperty(value = "字段中文名")
     private String columnCname;
 
+    @ApiModelProperty(value = "最值类型")
     private String factorExtType;
 
+    @ApiModelProperty(value = "最值")
     private BigDecimal factorExt;
 
+    @ApiModelProperty(value = "有效标志位")
     private String validStatus;
 
+    @ApiModelProperty(value = "插入时间")
     private Date insertTimeForHis;
 
+    @ApiModelProperty(value = "修改时间")
     private Date operateTimeForHis;
 
     private static final long serialVersionUID = 1L;

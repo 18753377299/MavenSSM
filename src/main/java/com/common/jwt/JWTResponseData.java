@@ -1,4 +1,4 @@
-package com.common;
+package com.common.jwt;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年3月26日 上午10:58:11

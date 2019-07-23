@@ -1,4 +1,4 @@
-package com.common;
+package com.common.filter;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

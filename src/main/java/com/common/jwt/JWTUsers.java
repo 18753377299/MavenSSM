@@ -1,4 +1,4 @@
-package com.common;
+package com.common.jwt;
 
 import java.util.HashMap;
 import java.util.Map;

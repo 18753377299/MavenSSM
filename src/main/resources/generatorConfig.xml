@@ -6,8 +6,8 @@
 <generatorConfiguration>
     <properties resource="config/jdbc.properties"/>
     <context id="MySqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
-<!--         <property name="beginningDelimiter" value="`"/> -->
-<!--         <property name="endingDelimiter" value="`"/> -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
         <property name="javaFileEncoding" value="UTF-8"/>
         <!-- 为模型生成序列化方法-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
@@ -17,8 +17,9 @@
         <commentGenerator type="com.generator.CommentGenerator">
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true"/>
-<!--             <property name="suppressDate" value="true"/> -->
-<!--             <property name="addRemarkComments" value="true"/> -->
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+<!--             <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss" /> -->
         </commentGenerator>
 
         <jdbcConnection driverClass="${jdbc.driverClassName}"
@@ -40,14 +41,14 @@
         <sqlMapGenerator targetPackage="mapper/base" targetProject="F:\eclipse\MavenSSM\src\main\resources">
         	<property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
-
+        
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.common.dao"
                              targetProject="F:\eclipse\MavenSSM\src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         
         <!--生成全部表tableName设为%-->
-        <table tableName="utifactor" domainObjectName="UtiFactor" enableInsert="true" enableCountByExample="false"
+        <table tableName="utiformula" domainObjectName="UtiFormula" enableInsert="true" enableCountByExample="false"
         		enableUpdateByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" selectByExampleQueryId="false"> 
 <!--             <generatedKey column="id" sqlStatement="MySql" identity="true"/> -->

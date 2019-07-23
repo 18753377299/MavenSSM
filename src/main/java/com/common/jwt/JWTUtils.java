@@ -1,4 +1,4 @@
-package com.common;
+package com.common.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

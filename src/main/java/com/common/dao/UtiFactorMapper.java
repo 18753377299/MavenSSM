@@ -21,6 +21,13 @@ public interface UtiFactorMapper {
 
     int updateByPrimaryKey(UtiFactor record);
     
-    /*查询出UtiFactor的集合*/
+    /**
+	 * @author  liqiankun 
+	 * @date 创建时间：20190723
+	 * @version 1.0 
+	 * @parameter 
+	 * @since 查询出UtiFactor的集合
+	 * @return  
+	 * */
 	public  List<UtiFactor> getUtiFactorList(Map<String, String> map);
 }

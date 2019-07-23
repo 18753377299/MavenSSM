@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.common.dao.UtiFormulaMapper">
+  <resultMap id="BaseResultMap" type="com.vo.UtiFormula">
+    <id column="riskModel" jdbcType="CHAR" property="riskModel" />
+    <id column="factorNo" jdbcType="CHAR" property="factorNo" />
+    <id column="dangerType" jdbcType="CHAR" property="dangerType" />
+    <result column="listType" jdbcType="CHAR" property="listType" />
+    <result column="validStatus" jdbcType="CHAR" property="validStatus" />
+    <result column="insertTimeForHis" jdbcType="TIMESTAMP" property="insertTimeForHis" />
+    <result column="operateTimeForHis" jdbcType="TIMESTAMP" property="operateTimeForHis" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.vo.UtiFormula">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    riskModel, factorNo, dangerType, listType, validStatus, insertTimeForHis, operateTimeForHis
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from utiformula
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from utiformula
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vo.UtiFormula">
+    insert into utiformula (riskModel, factorNo, dangerType, 
+      listType, validStatus, insertTimeForHis, 
+      operateTimeForHis, content)
+    values (#{riskModel,jdbcType=CHAR}, #{factorNo,jdbcType=CHAR}, #{dangerType,jdbcType=CHAR}, 
+      #{listType,jdbcType=CHAR}, #{validStatus,jdbcType=CHAR}, #{insertTimeForHis,jdbcType=TIMESTAMP}, 
+      #{operateTimeForHis,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.UtiFormula">
+    insert into utiformula
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="riskModel != null">
+        riskModel,
+      </if>
+      <if test="factorNo != null">
+        factorNo,
+      </if>
+      <if test="dangerType != null">
+        dangerType,
+      </if>
+      <if test="listType != null">
+        listType,
+      </if>
+      <if test="validStatus != null">
+        validStatus,
+      </if>
+      <if test="insertTimeForHis != null">
+        insertTimeForHis,
+      </if>
+      <if test="operateTimeForHis != null">
+        operateTimeForHis,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="riskModel != null">
+        #{riskModel,jdbcType=CHAR},
+      </if>
+      <if test="factorNo != null">
+        #{factorNo,jdbcType=CHAR},
+      </if>
+      <if test="dangerType != null">
+        #{dangerType,jdbcType=CHAR},
+      </if>
+      <if test="listType != null">
+        #{listType,jdbcType=CHAR},
+      </if>
+      <if test="validStatus != null">
+        #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null">
+        #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null">
+        #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.UtiFormula">
+    update utiformula
+    <set>
+      <if test="listType != null">
+        listType = #{listType,jdbcType=CHAR},
+      </if>
+      <if test="validStatus != null">
+        validStatus = #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null">
+        insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null">
+        operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.vo.UtiFormula">
+    update utiformula
+    set listType = #{listType,jdbcType=CHAR},
+      validStatus = #{validStatus,jdbcType=CHAR},
+      insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.UtiFormula">
+    update utiformula
+    set listType = #{listType,jdbcType=CHAR},
+      validStatus = #{validStatus,jdbcType=CHAR},
+      insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP}
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.vo.UtiFormula">
+    <id column="riskModel" jdbcType="CHAR" property="riskModel" />
+    <id column="factorNo" jdbcType="CHAR" property="factorNo" />
+    <id column="dangerType" jdbcType="CHAR" property="dangerType" />
+    <result column="listType" jdbcType="CHAR" property="listType" />
+    <result column="validStatus" jdbcType="CHAR" property="validStatus" />
+    <result column="insertTimeForHis" jdbcType="TIMESTAMP" property="insertTimeForHis" />
+    <result column="operateTimeForHis" jdbcType="TIMESTAMP" property="operateTimeForHis" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.vo.UtiFormula">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    riskModel, factorNo, dangerType, listType, validStatus, insertTimeForHis, operateTimeForHis
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from utiformula
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from utiformula
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vo.UtiFormula">
+    insert into utiformula (riskModel, factorNo, dangerType, 
+      listType, validStatus, insertTimeForHis, 
+      operateTimeForHis, content)
+    values (#{riskModel,jdbcType=CHAR}, #{factorNo,jdbcType=CHAR}, #{dangerType,jdbcType=CHAR}, 
+      #{listType,jdbcType=CHAR}, #{validStatus,jdbcType=CHAR}, #{insertTimeForHis,jdbcType=TIMESTAMP}, 
+      #{operateTimeForHis,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.UtiFormula">
+    insert into utiformula
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="riskModel != null">
+        riskModel,
+      </if>
+      <if test="factorNo != null">
+        factorNo,
+      </if>
+      <if test="dangerType != null">
+        dangerType,
+      </if>
+      <if test="listType != null">
+        listType,
+      </if>
+      <if test="validStatus != null">
+        validStatus,
+      </if>
+      <if test="insertTimeForHis != null">
+        insertTimeForHis,
+      </if>
+      <if test="operateTimeForHis != null">
+        operateTimeForHis,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="riskModel != null">
+        #{riskModel,jdbcType=CHAR},
+      </if>
+      <if test="factorNo != null">
+        #{factorNo,jdbcType=CHAR},
+      </if>
+      <if test="dangerType != null">
+        #{dangerType,jdbcType=CHAR},
+      </if>
+      <if test="listType != null">
+        #{listType,jdbcType=CHAR},
+      </if>
+      <if test="validStatus != null">
+        #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null">
+        #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null">
+        #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.UtiFormula">
+    update utiformula
+    <set>
+      <if test="listType != null">
+        listType = #{listType,jdbcType=CHAR},
+      </if>
+      <if test="validStatus != null">
+        validStatus = #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null">
+        insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null">
+        operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.vo.UtiFormula">
+    update utiformula
+    set listType = #{listType,jdbcType=CHAR},
+      validStatus = #{validStatus,jdbcType=CHAR},
+      insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.UtiFormula">
+    update utiformula
+    set listType = #{listType,jdbcType=CHAR},
+      validStatus = #{validStatus,jdbcType=CHAR},
+      insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP}
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+  </update>
+</mapper>

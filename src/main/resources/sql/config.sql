@@ -1,38 +1,35 @@
-CREATE TABLE
-    utifactor
-    (
-        riskModel CHAR(3) NOT NULL,
-        factorNo CHAR(6) NOT NULL,
-        dangerType CHAR(2) NOT NULL,
-        factorType CHAR(2) NOT NULL,
-        fromTable VARCHAR(30),
-        fromColumn VARCHAR(30),
-        nullAble VARCHAR(1),
-        columnType VARCHAR(2),
-        columnCname VARCHAR(60),
-        factorExtType CHAR(2) NOT NULL,
-        factorExt DECIMAL(5,2),
-        validStatus CHAR(1) NOT NULL,
-        insertTimeForHis DATETIME DEFAULT CURRENT_TIMESTAMP,
-        operateTimeForHis DATETIME DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE utifactor(
+        riskModel CHAR(3) NOT NULL COMMENT  '风控模板号',
+        factorNo CHAR(6) NOT NULL COMMENT  '因子编号',
+        dangerType CHAR(2) NOT NULL COMMENT  '灾因',
+        factorType CHAR(2) NOT NULL COMMENT  '因子类型',
+        fromTable VARCHAR(30) COMMENT  '存储表名',
+        fromColumn VARCHAR(30) COMMENT  '存储字段名',
+        nullAble VARCHAR(1) COMMENT  '是否允许为空',
+        columnType VARCHAR(2) COMMENT  '字段类型',
+        columnCname VARCHAR(60) COMMENT  '字段中文名',
+        factorExtType CHAR(2) NOT NULL COMMENT  '最值类型',
+        factorExt DECIMAL(5,2) COMMENT  '最值',
+        validStatus CHAR(1) NOT NULL COMMENT  '有效标志位',
+        insertTimeForHis DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT  '插入时间',
+        operateTimeForHis DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT  '修改时间',
         PRIMARY KEY (riskModel, factorNo, dangerType)
     )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-    
-    
-    
-    
-      CREATE TABLE utiformula
+        
+    CREATE TABLE  utiformula
     (
-        riskmodel CHAR(3) NOT NULL,
-        factorno CHAR(6) NOT NULL,
-        dangertype CHAR(2) NOT NULL,
-        content TEXT NOT NULL,
-        listtype CHAR(2) NOT NULL,
-        validstatus CHAR(1) NOT NULL,
-        inserttimeforhis DATETIME  default NOW(),
-        operatetimeforhis DATETIME default NOW(),
-        PRIMARY KEY (riskmodel, factorno, dangertype)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        riskModel CHAR(3) NOT NULL COMMENT  '风控模板号' ,
+        factorNo CHAR(6) NOT NULL COMMENT  '因子编号',
+        dangerType CHAR(2) NOT NULL COMMENT  '灾因',
+        content text NOT NULL COMMENT  '计算公式',
+        listType CHAR(2) NOT NULL COMMENT  '集合类型',
+        validStatus CHAR(1) NOT NULL COMMENT  '有效标志位',
+        insertTimeForHis DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT  '插入时间',
+        operateTimeForHis DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT  '修改时间',
+        PRIMARY KEY (riskModel, factorNo, dangerType)
+    )
+    ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    
     
          CREATE TABLE  utihighlightrisk
     (

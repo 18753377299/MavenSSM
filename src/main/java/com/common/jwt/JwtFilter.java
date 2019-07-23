@@ -1,4 +1,4 @@
-package com.common;
+package com.common.jwt;
 
 import java.io.IOException;
 
