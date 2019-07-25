@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.common.dao.RiskReportMainMapper" >
+  <resultMap id="BaseResultMap" type="com.vo.RiskReportMain" >
+    <id column="riskFileNo" property="riskFileNo" jdbcType="CHAR" />
+    <result column="classCode" property="classCode" jdbcType="CHAR" />
+    <result column="riskCode" property="riskCode" jdbcType="CHAR" />
+    <result column="comCode" property="comCode" jdbcType="CHAR" />
+    <result column="stockRate" property="stockRate" jdbcType="DECIMAL" />
+    <result column="riskModel" property="riskModel" jdbcType="VARCHAR" />
+    <result column="insuredType" property="insuredType" jdbcType="VARCHAR" />
+    <result column="insuredCode" property="insuredCode" jdbcType="VARCHAR" />
+    <result column="insuredName" property="insuredName" jdbcType="VARCHAR" />
+    <result column="addressProvince" property="addressProvince" jdbcType="VARCHAR" />
+    <result column="addressCity" property="addressCity" jdbcType="VARCHAR" />
+    <result column="addressCounty" property="addressCounty" jdbcType="VARCHAR" />
+    <result column="addressDetail" property="addressDetail" jdbcType="VARCHAR" />
+    <result column="postCode" property="postCode" jdbcType="VARCHAR" />
+    <result column="businessSource" property="businessSource" jdbcType="VARCHAR" />
+    <result column="businessClass" property="businessClass" jdbcType="VARCHAR" />
+    <result column="unitNature" property="unitNature" jdbcType="VARCHAR" />
+    <result column="underwriteStatus" property="underwriteStatus" jdbcType="VARCHAR" />
+    <result column="operatorCode" property="operatorCode" jdbcType="VARCHAR" />
+    <result column="operatorCode_uni" property="operatorCode_uni" jdbcType="VARCHAR" />
+    <result column="historyLoseFlag" property="historyLoseFlag" jdbcType="VARCHAR" />
+    <result column="sumAmount" property="sumAmount" jdbcType="DECIMAL" />
+    <result column="undwrtSubmitDate" property="undwrtSubmitDate" jdbcType="DATE" />
+    <result column="underwriteFlag" property="underwriteFlag" jdbcType="VARCHAR" />
+    <result column="underwriteDate" property="underwriteDate" jdbcType="DATE" />
+    <result column="underwriteCode" property="underwriteCode" jdbcType="VARCHAR" />
+    <result column="underwriteName" property="underwriteName" jdbcType="VARCHAR" />
+    <result column="explorecomCode" property="explorecomCode" jdbcType="VARCHAR" />
+    <result column="explorer" property="explorer" jdbcType="VARCHAR" />
+    <result column="explorer_uni" property="explorer_uni" jdbcType="VARCHAR" />
+    <result column="exploreDate" property="exploreDate" jdbcType="DATE" />
+    <result column="madeDate" property="madeDate" jdbcType="TIMESTAMP" />
+    <result column="exploreType" property="exploreType" jdbcType="VARCHAR" />
+    <result column="lastriskFileNo" property="lastriskFileNo" jdbcType="VARCHAR" />
+    <result column="mobileFlag" property="mobileFlag" jdbcType="CHAR" />
+    <result column="archivesNo" property="archivesNo" jdbcType="VARCHAR" />
+    <result column="addRisk" property="addRisk" jdbcType="VARCHAR" />
+    <result column="onceAccidentLosest" property="onceAccidentLosest" jdbcType="DECIMAL" />
+    <result column="riskUnitNumber" property="riskUnitNumber" jdbcType="INTEGER" />
+    <result column="loseRate" property="loseRate" jdbcType="DECIMAL" />
+    <result column="score" property="score" jdbcType="DECIMAL" />
+    <result column="riskSuggest" property="riskSuggest" jdbcType="VARCHAR" />
+    <result column="utiWeightId" property="utiWeightId" jdbcType="INTEGER" />
+    <result column="executionId" property="executionId" jdbcType="VARCHAR" />
+    <result column="pointx_2000" property="pointx_2000" jdbcType="DECIMAL" />
+    <result column="pointy_2000" property="pointy_2000" jdbcType="DECIMAL" />
+    <result column="pointx_02" property="pointx_02" jdbcType="DECIMAL" />
+    <result column="pointy_02" property="pointy_02" jdbcType="DECIMAL" />
+    <result column="valuation" property="valuation" jdbcType="VARCHAR" />
+    <result column="proposalNo" property="proposalNo" jdbcType="CHAR" />
+    <result column="policyNo" property="policyNo" jdbcType="CHAR" />
+    <result column="insertTimeForHis" property="insertTimeForHis" jdbcType="TIMESTAMP" />
+    <result column="operateTimeForHis" property="operateTimeForHis" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.vo.RiskReportMain" extends="BaseResultMap" >
+    <result column="customerExplain" property="customerExplain" jdbcType="LONGVARCHAR" />
+    <result column="riskUnitExplain" property="riskUnitExplain" jdbcType="LONGVARCHAR" />
+    <result column="highlightRisk" property="highlightRisk" jdbcType="LONGVARCHAR" />
+    <result column="supplementAppraisal" property="supplementAppraisal" jdbcType="LONGVARCHAR" />
+    <result column="othSuggest" property="othSuggest" jdbcType="LONGVARCHAR" />
+    <result column="addMessage" property="addMessage" jdbcType="LONGVARCHAR" />
+    <result column="repulseSugggest" property="repulseSugggest" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    riskFileNo, classCode, riskCode, comCode, stockRate, riskModel, insuredType, insuredCode, 
+    insuredName, addressProvince, addressCity, addressCounty, addressDetail, postCode, 
+    businessSource, businessClass, unitNature, underwriteStatus, operatorCode, operatorCode_uni, 
+    historyLoseFlag, sumAmount, undwrtSubmitDate, underwriteFlag, underwriteDate, underwriteCode, 
+    underwriteName, explorecomCode, explorer, explorer_uni, exploreDate, madeDate, exploreType, 
+    lastriskFileNo, mobileFlag, archivesNo, addRisk, onceAccidentLosest, riskUnitNumber, 
+    loseRate, score, riskSuggest, utiWeightId, executionId, pointx_2000, pointy_2000, 
+    pointx_02, pointy_02, valuation, proposalNo, policyNo, insertTimeForHis, operateTimeForHis
+  </sql>
+  <sql id="Blob_Column_List" >
+    customerExplain, riskUnitExplain, highlightRisk, supplementAppraisal, othSuggest, 
+    addMessage, repulseSugggest
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from riskreport_main
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from riskreport_main
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vo.RiskReportMain" >
+    insert into riskreport_main (riskFileNo, classCode, riskCode, 
+      comCode, stockRate, riskModel, 
+      insuredType, insuredCode, insuredName, 
+      addressProvince, addressCity, addressCounty, 
+      addressDetail, postCode, businessSource, 
+      businessClass, unitNature, underwriteStatus, 
+      operatorCode, operatorCode_uni, historyLoseFlag, 
+      sumAmount, undwrtSubmitDate, underwriteFlag, 
+      underwriteDate, underwriteCode, underwriteName, 
+      explorecomCode, explorer, explorer_uni, 
+      exploreDate, madeDate, exploreType, 
+      lastriskFileNo, mobileFlag, archivesNo, 
+      addRisk, onceAccidentLosest, riskUnitNumber, 
+      loseRate, score, riskSuggest, 
+      utiWeightId, executionId, pointx_2000, 
+      pointy_2000, pointx_02, pointy_02, 
+      valuation, proposalNo, policyNo, 
+      insertTimeForHis, operateTimeForHis, 
+      customerExplain, riskUnitExplain, 
+      highlightRisk, supplementAppraisal, 
+      othSuggest, addMessage, repulseSugggest
+      )
+    values (#{riskFileNo,jdbcType=CHAR}, #{classCode,jdbcType=CHAR}, #{riskCode,jdbcType=CHAR}, 
+      #{comCode,jdbcType=CHAR}, #{stockRate,jdbcType=DECIMAL}, #{riskModel,jdbcType=VARCHAR}, 
+      #{insuredType,jdbcType=VARCHAR}, #{insuredCode,jdbcType=VARCHAR}, #{insuredName,jdbcType=VARCHAR}, 
+      #{addressProvince,jdbcType=VARCHAR}, #{addressCity,jdbcType=VARCHAR}, #{addressCounty,jdbcType=VARCHAR}, 
+      #{addressDetail,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, #{businessSource,jdbcType=VARCHAR}, 
+      #{businessClass,jdbcType=VARCHAR}, #{unitNature,jdbcType=VARCHAR}, #{underwriteStatus,jdbcType=VARCHAR}, 
+      #{operatorCode,jdbcType=VARCHAR}, #{operatorCode_uni,jdbcType=VARCHAR}, #{historyLoseFlag,jdbcType=VARCHAR}, 
+      #{sumAmount,jdbcType=DECIMAL}, #{undwrtSubmitDate,jdbcType=DATE}, #{underwriteFlag,jdbcType=VARCHAR}, 
+      #{underwriteDate,jdbcType=DATE}, #{underwriteCode,jdbcType=VARCHAR}, #{underwriteName,jdbcType=VARCHAR}, 
+      #{explorecomCode,jdbcType=VARCHAR}, #{explorer,jdbcType=VARCHAR}, #{explorer_uni,jdbcType=VARCHAR}, 
+      #{exploreDate,jdbcType=DATE}, #{madeDate,jdbcType=TIMESTAMP}, #{exploreType,jdbcType=VARCHAR}, 
+      #{lastriskFileNo,jdbcType=VARCHAR}, #{mobileFlag,jdbcType=CHAR}, #{archivesNo,jdbcType=VARCHAR}, 
+      #{addRisk,jdbcType=VARCHAR}, #{onceAccidentLosest,jdbcType=DECIMAL}, #{riskUnitNumber,jdbcType=INTEGER}, 
+      #{loseRate,jdbcType=DECIMAL}, #{score,jdbcType=DECIMAL}, #{riskSuggest,jdbcType=VARCHAR}, 
+      #{utiWeightId,jdbcType=INTEGER}, #{executionId,jdbcType=VARCHAR}, #{pointx_2000,jdbcType=DECIMAL}, 
+      #{pointy_2000,jdbcType=DECIMAL}, #{pointx_02,jdbcType=DECIMAL}, #{pointy_02,jdbcType=DECIMAL}, 
+      #{valuation,jdbcType=VARCHAR}, #{proposalNo,jdbcType=CHAR}, #{policyNo,jdbcType=CHAR}, 
+      #{insertTimeForHis,jdbcType=TIMESTAMP}, #{operateTimeForHis,jdbcType=TIMESTAMP}, 
+      #{customerExplain,jdbcType=LONGVARCHAR}, #{riskUnitExplain,jdbcType=LONGVARCHAR}, 
+      #{highlightRisk,jdbcType=LONGVARCHAR}, #{supplementAppraisal,jdbcType=LONGVARCHAR}, 
+      #{othSuggest,jdbcType=LONGVARCHAR}, #{addMessage,jdbcType=LONGVARCHAR}, #{repulseSugggest,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.RiskReportMain" >
+    insert into riskreport_main
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="riskFileNo != null" >
+        riskFileNo,
+      </if>
+      <if test="classCode != null" >
+        classCode,
+      </if>
+      <if test="riskCode != null" >
+        riskCode,
+      </if>
+      <if test="comCode != null" >
+        comCode,
+      </if>
+      <if test="stockRate != null" >
+        stockRate,
+      </if>
+      <if test="riskModel != null" >
+        riskModel,
+      </if>
+      <if test="insuredType != null" >
+        insuredType,
+      </if>
+      <if test="insuredCode != null" >
+        insuredCode,
+      </if>
+      <if test="insuredName != null" >
+        insuredName,
+      </if>
+      <if test="addressProvince != null" >
+        addressProvince,
+      </if>
+      <if test="addressCity != null" >
+        addressCity,
+      </if>
+      <if test="addressCounty != null" >
+        addressCounty,
+      </if>
+      <if test="addressDetail != null" >
+        addressDetail,
+      </if>
+      <if test="postCode != null" >
+        postCode,
+      </if>
+      <if test="businessSource != null" >
+        businessSource,
+      </if>
+      <if test="businessClass != null" >
+        businessClass,
+      </if>
+      <if test="unitNature != null" >
+        unitNature,
+      </if>
+      <if test="underwriteStatus != null" >
+        underwriteStatus,
+      </if>
+      <if test="operatorCode != null" >
+        operatorCode,
+      </if>
+      <if test="operatorCode_uni != null" >
+        operatorCode_uni,
+      </if>
+      <if test="historyLoseFlag != null" >
+        historyLoseFlag,
+      </if>
+      <if test="sumAmount != null" >
+        sumAmount,
+      </if>
+      <if test="undwrtSubmitDate != null" >
+        undwrtSubmitDate,
+      </if>
+      <if test="underwriteFlag != null" >
+        underwriteFlag,
+      </if>
+      <if test="underwriteDate != null" >
+        underwriteDate,
+      </if>
+      <if test="underwriteCode != null" >
+        underwriteCode,
+      </if>
+      <if test="underwriteName != null" >
+        underwriteName,
+      </if>
+      <if test="explorecomCode != null" >
+        explorecomCode,
+      </if>
+      <if test="explorer != null" >
+        explorer,
+      </if>
+      <if test="explorer_uni != null" >
+        explorer_uni,
+      </if>
+      <if test="exploreDate != null" >
+        exploreDate,
+      </if>
+      <if test="madeDate != null" >
+        madeDate,
+      </if>
+      <if test="exploreType != null" >
+        exploreType,
+      </if>
+      <if test="lastriskFileNo != null" >
+        lastriskFileNo,
+      </if>
+      <if test="mobileFlag != null" >
+        mobileFlag,
+      </if>
+      <if test="archivesNo != null" >
+        archivesNo,
+      </if>
+      <if test="addRisk != null" >
+        addRisk,
+      </if>
+      <if test="onceAccidentLosest != null" >
+        onceAccidentLosest,
+      </if>
+      <if test="riskUnitNumber != null" >
+        riskUnitNumber,
+      </if>
+      <if test="loseRate != null" >
+        loseRate,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="riskSuggest != null" >
+        riskSuggest,
+      </if>
+      <if test="utiWeightId != null" >
+        utiWeightId,
+      </if>
+      <if test="executionId != null" >
+        executionId,
+      </if>
+      <if test="pointx_2000 != null" >
+        pointx_2000,
+      </if>
+      <if test="pointy_2000 != null" >
+        pointy_2000,
+      </if>
+      <if test="pointx_02 != null" >
+        pointx_02,
+      </if>
+      <if test="pointy_02 != null" >
+        pointy_02,
+      </if>
+      <if test="valuation != null" >
+        valuation,
+      </if>
+      <if test="proposalNo != null" >
+        proposalNo,
+      </if>
+      <if test="policyNo != null" >
+        policyNo,
+      </if>
+      <if test="insertTimeForHis != null" >
+        insertTimeForHis,
+      </if>
+      <if test="operateTimeForHis != null" >
+        operateTimeForHis,
+      </if>
+      <if test="customerExplain != null" >
+        customerExplain,
+      </if>
+      <if test="riskUnitExplain != null" >
+        riskUnitExplain,
+      </if>
+      <if test="highlightRisk != null" >
+        highlightRisk,
+      </if>
+      <if test="supplementAppraisal != null" >
+        supplementAppraisal,
+      </if>
+      <if test="othSuggest != null" >
+        othSuggest,
+      </if>
+      <if test="addMessage != null" >
+        addMessage,
+      </if>
+      <if test="repulseSugggest != null" >
+        repulseSugggest,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="riskFileNo != null" >
+        #{riskFileNo,jdbcType=CHAR},
+      </if>
+      <if test="classCode != null" >
+        #{classCode,jdbcType=CHAR},
+      </if>
+      <if test="riskCode != null" >
+        #{riskCode,jdbcType=CHAR},
+      </if>
+      <if test="comCode != null" >
+        #{comCode,jdbcType=CHAR},
+      </if>
+      <if test="stockRate != null" >
+        #{stockRate,jdbcType=DECIMAL},
+      </if>
+      <if test="riskModel != null" >
+        #{riskModel,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredType != null" >
+        #{insuredType,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCode != null" >
+        #{insuredCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredName != null" >
+        #{insuredName,jdbcType=VARCHAR},
+      </if>
+      <if test="addressProvince != null" >
+        #{addressProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCity != null" >
+        #{addressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCounty != null" >
+        #{addressCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetail != null" >
+        #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessSource != null" >
+        #{businessSource,jdbcType=VARCHAR},
+      </if>
+      <if test="businessClass != null" >
+        #{businessClass,jdbcType=VARCHAR},
+      </if>
+      <if test="unitNature != null" >
+        #{unitNature,jdbcType=VARCHAR},
+      </if>
+      <if test="underwriteStatus != null" >
+        #{underwriteStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null" >
+        #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode_uni != null" >
+        #{operatorCode_uni,jdbcType=VARCHAR},
+      </if>
+      <if test="historyLoseFlag != null" >
+        #{historyLoseFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="sumAmount != null" >
+        #{sumAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="undwrtSubmitDate != null" >
+        #{undwrtSubmitDate,jdbcType=DATE},
+      </if>
+      <if test="underwriteFlag != null" >
+        #{underwriteFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="underwriteDate != null" >
+        #{underwriteDate,jdbcType=DATE},
+      </if>
+      <if test="underwriteCode != null" >
+        #{underwriteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="underwriteName != null" >
+        #{underwriteName,jdbcType=VARCHAR},
+      </if>
+      <if test="explorecomCode != null" >
+        #{explorecomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="explorer != null" >
+        #{explorer,jdbcType=VARCHAR},
+      </if>
+      <if test="explorer_uni != null" >
+        #{explorer_uni,jdbcType=VARCHAR},
+      </if>
+      <if test="exploreDate != null" >
+        #{exploreDate,jdbcType=DATE},
+      </if>
+      <if test="madeDate != null" >
+        #{madeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exploreType != null" >
+        #{exploreType,jdbcType=VARCHAR},
+      </if>
+      <if test="lastriskFileNo != null" >
+        #{lastriskFileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileFlag != null" >
+        #{mobileFlag,jdbcType=CHAR},
+      </if>
+      <if test="archivesNo != null" >
+        #{archivesNo,jdbcType=VARCHAR},
+      </if>
+      <if test="addRisk != null" >
+        #{addRisk,jdbcType=VARCHAR},
+      </if>
+      <if test="onceAccidentLosest != null" >
+        #{onceAccidentLosest,jdbcType=DECIMAL},
+      </if>
+      <if test="riskUnitNumber != null" >
+        #{riskUnitNumber,jdbcType=INTEGER},
+      </if>
+      <if test="loseRate != null" >
+        #{loseRate,jdbcType=DECIMAL},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="riskSuggest != null" >
+        #{riskSuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="utiWeightId != null" >
+        #{utiWeightId,jdbcType=INTEGER},
+      </if>
+      <if test="executionId != null" >
+        #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="pointx_2000 != null" >
+        #{pointx_2000,jdbcType=DECIMAL},
+      </if>
+      <if test="pointy_2000 != null" >
+        #{pointy_2000,jdbcType=DECIMAL},
+      </if>
+      <if test="pointx_02 != null" >
+        #{pointx_02,jdbcType=DECIMAL},
+      </if>
+      <if test="pointy_02 != null" >
+        #{pointy_02,jdbcType=DECIMAL},
+      </if>
+      <if test="valuation != null" >
+        #{valuation,jdbcType=VARCHAR},
+      </if>
+      <if test="proposalNo != null" >
+        #{proposalNo,jdbcType=CHAR},
+      </if>
+      <if test="policyNo != null" >
+        #{policyNo,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null" >
+        #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerExplain != null" >
+        #{customerExplain,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="riskUnitExplain != null" >
+        #{riskUnitExplain,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="highlightRisk != null" >
+        #{highlightRisk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="supplementAppraisal != null" >
+        #{supplementAppraisal,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="othSuggest != null" >
+        #{othSuggest,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="addMessage != null" >
+        #{addMessage,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="repulseSugggest != null" >
+        #{repulseSugggest,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.RiskReportMain" >
+    update riskreport_main
+    <set >
+      <if test="classCode != null" >
+        classCode = #{classCode,jdbcType=CHAR},
+      </if>
+      <if test="riskCode != null" >
+        riskCode = #{riskCode,jdbcType=CHAR},
+      </if>
+      <if test="comCode != null" >
+        comCode = #{comCode,jdbcType=CHAR},
+      </if>
+      <if test="stockRate != null" >
+        stockRate = #{stockRate,jdbcType=DECIMAL},
+      </if>
+      <if test="riskModel != null" >
+        riskModel = #{riskModel,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredType != null" >
+        insuredType = #{insuredType,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredCode != null" >
+        insuredCode = #{insuredCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredName != null" >
+        insuredName = #{insuredName,jdbcType=VARCHAR},
+      </if>
+      <if test="addressProvince != null" >
+        addressProvince = #{addressProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCity != null" >
+        addressCity = #{addressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCounty != null" >
+        addressCounty = #{addressCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetail != null" >
+        addressDetail = #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        postCode = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="businessSource != null" >
+        businessSource = #{businessSource,jdbcType=VARCHAR},
+      </if>
+      <if test="businessClass != null" >
+        businessClass = #{businessClass,jdbcType=VARCHAR},
+      </if>
+      <if test="unitNature != null" >
+        unitNature = #{unitNature,jdbcType=VARCHAR},
+      </if>
+      <if test="underwriteStatus != null" >
+        underwriteStatus = #{underwriteStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null" >
+        operatorCode = #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode_uni != null" >
+        operatorCode_uni = #{operatorCode_uni,jdbcType=VARCHAR},
+      </if>
+      <if test="historyLoseFlag != null" >
+        historyLoseFlag = #{historyLoseFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="sumAmount != null" >
+        sumAmount = #{sumAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="undwrtSubmitDate != null" >
+        undwrtSubmitDate = #{undwrtSubmitDate,jdbcType=DATE},
+      </if>
+      <if test="underwriteFlag != null" >
+        underwriteFlag = #{underwriteFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="underwriteDate != null" >
+        underwriteDate = #{underwriteDate,jdbcType=DATE},
+      </if>
+      <if test="underwriteCode != null" >
+        underwriteCode = #{underwriteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="underwriteName != null" >
+        underwriteName = #{underwriteName,jdbcType=VARCHAR},
+      </if>
+      <if test="explorecomCode != null" >
+        explorecomCode = #{explorecomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="explorer != null" >
+        explorer = #{explorer,jdbcType=VARCHAR},
+      </if>
+      <if test="explorer_uni != null" >
+        explorer_uni = #{explorer_uni,jdbcType=VARCHAR},
+      </if>
+      <if test="exploreDate != null" >
+        exploreDate = #{exploreDate,jdbcType=DATE},
+      </if>
+      <if test="madeDate != null" >
+        madeDate = #{madeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exploreType != null" >
+        exploreType = #{exploreType,jdbcType=VARCHAR},
+      </if>
+      <if test="lastriskFileNo != null" >
+        lastriskFileNo = #{lastriskFileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileFlag != null" >
+        mobileFlag = #{mobileFlag,jdbcType=CHAR},
+      </if>
+      <if test="archivesNo != null" >
+        archivesNo = #{archivesNo,jdbcType=VARCHAR},
+      </if>
+      <if test="addRisk != null" >
+        addRisk = #{addRisk,jdbcType=VARCHAR},
+      </if>
+      <if test="onceAccidentLosest != null" >
+        onceAccidentLosest = #{onceAccidentLosest,jdbcType=DECIMAL},
+      </if>
+      <if test="riskUnitNumber != null" >
+        riskUnitNumber = #{riskUnitNumber,jdbcType=INTEGER},
+      </if>
+      <if test="loseRate != null" >
+        loseRate = #{loseRate,jdbcType=DECIMAL},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="riskSuggest != null" >
+        riskSuggest = #{riskSuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="utiWeightId != null" >
+        utiWeightId = #{utiWeightId,jdbcType=INTEGER},
+      </if>
+      <if test="executionId != null" >
+        executionId = #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="pointx_2000 != null" >
+        pointx_2000 = #{pointx_2000,jdbcType=DECIMAL},
+      </if>
+      <if test="pointy_2000 != null" >
+        pointy_2000 = #{pointy_2000,jdbcType=DECIMAL},
+      </if>
+      <if test="pointx_02 != null" >
+        pointx_02 = #{pointx_02,jdbcType=DECIMAL},
+      </if>
+      <if test="pointy_02 != null" >
+        pointy_02 = #{pointy_02,jdbcType=DECIMAL},
+      </if>
+      <if test="valuation != null" >
+        valuation = #{valuation,jdbcType=VARCHAR},
+      </if>
+      <if test="proposalNo != null" >
+        proposalNo = #{proposalNo,jdbcType=CHAR},
+      </if>
+      <if test="policyNo != null" >
+        policyNo = #{policyNo,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null" >
+        insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerExplain != null" >
+        customerExplain = #{customerExplain,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="riskUnitExplain != null" >
+        riskUnitExplain = #{riskUnitExplain,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="highlightRisk != null" >
+        highlightRisk = #{highlightRisk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="supplementAppraisal != null" >
+        supplementAppraisal = #{supplementAppraisal,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="othSuggest != null" >
+        othSuggest = #{othSuggest,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="addMessage != null" >
+        addMessage = #{addMessage,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="repulseSugggest != null" >
+        repulseSugggest = #{repulseSugggest,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.vo.RiskReportMain" >
+    update riskreport_main
+    set classCode = #{classCode,jdbcType=CHAR},
+      riskCode = #{riskCode,jdbcType=CHAR},
+      comCode = #{comCode,jdbcType=CHAR},
+      stockRate = #{stockRate,jdbcType=DECIMAL},
+      riskModel = #{riskModel,jdbcType=VARCHAR},
+      insuredType = #{insuredType,jdbcType=VARCHAR},
+      insuredCode = #{insuredCode,jdbcType=VARCHAR},
+      insuredName = #{insuredName,jdbcType=VARCHAR},
+      addressProvince = #{addressProvince,jdbcType=VARCHAR},
+      addressCity = #{addressCity,jdbcType=VARCHAR},
+      addressCounty = #{addressCounty,jdbcType=VARCHAR},
+      addressDetail = #{addressDetail,jdbcType=VARCHAR},
+      postCode = #{postCode,jdbcType=VARCHAR},
+      businessSource = #{businessSource,jdbcType=VARCHAR},
+      businessClass = #{businessClass,jdbcType=VARCHAR},
+      unitNature = #{unitNature,jdbcType=VARCHAR},
+      underwriteStatus = #{underwriteStatus,jdbcType=VARCHAR},
+      operatorCode = #{operatorCode,jdbcType=VARCHAR},
+      operatorCode_uni = #{operatorCode_uni,jdbcType=VARCHAR},
+      historyLoseFlag = #{historyLoseFlag,jdbcType=VARCHAR},
+      sumAmount = #{sumAmount,jdbcType=DECIMAL},
+      undwrtSubmitDate = #{undwrtSubmitDate,jdbcType=DATE},
+      underwriteFlag = #{underwriteFlag,jdbcType=VARCHAR},
+      underwriteDate = #{underwriteDate,jdbcType=DATE},
+      underwriteCode = #{underwriteCode,jdbcType=VARCHAR},
+      underwriteName = #{underwriteName,jdbcType=VARCHAR},
+      explorecomCode = #{explorecomCode,jdbcType=VARCHAR},
+      explorer = #{explorer,jdbcType=VARCHAR},
+      explorer_uni = #{explorer_uni,jdbcType=VARCHAR},
+      exploreDate = #{exploreDate,jdbcType=DATE},
+      madeDate = #{madeDate,jdbcType=TIMESTAMP},
+      exploreType = #{exploreType,jdbcType=VARCHAR},
+      lastriskFileNo = #{lastriskFileNo,jdbcType=VARCHAR},
+      mobileFlag = #{mobileFlag,jdbcType=CHAR},
+      archivesNo = #{archivesNo,jdbcType=VARCHAR},
+      addRisk = #{addRisk,jdbcType=VARCHAR},
+      onceAccidentLosest = #{onceAccidentLosest,jdbcType=DECIMAL},
+      riskUnitNumber = #{riskUnitNumber,jdbcType=INTEGER},
+      loseRate = #{loseRate,jdbcType=DECIMAL},
+      score = #{score,jdbcType=DECIMAL},
+      riskSuggest = #{riskSuggest,jdbcType=VARCHAR},
+      utiWeightId = #{utiWeightId,jdbcType=INTEGER},
+      executionId = #{executionId,jdbcType=VARCHAR},
+      pointx_2000 = #{pointx_2000,jdbcType=DECIMAL},
+      pointy_2000 = #{pointy_2000,jdbcType=DECIMAL},
+      pointx_02 = #{pointx_02,jdbcType=DECIMAL},
+      pointy_02 = #{pointy_02,jdbcType=DECIMAL},
+      valuation = #{valuation,jdbcType=VARCHAR},
+      proposalNo = #{proposalNo,jdbcType=CHAR},
+      policyNo = #{policyNo,jdbcType=CHAR},
+      insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      customerExplain = #{customerExplain,jdbcType=LONGVARCHAR},
+      riskUnitExplain = #{riskUnitExplain,jdbcType=LONGVARCHAR},
+      highlightRisk = #{highlightRisk,jdbcType=LONGVARCHAR},
+      supplementAppraisal = #{supplementAppraisal,jdbcType=LONGVARCHAR},
+      othSuggest = #{othSuggest,jdbcType=LONGVARCHAR},
+      addMessage = #{addMessage,jdbcType=LONGVARCHAR},
+      repulseSugggest = #{repulseSugggest,jdbcType=LONGVARCHAR}
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.RiskReportMain" >
+    update riskreport_main
+    set classCode = #{classCode,jdbcType=CHAR},
+      riskCode = #{riskCode,jdbcType=CHAR},
+      comCode = #{comCode,jdbcType=CHAR},
+      stockRate = #{stockRate,jdbcType=DECIMAL},
+      riskModel = #{riskModel,jdbcType=VARCHAR},
+      insuredType = #{insuredType,jdbcType=VARCHAR},
+      insuredCode = #{insuredCode,jdbcType=VARCHAR},
+      insuredName = #{insuredName,jdbcType=VARCHAR},
+      addressProvince = #{addressProvince,jdbcType=VARCHAR},
+      addressCity = #{addressCity,jdbcType=VARCHAR},
+      addressCounty = #{addressCounty,jdbcType=VARCHAR},
+      addressDetail = #{addressDetail,jdbcType=VARCHAR},
+      postCode = #{postCode,jdbcType=VARCHAR},
+      businessSource = #{businessSource,jdbcType=VARCHAR},
+      businessClass = #{businessClass,jdbcType=VARCHAR},
+      unitNature = #{unitNature,jdbcType=VARCHAR},
+      underwriteStatus = #{underwriteStatus,jdbcType=VARCHAR},
+      operatorCode = #{operatorCode,jdbcType=VARCHAR},
+      operatorCode_uni = #{operatorCode_uni,jdbcType=VARCHAR},
+      historyLoseFlag = #{historyLoseFlag,jdbcType=VARCHAR},
+      sumAmount = #{sumAmount,jdbcType=DECIMAL},
+      undwrtSubmitDate = #{undwrtSubmitDate,jdbcType=DATE},
+      underwriteFlag = #{underwriteFlag,jdbcType=VARCHAR},
+      underwriteDate = #{underwriteDate,jdbcType=DATE},
+      underwriteCode = #{underwriteCode,jdbcType=VARCHAR},
+      underwriteName = #{underwriteName,jdbcType=VARCHAR},
+      explorecomCode = #{explorecomCode,jdbcType=VARCHAR},
+      explorer = #{explorer,jdbcType=VARCHAR},
+      explorer_uni = #{explorer_uni,jdbcType=VARCHAR},
+      exploreDate = #{exploreDate,jdbcType=DATE},
+      madeDate = #{madeDate,jdbcType=TIMESTAMP},
+      exploreType = #{exploreType,jdbcType=VARCHAR},
+      lastriskFileNo = #{lastriskFileNo,jdbcType=VARCHAR},
+      mobileFlag = #{mobileFlag,jdbcType=CHAR},
+      archivesNo = #{archivesNo,jdbcType=VARCHAR},
+      addRisk = #{addRisk,jdbcType=VARCHAR},
+      onceAccidentLosest = #{onceAccidentLosest,jdbcType=DECIMAL},
+      riskUnitNumber = #{riskUnitNumber,jdbcType=INTEGER},
+      loseRate = #{loseRate,jdbcType=DECIMAL},
+      score = #{score,jdbcType=DECIMAL},
+      riskSuggest = #{riskSuggest,jdbcType=VARCHAR},
+      utiWeightId = #{utiWeightId,jdbcType=INTEGER},
+      executionId = #{executionId,jdbcType=VARCHAR},
+      pointx_2000 = #{pointx_2000,jdbcType=DECIMAL},
+      pointy_2000 = #{pointy_2000,jdbcType=DECIMAL},
+      pointx_02 = #{pointx_02,jdbcType=DECIMAL},
+      pointy_02 = #{pointy_02,jdbcType=DECIMAL},
+      valuation = #{valuation,jdbcType=VARCHAR},
+      proposalNo = #{proposalNo,jdbcType=CHAR},
+      policyNo = #{policyNo,jdbcType=CHAR},
+      insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP}
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </update>
+</mapper>

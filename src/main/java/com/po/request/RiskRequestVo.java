@@ -1,9 +1,11 @@
 package com.po.request;
 
 import java.io.Serializable;
+import java.util.List;
 
 import lombok.Data;
 
+import com.vo.RiskReportFireDanger;
 import com.vo.RiskReportMain;
 	/**
  * @author  作者 E-mail: 
@@ -16,6 +18,9 @@ import com.vo.RiskReportMain;
 public class RiskRequestVo implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
 	private RiskReportMain riskReportMain;
+	
+	private List<RiskReportFireDanger>  riskReportFireDangerList;
 	
 }

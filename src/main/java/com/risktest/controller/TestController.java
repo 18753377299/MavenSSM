@@ -1,4 +1,4 @@
-package com.controller;
+package com.risktest.controller;
 
 import java.util.UUID;
 
@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
-import com.common.JWTResponseData;
-import com.common.JWTResult;
-import com.common.JWTSubject;
-import com.common.JWTUsers;
-import com.common.JWTUtils;
-import com.service.EmpService;
+import com.common.jwt.JWTResponseData;
+import com.common.jwt.JWTResult;
+import com.common.jwt.JWTSubject;
+import com.common.jwt.JWTUsers;
+import com.common.jwt.JWTUtils;
+import com.risktest.service.EmpService;
 import com.vo.Emp;
 
 

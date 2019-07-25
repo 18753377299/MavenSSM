@@ -5,6 +5,14 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+* @author  作者 E-mail:   liqiankun
+* @date 创建时间：2019年7月16日 上午9:42:48
+* @version 1.0 
+* @parameter 
+* @since  因子表
+* @return  */
+
 public class UtiFactor implements Serializable {
 	
     @ApiModelProperty(value = "风控模板号")

@@ -1,4 +1,4 @@
-package com.test;
+package com.risktest;
 
 import com.alibaba.fastjson.JSON;
 import com.vo.Emp;
@@ -10,9 +10,11 @@ import com.vo.Emp;
  * @since  
  * @return  */
 public class Test {
+	
 	public static void main(String []args){
 		String empString= "{'empName':'123'}";
 		Emp emp = JSON.parseObject(empString,Emp.class);
 		System.out.println(emp.getEmpName());
 	}
+	
 }

@@ -16,6 +16,17 @@ public interface RiskCommonService {
 	
 	public  Map<String, List<UtiFactor>>   getUtiFactorList(Map<String, String> map);
 	
-	public Map<String, Map<String,List<UtiFormula>> >  getUtiFormulaList(Map<String, String> map);
+//	public Map<String, Map<String,List<UtiFormula>>>  getUtiFormulaList(Map<String, String> map);
+	
+	public  Map<String,UtiFormula>  getUtiFormulaList(Map<String, String> map);
+	/**
+	 * @author  liqiankun 
+	 * @date 创建时间：20190725
+	 * @version 1.0 
+	 * @parameter 
+	 * @since  通过反射将将对象中的值获取并整合到map中
+	 * @return  
+	 * */
+	public Map<String, String>  setObjectValueToMap(Object object);
 	
 }

@@ -30,56 +30,55 @@ CREATE TABLE utifactor(
     )
     ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
+     CREATE TABLE utiscore (
+        riskModel CHAR(3) NOT NULL COMMENT  '风控模板号',
+        factorNo CHAR(6) NOT NULL COMMENT  '因子编号',
+        dangerType CHAR(2) NOT NULL COMMENT  '灾因',
+        factorValue VARCHAR(5) NOT NULL COMMENT  '因子取值',
+        factorScore DECIMAL(5,2) NOT NULL COMMENT  '分值',
+        validStatus CHAR(1) NOT NULL COMMENT  '有效标志位',
+        insertTimeForHis  DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT  '插入时间',
+        operateTimeForHis  DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT  '修改时间',
+        PRIMARY KEY (riskModel, factorNo, dangerType, factorValue) 
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
-         CREATE TABLE  utihighlightrisk
+    
+          CREATE TABLE  utihighlightrisk
     (
-        riskmodel CHAR(3) NOT NULL,
-        fromtable VARCHAR(30) NOT NULL,
-        fromcolumn VARCHAR(30) NOT NULL,
-        riskvalue VARCHAR(5) NOT NULL,
-        riskflag CHAR(1) NOT NULL,
-        riskreminder text,
-        validstatus CHAR(1) NOT NULL,
-        inserttimeforhis DATETIME  default NOW(),
-        operatetimeforhis DATETIME   default NOW(),
+        riskModel CHAR(3) NOT NULL COMMENT  '风控模板号',
+        fromTable VARCHAR(30) COMMENT  '存储表名',
+        fromColumn VARCHAR(30) COMMENT  '存储字段名',
+        riskValue VARCHAR(5) NOT NULL COMMENT  '取值',
+        riskFlag CHAR(1) NOT NULL COMMENT  '取值是否为突出风险',
+        riskReminder text COMMENT  '突出风险描述',
+        validStatus CHAR(1) NOT NULL COMMENT  '有效标志位',
+        insertTimeForHis  DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT  '插入时间',
+        operateTimeForHis  DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT  '修改时间',
         PRIMARY KEY (riskmodel, fromtable, fromcolumn, riskvalue) 
-    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-    
-    CREATE TABLE
-    utiscore
-    (
-        riskmodel CHAR(3) NOT NULL,
-        factorno CHAR(6) NOT NULL,
-        dangertype CHAR(2) NOT NULL,
-        factorvalue VARCHAR(5) NOT NULL,
-        factorscore DECIMAL(5,2) NOT NULL,
-        validstatus CHAR(1) NOT NULL,
-        inserttimeforhis DATETIME YEAR TO SECOND,
-        operatetimeforhis DATETIME YEAR TO SECOND,
-        PRIMARY KEY (riskmodel, factorno, dangertype, factorvalue) 
-    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;    
     
     CREATE TABLE
     utiweight
     (
-        id SERIAL NOT NULL,
-        comcode VARCHAR(8) NOT NULL,
-        operatorcode VARCHAR(10),
-        operatorname VARCHAR(50),
-        fireweight DECIMAL(5,4),
-        waterweight DECIMAL(5,4),
-        windweight DECIMAL(5,4),
-        thunderweight DECIMAL(5,4),
-        snowweight DECIMAL(5,4),
-        theftweight DECIMAL(5,4),
-        earthquakeweight DECIMAL(5,4),
-        geologyweight DECIMAL(5,4),
-        validstatus CHAR(1) NOT NULL,
-        inserttimeforhis DATETIME  default NOW(),
-        operatetimeforhis DATETIME  default NOW(),
-        riskmodel VARCHAR(3),
-        PRIMARY KEY (id) CONSTRAINT pk_utiweight
+        id SERIAL NOT NULL COMMENT  'id号',
+        riskModel VARCHAR(3) COMMENT  '有效标志位',
+        comCode VARCHAR(8) NOT NULL COMMENT  '归属机构',
+        operatorCode VARCHAR(10) COMMENT  '维护人代码',
+        operatorName VARCHAR(50) COMMENT  '维护人名称',
+        fireWeight DECIMAL(5,4) COMMENT  '火灾风险值',
+        waterWeight DECIMAL(5,4) COMMENT  '水灾风险值',
+        windWeight DECIMAL(5,4) COMMENT  '风灾风险值',
+        thunderWeight DECIMAL(5,4) COMMENT  '雷灾风险值',
+        snowWeight DECIMAL(5,4) COMMENT  '雪灾风险值',
+        theftWeight DECIMAL(5,4) COMMENT  '盗抢风险值',
+        earthquakeWeight DECIMAL(5,4) COMMENT  '地震风险值',
+        geologyWeight DECIMAL(5,4) COMMENT  '地质灾害风险值',
+        validStatus CHAR(1) NOT NULL COMMENT  '有效标志位',
+        insertTimeForHis  DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT  '插入时间',
+        operateTimeForHis  DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT  '修改时间',   
+        PRIMARY KEY (id)
     )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  
     
  ------------------------------------------------------------  
     

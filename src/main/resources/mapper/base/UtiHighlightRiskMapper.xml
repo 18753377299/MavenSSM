@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.common.dao.UtiHighlightRiskMapper" >
+  <resultMap id="BaseResultMap" type="com.vo.UtiHighlightRisk" >
+    <id column="riskModel" property="riskModel" jdbcType="CHAR" />
+    <id column="fromTable" property="fromTable" jdbcType="VARCHAR" />
+    <id column="fromColumn" property="fromColumn" jdbcType="VARCHAR" />
+    <id column="riskValue" property="riskValue" jdbcType="VARCHAR" />
+    <result column="riskFlag" property="riskFlag" jdbcType="CHAR" />
+    <result column="validStatus" property="validStatus" jdbcType="CHAR" />
+    <result column="insertTimeForHis" property="insertTimeForHis" jdbcType="TIMESTAMP" />
+    <result column="operateTimeForHis" property="operateTimeForHis" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.vo.UtiHighlightRisk" extends="BaseResultMap" >
+    <result column="riskReminder" property="riskReminder" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    riskModel, fromTable, fromColumn, riskValue, riskFlag, validStatus, insertTimeForHis, 
+    operateTimeForHis
+  </sql>
+  <sql id="Blob_Column_List" >
+    riskReminder
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from utihighlightrisk
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and fromTable = #{fromTable,jdbcType=VARCHAR}
+      and fromColumn = #{fromColumn,jdbcType=VARCHAR}
+      and riskValue = #{riskValue,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from utihighlightrisk
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and fromTable = #{fromTable,jdbcType=VARCHAR}
+      and fromColumn = #{fromColumn,jdbcType=VARCHAR}
+      and riskValue = #{riskValue,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vo.UtiHighlightRisk" >
+    insert into utihighlightrisk (riskModel, fromTable, fromColumn, 
+      riskValue, riskFlag, validStatus, 
+      insertTimeForHis, operateTimeForHis, 
+      riskReminder)
+    values (#{riskModel,jdbcType=CHAR}, #{fromTable,jdbcType=VARCHAR}, #{fromColumn,jdbcType=VARCHAR}, 
+      #{riskValue,jdbcType=VARCHAR}, #{riskFlag,jdbcType=CHAR}, #{validStatus,jdbcType=CHAR}, 
+      #{insertTimeForHis,jdbcType=TIMESTAMP}, #{operateTimeForHis,jdbcType=TIMESTAMP}, 
+      #{riskReminder,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.UtiHighlightRisk" >
+    insert into utihighlightrisk
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="riskModel != null" >
+        riskModel,
+      </if>
+      <if test="fromTable != null" >
+        fromTable,
+      </if>
+      <if test="fromColumn != null" >
+        fromColumn,
+      </if>
+      <if test="riskValue != null" >
+        riskValue,
+      </if>
+      <if test="riskFlag != null" >
+        riskFlag,
+      </if>
+      <if test="validStatus != null" >
+        validStatus,
+      </if>
+      <if test="insertTimeForHis != null" >
+        insertTimeForHis,
+      </if>
+      <if test="operateTimeForHis != null" >
+        operateTimeForHis,
+      </if>
+      <if test="riskReminder != null" >
+        riskReminder,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="riskModel != null" >
+        #{riskModel,jdbcType=CHAR},
+      </if>
+      <if test="fromTable != null" >
+        #{fromTable,jdbcType=VARCHAR},
+      </if>
+      <if test="fromColumn != null" >
+        #{fromColumn,jdbcType=VARCHAR},
+      </if>
+      <if test="riskValue != null" >
+        #{riskValue,jdbcType=VARCHAR},
+      </if>
+      <if test="riskFlag != null" >
+        #{riskFlag,jdbcType=CHAR},
+      </if>
+      <if test="validStatus != null" >
+        #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null" >
+        #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="riskReminder != null" >
+        #{riskReminder,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.UtiHighlightRisk" >
+    update utihighlightrisk
+    <set >
+      <if test="riskFlag != null" >
+        riskFlag = #{riskFlag,jdbcType=CHAR},
+      </if>
+      <if test="validStatus != null" >
+        validStatus = #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null" >
+        insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="riskReminder != null" >
+        riskReminder = #{riskReminder,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and fromTable = #{fromTable,jdbcType=VARCHAR}
+      and fromColumn = #{fromColumn,jdbcType=VARCHAR}
+      and riskValue = #{riskValue,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.vo.UtiHighlightRisk" >
+    update utihighlightrisk
+    set riskFlag = #{riskFlag,jdbcType=CHAR},
+      validStatus = #{validStatus,jdbcType=CHAR},
+      insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      riskReminder = #{riskReminder,jdbcType=LONGVARCHAR}
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and fromTable = #{fromTable,jdbcType=VARCHAR}
+      and fromColumn = #{fromColumn,jdbcType=VARCHAR}
+      and riskValue = #{riskValue,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.UtiHighlightRisk" >
+    update utihighlightrisk
+    set riskFlag = #{riskFlag,jdbcType=CHAR},
+      validStatus = #{validStatus,jdbcType=CHAR},
+      insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP}
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and fromTable = #{fromTable,jdbcType=VARCHAR}
+      and fromColumn = #{fromColumn,jdbcType=VARCHAR}
+      and riskValue = #{riskValue,jdbcType=VARCHAR}
+  </update>
+</mapper>

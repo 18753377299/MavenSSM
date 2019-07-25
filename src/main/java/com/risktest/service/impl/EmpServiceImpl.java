@@ -1,4 +1,4 @@
-package com.service.impl;
+package com.risktest.service.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -11,8 +11,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import com.dao.EmpDao;
-import com.service.EmpService;
+import com.risktest.dao.EmpDao;
+import com.risktest.service.EmpService;
 import com.vo.Emp;
 
 @Service("empService")

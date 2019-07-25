@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.common.dao.UtiScoreMapper" >
+  <resultMap id="BaseResultMap" type="com.vo.UtiScore" >
+    <id column="riskModel" property="riskModel" jdbcType="CHAR" />
+    <id column="factorNo" property="factorNo" jdbcType="CHAR" />
+    <id column="dangerType" property="dangerType" jdbcType="CHAR" />
+    <id column="factorValue" property="factorValue" jdbcType="VARCHAR" />
+    <result column="factorScore" property="factorScore" jdbcType="DECIMAL" />
+    <result column="validStatus" property="validStatus" jdbcType="CHAR" />
+    <result column="insertTimeForHis" property="insertTimeForHis" jdbcType="TIMESTAMP" />
+    <result column="operateTimeForHis" property="operateTimeForHis" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    riskModel, factorNo, dangerType, factorValue, factorScore, validStatus, insertTimeForHis, 
+    operateTimeForHis
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from utiscore
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+      and factorValue = #{factorValue,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from utiscore
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+      and factorValue = #{factorValue,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vo.UtiScore" >
+    insert into utiscore (riskModel, factorNo, dangerType, 
+      factorValue, factorScore, validStatus, 
+      insertTimeForHis, operateTimeForHis
+      )
+    values (#{riskModel,jdbcType=CHAR}, #{factorNo,jdbcType=CHAR}, #{dangerType,jdbcType=CHAR}, 
+      #{factorValue,jdbcType=VARCHAR}, #{factorScore,jdbcType=DECIMAL}, #{validStatus,jdbcType=CHAR}, 
+      #{insertTimeForHis,jdbcType=TIMESTAMP}, #{operateTimeForHis,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.UtiScore" >
+    insert into utiscore
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="riskModel != null" >
+        riskModel,
+      </if>
+      <if test="factorNo != null" >
+        factorNo,
+      </if>
+      <if test="dangerType != null" >
+        dangerType,
+      </if>
+      <if test="factorValue != null" >
+        factorValue,
+      </if>
+      <if test="factorScore != null" >
+        factorScore,
+      </if>
+      <if test="validStatus != null" >
+        validStatus,
+      </if>
+      <if test="insertTimeForHis != null" >
+        insertTimeForHis,
+      </if>
+      <if test="operateTimeForHis != null" >
+        operateTimeForHis,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="riskModel != null" >
+        #{riskModel,jdbcType=CHAR},
+      </if>
+      <if test="factorNo != null" >
+        #{factorNo,jdbcType=CHAR},
+      </if>
+      <if test="dangerType != null" >
+        #{dangerType,jdbcType=CHAR},
+      </if>
+      <if test="factorValue != null" >
+        #{factorValue,jdbcType=VARCHAR},
+      </if>
+      <if test="factorScore != null" >
+        #{factorScore,jdbcType=DECIMAL},
+      </if>
+      <if test="validStatus != null" >
+        #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null" >
+        #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.UtiScore" >
+    update utiscore
+    <set >
+      <if test="factorScore != null" >
+        factorScore = #{factorScore,jdbcType=DECIMAL},
+      </if>
+      <if test="validStatus != null" >
+        validStatus = #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null" >
+        insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+      and factorValue = #{factorValue,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.UtiScore" >
+    update utiscore
+    set factorScore = #{factorScore,jdbcType=DECIMAL},
+      validStatus = #{validStatus,jdbcType=CHAR},
+      insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP}
+    where riskModel = #{riskModel,jdbcType=CHAR}
+      and factorNo = #{factorNo,jdbcType=CHAR}
+      and dangerType = #{dangerType,jdbcType=CHAR}
+      and factorValue = #{factorValue,jdbcType=VARCHAR}
+  </update>
+</mapper>

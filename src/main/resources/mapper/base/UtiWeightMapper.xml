@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.common.dao.UtiWeightMapper" >
+  <resultMap id="BaseResultMap" type="com.vo.UtiWeight" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="riskModel" property="riskModel" jdbcType="VARCHAR" />
+    <result column="comCode" property="comCode" jdbcType="VARCHAR" />
+    <result column="operatorCode" property="operatorCode" jdbcType="VARCHAR" />
+    <result column="operatorName" property="operatorName" jdbcType="VARCHAR" />
+    <result column="fireWeight" property="fireWeight" jdbcType="DECIMAL" />
+    <result column="waterWeight" property="waterWeight" jdbcType="DECIMAL" />
+    <result column="windWeight" property="windWeight" jdbcType="DECIMAL" />
+    <result column="thunderWeight" property="thunderWeight" jdbcType="DECIMAL" />
+    <result column="snowWeight" property="snowWeight" jdbcType="DECIMAL" />
+    <result column="theftWeight" property="theftWeight" jdbcType="DECIMAL" />
+    <result column="earthquakeWeight" property="earthquakeWeight" jdbcType="DECIMAL" />
+    <result column="geologyWeight" property="geologyWeight" jdbcType="DECIMAL" />
+    <result column="validStatus" property="validStatus" jdbcType="CHAR" />
+    <result column="insertTimeForHis" property="insertTimeForHis" jdbcType="TIMESTAMP" />
+    <result column="operateTimeForHis" property="operateTimeForHis" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, riskModel, comCode, operatorCode, operatorName, fireWeight, waterWeight, windWeight, 
+    thunderWeight, snowWeight, theftWeight, earthquakeWeight, geologyWeight, validStatus, 
+    insertTimeForHis, operateTimeForHis
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from utiweight
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from utiweight
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.vo.UtiWeight" >
+    insert into utiweight (id, riskModel, comCode, 
+      operatorCode, operatorName, fireWeight, 
+      waterWeight, windWeight, thunderWeight, 
+      snowWeight, theftWeight, earthquakeWeight, 
+      geologyWeight, validStatus, insertTimeForHis, 
+      operateTimeForHis)
+    values (#{id,jdbcType=BIGINT}, #{riskModel,jdbcType=VARCHAR}, #{comCode,jdbcType=VARCHAR}, 
+      #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{fireWeight,jdbcType=DECIMAL}, 
+      #{waterWeight,jdbcType=DECIMAL}, #{windWeight,jdbcType=DECIMAL}, #{thunderWeight,jdbcType=DECIMAL}, 
+      #{snowWeight,jdbcType=DECIMAL}, #{theftWeight,jdbcType=DECIMAL}, #{earthquakeWeight,jdbcType=DECIMAL}, 
+      #{geologyWeight,jdbcType=DECIMAL}, #{validStatus,jdbcType=CHAR}, #{insertTimeForHis,jdbcType=TIMESTAMP}, 
+      #{operateTimeForHis,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.UtiWeight" >
+    insert into utiweight
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="riskModel != null" >
+        riskModel,
+      </if>
+      <if test="comCode != null" >
+        comCode,
+      </if>
+      <if test="operatorCode != null" >
+        operatorCode,
+      </if>
+      <if test="operatorName != null" >
+        operatorName,
+      </if>
+      <if test="fireWeight != null" >
+        fireWeight,
+      </if>
+      <if test="waterWeight != null" >
+        waterWeight,
+      </if>
+      <if test="windWeight != null" >
+        windWeight,
+      </if>
+      <if test="thunderWeight != null" >
+        thunderWeight,
+      </if>
+      <if test="snowWeight != null" >
+        snowWeight,
+      </if>
+      <if test="theftWeight != null" >
+        theftWeight,
+      </if>
+      <if test="earthquakeWeight != null" >
+        earthquakeWeight,
+      </if>
+      <if test="geologyWeight != null" >
+        geologyWeight,
+      </if>
+      <if test="validStatus != null" >
+        validStatus,
+      </if>
+      <if test="insertTimeForHis != null" >
+        insertTimeForHis,
+      </if>
+      <if test="operateTimeForHis != null" >
+        operateTimeForHis,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="riskModel != null" >
+        #{riskModel,jdbcType=VARCHAR},
+      </if>
+      <if test="comCode != null" >
+        #{comCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null" >
+        #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="fireWeight != null" >
+        #{fireWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="waterWeight != null" >
+        #{waterWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="windWeight != null" >
+        #{windWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="thunderWeight != null" >
+        #{thunderWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="snowWeight != null" >
+        #{snowWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="theftWeight != null" >
+        #{theftWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="earthquakeWeight != null" >
+        #{earthquakeWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="geologyWeight != null" >
+        #{geologyWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="validStatus != null" >
+        #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null" >
+        #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.UtiWeight" >
+    update utiweight
+    <set >
+      <if test="riskModel != null" >
+        riskModel = #{riskModel,jdbcType=VARCHAR},
+      </if>
+      <if test="comCode != null" >
+        comCode = #{comCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorCode != null" >
+        operatorCode = #{operatorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null" >
+        operatorName = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="fireWeight != null" >
+        fireWeight = #{fireWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="waterWeight != null" >
+        waterWeight = #{waterWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="windWeight != null" >
+        windWeight = #{windWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="thunderWeight != null" >
+        thunderWeight = #{thunderWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="snowWeight != null" >
+        snowWeight = #{snowWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="theftWeight != null" >
+        theftWeight = #{theftWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="earthquakeWeight != null" >
+        earthquakeWeight = #{earthquakeWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="geologyWeight != null" >
+        geologyWeight = #{geologyWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="validStatus != null" >
+        validStatus = #{validStatus,jdbcType=CHAR},
+      </if>
+      <if test="insertTimeForHis != null" >
+        insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.UtiWeight" >
+    update utiweight
+    set riskModel = #{riskModel,jdbcType=VARCHAR},
+      comCode = #{comCode,jdbcType=VARCHAR},
+      operatorCode = #{operatorCode,jdbcType=VARCHAR},
+      operatorName = #{operatorName,jdbcType=VARCHAR},
+      fireWeight = #{fireWeight,jdbcType=DECIMAL},
+      waterWeight = #{waterWeight,jdbcType=DECIMAL},
+      windWeight = #{windWeight,jdbcType=DECIMAL},
+      thunderWeight = #{thunderWeight,jdbcType=DECIMAL},
+      snowWeight = #{snowWeight,jdbcType=DECIMAL},
+      theftWeight = #{theftWeight,jdbcType=DECIMAL},
+      earthquakeWeight = #{earthquakeWeight,jdbcType=DECIMAL},
+      geologyWeight = #{geologyWeight,jdbcType=DECIMAL},
+      validStatus = #{validStatus,jdbcType=CHAR},
+      insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

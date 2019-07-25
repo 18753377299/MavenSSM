@@ -1,8 +1,9 @@
-package com.service;
+package com.risktest.service;
 
 import com.vo.Emp;
 
 public interface EmpService {
+	
 	public Emp getEMpById(Integer id);
 	/*查找名称*/
 	public String  getEmpNameById(Integer id);

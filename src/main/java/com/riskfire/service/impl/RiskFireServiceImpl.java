@@ -33,6 +33,10 @@ public class RiskFireServiceImpl implements RiskFireService{
 	
 	/**
 	 * @功能：打分功能实现
+	 *   需要将每一类组织一个分值 的集合，然后和权重相乘，
+	 *   入口是utifactor(分子表)，通过factortype 进行分类
+	 *   实体类中  表名.字段名  可以获取到该字段的值，根据该值和分值表比较，用于来获取该字段的分值
+	 *   表名.字段名 通过因子遍历得到
 	 * @param 
 	 * @author 
 	 * @throws Exception
@@ -43,8 +47,12 @@ public class RiskFireServiceImpl implements RiskFireService{
 		RiskGradeVo riskGradeVo =new RiskGradeVo();
 //		RiskReportMain riskReportMain = riskRequestVo.getRiskReportMain();
 		
+		Map<String, String> mapObject = new HashMap<String, String>(); 
+		/*通过反射将将对象中的值获取并整合到map中*/
+		mapObject = riskCommonService.setObjectValueToMap(riskRequestVo);
+		String riskModel = riskRequestVo.getRiskReportMain().getRiskModel();
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("riskModel", "001");
+		map.put("riskModel", riskModel);
 		map.put("dangeType", "01,02");
 		Map<String, List<UtiFactor>>  mapUtiFactorF =  riskCommonService.getUtiFactorList(map);
 		
@@ -52,7 +60,24 @@ public class RiskFireServiceImpl implements RiskFireService{
 		Map<String, List<UtiFactor>>  mapUtiFactorY =  riskCommonService.getUtiFactorList(map);
 		map.remove("dangeType");
 		// 获取公式表信息
-		Map<String, Map<String,List<UtiFormula>> >  mapUtiFormula =  riskCommonService.getUtiFormulaList(map);
+		Map<String,UtiFormula>  mapUtiFormula =  riskCommonService.getUtiFormulaList(map);
+		if(!mapUtiFactorF.isEmpty()){
+			 for(String key:mapUtiFactorF.keySet()){
+				 if("01".equals(key)){
+					 for(UtiFactor utiFactor:mapUtiFactorF.get(key)){
+						 
+					 } 
+				 }else {
+					 
+				 }
+
+			 }
+			if(mapUtiFactorF.containsKey("01")){
+				/* 01 为直接因子*/
+				
+			}
+		}
+		
 		
 		
 				

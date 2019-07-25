@@ -4,26 +4,21 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
-* @author  作者 E-mail:   liqiankun
-* @date 创建时间：2019年7月16日 上午9:42:48
-* @version 1.0 
-* @parameter 
-* @since  公式表
-* @return  */
-
-public class UtiFormula implements Serializable {
+public class UtiHighlightRisk implements Serializable {
     @ApiModelProperty(value = "风控模板号")
     private String riskModel;
 
-    @ApiModelProperty(value = "因子编号")
-    private String factorNo;
+    @ApiModelProperty(value = "存储表名")
+    private String fromTable;
 
-    @ApiModelProperty(value = "灾因")
-    private String dangerType;
+    @ApiModelProperty(value = "存储字段名")
+    private String fromColumn;
 
-    @ApiModelProperty(value = "集合类型")
-    private String listType;
+    @ApiModelProperty(value = "取值")
+    private String riskValue;
+
+    @ApiModelProperty(value = "取值是否为突出风险")
+    private String riskFlag;
 
     @ApiModelProperty(value = "有效标志位")
     private String validStatus;
@@ -34,8 +29,8 @@ public class UtiFormula implements Serializable {
     @ApiModelProperty(value = "修改时间")
     private Date operateTimeForHis;
 
-    @ApiModelProperty(value = "计算公式")
-    private String content;
+    @ApiModelProperty(value = "突出风险描述")
+    private String riskReminder;
 
     private static final long serialVersionUID = 1L;
 
@@ -47,28 +42,36 @@ public class UtiFormula implements Serializable {
         this.riskModel = riskModel == null ? null : riskModel.trim();
     }
 
-    public String getFactorNo() {
-        return factorNo;
+    public String getFromTable() {
+        return fromTable;
     }
 
-    public void setFactorNo(String factorNo) {
-        this.factorNo = factorNo == null ? null : factorNo.trim();
+    public void setFromTable(String fromTable) {
+        this.fromTable = fromTable == null ? null : fromTable.trim();
     }
 
-    public String getDangerType() {
-        return dangerType;
+    public String getFromColumn() {
+        return fromColumn;
     }
 
-    public void setDangerType(String dangerType) {
-        this.dangerType = dangerType == null ? null : dangerType.trim();
+    public void setFromColumn(String fromColumn) {
+        this.fromColumn = fromColumn == null ? null : fromColumn.trim();
     }
 
-    public String getListType() {
-        return listType;
+    public String getRiskValue() {
+        return riskValue;
     }
 
-    public void setListType(String listType) {
-        this.listType = listType == null ? null : listType.trim();
+    public void setRiskValue(String riskValue) {
+        this.riskValue = riskValue == null ? null : riskValue.trim();
+    }
+
+    public String getRiskFlag() {
+        return riskFlag;
+    }
+
+    public void setRiskFlag(String riskFlag) {
+        this.riskFlag = riskFlag == null ? null : riskFlag.trim();
     }
 
     public String getValidStatus() {
@@ -95,12 +98,12 @@ public class UtiFormula implements Serializable {
         this.operateTimeForHis = operateTimeForHis;
     }
 
-    public String getContent() {
-        return content;
+    public String getRiskReminder() {
+        return riskReminder;
     }
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+    public void setRiskReminder(String riskReminder) {
+        this.riskReminder = riskReminder == null ? null : riskReminder.trim();
     }
 
     @Override
@@ -110,13 +113,14 @@ public class UtiFormula implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", riskModel=").append(riskModel);
-        sb.append(", factorNo=").append(factorNo);
-        sb.append(", dangerType=").append(dangerType);
-        sb.append(", listType=").append(listType);
+        sb.append(", fromTable=").append(fromTable);
+        sb.append(", fromColumn=").append(fromColumn);
+        sb.append(", riskValue=").append(riskValue);
+        sb.append(", riskFlag=").append(riskFlag);
         sb.append(", validStatus=").append(validStatus);
         sb.append(", insertTimeForHis=").append(insertTimeForHis);
         sb.append(", operateTimeForHis=").append(operateTimeForHis);
-        sb.append(", content=").append(content);
+        sb.append(", riskReminder=").append(riskReminder);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

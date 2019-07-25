@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.common.dao.RiskReportFireDangerMapper" >
+  <resultMap id="BaseResultMap" type="com.vo.RiskReportFireDanger" >
+    <id column="riskFileNo" property="riskFileNo" jdbcType="CHAR" />
+    <result column="fireProofSeparate" property="fireProofSeparate" jdbcType="VARCHAR" />
+    <result column="buildStructure" property="buildStructure" jdbcType="VARCHAR" />
+    <result column="buildUseYear" property="buildUseYear" jdbcType="VARCHAR" />
+    <result column="buildOwnerShipNature" property="buildOwnerShipNature" jdbcType="VARCHAR" />
+    <result column="fireLoadDensity" property="fireLoadDensity" jdbcType="VARCHAR" />
+    <result column="mainMaterialBurnNature" property="mainMaterialBurnNature" jdbcType="VARCHAR" />
+    <result column="explodeProductEnviron" property="explodeProductEnviron" jdbcType="VARCHAR" />
+    <result column="dangerProcessPart" property="dangerProcessPart" jdbcType="VARCHAR" />
+    <result column="chargePosition" property="chargePosition" jdbcType="VARCHAR" />
+    <result column="lineYear" property="lineYear" jdbcType="VARCHAR" />
+    <result column="storageAreaLight" property="storageAreaLight" jdbcType="VARCHAR" />
+    <result column="storageSituation" property="storageSituation" jdbcType="VARCHAR" />
+    <result column="lineDistance" property="lineDistance" jdbcType="VARCHAR" />
+    <result column="proIrrelevantDevice" property="proIrrelevantDevice" jdbcType="VARCHAR" />
+    <result column="fireFacility" property="fireFacility" jdbcType="VARCHAR" />
+    <result column="indoorHydrantSystem" property="indoorHydrantSystem" jdbcType="VARCHAR" />
+    <result column="outdoorHydrantSystem" property="outdoorHydrantSystem" jdbcType="VARCHAR" />
+    <result column="fireExtinguisher" property="fireExtinguisher" jdbcType="VARCHAR" />
+    <result column="fireEquipmentPassage" property="fireEquipmentPassage" jdbcType="VARCHAR" />
+    <result column="autoExtinguishSystem" property="autoExtinguishSystem" jdbcType="VARCHAR" />
+    <result column="autoAlarmSystemStatus" property="autoAlarmSystemStatus" jdbcType="VARCHAR" />
+    <result column="autoAlarmSystemWatch" property="autoAlarmSystemWatch" jdbcType="VARCHAR" />
+    <result column="fireWaterSupply" property="fireWaterSupply" jdbcType="VARCHAR" />
+    <result column="electricLineProtect" property="electricLineProtect" jdbcType="VARCHAR" />
+    <result column="fireSeparation" property="fireSeparation" jdbcType="VARCHAR" />
+    <result column="bodyBetweenBuild" property="bodyBetweenBuild" jdbcType="VARCHAR" />
+    <result column="surroundEnvironment" property="surroundEnvironment" jdbcType="VARCHAR" />
+    <result column="establishFireSafety" property="establishFireSafety" jdbcType="VARCHAR" />
+    <result column="configureFireFighter" property="configureFireFighter" jdbcType="VARCHAR" />
+    <result column="fireCheckHappen" property="fireCheckHappen" jdbcType="VARCHAR" />
+    <result column="hotFireApproval" property="hotFireApproval" jdbcType="VARCHAR" />
+    <result column="fireDrill" property="fireDrill" jdbcType="VARCHAR" />
+    <result column="fireTrain" property="fireTrain" jdbcType="VARCHAR" />
+    <result column="fireMaintenance" property="fireMaintenance" jdbcType="VARCHAR" />
+    <result column="noSmokeManage" property="noSmokeManage" jdbcType="VARCHAR" />
+    <result column="fireControlDuty" property="fireControlDuty" jdbcType="VARCHAR" />
+    <result column="rectificateSuggest" property="rectificateSuggest" jdbcType="VARCHAR" />
+    <result column="insertTimeForHis" property="insertTimeForHis" jdbcType="TIMESTAMP" />
+    <result column="operateTimeForHis" property="operateTimeForHis" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    riskFileNo, fireProofSeparate, buildStructure, buildUseYear, buildOwnerShipNature, 
+    fireLoadDensity, mainMaterialBurnNature, explodeProductEnviron, dangerProcessPart, 
+    chargePosition, lineYear, storageAreaLight, storageSituation, lineDistance, proIrrelevantDevice, 
+    fireFacility, indoorHydrantSystem, outdoorHydrantSystem, fireExtinguisher, fireEquipmentPassage, 
+    autoExtinguishSystem, autoAlarmSystemStatus, autoAlarmSystemWatch, fireWaterSupply, 
+    electricLineProtect, fireSeparation, bodyBetweenBuild, surroundEnvironment, establishFireSafety, 
+    configureFireFighter, fireCheckHappen, hotFireApproval, fireDrill, fireTrain, fireMaintenance, 
+    noSmokeManage, fireControlDuty, rectificateSuggest, insertTimeForHis, operateTimeForHis
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from riskreport_firedanger
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from riskreport_firedanger
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vo.RiskReportFireDanger" >
+    insert into riskreport_firedanger (riskFileNo, fireProofSeparate, buildStructure, 
+      buildUseYear, buildOwnerShipNature, fireLoadDensity, 
+      mainMaterialBurnNature, explodeProductEnviron, 
+      dangerProcessPart, chargePosition, lineYear, 
+      storageAreaLight, storageSituation, lineDistance, 
+      proIrrelevantDevice, fireFacility, indoorHydrantSystem, 
+      outdoorHydrantSystem, fireExtinguisher, 
+      fireEquipmentPassage, autoExtinguishSystem, 
+      autoAlarmSystemStatus, autoAlarmSystemWatch, 
+      fireWaterSupply, electricLineProtect, fireSeparation, 
+      bodyBetweenBuild, surroundEnvironment, 
+      establishFireSafety, configureFireFighter, 
+      fireCheckHappen, hotFireApproval, fireDrill, 
+      fireTrain, fireMaintenance, noSmokeManage, 
+      fireControlDuty, rectificateSuggest, insertTimeForHis, 
+      operateTimeForHis)
+    values (#{riskFileNo,jdbcType=CHAR}, #{fireProofSeparate,jdbcType=VARCHAR}, #{buildStructure,jdbcType=VARCHAR}, 
+      #{buildUseYear,jdbcType=VARCHAR}, #{buildOwnerShipNature,jdbcType=VARCHAR}, #{fireLoadDensity,jdbcType=VARCHAR}, 
+      #{mainMaterialBurnNature,jdbcType=VARCHAR}, #{explodeProductEnviron,jdbcType=VARCHAR}, 
+      #{dangerProcessPart,jdbcType=VARCHAR}, #{chargePosition,jdbcType=VARCHAR}, #{lineYear,jdbcType=VARCHAR}, 
+      #{storageAreaLight,jdbcType=VARCHAR}, #{storageSituation,jdbcType=VARCHAR}, #{lineDistance,jdbcType=VARCHAR}, 
+      #{proIrrelevantDevice,jdbcType=VARCHAR}, #{fireFacility,jdbcType=VARCHAR}, #{indoorHydrantSystem,jdbcType=VARCHAR}, 
+      #{outdoorHydrantSystem,jdbcType=VARCHAR}, #{fireExtinguisher,jdbcType=VARCHAR}, 
+      #{fireEquipmentPassage,jdbcType=VARCHAR}, #{autoExtinguishSystem,jdbcType=VARCHAR}, 
+      #{autoAlarmSystemStatus,jdbcType=VARCHAR}, #{autoAlarmSystemWatch,jdbcType=VARCHAR}, 
+      #{fireWaterSupply,jdbcType=VARCHAR}, #{electricLineProtect,jdbcType=VARCHAR}, #{fireSeparation,jdbcType=VARCHAR}, 
+      #{bodyBetweenBuild,jdbcType=VARCHAR}, #{surroundEnvironment,jdbcType=VARCHAR}, 
+      #{establishFireSafety,jdbcType=VARCHAR}, #{configureFireFighter,jdbcType=VARCHAR}, 
+      #{fireCheckHappen,jdbcType=VARCHAR}, #{hotFireApproval,jdbcType=VARCHAR}, #{fireDrill,jdbcType=VARCHAR}, 
+      #{fireTrain,jdbcType=VARCHAR}, #{fireMaintenance,jdbcType=VARCHAR}, #{noSmokeManage,jdbcType=VARCHAR}, 
+      #{fireControlDuty,jdbcType=VARCHAR}, #{rectificateSuggest,jdbcType=VARCHAR}, #{insertTimeForHis,jdbcType=TIMESTAMP}, 
+      #{operateTimeForHis,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.RiskReportFireDanger" >
+    insert into riskreport_firedanger
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="riskFileNo != null" >
+        riskFileNo,
+      </if>
+      <if test="fireProofSeparate != null" >
+        fireProofSeparate,
+      </if>
+      <if test="buildStructure != null" >
+        buildStructure,
+      </if>
+      <if test="buildUseYear != null" >
+        buildUseYear,
+      </if>
+      <if test="buildOwnerShipNature != null" >
+        buildOwnerShipNature,
+      </if>
+      <if test="fireLoadDensity != null" >
+        fireLoadDensity,
+      </if>
+      <if test="mainMaterialBurnNature != null" >
+        mainMaterialBurnNature,
+      </if>
+      <if test="explodeProductEnviron != null" >
+        explodeProductEnviron,
+      </if>
+      <if test="dangerProcessPart != null" >
+        dangerProcessPart,
+      </if>
+      <if test="chargePosition != null" >
+        chargePosition,
+      </if>
+      <if test="lineYear != null" >
+        lineYear,
+      </if>
+      <if test="storageAreaLight != null" >
+        storageAreaLight,
+      </if>
+      <if test="storageSituation != null" >
+        storageSituation,
+      </if>
+      <if test="lineDistance != null" >
+        lineDistance,
+      </if>
+      <if test="proIrrelevantDevice != null" >
+        proIrrelevantDevice,
+      </if>
+      <if test="fireFacility != null" >
+        fireFacility,
+      </if>
+      <if test="indoorHydrantSystem != null" >
+        indoorHydrantSystem,
+      </if>
+      <if test="outdoorHydrantSystem != null" >
+        outdoorHydrantSystem,
+      </if>
+      <if test="fireExtinguisher != null" >
+        fireExtinguisher,
+      </if>
+      <if test="fireEquipmentPassage != null" >
+        fireEquipmentPassage,
+      </if>
+      <if test="autoExtinguishSystem != null" >
+        autoExtinguishSystem,
+      </if>
+      <if test="autoAlarmSystemStatus != null" >
+        autoAlarmSystemStatus,
+      </if>
+      <if test="autoAlarmSystemWatch != null" >
+        autoAlarmSystemWatch,
+      </if>
+      <if test="fireWaterSupply != null" >
+        fireWaterSupply,
+      </if>
+      <if test="electricLineProtect != null" >
+        electricLineProtect,
+      </if>
+      <if test="fireSeparation != null" >
+        fireSeparation,
+      </if>
+      <if test="bodyBetweenBuild != null" >
+        bodyBetweenBuild,
+      </if>
+      <if test="surroundEnvironment != null" >
+        surroundEnvironment,
+      </if>
+      <if test="establishFireSafety != null" >
+        establishFireSafety,
+      </if>
+      <if test="configureFireFighter != null" >
+        configureFireFighter,
+      </if>
+      <if test="fireCheckHappen != null" >
+        fireCheckHappen,
+      </if>
+      <if test="hotFireApproval != null" >
+        hotFireApproval,
+      </if>
+      <if test="fireDrill != null" >
+        fireDrill,
+      </if>
+      <if test="fireTrain != null" >
+        fireTrain,
+      </if>
+      <if test="fireMaintenance != null" >
+        fireMaintenance,
+      </if>
+      <if test="noSmokeManage != null" >
+        noSmokeManage,
+      </if>
+      <if test="fireControlDuty != null" >
+        fireControlDuty,
+      </if>
+      <if test="rectificateSuggest != null" >
+        rectificateSuggest,
+      </if>
+      <if test="insertTimeForHis != null" >
+        insertTimeForHis,
+      </if>
+      <if test="operateTimeForHis != null" >
+        operateTimeForHis,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="riskFileNo != null" >
+        #{riskFileNo,jdbcType=CHAR},
+      </if>
+      <if test="fireProofSeparate != null" >
+        #{fireProofSeparate,jdbcType=VARCHAR},
+      </if>
+      <if test="buildStructure != null" >
+        #{buildStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="buildUseYear != null" >
+        #{buildUseYear,jdbcType=VARCHAR},
+      </if>
+      <if test="buildOwnerShipNature != null" >
+        #{buildOwnerShipNature,jdbcType=VARCHAR},
+      </if>
+      <if test="fireLoadDensity != null" >
+        #{fireLoadDensity,jdbcType=VARCHAR},
+      </if>
+      <if test="mainMaterialBurnNature != null" >
+        #{mainMaterialBurnNature,jdbcType=VARCHAR},
+      </if>
+      <if test="explodeProductEnviron != null" >
+        #{explodeProductEnviron,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerProcessPart != null" >
+        #{dangerProcessPart,jdbcType=VARCHAR},
+      </if>
+      <if test="chargePosition != null" >
+        #{chargePosition,jdbcType=VARCHAR},
+      </if>
+      <if test="lineYear != null" >
+        #{lineYear,jdbcType=VARCHAR},
+      </if>
+      <if test="storageAreaLight != null" >
+        #{storageAreaLight,jdbcType=VARCHAR},
+      </if>
+      <if test="storageSituation != null" >
+        #{storageSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="lineDistance != null" >
+        #{lineDistance,jdbcType=VARCHAR},
+      </if>
+      <if test="proIrrelevantDevice != null" >
+        #{proIrrelevantDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="fireFacility != null" >
+        #{fireFacility,jdbcType=VARCHAR},
+      </if>
+      <if test="indoorHydrantSystem != null" >
+        #{indoorHydrantSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="outdoorHydrantSystem != null" >
+        #{outdoorHydrantSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="fireExtinguisher != null" >
+        #{fireExtinguisher,jdbcType=VARCHAR},
+      </if>
+      <if test="fireEquipmentPassage != null" >
+        #{fireEquipmentPassage,jdbcType=VARCHAR},
+      </if>
+      <if test="autoExtinguishSystem != null" >
+        #{autoExtinguishSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="autoAlarmSystemStatus != null" >
+        #{autoAlarmSystemStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="autoAlarmSystemWatch != null" >
+        #{autoAlarmSystemWatch,jdbcType=VARCHAR},
+      </if>
+      <if test="fireWaterSupply != null" >
+        #{fireWaterSupply,jdbcType=VARCHAR},
+      </if>
+      <if test="electricLineProtect != null" >
+        #{electricLineProtect,jdbcType=VARCHAR},
+      </if>
+      <if test="fireSeparation != null" >
+        #{fireSeparation,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyBetweenBuild != null" >
+        #{bodyBetweenBuild,jdbcType=VARCHAR},
+      </if>
+      <if test="surroundEnvironment != null" >
+        #{surroundEnvironment,jdbcType=VARCHAR},
+      </if>
+      <if test="establishFireSafety != null" >
+        #{establishFireSafety,jdbcType=VARCHAR},
+      </if>
+      <if test="configureFireFighter != null" >
+        #{configureFireFighter,jdbcType=VARCHAR},
+      </if>
+      <if test="fireCheckHappen != null" >
+        #{fireCheckHappen,jdbcType=VARCHAR},
+      </if>
+      <if test="hotFireApproval != null" >
+        #{hotFireApproval,jdbcType=VARCHAR},
+      </if>
+      <if test="fireDrill != null" >
+        #{fireDrill,jdbcType=VARCHAR},
+      </if>
+      <if test="fireTrain != null" >
+        #{fireTrain,jdbcType=VARCHAR},
+      </if>
+      <if test="fireMaintenance != null" >
+        #{fireMaintenance,jdbcType=VARCHAR},
+      </if>
+      <if test="noSmokeManage != null" >
+        #{noSmokeManage,jdbcType=VARCHAR},
+      </if>
+      <if test="fireControlDuty != null" >
+        #{fireControlDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="rectificateSuggest != null" >
+        #{rectificateSuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTimeForHis != null" >
+        #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.RiskReportFireDanger" >
+    update riskreport_firedanger
+    <set >
+      <if test="fireProofSeparate != null" >
+        fireProofSeparate = #{fireProofSeparate,jdbcType=VARCHAR},
+      </if>
+      <if test="buildStructure != null" >
+        buildStructure = #{buildStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="buildUseYear != null" >
+        buildUseYear = #{buildUseYear,jdbcType=VARCHAR},
+      </if>
+      <if test="buildOwnerShipNature != null" >
+        buildOwnerShipNature = #{buildOwnerShipNature,jdbcType=VARCHAR},
+      </if>
+      <if test="fireLoadDensity != null" >
+        fireLoadDensity = #{fireLoadDensity,jdbcType=VARCHAR},
+      </if>
+      <if test="mainMaterialBurnNature != null" >
+        mainMaterialBurnNature = #{mainMaterialBurnNature,jdbcType=VARCHAR},
+      </if>
+      <if test="explodeProductEnviron != null" >
+        explodeProductEnviron = #{explodeProductEnviron,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerProcessPart != null" >
+        dangerProcessPart = #{dangerProcessPart,jdbcType=VARCHAR},
+      </if>
+      <if test="chargePosition != null" >
+        chargePosition = #{chargePosition,jdbcType=VARCHAR},
+      </if>
+      <if test="lineYear != null" >
+        lineYear = #{lineYear,jdbcType=VARCHAR},
+      </if>
+      <if test="storageAreaLight != null" >
+        storageAreaLight = #{storageAreaLight,jdbcType=VARCHAR},
+      </if>
+      <if test="storageSituation != null" >
+        storageSituation = #{storageSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="lineDistance != null" >
+        lineDistance = #{lineDistance,jdbcType=VARCHAR},
+      </if>
+      <if test="proIrrelevantDevice != null" >
+        proIrrelevantDevice = #{proIrrelevantDevice,jdbcType=VARCHAR},
+      </if>
+      <if test="fireFacility != null" >
+        fireFacility = #{fireFacility,jdbcType=VARCHAR},
+      </if>
+      <if test="indoorHydrantSystem != null" >
+        indoorHydrantSystem = #{indoorHydrantSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="outdoorHydrantSystem != null" >
+        outdoorHydrantSystem = #{outdoorHydrantSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="fireExtinguisher != null" >
+        fireExtinguisher = #{fireExtinguisher,jdbcType=VARCHAR},
+      </if>
+      <if test="fireEquipmentPassage != null" >
+        fireEquipmentPassage = #{fireEquipmentPassage,jdbcType=VARCHAR},
+      </if>
+      <if test="autoExtinguishSystem != null" >
+        autoExtinguishSystem = #{autoExtinguishSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="autoAlarmSystemStatus != null" >
+        autoAlarmSystemStatus = #{autoAlarmSystemStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="autoAlarmSystemWatch != null" >
+        autoAlarmSystemWatch = #{autoAlarmSystemWatch,jdbcType=VARCHAR},
+      </if>
+      <if test="fireWaterSupply != null" >
+        fireWaterSupply = #{fireWaterSupply,jdbcType=VARCHAR},
+      </if>
+      <if test="electricLineProtect != null" >
+        electricLineProtect = #{electricLineProtect,jdbcType=VARCHAR},
+      </if>
+      <if test="fireSeparation != null" >
+        fireSeparation = #{fireSeparation,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyBetweenBuild != null" >
+        bodyBetweenBuild = #{bodyBetweenBuild,jdbcType=VARCHAR},
+      </if>
+      <if test="surroundEnvironment != null" >
+        surroundEnvironment = #{surroundEnvironment,jdbcType=VARCHAR},
+      </if>
+      <if test="establishFireSafety != null" >
+        establishFireSafety = #{establishFireSafety,jdbcType=VARCHAR},
+      </if>
+      <if test="configureFireFighter != null" >
+        configureFireFighter = #{configureFireFighter,jdbcType=VARCHAR},
+      </if>
+      <if test="fireCheckHappen != null" >
+        fireCheckHappen = #{fireCheckHappen,jdbcType=VARCHAR},
+      </if>
+      <if test="hotFireApproval != null" >
+        hotFireApproval = #{hotFireApproval,jdbcType=VARCHAR},
+      </if>
+      <if test="fireDrill != null" >
+        fireDrill = #{fireDrill,jdbcType=VARCHAR},
+      </if>
+      <if test="fireTrain != null" >
+        fireTrain = #{fireTrain,jdbcType=VARCHAR},
+      </if>
+      <if test="fireMaintenance != null" >
+        fireMaintenance = #{fireMaintenance,jdbcType=VARCHAR},
+      </if>
+      <if test="noSmokeManage != null" >
+        noSmokeManage = #{noSmokeManage,jdbcType=VARCHAR},
+      </if>
+      <if test="fireControlDuty != null" >
+        fireControlDuty = #{fireControlDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="rectificateSuggest != null" >
+        rectificateSuggest = #{rectificateSuggest,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTimeForHis != null" >
+        insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.RiskReportFireDanger" >
+    update riskreport_firedanger
+    set fireProofSeparate = #{fireProofSeparate,jdbcType=VARCHAR},
+      buildStructure = #{buildStructure,jdbcType=VARCHAR},
+      buildUseYear = #{buildUseYear,jdbcType=VARCHAR},
+      buildOwnerShipNature = #{buildOwnerShipNature,jdbcType=VARCHAR},
+      fireLoadDensity = #{fireLoadDensity,jdbcType=VARCHAR},
+      mainMaterialBurnNature = #{mainMaterialBurnNature,jdbcType=VARCHAR},
+      explodeProductEnviron = #{explodeProductEnviron,jdbcType=VARCHAR},
+      dangerProcessPart = #{dangerProcessPart,jdbcType=VARCHAR},
+      chargePosition = #{chargePosition,jdbcType=VARCHAR},
+      lineYear = #{lineYear,jdbcType=VARCHAR},
+      storageAreaLight = #{storageAreaLight,jdbcType=VARCHAR},
+      storageSituation = #{storageSituation,jdbcType=VARCHAR},
+      lineDistance = #{lineDistance,jdbcType=VARCHAR},
+      proIrrelevantDevice = #{proIrrelevantDevice,jdbcType=VARCHAR},
+      fireFacility = #{fireFacility,jdbcType=VARCHAR},
+      indoorHydrantSystem = #{indoorHydrantSystem,jdbcType=VARCHAR},
+      outdoorHydrantSystem = #{outdoorHydrantSystem,jdbcType=VARCHAR},
+      fireExtinguisher = #{fireExtinguisher,jdbcType=VARCHAR},
+      fireEquipmentPassage = #{fireEquipmentPassage,jdbcType=VARCHAR},
+      autoExtinguishSystem = #{autoExtinguishSystem,jdbcType=VARCHAR},
+      autoAlarmSystemStatus = #{autoAlarmSystemStatus,jdbcType=VARCHAR},
+      autoAlarmSystemWatch = #{autoAlarmSystemWatch,jdbcType=VARCHAR},
+      fireWaterSupply = #{fireWaterSupply,jdbcType=VARCHAR},
+      electricLineProtect = #{electricLineProtect,jdbcType=VARCHAR},
+      fireSeparation = #{fireSeparation,jdbcType=VARCHAR},
+      bodyBetweenBuild = #{bodyBetweenBuild,jdbcType=VARCHAR},
+      surroundEnvironment = #{surroundEnvironment,jdbcType=VARCHAR},
+      establishFireSafety = #{establishFireSafety,jdbcType=VARCHAR},
+      configureFireFighter = #{configureFireFighter,jdbcType=VARCHAR},
+      fireCheckHappen = #{fireCheckHappen,jdbcType=VARCHAR},
+      hotFireApproval = #{hotFireApproval,jdbcType=VARCHAR},
+      fireDrill = #{fireDrill,jdbcType=VARCHAR},
+      fireTrain = #{fireTrain,jdbcType=VARCHAR},
+      fireMaintenance = #{fireMaintenance,jdbcType=VARCHAR},
+      noSmokeManage = #{noSmokeManage,jdbcType=VARCHAR},
+      fireControlDuty = #{fireControlDuty,jdbcType=VARCHAR},
+      rectificateSuggest = #{rectificateSuggest,jdbcType=VARCHAR},
+      insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP}
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </update>
+</mapper>
