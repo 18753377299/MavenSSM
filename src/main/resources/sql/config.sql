@@ -57,6 +57,7 @@ CREATE TABLE utifactor(
         PRIMARY KEY (riskmodel, fromtable, fromcolumn, riskvalue) 
     )ENGINE=InnoDB DEFAULT CHARSET=utf8;    
     
+    
     CREATE TABLE
     utiweight
     (
@@ -146,52 +147,6 @@ CREATE TABLE utifactor(
         proposalno CHAR(22),
         policyno CHAR(22),
         PRIMARY KEY (riskfileno) 
-    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-    
-    CREATE TABLE
-    riskreport_firedanger
-    (
-        riskfileno CHAR(22) NOT NULL,
-        fireproofseparate VARCHAR(1),
-        buildstructure VARCHAR(1),
-        builduseyear VARCHAR(1),
-        buildownershipnature VARCHAR(1),
-        fireloaddensity VARCHAR(1),
-        mainmaterialburnnature VARCHAR(1),
-        explodeproductenviron VARCHAR(1),
-        dangerprocesspart VARCHAR(1),
-        chargeposition VARCHAR(1),
-        lineyear VARCHAR(1),
-        storagearealight VARCHAR(1),
-        storagesituation VARCHAR(1),
-        linedistance VARCHAR(1),
-        proirrelevantdevice VARCHAR(1),
-        firefacility VARCHAR(1),
-        indoorhydrantsystem VARCHAR(1),
-        outdoorhydrantsystem VARCHAR(1),
-        fireextinguisher VARCHAR(1),
-        fireequipmentpassage VARCHAR(1),
-        autoextinguishsystem VARCHAR(1),
-        autoalarmsystemstatus VARCHAR(1),
-        autoalarmsystemwatch VARCHAR(1),
-        firewatersupply VARCHAR(1),
-        electriclineprotect VARCHAR(1),
-        fireseparation VARCHAR(1),
-        bodybetweenbuild VARCHAR(1),
-        surroundenvironment VARCHAR(1),
-        establishfiresafety VARCHAR(1),
-        configurefirefighter VARCHAR(1),
-        firecheckhappen VARCHAR(1),
-        hotfireapproval VARCHAR(1),
-        firedrill VARCHAR(1),
-        firetrain VARCHAR(1),
-        firemaintenance VARCHAR(1),
-        nosmokemanage VARCHAR(1),
-        firecontrolduty VARCHAR(1),
-        rectificatesuggest VARCHAR(1),
-        inserttimeforhis DATETIME YEAR TO SECOND,
-        operatetimeforhis DATETIME YEAR TO SECOND,
-        PRIMARY KEY (riskfileno) CONSTRAINT pk_riskreport_firedanger
     )ENGINE=InnoDB DEFAULT CHARSET=utf8;
     
     
