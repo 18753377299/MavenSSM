@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.common.service.RiskCommonService;
@@ -33,9 +35,9 @@ public class RiskFireController {
 	
 	
 	@RequestMapping(value="/assessScore",method={RequestMethod.POST,RequestMethod.GET})
-	public AjaxResult assessScore(){
+	@ResponseBody
+	public AjaxResult assessScore(@RequestBody RiskRequestVo riskRequestVo){
 		AjaxResult ajaxResult =new AjaxResult();
-		RiskRequestVo riskRequestVo =new RiskRequestVo();
 		riskFireService.assessScore(riskRequestVo);
 		return ajaxResult;
 	}

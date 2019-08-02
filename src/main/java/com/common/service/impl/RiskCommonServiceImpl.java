@@ -1,5 +1,6 @@
 package com.common.service.impl;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.common.dao.UtiFactorMapper;
 import com.common.dao.UtiFormulaMapper;
 import com.common.service.RiskCommonService;
-import com.po.request.RiskRequestVo;
+import com.vo.RiskReportMain;
 import com.vo.UtiFactor;
 import com.vo.UtiFormula;
 /**
@@ -91,6 +92,56 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 	 * */
 	public Map<String, String>  setObjectValueToMap(Object object){
 		Map<String, String> map = new HashMap<String, String>();
+		try {
+			Class clazz =  object.getClass();
+			String  objectName = clazz.getName().substring(clazz.getName().lastIndexOf(".")+1);
+			Field  [] fields  =  clazz.getDeclaredFields();
+			for(Field field: fields){
+				field.setAccessible(true);
+				if(field.get(object)!=null){
+					if(field.getType().equals(java.util.List.class)&&!field.getType().equals(RiskReportMain.class)){
+						for (Object obj : (List)field.get(object)){
+							Map<String, String> mapTemp = new HashMap<String, String>();
+							mapTemp = this.setObjectValueToMap(obj);
+							// 将list中的对象整合到一个map中
+							for(String key : mapTemp.keySet()){
+								if(map.containsKey(key)){
+									map.put(key, map.get(key)+";"+mapTemp.get(key));
+								}else {
+									map.put(key, mapTemp.get(key));
+								}
+							}
+						}
+						
+					}else if(field.getType().equals(RiskReportMain.class)){
+//						if(field.get(object)!=null){
+							Map<String, String> mapTemp = new HashMap<String, String>();
+							mapTemp = this.setObjectValueToMap(field.get(object));
+							// 将RiskReportMain中的对象整合到一个map中
+							for(String key : mapTemp.keySet()){
+								if(map.containsKey(key)){
+									map.put(key, map.get(key)+";"+mapTemp.get(key));
+								}else {
+									map.put(key, mapTemp.get(key));
+								}
+							}
+//						}
+					}else {
+						// 字段的值
+						String fieldValue = field.get(object).toString();
+						if(map.containsKey(objectName+"."+field.getName())){
+							map.put(objectName+"."+field.getName(), map.get(objectName+"."+field.getName())+";"+fieldValue);
+						}else {
+							map.put(objectName+"."+field.getName(), fieldValue);
+						}
+					}
+				}
+				
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return map;
 	}

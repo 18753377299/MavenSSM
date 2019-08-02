@@ -50,7 +50,8 @@ public class RiskFireServiceImpl implements RiskFireService{
 		Map<String, String> mapObject = new HashMap<String, String>(); 
 		/*通过反射将将对象中的值获取并整合到map中*/
 		mapObject = riskCommonService.setObjectValueToMap(riskRequestVo);
-		String riskModel = riskRequestVo.getRiskReportMain().getRiskModel();
+		
+		String riskModel = riskRequestVo.getRiskReportMainVo().getRiskModel();
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("riskModel", riskModel);
 		map.put("dangeType", "01,02");
@@ -63,6 +64,7 @@ public class RiskFireServiceImpl implements RiskFireService{
 		Map<String,UtiFormula>  mapUtiFormula =  riskCommonService.getUtiFormulaList(map);
 		if(!mapUtiFactorF.isEmpty()){
 			 for(String key:mapUtiFactorF.keySet()){
+				 // 01: 
 				 if("01".equals(key)){
 					 for(UtiFactor utiFactor:mapUtiFactorF.get(key)){
 						 

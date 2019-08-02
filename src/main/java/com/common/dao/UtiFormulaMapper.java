@@ -32,4 +32,5 @@ public interface UtiFormulaMapper {
    	 * @return  
    	 * */
     public  List<UtiFormula> getUtiFormulaList(Map<String, String> map);
+    
 }

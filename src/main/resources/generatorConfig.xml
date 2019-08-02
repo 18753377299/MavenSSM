@@ -48,7 +48,7 @@
         </javaClientGenerator>
         
         <!--生成全部表tableName设为%-->
-        <table tableName="riskreport_main" domainObjectName="RiskReportMain" enableInsert="true" enableCountByExample="false"
+        <table tableName="UtiFormula" domainObjectName="UtiFormula" enableInsert="true" enableCountByExample="false"
         		enableUpdateByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" selectByExampleQueryId="false"> 
 <!--             <generatedKey column="id" sqlStatement="MySql" identity="true"/> -->
