@@ -1,5 +1,6 @@
 package com.common.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -28,5 +29,19 @@ public interface RiskCommonService {
 	 * @return  
 	 * */
 	public Map<String, String>  setObjectValueToMap(Object object);
+	/**
+	 * @author  liqiankun 
+	 * @date 创建时间：20190723
+	 * @version 1.0 
+	 * @parameter 
+	 * @since  组织分值表的信息
+	 * @return  
+	 * */
+	public  Map<String, Object> getScoreMap(Map<String, String> map);
+	
+	public BigDecimal getScoreValue(Map<String, String> mapObject,UtiFactor utiFactor,Map<String, Object>  scoreMap);
+	
+	
+	
 	
 }

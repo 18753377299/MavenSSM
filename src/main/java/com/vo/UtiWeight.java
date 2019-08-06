@@ -4,7 +4,14 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-
+/**
+ * @功能：权重表
+ * @param 
+ * @author 
+ * @throws Exception
+ * @时间：20190719
+ * @修改记录：
+ */
 public class UtiWeight implements Serializable {
     @ApiModelProperty(value = "id号")
     private Long id;

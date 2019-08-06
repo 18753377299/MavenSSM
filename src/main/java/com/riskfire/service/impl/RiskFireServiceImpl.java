@@ -1,5 +1,6 @@
 package com.riskfire.service.impl;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +47,8 @@ public class RiskFireServiceImpl implements RiskFireService{
 	public RiskGradeVo  assessScore(RiskRequestVo riskRequestVo){
 		RiskGradeVo riskGradeVo =new RiskGradeVo();
 //		RiskReportMain riskReportMain = riskRequestVo.getRiskReportMain();
+		// 用于储存每一类的总分值信息
+		Map<String, BigDecimal>  scoreTotalMap = new HashMap<String, BigDecimal>();
 		
 		Map<String, String> mapObject = new HashMap<String, String>(); 
 		/*通过反射将将对象中的值获取并整合到map中*/
@@ -62,12 +65,23 @@ public class RiskFireServiceImpl implements RiskFireService{
 		map.remove("dangeType");
 		// 获取公式表信息
 		Map<String,UtiFormula>  mapUtiFormula =  riskCommonService.getUtiFormulaList(map);
+		// 获取分值信息
+		Map<String, Object>  scoreMap = riskCommonService.getScoreMap(map);
+		
 		if(!mapUtiFactorF.isEmpty()){
 			 for(String key:mapUtiFactorF.keySet()){
-				 // 01: 
+				 // 01: 直接获取
 				 if("01".equals(key)){
 					 for(UtiFactor utiFactor:mapUtiFactorF.get(key)){
-						 
+						 BigDecimal score = BigDecimal.ZERO;
+						 score =  riskCommonService.getScoreValue(mapObject,utiFactor,scoreMap);
+						// 如果存在，则进行累加；否则我们直接对分值进行保存
+						 if(!scoreTotalMap.containsKey(utiFactor.getDangerType())){
+							 scoreTotalMap.put(utiFactor.getDangerType(), score);
+						 }else {
+							 scoreTotalMap.put(utiFactor.getDangerType(),
+									 scoreTotalMap.get(utiFactor.getDangerType()).add(score));
+						 }
 					 } 
 				 }else {
 					 
@@ -80,17 +94,14 @@ public class RiskFireServiceImpl implements RiskFireService{
 			}
 		}
 		
-		
-		
 				
 		return riskGradeVo;
 	}
 	
-	public 	List<UtiFactor> getUtiFactorById(Map<String, String> map){
-//		List<UtiFactor>  utiFactorList =  riskFireDao.getUtiFactorById(map);
-		
-//		return utiFactorList;
-		return null;
-	}
+	//获取01类型的分值信息
+//	public BigDecimal getScoreValue(Map<String, String> mapObject,UtiFactor utiFactor){
+//		
+//		return null;
+//	}
 	
 } 

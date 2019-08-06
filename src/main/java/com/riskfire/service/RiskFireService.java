@@ -17,6 +17,4 @@ public interface RiskFireService {
 	
 	public RiskGradeVo  assessScore(RiskRequestVo riskRequestVo);
 	
-	public 	List<UtiFactor> getUtiFactorById(Map<String, String> map);
-	
 }

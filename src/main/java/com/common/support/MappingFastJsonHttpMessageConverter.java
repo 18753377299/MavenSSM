@@ -78,7 +78,7 @@ public class MappingFastJsonHttpMessageConverter extends AbstractHttpMessageConv
 
     protected void writeInternal(Object o, HttpOutputMessage outputMessage)
         throws IOException, HttpMessageNotWritableException  {
-//        String jsonString = JSON.toJSONString(o, serializerFeature);
+//        String jsonString = JSON.toJSONString( o, serializerFeature);
     	try {
     		String jsonString = JSON.toJSONStringWithDateFormat(o,"yyyy-MM-dd HH:mm:ss", serializerFeature);
     		 if(jsonString.charAt(0) == '"') {

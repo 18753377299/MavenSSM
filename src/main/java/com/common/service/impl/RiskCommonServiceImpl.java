@@ -1,20 +1,24 @@
 package com.common.service.impl;
 
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.common.dao.UtiFactorMapper;
 import com.common.dao.UtiFormulaMapper;
+import com.common.dao.UtiScoreMapper;
 import com.common.service.RiskCommonService;
 import com.vo.RiskReportMain;
 import com.vo.UtiFactor;
 import com.vo.UtiFormula;
+import com.vo.UtiScore;
 /**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年7月19日 下午4:46:18
@@ -30,6 +34,8 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 	private UtiFactorMapper utiFactorMapper;
 	@Autowired
 	private UtiFormulaMapper utiFormulaMapper;
+	@Autowired
+	private UtiScoreMapper utiScoreMapper;
 	
 	/**
 	 * @author  liqiankun
@@ -47,11 +53,11 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 		 if(utiFactorList!=null&&utiFactorList.size()>0){
 			 for(UtiFactor utiFactor:utiFactorList){
 				 if(utiFactorMap.containsKey(utiFactor.getDangerType())){
-					 utiFactorMap.get(utiFactor.getDangerType()).add(utiFactor);
+					 utiFactorMap.get(utiFactor.getFactorType()).add(utiFactor);
 				 }else {
 					 List<UtiFactor>  utiFactorNewList  = new ArrayList<UtiFactor>();
 					 utiFactorNewList.add(utiFactor);
-					 utiFactorMap.put(utiFactor.getDangerType(),utiFactorNewList);
+					 utiFactorMap.put(utiFactor.getFactorType(),utiFactorNewList);
 				 }
 			 }
 		 }
@@ -81,7 +87,47 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 		
 		return mapUtiFormula;
 	}
-	
+	/**
+	 * @author  liqiankun 
+	 * @date 创建时间：20190723
+	 * @version 1.0 
+	 * @parameter 
+	 * @since  组织分值表的信息
+	 * @return  
+	 * */
+	public  Map<String, Object> getScoreMap(Map<String, String> map){
+		Map<String, Object> mapNew =new HashMap<String, Object>();
+		List<UtiScore>  utiScoreList=   utiScoreMapper.getUtiScoreList(map);
+		if(utiScoreList!=null&&utiScoreList.size()>0){
+			for(UtiScore utiScore:utiScoreList){
+				String key = utiScore.getRiskModel()+"_"+utiScore.getFactorNo()+
+						"_"+utiScore.getDangerType()+"_"+utiScore.getFactorValue();
+				BigDecimal score = utiScore.getFactorScore();
+				mapNew.put(key, score);
+			}
+		}
+		return mapNew;
+	}
+	/**
+	 * @author  liqiankun 
+	 * @date 创建时间：20190723
+	 * @version 1.0 
+	 * @parameter  mapObject(页面中的字段值 )，utiFactor(factorType：01 类型的因子信息)，scoreMap（所有的分数）
+	 * @since  获取01类型的分值信息
+	 * @return  
+	 * */
+	public BigDecimal getScoreValue(Map<String, String> mapObject,UtiFactor utiFactor,Map<String, Object>  scoreMap){
+		BigDecimal score = BigDecimal.ZERO; 
+		String objKey = utiFactor.getFromTable()+"."+utiFactor.getFromColumn();
+		// 获取该字段对应的值
+		String value = mapObject.get(objKey);
+		if(StringUtils.isNotBlank(value)){
+			String scoreKey = utiFactor.getRiskModel()+"_"+utiFactor.getFactorNo()+
+					"_"+utiFactor.getDangerType()+"_"+value; 
+			score =new BigDecimal(scoreMap.get(scoreKey).toString());
+		}
+		return score;
+	}
 	/**
 	 * @author  liqiankun 
 	 * @date 创建时间：20190725
@@ -136,8 +182,6 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 						}
 					}
 				}
-				
-				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,7 +1,11 @@
 package com.common.dao;
 
-import com.vo.UtiScore;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
+
+import com.vo.UtiScore;
 
 public interface UtiScoreMapper {
     int deleteByPrimaryKey(@Param("riskModel") String riskModel, @Param("factorNo") String factorNo, @Param("dangerType") String dangerType, @Param("factorValue") String factorValue);
@@ -15,6 +19,16 @@ public interface UtiScoreMapper {
     int updateByPrimaryKeySelective(UtiScore record);
 
     int updateByPrimaryKey(UtiScore record);
+    
+    /**
+	 * @author  liqiankun 
+	 * @date 创建时间：20190723
+	 * @version 1.0 
+	 * @parameter 
+	 * @since 查询出UtiScore的集合
+	 * @return  
+	 * */
+    public  List<UtiScore> getUtiScoreList(Map<String, String> map);
     
     
 }

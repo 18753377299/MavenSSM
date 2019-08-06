@@ -49,7 +49,7 @@ public class RiskFireController {
 		map.put("riskModel", "001");
 		map.put("dangeType", "01,02");
 		
-		List<UtiFactor>  utiFactorList = riskFireService.getUtiFactorById(map);
+//		List<UtiFactor>  utiFactorList = riskFireService.getUtiFactorById(map);
 		
 		return ajaxResult;
 	}
