@@ -13,9 +13,6 @@
 		<if test="riskModel !=null and riskModel!=''">
 			and riskModel= #{riskModel}
 		</if> 
-		<if test="dangerType !=null and dangerType !=''">
-			and dangerType in (#{dangerType})
-		</if>
   </sql>
 	
 </mapper>

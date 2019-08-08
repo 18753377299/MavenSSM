@@ -1,8 +1,11 @@
 package com.common.dao;
 
+import java.util.Map;
+
 import com.vo.UtiWeight;
 
 public interface UtiWeightMapper {
+	
     int deleteByPrimaryKey(Long id);
 
     int insert(UtiWeight record);
@@ -14,4 +17,7 @@ public interface UtiWeightMapper {
     int updateByPrimaryKeySelective(UtiWeight record);
 
     int updateByPrimaryKey(UtiWeight record);
+    
+    public java.util.List<UtiWeight>  getUtiWeightList(Map<String,String> map);
+    
 }

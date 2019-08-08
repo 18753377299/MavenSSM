@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.common.dao.UtiWeightMapper;
 import com.common.service.RiskCommonService;
 import com.po.request.RiskRequestVo;
 import com.po.response.RiskGradeVo;
@@ -15,6 +16,7 @@ import com.riskfire.dao.RiskFireDao;
 import com.riskfire.service.RiskFireService;
 import com.vo.UtiFactor;
 import com.vo.UtiFormula;
+import com.vo.UtiWeight;
 
 /**
  * @author  作者 E-mail: 
@@ -31,6 +33,9 @@ public class RiskFireServiceImpl implements RiskFireService{
 	
 	@Autowired 
 	RiskCommonService riskCommonService;
+	
+	@Autowired
+	UtiWeightMapper utiWeightMapper;	
 	
 	/**
 	 * @功能：打分功能实现
@@ -57,16 +62,18 @@ public class RiskFireServiceImpl implements RiskFireService{
 		String riskModel = riskRequestVo.getRiskReportMainVo().getRiskModel();
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("riskModel", riskModel);
-		map.put("dangeType", "01,02");
+		map.put("factorType", "01,02");
 		Map<String, List<UtiFactor>>  mapUtiFactorF =  riskCommonService.getUtiFactorList(map);
 		
-		map.put("dangeType", "03,04");
+		map.put("factorType", "03,04");
 		Map<String, List<UtiFactor>>  mapUtiFactorY =  riskCommonService.getUtiFactorList(map);
-		map.remove("dangeType");
+		map.remove("factorType");
 		// 获取公式表信息
 		Map<String,UtiFormula>  mapUtiFormula =  riskCommonService.getUtiFormulaList(map);
 		// 获取分值信息
 		Map<String, Object>  scoreMap = riskCommonService.getScoreMap(map);
+		/*查询权重表信息*/
+		List<UtiWeight>  utiWeightList =utiWeightMapper.getUtiWeightList(map);
 		
 		if(!mapUtiFactorF.isEmpty()){
 			 for(String key:mapUtiFactorF.keySet()){
@@ -94,7 +101,6 @@ public class RiskFireServiceImpl implements RiskFireService{
 			}
 		}
 		
-				
 		return riskGradeVo;
 	}
 	

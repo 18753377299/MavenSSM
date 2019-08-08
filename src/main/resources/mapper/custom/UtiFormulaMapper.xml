@@ -13,8 +13,12 @@
 		<if test="riskModel !=null and riskModel!=''">
 			and riskModel= #{riskModel}
 		</if> 
-		<if test="dangerType !=null and dangerType !=''">
-			and dangerType in (#{dangerType})
+		<if test="factorType !=null and factorType !=''">
+			and factorType in 
+			<foreach  item="item" index="index" collection="factorType.split(',')"
+							 open="("  separator=","  close=")" >
+				#{item}
+			</foreach>
 		</if>
 	</sql>
 	

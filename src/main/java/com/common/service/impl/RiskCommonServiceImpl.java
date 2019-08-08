@@ -19,6 +19,7 @@ import com.vo.RiskReportMain;
 import com.vo.UtiFactor;
 import com.vo.UtiFormula;
 import com.vo.UtiScore;
+import com.vo.UtiWeight;
 /**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年7月19日 下午4:46:18
@@ -52,12 +53,15 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 		/* 将factortype 作为key*/
 		 if(utiFactorList!=null&&utiFactorList.size()>0){
 			 for(UtiFactor utiFactor:utiFactorList){
-				 if(utiFactorMap.containsKey(utiFactor.getDangerType())){
-					 utiFactorMap.get(utiFactor.getFactorType()).add(utiFactor);
+				 if(!utiFactorMap.containsKey(utiFactor.getFactorType())){
+					 List<UtiFactor>  utiFactorListNew  = new ArrayList<UtiFactor>();
+					 utiFactorListNew.add(utiFactor);
+					 utiFactorMap.put(utiFactor.getFactorType(),utiFactorListNew);
 				 }else {
-					 List<UtiFactor>  utiFactorNewList  = new ArrayList<UtiFactor>();
-					 utiFactorNewList.add(utiFactor);
-					 utiFactorMap.put(utiFactor.getFactorType(),utiFactorNewList);
+					 // 如果已经拥有该key值，则进行添加到list中，并重新赋给key值
+					 List<UtiFactor>  utiFactorListOld = utiFactorMap.get(utiFactor.getFactorType());
+					 utiFactorListOld.add(utiFactor);
+					 utiFactorMap.put(utiFactor.getFactorType(),utiFactorListOld);
 				 }
 			 }
 		 }
@@ -108,6 +112,11 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 		}
 		return mapNew;
 	}
+	
+	public List<UtiWeight> getUtiWeightList(Map<String, String> map){
+//		List<UtiWeight>  utiWeightList 
+		return null;
+	}
 	/**
 	 * @author  liqiankun 
 	 * @date 创建时间：20190723
@@ -124,7 +133,9 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 		if(StringUtils.isNotBlank(value)){
 			String scoreKey = utiFactor.getRiskModel()+"_"+utiFactor.getFactorNo()+
 					"_"+utiFactor.getDangerType()+"_"+value; 
-			score =new BigDecimal(scoreMap.get(scoreKey).toString());
+			if(null!=scoreMap.get(scoreKey)){
+			   score =new BigDecimal(scoreMap.get(scoreKey).toString());
+			}
 		}
 		return score;
 	}
