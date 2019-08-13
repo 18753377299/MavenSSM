@@ -21,22 +21,22 @@
             <property name="addRemarkComments" value="true"/>
 <!--             <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss" /> -->
         </commentGenerator>
-
-<!--         <jdbcConnection driverClass="${jdbc.driverClassName}" -->
-<!--                         connectionURL="${jdbc.url}" -->
-<!--                         userId="${jdbc.username}" -->
-<!--                         password="${jdbc.password}"> -->
-<!--             解决mysql驱动升级到8.0后不生成指定数据库代码的问题 -->
-<!--             <property name="nullCatalogMeansCurrent" value="true" /> -->
-<!--         </jdbcConnection> -->
-        
-        <jdbcConnection driverClass="${jdbc.driverClassName.oracle}"
-                        connectionURL="${jdbc.url.oracle}"
-                        userId="${jdbc.username.oracle}"
-                        password="${jdbc.password.oracle}">
-            <!--解决mysql驱动升级到8.0后不生成指定数据库代码的问题-->
-<!--             <property name="nullCatalogMeansCurrent" value="true" /> -->
+		<!-- mysql数据库 -->
+        <jdbcConnection driverClass="${jdbc.driverClassName}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}"
+                        password="${jdbc.password}">
+            <!-- 解决mysql驱动升级到8.0后不生成指定数据库代码的问题 -->
+            <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
+<!--         oracle数据库 -->
+<!--         <jdbcConnection driverClass="${jdbc.driverClassName.oracle}" -->
+<!--                         connectionURL="${jdbc.url.oracle}" -->
+<!--                         userId="${jdbc.username.oracle}" -->
+<!--                         password="${jdbc.password.oracle}"> -->
+<!--             解决mysql驱动升级到8.0后不生成指定数据库代码的问题 -->
+<!-- <!--             <property name="nullCatalogMeansCurrent" value="true" /> --> -->
+<!--         </jdbcConnection> -->
 
 
         <javaModelGenerator targetPackage="com.vo" targetProject="F:\eclipse\MavenSSM\src\main\java">
