@@ -111,4 +111,23 @@ CREATE   TABLE   riskreport_firedanger
         PRIMARY KEY (riskFileNo) 
     )ENGINE=InnoDB DEFAULT CHARSET=utf8;  
     
+ 
+drop table if exists riskreport_assess;
+CREATE TABLE
+    riskreport_assess
+    (
+        riskFileNo CHAR(22) NOT NULL  COMMENT  '风险档案编号',
+        fireDanger DECIMAL(5,2)  COMMENT  '火灾',
+        waterDanger DECIMAL(5,2)  COMMENT  '水灾',
+        windDanger DECIMAL(5,2)  COMMENT  '风灾',
+        thunderDanger DECIMAL(5,2)  COMMENT  '雷雨灾害',
+        snowDanger DECIMAL(5,2)  COMMENT  '雪灾',
+        theftDanger DECIMAL(5,2)  COMMENT  '盗抢灾害',
+        earthQuakeDanger DECIMAL(5,2)  COMMENT  '地震灾害',
+        geologyDanger DECIMAL(5,2)  COMMENT  '地质灾害',
+        inserttimeforhis DATETIME default NOW(),
+        operatetimeforhis DATETIME default  NOW(),
+        PRIMARY KEY (riskFileNo)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    
   

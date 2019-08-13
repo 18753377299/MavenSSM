@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.common.dao.RiskReportAssessMapper" >
+  <resultMap id="BaseResultMap" type="com.vo.RiskReportAssess" >
+    <id column="riskFileNo" property="riskFileNo" jdbcType="CHAR" />
+    <result column="fireDanger" property="fireDanger" jdbcType="DECIMAL" />
+    <result column="waterDanger" property="waterDanger" jdbcType="DECIMAL" />
+    <result column="windDanger" property="windDanger" jdbcType="DECIMAL" />
+    <result column="thunderDanger" property="thunderDanger" jdbcType="DECIMAL" />
+    <result column="snowDanger" property="snowDanger" jdbcType="DECIMAL" />
+    <result column="theftDanger" property="theftDanger" jdbcType="DECIMAL" />
+    <result column="earthQuakeDanger" property="earthQuakeDanger" jdbcType="DECIMAL" />
+    <result column="geologyDanger" property="geologyDanger" jdbcType="DECIMAL" />
+    <result column="inserttimeforhis" property="inserttimeforhis" jdbcType="TIMESTAMP" />
+    <result column="operatetimeforhis" property="operatetimeforhis" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    riskFileNo, fireDanger, waterDanger, windDanger, thunderDanger, snowDanger, theftDanger, 
+    earthQuakeDanger, geologyDanger, inserttimeforhis, operatetimeforhis
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from riskreport_assess
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from riskreport_assess
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vo.RiskReportAssess" >
+    insert into riskreport_assess (riskFileNo, fireDanger, waterDanger, 
+      windDanger, thunderDanger, snowDanger, 
+      theftDanger, earthQuakeDanger, geologyDanger, 
+      inserttimeforhis, operatetimeforhis
+      )
+    values (#{riskFileNo,jdbcType=CHAR}, #{fireDanger,jdbcType=DECIMAL}, #{waterDanger,jdbcType=DECIMAL}, 
+      #{windDanger,jdbcType=DECIMAL}, #{thunderDanger,jdbcType=DECIMAL}, #{snowDanger,jdbcType=DECIMAL}, 
+      #{theftDanger,jdbcType=DECIMAL}, #{earthQuakeDanger,jdbcType=DECIMAL}, #{geologyDanger,jdbcType=DECIMAL}, 
+      #{inserttimeforhis,jdbcType=TIMESTAMP}, #{operatetimeforhis,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.RiskReportAssess" >
+    insert into riskreport_assess
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="riskFileNo != null" >
+        riskFileNo,
+      </if>
+      <if test="fireDanger != null" >
+        fireDanger,
+      </if>
+      <if test="waterDanger != null" >
+        waterDanger,
+      </if>
+      <if test="windDanger != null" >
+        windDanger,
+      </if>
+      <if test="thunderDanger != null" >
+        thunderDanger,
+      </if>
+      <if test="snowDanger != null" >
+        snowDanger,
+      </if>
+      <if test="theftDanger != null" >
+        theftDanger,
+      </if>
+      <if test="earthQuakeDanger != null" >
+        earthQuakeDanger,
+      </if>
+      <if test="geologyDanger != null" >
+        geologyDanger,
+      </if>
+      <if test="inserttimeforhis != null" >
+        inserttimeforhis,
+      </if>
+      <if test="operatetimeforhis != null" >
+        operatetimeforhis,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="riskFileNo != null" >
+        #{riskFileNo,jdbcType=CHAR},
+      </if>
+      <if test="fireDanger != null" >
+        #{fireDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="waterDanger != null" >
+        #{waterDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="windDanger != null" >
+        #{windDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="thunderDanger != null" >
+        #{thunderDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="snowDanger != null" >
+        #{snowDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="theftDanger != null" >
+        #{theftDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="earthQuakeDanger != null" >
+        #{earthQuakeDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="geologyDanger != null" >
+        #{geologyDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="inserttimeforhis != null" >
+        #{inserttimeforhis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatetimeforhis != null" >
+        #{operatetimeforhis,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.RiskReportAssess" >
+    update riskreport_assess
+    <set >
+      <if test="fireDanger != null" >
+        fireDanger = #{fireDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="waterDanger != null" >
+        waterDanger = #{waterDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="windDanger != null" >
+        windDanger = #{windDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="thunderDanger != null" >
+        thunderDanger = #{thunderDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="snowDanger != null" >
+        snowDanger = #{snowDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="theftDanger != null" >
+        theftDanger = #{theftDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="earthQuakeDanger != null" >
+        earthQuakeDanger = #{earthQuakeDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="geologyDanger != null" >
+        geologyDanger = #{geologyDanger,jdbcType=DECIMAL},
+      </if>
+      <if test="inserttimeforhis != null" >
+        inserttimeforhis = #{inserttimeforhis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatetimeforhis != null" >
+        operatetimeforhis = #{operatetimeforhis,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.RiskReportAssess" >
+    update riskreport_assess
+    set fireDanger = #{fireDanger,jdbcType=DECIMAL},
+      waterDanger = #{waterDanger,jdbcType=DECIMAL},
+      windDanger = #{windDanger,jdbcType=DECIMAL},
+      thunderDanger = #{thunderDanger,jdbcType=DECIMAL},
+      snowDanger = #{snowDanger,jdbcType=DECIMAL},
+      theftDanger = #{theftDanger,jdbcType=DECIMAL},
+      earthQuakeDanger = #{earthQuakeDanger,jdbcType=DECIMAL},
+      geologyDanger = #{geologyDanger,jdbcType=DECIMAL},
+      inserttimeforhis = #{inserttimeforhis,jdbcType=TIMESTAMP},
+      operatetimeforhis = #{operatetimeforhis,jdbcType=TIMESTAMP}
+    where riskFileNo = #{riskFileNo,jdbcType=CHAR}
+  </update>
+</mapper>

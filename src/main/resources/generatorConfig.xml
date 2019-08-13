@@ -22,12 +22,20 @@
 <!--             <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss" /> -->
         </commentGenerator>
 
-        <jdbcConnection driverClass="${jdbc.driverClassName}"
-                        connectionURL="${jdbc.url}"
-                        userId="${jdbc.username}"
-                        password="${jdbc.password}">
+<!--         <jdbcConnection driverClass="${jdbc.driverClassName}" -->
+<!--                         connectionURL="${jdbc.url}" -->
+<!--                         userId="${jdbc.username}" -->
+<!--                         password="${jdbc.password}"> -->
+<!--             解决mysql驱动升级到8.0后不生成指定数据库代码的问题 -->
+<!--             <property name="nullCatalogMeansCurrent" value="true" /> -->
+<!--         </jdbcConnection> -->
+        
+        <jdbcConnection driverClass="${jdbc.driverClassName.oracle}"
+                        connectionURL="${jdbc.url.oracle}"
+                        userId="${jdbc.username.oracle}"
+                        password="${jdbc.password.oracle}">
             <!--解决mysql驱动升级到8.0后不生成指定数据库代码的问题-->
-            <property name="nullCatalogMeansCurrent" value="true" />
+<!--             <property name="nullCatalogMeansCurrent" value="true" /> -->
         </jdbcConnection>
 
 
@@ -48,7 +56,7 @@
         </javaClientGenerator>
         
         <!--生成全部表tableName设为%-->
-        <table tableName="UtiFormula" domainObjectName="UtiFormula" enableInsert="true" enableCountByExample="false"
+        <table tableName="WZ_TFBH" domainObjectName="WzTFBH" enableInsert="true" enableCountByExample="false"
         		enableUpdateByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" selectByExampleQueryId="false"> 
 <!--             <generatedKey column="id" sqlStatement="MySql" identity="true"/> -->

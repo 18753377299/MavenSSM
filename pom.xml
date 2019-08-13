@@ -94,12 +94,18 @@
 			<artifactId>druid</artifactId>
 			<version>1.0.9</version>
 	</dependency>
-			
+	<!-- mysql数据库连接包-->	
 	<dependency>
 		<groupId>mysql</groupId>
 		<artifactId>mysql-connector-java</artifactId>
 		<version>5.1.10</version>
 	</dependency>
+	<!-- oracle数据库连接包 -->
+	<dependency>
+		   <groupId>com.oracle</groupId>
+		   <artifactId>ojdbc14</artifactId>
+		   <version>10.2.0.4.0</version>
+		</dependency>
 	<dependency>
 		<groupId>log4j</groupId>
 		<artifactId>log4j</artifactId>

@@ -17,7 +17,7 @@ public interface UtiWeightMapper {
     int updateByPrimaryKeySelective(UtiWeight record);
 
     int updateByPrimaryKey(UtiWeight record);
-    
+    // 查询指定的权重信息
     public java.util.List<UtiWeight>  getUtiWeightList(Map<String,String> map);
     
 }

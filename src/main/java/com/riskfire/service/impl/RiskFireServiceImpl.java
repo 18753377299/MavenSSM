@@ -82,7 +82,7 @@ public class RiskFireServiceImpl implements RiskFireService{
 					 for(UtiFactor utiFactor:mapUtiFactorF.get(key)){
 						 BigDecimal score = BigDecimal.ZERO;
 						 score =  riskCommonService.getScoreValue(mapObject,utiFactor,scoreMap);
-						// 如果存在，则进行累加；否则我们直接对分值进行保存
+						 // 如果存在，则进行累加；否则我们直接对分值进行保存
 						 if(!scoreTotalMap.containsKey(utiFactor.getDangerType())){
 							 scoreTotalMap.put(utiFactor.getDangerType(), score);
 						 }else {
@@ -90,16 +90,28 @@ public class RiskFireServiceImpl implements RiskFireService{
 									 scoreTotalMap.get(utiFactor.getDangerType()).add(score));
 						 }
 					 } 
-				 }else {
-					 
+				 }else if("02".equals(key)){
+					 // 通过循环公式表来获取分值
+					 if(!mapUtiFormula.isEmpty()){
+						 for(UtiFormula utiFormula:mapUtiFormula.values()){
+							 BigDecimal formulaScore = BigDecimal.ZERO;
+							 formulaScore =  riskCommonService.getUtiFormulaScoreValue(mapObject,utiFormula,mapUtiFactorY,scoreMap);
+							 
+							 // 如果存在，则进行累加；否则我们直接对分值进行保存
+							 if(!scoreTotalMap.containsKey(utiFormula.getDangerType())){
+								 scoreTotalMap.put(utiFormula.getDangerType(), formulaScore);
+							 }else {
+								 scoreTotalMap.put(utiFormula.getDangerType(),
+										 scoreTotalMap.get(utiFormula.getDangerType()).add(formulaScore));
+							 }
+						 }
+					 }
 				 }
 
 			 }
-			if(mapUtiFactorF.containsKey("01")){
-				/* 01 为直接因子*/
-				
-			}
 		}
+		// 组织前台返回的分值信息
+		riskGradeVo = riskCommonService.establishRiskGradeInfo(utiWeightList,scoreTotalMap);
 		
 		return riskGradeVo;
 	}

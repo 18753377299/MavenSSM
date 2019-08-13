@@ -1,6 +1,8 @@
 package com.common.service.impl;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,10 +13,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.common.RiskControlConst;
 import com.common.dao.UtiFactorMapper;
 import com.common.dao.UtiFormulaMapper;
 import com.common.dao.UtiScoreMapper;
 import com.common.service.RiskCommonService;
+import com.common.utils.GradeConfigUtils;
+import com.po.response.RiskGradeVo;
+import com.vo.RiskReportAssess;
 import com.vo.RiskReportMain;
 import com.vo.UtiFactor;
 import com.vo.UtiFormula;
@@ -75,7 +81,6 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 	 * @since  组织公式表的信息
 	 * @return  
 	 * */
-	
 	public  Map<String,UtiFormula>  getUtiFormulaList(Map<String, String> map){
 //		Map<String, Map<String,List<UtiFormula>>> mapUtiFormulaT = 
 //				new HashMap<String, Map<String,List<UtiFormula>>>();
@@ -113,10 +118,6 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 		return mapNew;
 	}
 	
-	public List<UtiWeight> getUtiWeightList(Map<String, String> map){
-//		List<UtiWeight>  utiWeightList 
-		return null;
-	}
 	/**
 	 * @author  liqiankun 
 	 * @date 创建时间：20190723
@@ -137,6 +138,59 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 			   score =new BigDecimal(scoreMap.get(scoreKey).toString());
 			}
 		}
+		return score;
+	}
+	/**
+	 * @author  liqiankun 
+	 * @date 创建时间：20190813
+	 * @version 1.0 
+	 * @parameter  mapObject(页面中的字段值 ),utiFormula 公式表信息，mapUtiFactorY(factorType：03，04 类型的因子信息)，scoreMap（所有的分数）
+	 * @since  获取配置的公式的表的信息
+	 * @return  
+	 * */
+	@SuppressWarnings("unchecked")
+	public BigDecimal getUtiFormulaScoreValue(Map<String, String> mapObject,UtiFormula utiFormula,
+			Map<String, List<UtiFactor>> mapUtiFactorY,Map<String, Object>  scoreMap){
+		BigDecimal score = BigDecimal.ZERO; 
+		/*listType的值决定什么取值方式*/
+		String listType = utiFormula.getListType();
+		if(StringUtils.isNotBlank(listType)){
+			if("06".equals(utiFormula.getListType().trim())){
+				try {
+					String content = utiFormula.getContent();
+					Class configClass = new GradeConfigUtils().getClass();
+					/*第一种方式*/
+//					Method []  methods = configClass.getMethods();
+//					if(methods.length>0){
+//						for(Method method:methods){
+//							if(content.equals(method.getName())){
+//								Object obj = method.invoke(configClass.newInstance(),mapObject,utiFormula);
+//								if(obj!=null){
+//									score = new BigDecimal(obj.toString());
+//								}
+//							}
+//						}
+//					}
+					/*第二种方式*/
+					Method method = configClass.getMethod(content,Map.class,UtiFormula.class);
+					System.out.println("=========输出方法名称=========="+method.getName());
+					Object obj = method.invoke(configClass.newInstance(),mapObject,utiFormula);
+					if(obj!=null){
+						score = new BigDecimal(obj.toString());
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}else if("01".equals(utiFormula.getListType().trim())){
+				
+			}else if("02".equals(utiFormula.getListType().trim())){
+				
+			}
+		}
+		
+		
 		return score;
 	}
 	/**
@@ -199,6 +253,50 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 		}
 		
 		return map;
+	}
+	/**
+	 * @author  liqiankun 
+	 * @date 创建时间：20190813
+	 * @version 1.0 
+	 * @parameter 
+	 * @since  组织前台返回的分值信息
+	 * @return  
+	 * */
+	@SuppressWarnings("unchecked")
+	public RiskGradeVo  establishRiskGradeInfo(List<UtiWeight>  utiWeightList,Map<String, BigDecimal>  scoreTotalMap){
+		RiskGradeVo riskGradeVo =new RiskGradeVo();
+		BigDecimal scoreTotal =   BigDecimal.ZERO;
+		RiskReportAssess  riskReportAssess = new RiskReportAssess();
+		String  dangerType = RiskControlConst.FIREDANGERCONST;
+		String [] dangerName = {"fireDanger","waterDanger","windDanger","thunderDanger","snowDanger"};
+		String [] dangerTypeArray = dangerType.split(",");
+		if(utiWeightList.size()>0){
+			UtiWeight utiWeight = utiWeightList.get(0);
+			Class clazz = utiWeight.getClass();
+			for(int i=0;i<dangerTypeArray.length;i++){
+				try {
+					//对应字段的分值
+					BigDecimal score  = scoreTotalMap.get(dangerTypeArray[i]);
+					Method method = clazz.getMethod("get"+dangerName[i].substring(0,1)+dangerName[i].substring(1)+"()");
+					Object obj = method.invoke(utiWeight);
+					// 对应字段的权重
+					BigDecimal utiWeightScale =BigDecimal.ZERO;
+					if(null!=obj){
+						utiWeightScale = new BigDecimal(obj.toString());
+					}
+					// 计算总的分值
+					scoreTotal = scoreTotal.add(score.multiply(utiWeightScale));
+				} catch (Exception e) {
+					e.printStackTrace();
+				} 
+			}
+			
+//			scoreTotal = this.calculateSumScore(utiWeight,scoreTotalMap);
+			
+			riskGradeVo.setScore(scoreTotal);
+		}
+		
+		return riskGradeVo;
 	}
 	
 	
