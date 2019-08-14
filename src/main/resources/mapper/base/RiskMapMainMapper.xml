@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.common.dao.RiskMapMainMapper" >
+  <resultMap id="BaseResultMap" type="com.vo.RiskMapMain" >
+    <id column="addressid" property="addressid" jdbcType="INTEGER" />
+    <id column="proposalno" property="proposalno" jdbcType="CHAR" />
+    <result column="policyno" property="policyno" jdbcType="CHAR" />
+    <result column="classcode" property="classcode" jdbcType="CHAR" />
+    <result column="riskcode" property="riskcode" jdbcType="CHAR" />
+    <result column="startdate" property="startdate" jdbcType="DATE" />
+    <result column="starthour" property="starthour" jdbcType="SMALLINT" />
+    <result column="enddate" property="enddate" jdbcType="DATE" />
+    <result column="endhour" property="endhour" jdbcType="SMALLINT" />
+    <result column="sumamount" property="sumamount" jdbcType="DECIMAL" />
+    <result column="coinsflag" property="coinsflag" jdbcType="CHAR" />
+    <result column="coinsrate" property="coinsrate" jdbcType="DECIMAL" />
+    <result column="comcode" property="comcode" jdbcType="CHAR" />
+    <result column="reamountchg" property="reamountchg" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    addressid, proposalno, policyno, classcode, riskcode, startdate, starthour, enddate, 
+    endhour, sumamount, coinsflag, coinsrate, comcode, reamountchg
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from riskmap_main
+    where addressid = #{addressid,jdbcType=INTEGER}
+      and proposalno = #{proposalno,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from riskmap_main
+    where addressid = #{addressid,jdbcType=INTEGER}
+      and proposalno = #{proposalno,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vo.RiskMapMain" >
+    insert into riskmap_main (addressid, proposalno, policyno, 
+      classcode, riskcode, startdate, 
+      starthour, enddate, endhour, 
+      sumamount, coinsflag, coinsrate, 
+      comcode, reamountchg)
+    values (#{addressid,jdbcType=INTEGER}, #{proposalno,jdbcType=CHAR}, #{policyno,jdbcType=CHAR}, 
+      #{classcode,jdbcType=CHAR}, #{riskcode,jdbcType=CHAR}, #{startdate,jdbcType=DATE}, 
+      #{starthour,jdbcType=SMALLINT}, #{enddate,jdbcType=DATE}, #{endhour,jdbcType=SMALLINT}, 
+      #{sumamount,jdbcType=DECIMAL}, #{coinsflag,jdbcType=CHAR}, #{coinsrate,jdbcType=DECIMAL}, 
+      #{comcode,jdbcType=CHAR}, #{reamountchg,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.RiskMapMain" >
+    insert into riskmap_main
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="addressid != null" >
+        addressid,
+      </if>
+      <if test="proposalno != null" >
+        proposalno,
+      </if>
+      <if test="policyno != null" >
+        policyno,
+      </if>
+      <if test="classcode != null" >
+        classcode,
+      </if>
+      <if test="riskcode != null" >
+        riskcode,
+      </if>
+      <if test="startdate != null" >
+        startdate,
+      </if>
+      <if test="starthour != null" >
+        starthour,
+      </if>
+      <if test="enddate != null" >
+        enddate,
+      </if>
+      <if test="endhour != null" >
+        endhour,
+      </if>
+      <if test="sumamount != null" >
+        sumamount,
+      </if>
+      <if test="coinsflag != null" >
+        coinsflag,
+      </if>
+      <if test="coinsrate != null" >
+        coinsrate,
+      </if>
+      <if test="comcode != null" >
+        comcode,
+      </if>
+      <if test="reamountchg != null" >
+        reamountchg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="addressid != null" >
+        #{addressid,jdbcType=INTEGER},
+      </if>
+      <if test="proposalno != null" >
+        #{proposalno,jdbcType=CHAR},
+      </if>
+      <if test="policyno != null" >
+        #{policyno,jdbcType=CHAR},
+      </if>
+      <if test="classcode != null" >
+        #{classcode,jdbcType=CHAR},
+      </if>
+      <if test="riskcode != null" >
+        #{riskcode,jdbcType=CHAR},
+      </if>
+      <if test="startdate != null" >
+        #{startdate,jdbcType=DATE},
+      </if>
+      <if test="starthour != null" >
+        #{starthour,jdbcType=SMALLINT},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=DATE},
+      </if>
+      <if test="endhour != null" >
+        #{endhour,jdbcType=SMALLINT},
+      </if>
+      <if test="sumamount != null" >
+        #{sumamount,jdbcType=DECIMAL},
+      </if>
+      <if test="coinsflag != null" >
+        #{coinsflag,jdbcType=CHAR},
+      </if>
+      <if test="coinsrate != null" >
+        #{coinsrate,jdbcType=DECIMAL},
+      </if>
+      <if test="comcode != null" >
+        #{comcode,jdbcType=CHAR},
+      </if>
+      <if test="reamountchg != null" >
+        #{reamountchg,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.RiskMapMain" >
+    update riskmap_main
+    <set >
+      <if test="policyno != null" >
+        policyno = #{policyno,jdbcType=CHAR},
+      </if>
+      <if test="classcode != null" >
+        classcode = #{classcode,jdbcType=CHAR},
+      </if>
+      <if test="riskcode != null" >
+        riskcode = #{riskcode,jdbcType=CHAR},
+      </if>
+      <if test="startdate != null" >
+        startdate = #{startdate,jdbcType=DATE},
+      </if>
+      <if test="starthour != null" >
+        starthour = #{starthour,jdbcType=SMALLINT},
+      </if>
+      <if test="enddate != null" >
+        enddate = #{enddate,jdbcType=DATE},
+      </if>
+      <if test="endhour != null" >
+        endhour = #{endhour,jdbcType=SMALLINT},
+      </if>
+      <if test="sumamount != null" >
+        sumamount = #{sumamount,jdbcType=DECIMAL},
+      </if>
+      <if test="coinsflag != null" >
+        coinsflag = #{coinsflag,jdbcType=CHAR},
+      </if>
+      <if test="coinsrate != null" >
+        coinsrate = #{coinsrate,jdbcType=DECIMAL},
+      </if>
+      <if test="comcode != null" >
+        comcode = #{comcode,jdbcType=CHAR},
+      </if>
+      <if test="reamountchg != null" >
+        reamountchg = #{reamountchg,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where addressid = #{addressid,jdbcType=INTEGER}
+      and proposalno = #{proposalno,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.RiskMapMain" >
+    update riskmap_main
+    set policyno = #{policyno,jdbcType=CHAR},
+      classcode = #{classcode,jdbcType=CHAR},
+      riskcode = #{riskcode,jdbcType=CHAR},
+      startdate = #{startdate,jdbcType=DATE},
+      starthour = #{starthour,jdbcType=SMALLINT},
+      enddate = #{enddate,jdbcType=DATE},
+      endhour = #{endhour,jdbcType=SMALLINT},
+      sumamount = #{sumamount,jdbcType=DECIMAL},
+      coinsflag = #{coinsflag,jdbcType=CHAR},
+      coinsrate = #{coinsrate,jdbcType=DECIMAL},
+      comcode = #{comcode,jdbcType=CHAR},
+      reamountchg = #{reamountchg,jdbcType=DECIMAL}
+    where addressid = #{addressid,jdbcType=INTEGER}
+      and proposalno = #{proposalno,jdbcType=CHAR}
+  </update>
+</mapper>

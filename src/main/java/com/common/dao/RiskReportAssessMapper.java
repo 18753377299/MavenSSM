@@ -3,6 +3,7 @@ package com.common.dao;
 import com.vo.RiskReportAssess;
 
 public interface RiskReportAssessMapper {
+	
     int deleteByPrimaryKey(String riskFileNo);
 
     int insert(RiskReportAssess record);

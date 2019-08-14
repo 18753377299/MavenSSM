@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.common.dao.RiskReportMainMapper" >
+    <!-- resultMap可以通过集成来实现，注意：association 一定要放在collection 前面  -->
+    <!-- 顺序如下： constructor?,id*,result*,association*,collection*,discriminator? -->
+	<resultMap id="ResultMapWithLink" type="com.vo.RiskReportMain" extends="ResultMapWithBLOBs" >
+	    <!-- 一对一关联查询 -->
+	    <association property="riskReportAssess"
+	     		resultMap="com.common.dao.RiskReportAssessMapper.BaseResultMap">
+	    </association>
+	    <!-- 一对多关系 -->
+	    <collection property="riskReportFireDangerList" 
+	    		resultMap="com.common.dao.RiskReportFireDangerMapper.BaseResultMap">
+	    </collection>
+  	</resultMap>
+	<!-- 关联多个表的查询，通过使用左外连接的方式进行查询 -->
+  	<select id="queryRiskReportMain" parameterType="String" resultMap="ResultMapWithLink">
+  	  select main.*,fire.*,assess.*
+  	  from riskreport_main main 
+  	  left join riskreport_firedanger fire  on   main.riskFileNo = fire.riskFileNo 
+  	  left join riskreport_assess assess on  main.riskFileNo = assess.riskFileNo
+  	  where main.riskFileNo= #{riskFileNo}
+  	</select>
+</mapper>

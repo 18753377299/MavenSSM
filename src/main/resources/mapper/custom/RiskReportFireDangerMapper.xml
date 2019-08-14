@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.common.dao.RiskReportFireDangerMapper" >
+  <insert id="insertBatchFireDanger" parameterType="java.util.List">
+	  insert into riskreport_firedanger (riskFileNo, fireProofSeparate, buildStructure, 
+	      buildUseYear, buildOwnerShipNature, fireLoadDensity, 
+	      mainMaterialBurnNature, explodeProductEnviron, 
+	      dangerProcessPart, chargePosition, lineYear, 
+	      storageAreaLight, storageSituation, lineDistance, 
+	      proIrrelevantDevice, fireFacility, indoorHydrantSystem, 
+	      outdoorHydrantSystem, fireExtinguisher, 
+	      fireEquipmentPassage, autoExtinguishSystem, 
+	      autoAlarmSystemStatus, autoAlarmSystemWatch, 
+	      fireWaterSupply, electricLineProtect, fireSeparation, 
+	      bodyBetweenBuild, surroundEnvironment, 
+	      establishFireSafety, configureFireFighter, 
+	      fireCheckHappen, hotFireApproval, fireDrill, 
+	      fireTrain, fireMaintenance, noSmokeManage, 
+	      fireControlDuty, rectificateSuggest, insertTimeForHis, 
+	      operateTimeForHis) values 
+<!-- 	      open="(" close=")" -->
+	   <foreach collection="list" item="item" separator="," >
+		  (#{item.riskFileNo,jdbcType=CHAR}, #{item.fireProofSeparate,jdbcType=VARCHAR}, #{item.buildStructure,jdbcType=VARCHAR}, 
+	      #{item.buildUseYear,jdbcType=VARCHAR}, #{item.buildOwnerShipNature,jdbcType=VARCHAR}, #{item.fireLoadDensity,jdbcType=VARCHAR}, 
+	      #{item.mainMaterialBurnNature,jdbcType=VARCHAR}, #{item.explodeProductEnviron,jdbcType=VARCHAR}, 
+	      #{item.dangerProcessPart,jdbcType=VARCHAR}, #{item.chargePosition,jdbcType=VARCHAR}, #{item.lineYear,jdbcType=VARCHAR}, 
+	      #{item.storageAreaLight,jdbcType=VARCHAR}, #{item.storageSituation,jdbcType=VARCHAR}, #{item.lineDistance,jdbcType=VARCHAR}, 
+	      #{item.proIrrelevantDevice,jdbcType=VARCHAR}, #{item.fireFacility,jdbcType=VARCHAR}, #{item.indoorHydrantSystem,jdbcType=VARCHAR}, 
+	      #{item.outdoorHydrantSystem,jdbcType=VARCHAR}, #{item.fireExtinguisher,jdbcType=VARCHAR}, 
+	      #{item.fireEquipmentPassage,jdbcType=VARCHAR}, #{item.autoExtinguishSystem,jdbcType=VARCHAR}, 
+	      #{item.autoAlarmSystemStatus,jdbcType=VARCHAR}, #{item.autoAlarmSystemWatch,jdbcType=VARCHAR}, 
+	      #{item.fireWaterSupply,jdbcType=VARCHAR}, #{item.electricLineProtect,jdbcType=VARCHAR}, #{item.fireSeparation,jdbcType=VARCHAR}, 
+	      #{item.bodyBetweenBuild,jdbcType=VARCHAR}, #{item.surroundEnvironment,jdbcType=VARCHAR}, 
+	      #{item.establishFireSafety,jdbcType=VARCHAR}, #{item.configureFireFighter,jdbcType=VARCHAR}, 
+	      #{item.fireCheckHappen,jdbcType=VARCHAR}, #{item.hotFireApproval,jdbcType=VARCHAR}, #{item.fireDrill,jdbcType=VARCHAR}, 
+	      #{item.fireTrain,jdbcType=VARCHAR}, #{item.fireMaintenance,jdbcType=VARCHAR}, #{item.noSmokeManage,jdbcType=VARCHAR}, 
+	      #{item.fireControlDuty,jdbcType=VARCHAR}, #{item.rectificateSuggest,jdbcType=VARCHAR}, #{item.insertTimeForHis,jdbcType=TIMESTAMP}, 
+	      #{item.operateTimeForHis,jdbcType=TIMESTAMP})
+	   </foreach>
+  </insert>
+</mapper>

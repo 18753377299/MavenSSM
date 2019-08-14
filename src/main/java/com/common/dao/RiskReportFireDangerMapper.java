@@ -1,5 +1,7 @@
 package com.common.dao;
 
+import java.util.List;
+
 import com.vo.RiskReportFireDanger;
 
 public interface RiskReportFireDangerMapper {
@@ -14,4 +16,9 @@ public interface RiskReportFireDangerMapper {
     int updateByPrimaryKeySelective(RiskReportFireDanger record);
 
     int updateByPrimaryKey(RiskReportFireDanger record);
+    /*批量插入信息*/
+    int insertBatchFireDanger(List<RiskReportFireDanger> riskReportFireDangerList);
+    
+    
+    
 }

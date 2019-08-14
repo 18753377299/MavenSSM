@@ -8,12 +8,17 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.common.dao.RiskReportAssessMapper;
+import com.common.dao.RiskReportFireDangerMapper;
+import com.common.dao.RiskReportMainMapper;
 import com.common.dao.UtiWeightMapper;
 import com.common.service.RiskCommonService;
 import com.po.request.RiskRequestVo;
+import com.po.response.AjaxResult;
 import com.po.response.RiskGradeVo;
 import com.riskfire.dao.RiskFireDao;
 import com.riskfire.service.RiskFireService;
+import com.vo.RiskReportMain;
 import com.vo.UtiFactor;
 import com.vo.UtiFormula;
 import com.vo.UtiWeight;
@@ -35,7 +40,47 @@ public class RiskFireServiceImpl implements RiskFireService{
 	RiskCommonService riskCommonService;
 	
 	@Autowired
-	UtiWeightMapper utiWeightMapper;	
+	UtiWeightMapper utiWeightMapper;
+	
+	@Autowired
+	RiskReportMainMapper  riskReportMainMapper;
+	
+	@Autowired
+	RiskReportAssessMapper riskReportAssessMapper;
+	
+	@Autowired
+	RiskReportFireDangerMapper  riskReportFireDangerMapper;
+	
+	
+	/**
+	 * @功能：保存并且打分
+	 * @param 将数据保存到库中，并且 进行打分
+	 * @author 
+	 * @throws Exception
+	 * @时间：20190814
+	 * @修改记录：
+	 */
+	public AjaxResult  saveAndAssessScore(RiskRequestVo riskRequestVo){
+		AjaxResult ajaxResult = new AjaxResult();
+		try {
+			// 打分
+			RiskGradeVo riskGradeVo =this.assessScore(riskRequestVo);
+			RiskReportMain riskReportMain = riskRequestVo.getRiskReportMainVo();
+			//进行保存
+			riskReportMainMapper.insertSelective(riskReportMain);
+			//保存echarts图表分值信息
+			riskReportAssessMapper.insertSelective(riskGradeVo.getRiskReportAssess());
+			//保存火灾风险信息
+			riskReportFireDangerMapper.insertBatchFireDanger(riskRequestVo.getRiskReportFireDangerList());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			ajaxResult.setStatus(2);
+			ajaxResult.setMessage("保存并且打分功能失败！");
+		}
+		
+		return ajaxResult;
+	}
 	
 	/**
 	 * @功能：打分功能实现
@@ -111,15 +156,26 @@ public class RiskFireServiceImpl implements RiskFireService{
 			 }
 		}
 		// 组织前台返回的分值信息
-		riskGradeVo = riskCommonService.establishRiskGradeInfo(utiWeightList,scoreTotalMap);
+		riskGradeVo = riskCommonService.establishRiskGradeInfo(utiWeightList,scoreTotalMap,riskModel);
 		
 		return riskGradeVo;
 	}
 	
-	//获取01类型的分值信息
-//	public BigDecimal getScoreValue(Map<String, String> mapObject,UtiFactor utiFactor){
-//		
-//		return null;
-//	}
+	/**
+	 * @功能：查询RiskReportMain数据以及他所关联的子表数据
+	 * @param 
+	 * @author 
+	 * @throws Exception
+	 * @时间：20190814
+	 * @修改记录：
+	 */
+	public AjaxResult  queryRiskReportMain(String riskFileNo){
+		AjaxResult ajaxResult =new AjaxResult();
+		
+		RiskReportMain riskReportMain =riskReportMainMapper.queryRiskReportMain(riskFileNo);
+		ajaxResult.setData(riskReportMain);
+		
+		return ajaxResult;
+	}
 	
 } 

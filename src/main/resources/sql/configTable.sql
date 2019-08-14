@@ -57,7 +57,7 @@ CREATE TABLE utifactor(
         PRIMARY KEY (riskmodel, fromtable, fromcolumn, riskvalue) 
     )ENGINE=InnoDB DEFAULT CHARSET=utf8;    
     
-    
+ drop table if exists utiweight;   
     CREATE TABLE
     utiweight
     (
@@ -66,14 +66,14 @@ CREATE TABLE utifactor(
         comCode VARCHAR(8) NOT NULL COMMENT  '归属机构',
         operatorCode VARCHAR(10) COMMENT  '维护人代码',
         operatorName VARCHAR(50) COMMENT  '维护人名称',
-        fireWeight DECIMAL(5,4) COMMENT  '火灾风险值',
-        waterWeight DECIMAL(5,4) COMMENT  '水灾风险值',
-        windWeight DECIMAL(5,4) COMMENT  '风灾风险值',
-        thunderWeight DECIMAL(5,4) COMMENT  '雷灾风险值',
-        snowWeight DECIMAL(5,4) COMMENT  '雪灾风险值',
-        theftWeight DECIMAL(5,4) COMMENT  '盗抢风险值',
-        earthquakeWeight DECIMAL(5,4) COMMENT  '地震风险值',
-        geologyWeight DECIMAL(5,4) COMMENT  '地质灾害风险值',
+        fireDanger DECIMAL(5,4) COMMENT  '火灾风险值',
+        waterDanger DECIMAL(5,4) COMMENT  '水灾风险值',
+        windDanger DECIMAL(5,4) COMMENT  '风灾风险值',
+        thunderDanger DECIMAL(5,4) COMMENT  '雷灾风险值',
+        snowDanger DECIMAL(5,4) COMMENT  '雪灾风险值',
+        theftDanger DECIMAL(5,4) COMMENT  '盗抢风险值',
+        earthQuakeDanger DECIMAL(5,4) COMMENT  '地震风险值',
+        geologyDanger DECIMAL(5,4) COMMENT  '地质灾害风险值',
         validStatus CHAR(1) NOT NULL COMMENT  '有效标志位',
         insertTimeForHis  DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT  '插入时间',
         operateTimeForHis  DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT  '修改时间',   

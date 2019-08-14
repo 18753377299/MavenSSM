@@ -16,4 +16,7 @@ public interface RiskReportMainMapper {
     int updateByPrimaryKeyWithBLOBs(RiskReportMain record);
 
     int updateByPrimaryKey(RiskReportMain record);
+    
+    public RiskReportMain queryRiskReportMain(String riskFileNo);
+    
 }

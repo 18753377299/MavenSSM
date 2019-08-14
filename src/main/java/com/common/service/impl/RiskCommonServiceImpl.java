@@ -1,10 +1,11 @@
 package com.common.service.impl;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -263,40 +264,97 @@ public class RiskCommonServiceImpl implements RiskCommonService{
 	 * @return  
 	 * */
 	@SuppressWarnings("unchecked")
-	public RiskGradeVo  establishRiskGradeInfo(List<UtiWeight>  utiWeightList,Map<String, BigDecimal>  scoreTotalMap){
+	public RiskGradeVo  establishRiskGradeInfo(List<UtiWeight>  utiWeightList,Map<String, BigDecimal>  scoreTotalMap,String riskModel){
 		RiskGradeVo riskGradeVo =new RiskGradeVo();
 		BigDecimal scoreTotal =   BigDecimal.ZERO;
-		RiskReportAssess  riskReportAssess = new RiskReportAssess();
-		String  dangerType = RiskControlConst.FIREDANGERCONST;
 		String [] dangerName = {"fireDanger","waterDanger","windDanger","thunderDanger","snowDanger"};
-		String [] dangerTypeArray = dangerType.split(",");
 		if(utiWeightList.size()>0){
 			UtiWeight utiWeight = utiWeightList.get(0);
-			Class clazz = utiWeight.getClass();
-			for(int i=0;i<dangerTypeArray.length;i++){
-				try {
-					//对应字段的分值
-					BigDecimal score  = scoreTotalMap.get(dangerTypeArray[i]);
-					Method method = clazz.getMethod("get"+dangerName[i].substring(0,1)+dangerName[i].substring(1)+"()");
-					Object obj = method.invoke(utiWeight);
-					// 对应字段的权重
-					BigDecimal utiWeightScale =BigDecimal.ZERO;
-					if(null!=obj){
-						utiWeightScale = new BigDecimal(obj.toString());
-					}
-					// 计算总的分值
-					scoreTotal = scoreTotal.add(score.multiply(utiWeightScale));
-				} catch (Exception e) {
-					e.printStackTrace();
-				} 
-			}
-			
-//			scoreTotal = this.calculateSumScore(utiWeight,scoreTotalMap);
-			
+			scoreTotal = this.calculateSumScore(utiWeight,scoreTotalMap,dangerName);
 			riskGradeVo.setScore(scoreTotal);
 		}
+		RiskReportAssess  riskReportAssess = (RiskReportAssess)this.setObjectValue(new RiskReportAssess(),scoreTotalMap,dangerName,riskModel);
+		riskGradeVo.setRiskReportAssess(riskReportAssess);
 		
 		return riskGradeVo;
+	}
+	
+	/**
+	 * @author  liqiankun 
+	 * @date 创建时间：20190813
+	 * @version 1.0 
+	 * @parameter 
+	 * @since 获取总的分值
+	 * @return  
+	 * */
+	@SuppressWarnings("unchecked")
+	public BigDecimal calculateSumScore(UtiWeight utiWeight,Map<String, BigDecimal>  scoreTotalMap,String [] dangerName){
+		BigDecimal scoreTotal =   BigDecimal.ZERO;
+		String  dangerType = RiskControlConst.FIREDANGERCONST;
+		String [] dangerTypeArray = dangerType.split(",");
+		Class clazz = utiWeight.getClass();
+		for(int i=0;i<dangerTypeArray.length;i++){
+			try {
+				//对应字段的分值
+				BigDecimal score  = scoreTotalMap.get(dangerTypeArray[i]);
+				Method method = clazz.getMethod("get"+dangerName[i].substring(0,1).toUpperCase()+dangerName[i].substring(1));
+				Object obj = method.invoke(utiWeight);
+				// 对应字段的权重
+				BigDecimal utiWeightScale =BigDecimal.ZERO;
+				if(null!=obj){
+					utiWeightScale = new BigDecimal(obj.toString());
+				}
+				// 计算总的分值
+				scoreTotal = scoreTotal.add(score.multiply(utiWeightScale));
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}
+		return scoreTotal;
+	}
+	/**
+	 * @author  liqiankun 
+	 * @date 创建时间：20190813
+	 * @version 1.0 
+	 * @parameter 
+	 * @since 设置对象的值
+	 * @return  
+	 * */
+	public Object setObjectValue(Object obj,Map<String, BigDecimal>  scoreTotalMap,String [] dangerName,String riskModel){
+		List<String> riskAssess = new ArrayList<String>();
+		String  dangerType = RiskControlConst.FIREDANGERCONST;
+		String [] dangerTypeArray = dangerType.split(",");
+		if("006".equals(riskModel)){
+			riskAssess.addAll(Arrays.asList("12.20","32.93","28.05","9.75","17.07","1","1","1"));
+		}else if("007".equals(riskModel)){
+			riskAssess.addAll(Arrays.asList("10.0","26.67","30.0","10","23.33","1","1","1"));
+		}
+		try {
+			Class clazz =  obj.getClass();
+//			Field [] fields = clazz.getFields();
+			Field [] fields =clazz.getDeclaredFields();
+			for(int i=0;i<dangerName.length;i++){
+				for(Field field:fields){
+					// 假如dangerName中名称与字段名称相同，则对该字段进行赋值
+					if(dangerName[i].equals(field.getName())){
+						field.setAccessible(true);
+						//报告编号为006,007 的进行特殊处理
+						if("006,007".indexOf(riskModel.trim())>-1){
+							BigDecimal value = scoreTotalMap.get(dangerTypeArray[i]).
+									divide(new BigDecimal(riskAssess.get(i)), 4, RoundingMode.HALF_UP).
+									multiply(new BigDecimal(10));
+							field.set(obj, value);
+						}else {
+							field.set(obj, scoreTotalMap.get(dangerTypeArray[i]));
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		return obj;
 	}
 	
 	

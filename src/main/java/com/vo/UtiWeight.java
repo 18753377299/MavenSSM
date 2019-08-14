@@ -4,14 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-/**
- * @功能：权重表
- * @param 
- * @author 
- * @throws Exception
- * @时间：20190719
- * @修改记录：
- */
+
 public class UtiWeight implements Serializable {
     @ApiModelProperty(value = "id号")
     private Long id;
@@ -29,28 +22,28 @@ public class UtiWeight implements Serializable {
     private String operatorName;
 
     @ApiModelProperty(value = "火灾风险值")
-    private BigDecimal fireWeight;
+    private BigDecimal fireDanger;
 
     @ApiModelProperty(value = "水灾风险值")
-    private BigDecimal waterWeight;
+    private BigDecimal waterDanger;
 
     @ApiModelProperty(value = "风灾风险值")
-    private BigDecimal windWeight;
+    private BigDecimal windDanger;
 
     @ApiModelProperty(value = "雷灾风险值")
-    private BigDecimal thunderWeight;
+    private BigDecimal thunderDanger;
 
     @ApiModelProperty(value = "雪灾风险值")
-    private BigDecimal snowWeight;
+    private BigDecimal snowDanger;
 
     @ApiModelProperty(value = "盗抢风险值")
-    private BigDecimal theftWeight;
+    private BigDecimal theftDanger;
 
     @ApiModelProperty(value = "地震风险值")
-    private BigDecimal earthquakeWeight;
+    private BigDecimal earthQuakeDanger;
 
     @ApiModelProperty(value = "地质灾害风险值")
-    private BigDecimal geologyWeight;
+    private BigDecimal geologyDanger;
 
     @ApiModelProperty(value = "有效标志位")
     private String validStatus;
@@ -103,68 +96,68 @@ public class UtiWeight implements Serializable {
         this.operatorName = operatorName == null ? null : operatorName.trim();
     }
 
-    public BigDecimal getFireWeight() {
-        return fireWeight;
+    public BigDecimal getFireDanger() {
+        return fireDanger;
     }
 
-    public void setFireWeight(BigDecimal fireWeight) {
-        this.fireWeight = fireWeight;
+    public void setFireDanger(BigDecimal fireDanger) {
+        this.fireDanger = fireDanger;
     }
 
-    public BigDecimal getWaterWeight() {
-        return waterWeight;
+    public BigDecimal getWaterDanger() {
+        return waterDanger;
     }
 
-    public void setWaterWeight(BigDecimal waterWeight) {
-        this.waterWeight = waterWeight;
+    public void setWaterDanger(BigDecimal waterDanger) {
+        this.waterDanger = waterDanger;
     }
 
-    public BigDecimal getWindWeight() {
-        return windWeight;
+    public BigDecimal getWindDanger() {
+        return windDanger;
     }
 
-    public void setWindWeight(BigDecimal windWeight) {
-        this.windWeight = windWeight;
+    public void setWindDanger(BigDecimal windDanger) {
+        this.windDanger = windDanger;
     }
 
-    public BigDecimal getThunderWeight() {
-        return thunderWeight;
+    public BigDecimal getThunderDanger() {
+        return thunderDanger;
     }
 
-    public void setThunderWeight(BigDecimal thunderWeight) {
-        this.thunderWeight = thunderWeight;
+    public void setThunderDanger(BigDecimal thunderDanger) {
+        this.thunderDanger = thunderDanger;
     }
 
-    public BigDecimal getSnowWeight() {
-        return snowWeight;
+    public BigDecimal getSnowDanger() {
+        return snowDanger;
     }
 
-    public void setSnowWeight(BigDecimal snowWeight) {
-        this.snowWeight = snowWeight;
+    public void setSnowDanger(BigDecimal snowDanger) {
+        this.snowDanger = snowDanger;
     }
 
-    public BigDecimal getTheftWeight() {
-        return theftWeight;
+    public BigDecimal getTheftDanger() {
+        return theftDanger;
     }
 
-    public void setTheftWeight(BigDecimal theftWeight) {
-        this.theftWeight = theftWeight;
+    public void setTheftDanger(BigDecimal theftDanger) {
+        this.theftDanger = theftDanger;
     }
 
-    public BigDecimal getEarthquakeWeight() {
-        return earthquakeWeight;
+    public BigDecimal getEarthQuakeDanger() {
+        return earthQuakeDanger;
     }
 
-    public void setEarthquakeWeight(BigDecimal earthquakeWeight) {
-        this.earthquakeWeight = earthquakeWeight;
+    public void setEarthQuakeDanger(BigDecimal earthQuakeDanger) {
+        this.earthQuakeDanger = earthQuakeDanger;
     }
 
-    public BigDecimal getGeologyWeight() {
-        return geologyWeight;
+    public BigDecimal getGeologyDanger() {
+        return geologyDanger;
     }
 
-    public void setGeologyWeight(BigDecimal geologyWeight) {
-        this.geologyWeight = geologyWeight;
+    public void setGeologyDanger(BigDecimal geologyDanger) {
+        this.geologyDanger = geologyDanger;
     }
 
     public String getValidStatus() {
@@ -202,14 +195,14 @@ public class UtiWeight implements Serializable {
         sb.append(", comCode=").append(comCode);
         sb.append(", operatorCode=").append(operatorCode);
         sb.append(", operatorName=").append(operatorName);
-        sb.append(", fireWeight=").append(fireWeight);
-        sb.append(", waterWeight=").append(waterWeight);
-        sb.append(", windWeight=").append(windWeight);
-        sb.append(", thunderWeight=").append(thunderWeight);
-        sb.append(", snowWeight=").append(snowWeight);
-        sb.append(", theftWeight=").append(theftWeight);
-        sb.append(", earthquakeWeight=").append(earthquakeWeight);
-        sb.append(", geologyWeight=").append(geologyWeight);
+        sb.append(", fireDanger=").append(fireDanger);
+        sb.append(", waterDanger=").append(waterDanger);
+        sb.append(", windDanger=").append(windDanger);
+        sb.append(", thunderDanger=").append(thunderDanger);
+        sb.append(", snowDanger=").append(snowDanger);
+        sb.append(", theftDanger=").append(theftDanger);
+        sb.append(", earthQuakeDanger=").append(earthQuakeDanger);
+        sb.append(", geologyDanger=").append(geologyDanger);
         sb.append(", validStatus=").append(validStatus);
         sb.append(", insertTimeForHis=").append(insertTimeForHis);
         sb.append(", operateTimeForHis=").append(operateTimeForHis);

@@ -69,7 +69,7 @@ public interface RiskCommonService {
 	 * @since  组织前台返回的分值信息
 	 * @return  
 	 * */
-	public RiskGradeVo  establishRiskGradeInfo(List<UtiWeight>  utiWeightList,Map<String, BigDecimal>  scoreTotalMap);
+	public RiskGradeVo  establishRiskGradeInfo(List<UtiWeight>  utiWeightList,Map<String, BigDecimal>  scoreTotalMap,String riskModel);
 	
 	
 }

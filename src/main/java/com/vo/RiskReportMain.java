@@ -1,9 +1,11 @@
 package com.vo;
 
 import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class RiskReportMain implements Serializable {
 	
@@ -188,6 +190,10 @@ public class RiskReportMain implements Serializable {
     private String repulseSugggest;
 
     private static final long serialVersionUID = 1L;
+    /**关联火灾风险排查表*/
+    private List<RiskReportFireDanger>  riskReportFireDangerList;
+    /**echarts打分信息保存*/
+    private  RiskReportAssess riskReportAssess;
 
     public String getRiskFileNo() {
         return riskFileNo;
@@ -668,75 +674,67 @@ public class RiskReportMain implements Serializable {
     public void setRepulseSugggest(String repulseSugggest) {
         this.repulseSugggest = repulseSugggest == null ? null : repulseSugggest.trim();
     }
+    
+    
+    public List<RiskReportFireDanger> getRiskReportFireDangerList() {
+		return riskReportFireDangerList;
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", riskFileNo=").append(riskFileNo);
-        sb.append(", classCode=").append(classCode);
-        sb.append(", riskCode=").append(riskCode);
-        sb.append(", comCode=").append(comCode);
-        sb.append(", stockRate=").append(stockRate);
-        sb.append(", riskModel=").append(riskModel);
-        sb.append(", insuredType=").append(insuredType);
-        sb.append(", insuredCode=").append(insuredCode);
-        sb.append(", insuredName=").append(insuredName);
-        sb.append(", addressProvince=").append(addressProvince);
-        sb.append(", addressCity=").append(addressCity);
-        sb.append(", addressCounty=").append(addressCounty);
-        sb.append(", addressDetail=").append(addressDetail);
-        sb.append(", postCode=").append(postCode);
-        sb.append(", businessSource=").append(businessSource);
-        sb.append(", businessClass=").append(businessClass);
-        sb.append(", unitNature=").append(unitNature);
-        sb.append(", underwriteStatus=").append(underwriteStatus);
-        sb.append(", operatorCode=").append(operatorCode);
-        sb.append(", operatorCode_uni=").append(operatorCode_uni);
-        sb.append(", historyLoseFlag=").append(historyLoseFlag);
-        sb.append(", sumAmount=").append(sumAmount);
-        sb.append(", undwrtSubmitDate=").append(undwrtSubmitDate);
-        sb.append(", underwriteFlag=").append(underwriteFlag);
-        sb.append(", underwriteDate=").append(underwriteDate);
-        sb.append(", underwriteCode=").append(underwriteCode);
-        sb.append(", underwriteName=").append(underwriteName);
-        sb.append(", explorecomCode=").append(explorecomCode);
-        sb.append(", explorer=").append(explorer);
-        sb.append(", explorer_uni=").append(explorer_uni);
-        sb.append(", exploreDate=").append(exploreDate);
-        sb.append(", madeDate=").append(madeDate);
-        sb.append(", exploreType=").append(exploreType);
-        sb.append(", lastriskFileNo=").append(lastriskFileNo);
-        sb.append(", mobileFlag=").append(mobileFlag);
-        sb.append(", archivesNo=").append(archivesNo);
-        sb.append(", addRisk=").append(addRisk);
-        sb.append(", onceAccidentLosest=").append(onceAccidentLosest);
-        sb.append(", riskUnitNumber=").append(riskUnitNumber);
-        sb.append(", loseRate=").append(loseRate);
-        sb.append(", score=").append(score);
-        sb.append(", riskSuggest=").append(riskSuggest);
-        sb.append(", utiWeightId=").append(utiWeightId);
-        sb.append(", executionId=").append(executionId);
-        sb.append(", pointx_2000=").append(pointx_2000);
-        sb.append(", pointy_2000=").append(pointy_2000);
-        sb.append(", pointx_02=").append(pointx_02);
-        sb.append(", pointy_02=").append(pointy_02);
-        sb.append(", valuation=").append(valuation);
-        sb.append(", proposalNo=").append(proposalNo);
-        sb.append(", policyNo=").append(policyNo);
-        sb.append(", insertTimeForHis=").append(insertTimeForHis);
-        sb.append(", operateTimeForHis=").append(operateTimeForHis);
-        sb.append(", customerExplain=").append(customerExplain);
-        sb.append(", riskUnitExplain=").append(riskUnitExplain);
-        sb.append(", highlightRisk=").append(highlightRisk);
-        sb.append(", supplementAppraisal=").append(supplementAppraisal);
-        sb.append(", othSuggest=").append(othSuggest);
-        sb.append(", addMessage=").append(addMessage);
-        sb.append(", repulseSugggest=").append(repulseSugggest);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+	public void setRiskReportFireDangerList(
+			List<RiskReportFireDanger> riskReportFireDangerList) {
+		this.riskReportFireDangerList = riskReportFireDangerList;
+	}
+	
+	public RiskReportAssess getRiskReportAssess() {
+		return riskReportAssess;
+	}
+
+	public void setRiskReportAssess(RiskReportAssess riskReportAssess) {
+		this.riskReportAssess = riskReportAssess;
+	}
+
+	@Override
+	public String toString() {
+		return "RiskReportMain [riskFileNo=" + riskFileNo + ", classCode="
+				+ classCode + ", riskCode=" + riskCode + ", comCode=" + comCode
+				+ ", stockRate=" + stockRate + ", riskModel=" + riskModel
+				+ ", insuredType=" + insuredType + ", insuredCode="
+				+ insuredCode + ", insuredName=" + insuredName
+				+ ", addressProvince=" + addressProvince + ", addressCity="
+				+ addressCity + ", addressCounty=" + addressCounty
+				+ ", addressDetail=" + addressDetail + ", postCode=" + postCode
+				+ ", businessSource=" + businessSource + ", businessClass="
+				+ businessClass + ", unitNature=" + unitNature
+				+ ", underwriteStatus=" + underwriteStatus + ", operatorCode="
+				+ operatorCode + ", operatorCode_uni=" + operatorCode_uni
+				+ ", historyLoseFlag=" + historyLoseFlag + ", sumAmount="
+				+ sumAmount + ", undwrtSubmitDate=" + undwrtSubmitDate
+				+ ", underwriteFlag=" + underwriteFlag + ", underwriteDate="
+				+ underwriteDate + ", underwriteCode=" + underwriteCode
+				+ ", underwriteName=" + underwriteName + ", explorecomCode="
+				+ explorecomCode + ", explorer=" + explorer + ", explorer_uni="
+				+ explorer_uni + ", exploreDate=" + exploreDate + ", madeDate="
+				+ madeDate + ", exploreType=" + exploreType
+				+ ", lastriskFileNo=" + lastriskFileNo + ", mobileFlag="
+				+ mobileFlag + ", archivesNo=" + archivesNo + ", addRisk="
+				+ addRisk + ", onceAccidentLosest=" + onceAccidentLosest
+				+ ", riskUnitNumber=" + riskUnitNumber + ", loseRate="
+				+ loseRate + ", score=" + score + ", riskSuggest="
+				+ riskSuggest + ", utiWeightId=" + utiWeightId
+				+ ", executionId=" + executionId + ", pointx_2000="
+				+ pointx_2000 + ", pointy_2000=" + pointy_2000 + ", pointx_02="
+				+ pointx_02 + ", pointy_02=" + pointy_02 + ", valuation="
+				+ valuation + ", proposalNo=" + proposalNo + ", policyNo="
+				+ policyNo + ", insertTimeForHis=" + insertTimeForHis
+				+ ", operateTimeForHis=" + operateTimeForHis
+				+ ", customerExplain=" + customerExplain + ", riskUnitExplain="
+				+ riskUnitExplain + ", highlightRisk=" + highlightRisk
+				+ ", supplementAppraisal=" + supplementAppraisal
+				+ ", othSuggest=" + othSuggest + ", addMessage=" + addMessage
+				+ ", repulseSugggest=" + repulseSugggest
+				+ ", riskReportFireDangerList=" + riskReportFireDangerList
+				+ "]";
+	}
+	
+    
 }

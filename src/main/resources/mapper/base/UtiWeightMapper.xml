@@ -7,21 +7,21 @@
     <result column="comCode" property="comCode" jdbcType="VARCHAR" />
     <result column="operatorCode" property="operatorCode" jdbcType="VARCHAR" />
     <result column="operatorName" property="operatorName" jdbcType="VARCHAR" />
-    <result column="fireWeight" property="fireWeight" jdbcType="DECIMAL" />
-    <result column="waterWeight" property="waterWeight" jdbcType="DECIMAL" />
-    <result column="windWeight" property="windWeight" jdbcType="DECIMAL" />
-    <result column="thunderWeight" property="thunderWeight" jdbcType="DECIMAL" />
-    <result column="snowWeight" property="snowWeight" jdbcType="DECIMAL" />
-    <result column="theftWeight" property="theftWeight" jdbcType="DECIMAL" />
-    <result column="earthquakeWeight" property="earthquakeWeight" jdbcType="DECIMAL" />
-    <result column="geologyWeight" property="geologyWeight" jdbcType="DECIMAL" />
+    <result column="fireDanger" property="fireDanger" jdbcType="DECIMAL" />
+    <result column="waterDanger" property="waterDanger" jdbcType="DECIMAL" />
+    <result column="windDanger" property="windDanger" jdbcType="DECIMAL" />
+    <result column="thunderDanger" property="thunderDanger" jdbcType="DECIMAL" />
+    <result column="snowDanger" property="snowDanger" jdbcType="DECIMAL" />
+    <result column="theftDanger" property="theftDanger" jdbcType="DECIMAL" />
+    <result column="earthQuakeDanger" property="earthQuakeDanger" jdbcType="DECIMAL" />
+    <result column="geologyDanger" property="geologyDanger" jdbcType="DECIMAL" />
     <result column="validStatus" property="validStatus" jdbcType="CHAR" />
     <result column="insertTimeForHis" property="insertTimeForHis" jdbcType="TIMESTAMP" />
     <result column="operateTimeForHis" property="operateTimeForHis" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, riskModel, comCode, operatorCode, operatorName, fireWeight, waterWeight, windWeight, 
-    thunderWeight, snowWeight, theftWeight, earthquakeWeight, geologyWeight, validStatus, 
+    id, riskModel, comCode, operatorCode, operatorName, fireDanger, waterDanger, windDanger, 
+    thunderDanger, snowDanger, theftDanger, earthQuakeDanger, geologyDanger, validStatus, 
     insertTimeForHis, operateTimeForHis
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
@@ -36,16 +36,16 @@
   </delete>
   <insert id="insert" parameterType="com.vo.UtiWeight" >
     insert into utiweight (id, riskModel, comCode, 
-      operatorCode, operatorName, fireWeight, 
-      waterWeight, windWeight, thunderWeight, 
-      snowWeight, theftWeight, earthquakeWeight, 
-      geologyWeight, validStatus, insertTimeForHis, 
+      operatorCode, operatorName, fireDanger, 
+      waterDanger, windDanger, thunderDanger, 
+      snowDanger, theftDanger, earthQuakeDanger, 
+      geologyDanger, validStatus, insertTimeForHis, 
       operateTimeForHis)
     values (#{id,jdbcType=BIGINT}, #{riskModel,jdbcType=VARCHAR}, #{comCode,jdbcType=VARCHAR}, 
-      #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{fireWeight,jdbcType=DECIMAL}, 
-      #{waterWeight,jdbcType=DECIMAL}, #{windWeight,jdbcType=DECIMAL}, #{thunderWeight,jdbcType=DECIMAL}, 
-      #{snowWeight,jdbcType=DECIMAL}, #{theftWeight,jdbcType=DECIMAL}, #{earthquakeWeight,jdbcType=DECIMAL}, 
-      #{geologyWeight,jdbcType=DECIMAL}, #{validStatus,jdbcType=CHAR}, #{insertTimeForHis,jdbcType=TIMESTAMP}, 
+      #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{fireDanger,jdbcType=DECIMAL}, 
+      #{waterDanger,jdbcType=DECIMAL}, #{windDanger,jdbcType=DECIMAL}, #{thunderDanger,jdbcType=DECIMAL}, 
+      #{snowDanger,jdbcType=DECIMAL}, #{theftDanger,jdbcType=DECIMAL}, #{earthQuakeDanger,jdbcType=DECIMAL}, 
+      #{geologyDanger,jdbcType=DECIMAL}, #{validStatus,jdbcType=CHAR}, #{insertTimeForHis,jdbcType=TIMESTAMP}, 
       #{operateTimeForHis,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.vo.UtiWeight" >
@@ -66,29 +66,29 @@
       <if test="operatorName != null" >
         operatorName,
       </if>
-      <if test="fireWeight != null" >
-        fireWeight,
+      <if test="fireDanger != null" >
+        fireDanger,
       </if>
-      <if test="waterWeight != null" >
-        waterWeight,
+      <if test="waterDanger != null" >
+        waterDanger,
       </if>
-      <if test="windWeight != null" >
-        windWeight,
+      <if test="windDanger != null" >
+        windDanger,
       </if>
-      <if test="thunderWeight != null" >
-        thunderWeight,
+      <if test="thunderDanger != null" >
+        thunderDanger,
       </if>
-      <if test="snowWeight != null" >
-        snowWeight,
+      <if test="snowDanger != null" >
+        snowDanger,
       </if>
-      <if test="theftWeight != null" >
-        theftWeight,
+      <if test="theftDanger != null" >
+        theftDanger,
       </if>
-      <if test="earthquakeWeight != null" >
-        earthquakeWeight,
+      <if test="earthQuakeDanger != null" >
+        earthQuakeDanger,
       </if>
-      <if test="geologyWeight != null" >
-        geologyWeight,
+      <if test="geologyDanger != null" >
+        geologyDanger,
       </if>
       <if test="validStatus != null" >
         validStatus,
@@ -116,29 +116,29 @@
       <if test="operatorName != null" >
         #{operatorName,jdbcType=VARCHAR},
       </if>
-      <if test="fireWeight != null" >
-        #{fireWeight,jdbcType=DECIMAL},
+      <if test="fireDanger != null" >
+        #{fireDanger,jdbcType=DECIMAL},
       </if>
-      <if test="waterWeight != null" >
-        #{waterWeight,jdbcType=DECIMAL},
+      <if test="waterDanger != null" >
+        #{waterDanger,jdbcType=DECIMAL},
       </if>
-      <if test="windWeight != null" >
-        #{windWeight,jdbcType=DECIMAL},
+      <if test="windDanger != null" >
+        #{windDanger,jdbcType=DECIMAL},
       </if>
-      <if test="thunderWeight != null" >
-        #{thunderWeight,jdbcType=DECIMAL},
+      <if test="thunderDanger != null" >
+        #{thunderDanger,jdbcType=DECIMAL},
       </if>
-      <if test="snowWeight != null" >
-        #{snowWeight,jdbcType=DECIMAL},
+      <if test="snowDanger != null" >
+        #{snowDanger,jdbcType=DECIMAL},
       </if>
-      <if test="theftWeight != null" >
-        #{theftWeight,jdbcType=DECIMAL},
+      <if test="theftDanger != null" >
+        #{theftDanger,jdbcType=DECIMAL},
       </if>
-      <if test="earthquakeWeight != null" >
-        #{earthquakeWeight,jdbcType=DECIMAL},
+      <if test="earthQuakeDanger != null" >
+        #{earthQuakeDanger,jdbcType=DECIMAL},
       </if>
-      <if test="geologyWeight != null" >
-        #{geologyWeight,jdbcType=DECIMAL},
+      <if test="geologyDanger != null" >
+        #{geologyDanger,jdbcType=DECIMAL},
       </if>
       <if test="validStatus != null" >
         #{validStatus,jdbcType=CHAR},
@@ -166,29 +166,29 @@
       <if test="operatorName != null" >
         operatorName = #{operatorName,jdbcType=VARCHAR},
       </if>
-      <if test="fireWeight != null" >
-        fireWeight = #{fireWeight,jdbcType=DECIMAL},
+      <if test="fireDanger != null" >
+        fireDanger = #{fireDanger,jdbcType=DECIMAL},
       </if>
-      <if test="waterWeight != null" >
-        waterWeight = #{waterWeight,jdbcType=DECIMAL},
+      <if test="waterDanger != null" >
+        waterDanger = #{waterDanger,jdbcType=DECIMAL},
       </if>
-      <if test="windWeight != null" >
-        windWeight = #{windWeight,jdbcType=DECIMAL},
+      <if test="windDanger != null" >
+        windDanger = #{windDanger,jdbcType=DECIMAL},
       </if>
-      <if test="thunderWeight != null" >
-        thunderWeight = #{thunderWeight,jdbcType=DECIMAL},
+      <if test="thunderDanger != null" >
+        thunderDanger = #{thunderDanger,jdbcType=DECIMAL},
       </if>
-      <if test="snowWeight != null" >
-        snowWeight = #{snowWeight,jdbcType=DECIMAL},
+      <if test="snowDanger != null" >
+        snowDanger = #{snowDanger,jdbcType=DECIMAL},
       </if>
-      <if test="theftWeight != null" >
-        theftWeight = #{theftWeight,jdbcType=DECIMAL},
+      <if test="theftDanger != null" >
+        theftDanger = #{theftDanger,jdbcType=DECIMAL},
       </if>
-      <if test="earthquakeWeight != null" >
-        earthquakeWeight = #{earthquakeWeight,jdbcType=DECIMAL},
+      <if test="earthQuakeDanger != null" >
+        earthQuakeDanger = #{earthQuakeDanger,jdbcType=DECIMAL},
       </if>
-      <if test="geologyWeight != null" >
-        geologyWeight = #{geologyWeight,jdbcType=DECIMAL},
+      <if test="geologyDanger != null" >
+        geologyDanger = #{geologyDanger,jdbcType=DECIMAL},
       </if>
       <if test="validStatus != null" >
         validStatus = #{validStatus,jdbcType=CHAR},
@@ -208,14 +208,14 @@
       comCode = #{comCode,jdbcType=VARCHAR},
       operatorCode = #{operatorCode,jdbcType=VARCHAR},
       operatorName = #{operatorName,jdbcType=VARCHAR},
-      fireWeight = #{fireWeight,jdbcType=DECIMAL},
-      waterWeight = #{waterWeight,jdbcType=DECIMAL},
-      windWeight = #{windWeight,jdbcType=DECIMAL},
-      thunderWeight = #{thunderWeight,jdbcType=DECIMAL},
-      snowWeight = #{snowWeight,jdbcType=DECIMAL},
-      theftWeight = #{theftWeight,jdbcType=DECIMAL},
-      earthquakeWeight = #{earthquakeWeight,jdbcType=DECIMAL},
-      geologyWeight = #{geologyWeight,jdbcType=DECIMAL},
+      fireDanger = #{fireDanger,jdbcType=DECIMAL},
+      waterDanger = #{waterDanger,jdbcType=DECIMAL},
+      windDanger = #{windDanger,jdbcType=DECIMAL},
+      thunderDanger = #{thunderDanger,jdbcType=DECIMAL},
+      snowDanger = #{snowDanger,jdbcType=DECIMAL},
+      theftDanger = #{theftDanger,jdbcType=DECIMAL},
+      earthQuakeDanger = #{earthQuakeDanger,jdbcType=DECIMAL},
+      geologyDanger = #{geologyDanger,jdbcType=DECIMAL},
       validStatus = #{validStatus,jdbcType=CHAR},
       insertTimeForHis = #{insertTimeForHis,jdbcType=TIMESTAMP},
       operateTimeForHis = #{operateTimeForHis,jdbcType=TIMESTAMP}
