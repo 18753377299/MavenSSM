@@ -190,6 +190,7 @@ public class RiskReportMain implements Serializable {
     private String repulseSugggest;
 
     private static final long serialVersionUID = 1L;
+    
     /**关联火灾风险排查表*/
     private List<RiskReportFireDanger>  riskReportFireDangerList;
     /**echarts打分信息保存*/

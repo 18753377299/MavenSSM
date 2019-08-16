@@ -169,13 +169,31 @@ public class RiskFireServiceImpl implements RiskFireService{
 	 * @时间：20190814
 	 * @修改记录：
 	 */
-	public AjaxResult  queryRiskReportMain(String riskFileNo){
+	public AjaxResult  queryRiskReportFire(String riskFileNo){
 		AjaxResult ajaxResult =new AjaxResult();
 		
-		RiskReportMain riskReportMain =riskReportMainMapper.queryRiskReportMain(riskFileNo);
+		RiskReportMain riskReportMain =riskReportMainMapper.queryRiskReportFire(riskFileNo);
 		ajaxResult.setData(riskReportMain);
 		
 		return ajaxResult;
 	}
+	/**
+	 * @功能：查询风控报告，分页
+	 * @param 
+	 * @author 
+	 * @throws Exception
+	 * @时间：20190814
+	 * @修改记录：
+	 */
+	public AjaxResult  queryRiskReportMainPage(RiskRequestVo riskRequestVo){
+		AjaxResult ajaxResult =new AjaxResult();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pageNo", riskRequestVo.getPageNo());
+		map.put("pageSize", riskRequestVo.getPageSize());
+		map.put("riskReportMainVo", riskRequestVo.getRiskReportMainVo());
+		List<RiskReportMain> riskReportMainList =riskReportMainMapper.queryRiskReportMainPage(map);
+		return ajaxResult;
+	}
+	
 	
 } 

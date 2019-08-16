@@ -70,13 +70,33 @@ public class RiskFireController {
 	 * @时间：20190719
 	 * @修改记录：
 	 */
-	@RequestMapping(value="/queryRiskReportMain",method={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value="/queryRiskReportFire",method={RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public AjaxResult queryRiskReportMain(@RequestParam(value="riskFileNo") String riskFileNo){
+	public AjaxResult queryRiskReportFire(@RequestParam(value="riskFileNo") String riskFileNo){
 		AjaxResult ajaxResult =new AjaxResult();
-		ajaxResult= riskFireService.queryRiskReportMain(riskFileNo);
+		ajaxResult= riskFireService.queryRiskReportFire(riskFileNo);
 		return ajaxResult;
 	}
+	/**
+	 * @功能：查询风控报告，分页
+	 * @param 
+	 * @author 
+	 * @throws Exception
+	 * @时间：20190719
+	 * @修改记录：
+	 */
+	@RequestMapping(value="/queryRiskReportMainPage",method={RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public AjaxResult queryRiskReportMainPage(@RequestBody RiskRequestVo riskRequestVo){
+		AjaxResult ajaxResult =new AjaxResult();
+		ajaxResult= riskFireService.queryRiskReportMainPage(riskRequestVo);
+		return ajaxResult;
+	}
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value="/test",method={RequestMethod.POST,RequestMethod.GET})
 	public AjaxResult getInfo(){
@@ -84,9 +104,7 @@ public class RiskFireController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("riskModel", "001");
 		map.put("dangeType", "01,02");
-		
 //		List<UtiFactor>  utiFactorList = riskFireService.getUtiFactorById(map);
-		
 		return ajaxResult;
 	}
 	

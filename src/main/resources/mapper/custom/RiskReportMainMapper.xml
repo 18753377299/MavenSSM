@@ -14,11 +14,29 @@
 	    </collection>
   	</resultMap>
 	<!-- 关联多个表的查询，通过使用左外连接的方式进行查询 -->
-  	<select id="queryRiskReportMain" parameterType="String" resultMap="ResultMapWithLink">
+  	<select id="queryRiskReportFire" parameterType="String" resultMap="ResultMapWithLink">
   	  select main.*,fire.*,assess.*
   	  from riskreport_main main 
   	  left join riskreport_firedanger fire  on   main.riskFileNo = fire.riskFileNo 
   	  left join riskreport_assess assess on  main.riskFileNo = assess.riskFileNo
   	  where main.riskFileNo= #{riskFileNo}
   	</select>
+  	
+  	<select id="queryRiskReportMainPage"  parameterType="java.util.Map">
+  		select * from  riskreport_main 
+  		<where>
+  			and riskFileNo =#{riskReportMainVo.riskFileNo}
+<!--   			<include refid="queryRiskReportMain_sql"></include> -->
+<!--   			limit (pageNo-1)*pageSize,pageSize -->
+  		</where>
+  	</select>
+<!--   	查询所需的where条件 -->
+  	<sql id="queryRiskReportMainPage_sql">
+  		 <if test="riskReportMainVo.riskFileNo != null" >
+  		        and riskFileNo =#{riskReportMainVo.riskFileNo}
+  		 </if>
+  		 <if test="riskReportMainVo.riskCode != null">
+  		   and riskCode =#{riskReportMainVo.riskCode} 
+  		 </if>
+  	</sql>
 </mapper>

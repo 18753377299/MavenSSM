@@ -1,5 +1,9 @@
 package com.common.dao;
 
+import java.util.List;
+import java.util.Map;
+
+import com.po.request.RiskRequestVo;
 import com.vo.RiskReportMain;
 
 public interface RiskReportMainMapper {
@@ -16,7 +20,9 @@ public interface RiskReportMainMapper {
     int updateByPrimaryKeyWithBLOBs(RiskReportMain record);
 
     int updateByPrimaryKey(RiskReportMain record);
+    /*查询RiskReportMain数据以及他所关联的子表数据*/
+    public RiskReportMain queryRiskReportFire(String riskFileNo);
     
-    public RiskReportMain queryRiskReportMain(String riskFileNo);
+    public List<RiskReportMain>  queryRiskReportMainPage(Map<String, Object> map);
     
 }

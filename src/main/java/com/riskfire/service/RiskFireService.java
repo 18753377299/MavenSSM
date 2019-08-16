@@ -16,6 +16,8 @@ public interface RiskFireService {
 	/**保存并且打分*/
 	public AjaxResult  saveAndAssessScore(RiskRequestVo riskRequestVo);
 	/**查询回显*/
-	public AjaxResult  queryRiskReportMain(String riskFileNo);
+	public AjaxResult  queryRiskReportFire(String riskFileNo);
+	/*分页查询*/
+	public AjaxResult  queryRiskReportMainPage(RiskRequestVo riskRequestVo);
 	
 }

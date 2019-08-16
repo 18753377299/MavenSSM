@@ -25,6 +25,9 @@ public class RiskRequestVo implements Serializable{
 	private List<RiskReportFireDanger>  riskReportFireDangerList;
     /**echarts打分信息保存*/
     private  RiskReportAssess riskReportAssess;
-	
-	
+	/*页码*/
+    private Integer pageNo;
+    /*每页条数*/
+    private Integer pageSize;
+    
 }
