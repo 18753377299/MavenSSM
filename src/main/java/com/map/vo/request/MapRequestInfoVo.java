@@ -1,8 +1,8 @@
-package com.picc.riskctrl.map.vo.request;
+package com.map.vo.request;
 
 import java.util.List;
 
-import com.picc.riskctrl.map.vo.WzTFLsljVo;
+import com.map.vo.WzTFLsljVo;
 	/**
  * @author  作者 E-mail:liqiankun 
  * @date 创建时间：2017年10月30日 下午6:57:46
