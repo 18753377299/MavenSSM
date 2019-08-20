@@ -57,6 +57,11 @@
 			<artifactId>com.springsource.org.aspectj.weaver</artifactId>
 			<version>1.6.8.RELEASE</version>
 	</dependency>
+<!-- 	<dependency> -->
+<!-- 			<groupId>org.aspectj</groupId> -->
+<!-- 			<artifactId>aspectjweaver</artifactId> -->
+<!-- 			<version>1.7.2</version> -->
+<!-- 		</dependency> -->
 	<!-- 	mybatis,版本对应 很重要-->
 	<dependency>
 		<groupId>org.mybatis</groupId>

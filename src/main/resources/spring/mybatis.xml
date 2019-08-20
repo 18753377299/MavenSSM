@@ -52,6 +52,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	</bean>
 	
 	<!-- 拦截器方式配置事物 -->
+<!-- 	事务的通知 -->
 	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="add*" propagation="REQUIRED" />
