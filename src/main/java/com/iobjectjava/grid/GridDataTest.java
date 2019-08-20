@@ -27,7 +27,10 @@ public class GridDataTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		setThemeRangeByFile(true);
+		long startDate =System.currentTimeMillis();
 		setThemeRangeByData(true);
+		long endDate =System.currentTimeMillis();
+		System.out.println("=====所需的时间=========="+(endDate-startDate));
 	}
 	
 	/**
@@ -52,6 +55,14 @@ public class GridDataTest {
 		//工作空间名称
 		connectionInfo.setName("riskcontrol_freeze");
 		
+//		connectionInfo.setType(WorkspaceType.ORACLE);
+//		connectionInfo.setServer("10.10.68.248:1521/orcl");
+//		connectionInfo.setDatabase("RISKCONTROL_BACK");
+//		connectionInfo.setUser("RISKCONTROL_BACK");
+//		connectionInfo.setPassword("RISKCONTROL_BACK");
+//		//工作空间名称
+//		connectionInfo.setName("RISKCONTROL_BACK");
+		
 		boolean openResult = m_workspace.open(connectionInfo);
 		if (openResult) {
 			 System.out.println("打开工作空间成功！");
@@ -61,7 +72,7 @@ public class GridDataTest {
 //		m_workspace.open(info);
 		Datasource m_datasource = m_workspace.getDatasources().get(0);
 		DatasetGrid m_datasetGrid = (DatasetGrid) m_datasource.getDatasets().get("Temp5000");
-
+		System.out.println("====栅格数据的总列数======="+m_datasetGrid.getColumnBlockCount());
 		m_mapControl.getMap().setWorkspace(m_workspace);
 		//调整m_mapControl的状态
 		m_mapControl.setAction(Action.PAN);

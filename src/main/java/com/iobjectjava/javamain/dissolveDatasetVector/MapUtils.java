@@ -1,7 +1,5 @@
-package com.common.utils;
+package dissolveDatasetVector;
 
-import java.awt.Color;
-import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
@@ -21,18 +19,13 @@ import java.util.ResourceBundle;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.po.response.AjaxResult;
-import com.supermap.data.BlockSizeOption;
 import com.supermap.data.CursorType;
-import com.supermap.data.DatasetGrid;
-import com.supermap.data.DatasetGridInfo;
 import com.supermap.data.DatasetType;
 import com.supermap.data.DatasetVector;
 import com.supermap.data.DatasetVectorInfo;
 import com.supermap.data.Datasets;
 import com.supermap.data.Datasource;
 import com.supermap.data.DatasourceConnectionInfo;
-import com.supermap.data.EncodeType;
 import com.supermap.data.EngineType;
 import com.supermap.data.FieldInfo;
 import com.supermap.data.FieldInfos;
@@ -41,21 +34,11 @@ import com.supermap.data.GeoCircle;
 import com.supermap.data.GeoRegion;
 import com.supermap.data.Geometrist;
 import com.supermap.data.Geometry;
-import com.supermap.data.Maps;
-import com.supermap.data.PixelFormat;
 import com.supermap.data.Point2D;
 import com.supermap.data.PrjCoordSys;
 import com.supermap.data.PrjCoordSysType;
 import com.supermap.data.Recordset;
 import com.supermap.data.Workspace;
-import com.supermap.data.WorkspaceConnectionInfo;
-import com.supermap.data.WorkspaceType;
-import com.supermap.data.WorkspaceVersion;
-import com.supermap.mapping.Layer;
-import com.supermap.mapping.ThemeGridRange;
-import com.supermap.mapping.ThemeGridRangeItem;
-import com.supermap.ui.Action;
-import com.supermap.ui.MapControl;
 
 /**
  * @功能：iobjectjava 操作小工具，连接oracle库
@@ -66,7 +49,6 @@ import com.supermap.ui.MapControl;
  * @修改记录：
  */
 
-@SuppressWarnings("unused")
 public class MapUtils {
 	
 	//连接参数获取
@@ -76,15 +58,10 @@ public class MapUtils {
     	/*获取连接iobjectjava的数据信息*/
 		ResourceBundle filePath = ResourceBundle.getBundle("config.map", Locale.getDefault());
 		 // 定义数据源连接信息，假设以下所有数据源设置都存在
-//		iobjectJavaServer = filePath.getString("iobjectJavaServer");
-//		iobjectJavaDatabase = filePath.getString("iobjectJavaDatabase");
-//		iobjectJavaUser = filePath.getString("iobjectJavaUser");
-//		iobjectJavaPassword = filePath.getString("iobjectJavaPassword");
-		
-		iobjectJavaServer = "10.10.68.248:1521/orcl";
-		iobjectJavaDatabase = "riskcontrol_freeze";
-		iobjectJavaUser = "riskcontrol_freeze";
-		iobjectJavaPassword = "Picc_2019risk";
+		iobjectJavaServer = filePath.getString("iobjectJavaServer");
+		iobjectJavaDatabase = filePath.getString("iobjectJavaDatabase");
+		iobjectJavaUser = filePath.getString("iobjectJavaUser");
+		iobjectJavaPassword = filePath.getString("iobjectJavaPassword");
     }
     
 	/**连接数据源*/
@@ -95,7 +72,6 @@ public class MapUtils {
 	       datasourceconnection.setDatabase(iobjectJavaDatabase);
 	       datasourceconnection.setUser(iobjectJavaUser); // riskcontrol_freeze
 	       datasourceconnection.setPassword(iobjectJavaPassword);
-//	       datasourceconnection.setPassword(EncryptSecretInfo.decodeSecretInfo(iobjectJavaPassword));
 		   datasourceconnection.setAlias("ORACLE");
 	      // 打开数据源
 	      Datasource datasource = workspace.getDatasources().open(datasourceconnection);
@@ -149,7 +125,6 @@ public class MapUtils {
 	
 	
 	/*给面数据集增加融合数据*/
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static Recordset addUnionDataToDatasetVector (DatasetVector datasetVector,Object objectList,String radius,String flag){
 		/*转换成list集合*/
 		List<Object> list = (List)objectList;
@@ -284,7 +259,6 @@ public class MapUtils {
 		
 	}
 	/*给面数据集增加数据*/
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static Recordset addDataToDatasetVector (DatasetVector datasetVector,Object objectList,String radius){
 		
 		Recordset recordset = datasetVector.getRecordset(false, CursorType.DYNAMIC);
@@ -371,7 +345,7 @@ public class MapUtils {
 		}
 	}
 	/**通过get请求来获取某个类中的字段的值*/
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings("unchecked")
 	public static Object getRadius(String radius,Object wzTFLslj){
 		Object  radiusData = "";
 		try {
@@ -386,7 +360,6 @@ public class MapUtils {
 		return radiusData;
 	}
 	/** 给面数据添加字段信息*/
-	@SuppressWarnings("rawtypes")
 	public static void addFieldInfo(DatasetVector datasetVector,Object wzTFLslj){
 		  FieldInfos  fieldInfosold = datasetVector.getFieldInfos();
 		  
@@ -634,233 +607,6 @@ public class MapUtils {
 				// 释放该对象所占用的资源
 				workspace.dispose();
 			}
-    } 
-    /**
-	 * @功能：对密码进行解密的算法
-	 * @param 十六进制转中文字符串
-	 * @return void
-	 * @author liqiankun
-	 * @时间：20190524
-	 * @修改记录：
-	 */
-    public static String decodeSecretInfo(String str) {
-        if ( str == null ) {
-            return "转换失败";
-        }
-        byte[] s = pack(str); //十六进制转byte数组
-        String gbk;
-        try {
-            gbk = new String(s, "gbk"); //byte数组转中文字符串
-        } catch ( UnsupportedEncodingException ignored ) {
-            gbk = "转换失败";
-        }
-        return gbk;
-    }
-    /**
-     * 十六进制转byte数组，模拟php中pack
-     */
-    public static byte[] pack(String str) {
-        int nibbleshift = 4;
-        int position = 0;
-        int len = str.length() / 2 + str.length() % 2;
-        byte[] output = new byte[len];
-        for (char v : str.toCharArray()) {
-            byte n = (byte) v;
-            if (n >= '0' && n <= '9') {
-                n -= '0';
-            } else if (n >= 'A' && n <= 'F') {
-                n -= ('A' - 10);
-            } else if (n >= 'a' && n <= 'f') {
-                n -= ('a' - 10);
-            } else {
-                continue;
-            }
-            output[position] |= (n << nibbleshift);
-            if (nibbleshift == 0) {
-                position++;
-            }
-            nibbleshift = (nibbleshift + 4) & 7;
-        }
-        return output;
-    }
-    
-	/*创建栅格数据集*/
-    public static DatasetGrid createDatasetGrid(Datasource datasource){
-    	 // 假设打开一个工作空间 workspace 对象，工作空间中存在一个数据源 datasource 对象
-        // 创建一个栅格数据集信息对象，对其进行必要的设置
-//    	String name = "Grid"+java.util.UUID.randomUUID().toString().replace("-", "");
-    	String name = "Grid";
-    	// 用于删除指定名称的数据集
-    	boolean flag =datasource.getDatasets().delete(name);
-    	
-        DatasetGridInfo datasetGridInfo = new DatasetGridInfo();
-        datasetGridInfo.setName(name);
-        datasetGridInfo.setBlockSizeOption(BlockSizeOption.BS_128);
-        datasetGridInfo.setWidth(3524);
-        datasetGridInfo.setHeight(3040);
-        datasetGridInfo.setNoValue(1.0);
-        datasetGridInfo.setPixelFormat(PixelFormat.SINGLE);
-        datasetGridInfo.setEncodeType(EncodeType.LZW);
-        
-        // 通过栅格数据集信息创建栅格数据集
-        DatasetGrid datasetGrid = datasource.getDatasets().create(
-                datasetGridInfo);
-        if (datasetGrid != null) {
-            System.out.println(datasetGrid.getName() + "创建成功！");
-        }
-    	return datasetGrid;
-    }
-    
-    /*创建工作空间*/
-    public static  AjaxResult   createWorkspace(){
-    	AjaxResult ajaxResult =new AjaxResult();
-    	Workspace workspace = new Workspace();
-    	WorkspaceConnectionInfo connectionInfo = new WorkspaceConnectionInfo();
-		connectionInfo.setType(WorkspaceType.ORACLE);		
-		connectionInfo.setServer(iobjectJavaServer);
-		connectionInfo.setDatabase(iobjectJavaDatabase);
-		connectionInfo.setUser(iobjectJavaUser);
-		connectionInfo.setPassword(iobjectJavaPassword);
-		connectionInfo.setName("GridWorkspace"+java.util.UUID.randomUUID().toString().replace("-", ""));
-		
-		connectionInfo.setVersion(WorkspaceVersion.UGC60);
-		boolean saveResult = workspace.create(connectionInfo);
-		if (saveResult) {
-			 System.out.println("创建工作空间成功！");
-			 ajaxResult.setStatus(1);
-		} else {
-			System.out.println("创建工作空间失败！");
-			 ajaxResult.setStatus(2);
-		}
-		return ajaxResult;
-    }
-    /*打开工作空间*/
-    public static  AjaxResult   openWorkSpace(){
-    	AjaxResult ajaxResult =new AjaxResult();
-    	Workspace workspace = new Workspace();
-		
-		WorkspaceConnectionInfo connectionInfo = new WorkspaceConnectionInfo();
-		connectionInfo.setType(WorkspaceType.ORACLE);
-		connectionInfo.setServer(iobjectJavaServer);
-		connectionInfo.setDatabase(iobjectJavaDatabase);
-		connectionInfo.setUser(iobjectJavaUser);
-		connectionInfo.setPassword(iobjectJavaPassword);
-		connectionInfo.setName("fcfk");
-		
-		boolean openResult = workspace.open(connectionInfo);
-		
-		Datasource datasource = workspace.getDatasources().get(0);
-		Datasets datasets=  datasource.getDatasets();
-		int count = datasets.getCount();
-		for(int i=0;i<count;i++){
-			System.out.println(datasets.get(i).getName());
-		}
-		
-//		DatasetVector datasetVector = (DatasetVector) datasource.getDatasets().get("typhoon_hazard_scale_1km");
-//		System.out.println("+++++++++++++++++++"+datasetVector.getName());
-		// 保存工作空间
-	    workspace.save();
-	      
-		if (openResult) {
-			System.out.println("打开工作空间成功！");
-			 ajaxResult.setStatus(1);
-		} else {
-			System.out.println("打开工作空间失败！");
-			 ajaxResult.setStatus(2);
-		}
-		// 释放资源
-//		datasetVector.close();
-        connectionInfo.dispose();
-        workspace.close();
-        workspace.dispose();
-        
-    	return ajaxResult;
-    }
-    /**
-	 * 设置是否显示栅格分段专题图
-	 */
-	public void setThemeRange(boolean value) {
-		MapControl m_mapControl =  new MapControl();
-		Workspace m_workspace = new Workspace();
-		// 打开工作空间和地图
-//		WorkspaceConnectionInfo info = new WorkspaceConnectionInfo(
-//				"F:/A_supermap/superMap_file/MapFile/db/dataLayer.smwu");
-		WorkspaceConnectionInfo info = new WorkspaceConnectionInfo(
-				"F:/A_supermap/superMap_file/MapFile/Interpolation/Interpolation.smwu");
-		info.setType(WorkspaceType.SMWU);
-		m_workspace.open(info);
-		Datasource m_datasource = m_workspace.getDatasources().get(0);
-		DatasetGrid m_datasetGrid = (DatasetGrid) m_datasource.getDatasets().get("Temp5000");
-
-		//调整m_mapControl的状态
-		m_mapControl.setAction(Action.PAN);
-		m_mapControl.getMap().getLayers().add(m_datasetGrid, true);
-		m_mapControl.setWaitCursorEnabled(false);
-		
-		Layer m_layerThemeGridRange ;	
-		
-		try {
-//			if (m_layerThemeGridRange == null) {
-				//构造栅格分段专题图对象
-				ThemeGridRange themeGridRange = new ThemeGridRange();
-
-				//初始化栅格分段专题图子项并设置各自的属性
-				ThemeGridRangeItem item0 = new ThemeGridRangeItem();
-				item0.setStart(-9999);
-				item0.setEnd(m_datasetGrid.getMinValue());
-				item0.setColor(Color.CYAN);
-				item0.setVisible(true);
-
-				ThemeGridRangeItem item1 = new ThemeGridRangeItem();
-				item1.setStart(m_datasetGrid.getMinValue());
-				item1.setEnd(5.3);
-				item1.setColor(Color.GREEN);
-				item1.setVisible(true);
-
-				ThemeGridRangeItem item2 = new ThemeGridRangeItem();
-				item2.setStart(5.3);
-				item2.setEnd(15.7);
-				item2.setColor(Color.BLUE);
-				item2.setVisible(true);
-
-				ThemeGridRangeItem item3 = new ThemeGridRangeItem();
-				item3.setStart(15.7);
-				item3.setEnd(26.0);
-				item3.setColor(Color.RED);
-				item3.setVisible(true);
-
-				ThemeGridRangeItem item4 = new ThemeGridRangeItem();
-				item4.setStart(26.0);
-				item4.setEnd(Double.MAX_VALUE);
-				item4.setColor(Color.GRAY);
-				item4.setVisible(true);
-
-
-				//将栅格分段专题图子项依次添加到栅格分段专题图
-				themeGridRange.addToHead(item0);
-				themeGridRange.addToTail(item1);
-				themeGridRange.addToTail(item2);
-				themeGridRange.addToTail(item3);
-				themeGridRange.addToTail(item4);
-				//添加栅格分段专题图
-				m_layerThemeGridRange = m_mapControl.getMap().getLayers().add(
-						m_datasetGrid, themeGridRange, true);
-				//设置图层是否可显示，刷新地图
-				m_layerThemeGridRange.setVisible(value);
-				m_mapControl.getMap().refresh();
-				
-				Maps maps =m_workspace.getMaps();
-				maps.add("aaa",m_mapControl.getMap().toXML());
-				// 保存工作空间
-				m_workspace.save();
-				
-//			}
-
-		} catch (RuntimeException e) {
-			System.out.println(e.getMessage());
-		}
-
-		
-	}
+    }     
 	
 }
