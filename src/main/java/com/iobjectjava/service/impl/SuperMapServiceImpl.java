@@ -39,6 +39,8 @@ public class SuperMapServiceImpl implements  SuperMapService{
 		DatasetGrid datasetGridNew =MapUtils.createDatasetGrid(datasource);
 		
 		datasetGridNew.open();
+		double value = datasetGridNew.setValue(10, 10, 0.2);
+		
         if (datasetGridNew.calculateExtremum()) {
             double maxValue = datasetGridNew.getMaxValue();
             double minValue = datasetGridNew.getMinValue();

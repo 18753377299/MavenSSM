@@ -75,10 +75,15 @@ public class MapUtils {
     	/*获取连接iobjectjava的数据信息*/
 		ResourceBundle filePath = ResourceBundle.getBundle("config.map", Locale.getDefault());
 		 // 定义数据源连接信息，假设以下所有数据源设置都存在
-		iobjectJavaServer = filePath.getString("iobjectJavaServer");
-		iobjectJavaDatabase = filePath.getString("iobjectJavaDatabase");
-		iobjectJavaUser = filePath.getString("iobjectJavaUser");
-		iobjectJavaPassword = filePath.getString("iobjectJavaPassword");
+//		iobjectJavaServer = filePath.getString("iobjectJavaServer");
+//		iobjectJavaDatabase = filePath.getString("iobjectJavaDatabase");
+//		iobjectJavaUser = filePath.getString("iobjectJavaUser");
+//		iobjectJavaPassword = filePath.getString("iobjectJavaPassword");
+		
+		iobjectJavaServer = "10.10.68.248:1521/orcl";
+		iobjectJavaDatabase = "riskcontrol_freeze";
+		iobjectJavaUser = "riskcontrol_freeze";
+		iobjectJavaPassword = "Picc_2019risk";
     }
     
 	/**连接数据源*/
@@ -679,15 +684,20 @@ public class MapUtils {
     public static DatasetGrid createDatasetGrid(Datasource datasource){
     	 // 假设打开一个工作空间 workspace 对象，工作空间中存在一个数据源 datasource 对象
         // 创建一个栅格数据集信息对象，对其进行必要的设置
+//    	String name = "Grid"+java.util.UUID.randomUUID().toString().replace("-", "");
+    	String name = "Grid";
+    	// 用于删除指定名称的数据集
+    	boolean flag =datasource.getDatasets().delete(name);
+    	
         DatasetGridInfo datasetGridInfo = new DatasetGridInfo();
-        datasetGridInfo.setName("Grid"+java.util.UUID.randomUUID().toString().replace("-", ""));
+        datasetGridInfo.setName(name);
         datasetGridInfo.setBlockSizeOption(BlockSizeOption.BS_128);
-        datasetGridInfo.setHeight(200);
-        datasetGridInfo.setWidth(200);
+        datasetGridInfo.setWidth(3524);
+        datasetGridInfo.setHeight(3040);
         datasetGridInfo.setNoValue(1.0);
         datasetGridInfo.setPixelFormat(PixelFormat.SINGLE);
         datasetGridInfo.setEncodeType(EncodeType.LZW);
-
+        
         // 通过栅格数据集信息创建栅格数据集
         DatasetGrid datasetGrid = datasource.getDatasets().create(
                 datasetGridInfo);
