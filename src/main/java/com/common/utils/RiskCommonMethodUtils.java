@@ -26,7 +26,7 @@ public class RiskCommonMethodUtils {
 	 * @throws @日期
 	 *             2017-10-23
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void setValueforSpecificField(Object object, String fieldName, Object value) throws Exception {
 		// if(object == null) {
 		// return;
@@ -89,6 +89,7 @@ public class RiskCommonMethodUtils {
 	 * @throws @日期
 	 *             2017-10-23
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static List<Method> getGetter(Class cl) {
 		List list = new ArrayList();
 		try {

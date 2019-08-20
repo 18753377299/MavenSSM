@@ -47,21 +47,21 @@ public class GridDataTest {
 //		info.setType(WorkspaceType.SMWU);
 		
 		WorkspaceConnectionInfo connectionInfo = new WorkspaceConnectionInfo();
-//		connectionInfo.setType(WorkspaceType.ORACLE);
-//		connectionInfo.setServer("10.10.68.248:1521/orcl");
-//		connectionInfo.setDatabase("riskcontrol_freeze");
-//		connectionInfo.setUser("riskcontrol_freeze");
-//		connectionInfo.setPassword("Picc_2019risk");
-//		//工作空间名称
-//		connectionInfo.setName("riskcontrol_freeze");
-		
 		connectionInfo.setType(WorkspaceType.ORACLE);
 		connectionInfo.setServer("10.10.68.248:1521/orcl");
-		connectionInfo.setDatabase("RISKCONTROL_BACK");
-		connectionInfo.setUser("RISKCONTROL_BACK");
-		connectionInfo.setPassword("RISKCONTROL_BACK");
+		connectionInfo.setDatabase("riskcontrol_freeze");
+		connectionInfo.setUser("riskcontrol_freeze");
+		connectionInfo.setPassword("Picc_2019risk");
 		//工作空间名称
-		connectionInfo.setName("RISKCONTROL_BACK");
+		connectionInfo.setName("riskcontrol_freeze");
+		
+//		connectionInfo.setType(WorkspaceType.ORACLE);
+//		connectionInfo.setServer("10.10.68.248:1521/orcl");
+//		connectionInfo.setDatabase("RISKCONTROL_BACK");
+//		connectionInfo.setUser("RISKCONTROL_BACK");
+//		connectionInfo.setPassword("RISKCONTROL_BACK");
+//		//工作空间名称
+//		connectionInfo.setName("RISKCONTROL_BACK");
 		
 		boolean openResult = m_workspace.open(connectionInfo);
 		if (openResult) {

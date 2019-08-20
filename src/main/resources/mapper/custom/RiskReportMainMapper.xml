@@ -22,21 +22,29 @@
   	  where main.riskFileNo= #{riskFileNo}
   	</select>
   	
-  	<select id="queryRiskReportMainPage"  parameterType="java.util.Map">
+  	<select id="queryRiskReportMainPage"  parameterType="java.util.HashMap" resultMap="ResultMapWithBLOBs">
   		select * from  riskreport_main 
   		<where>
-  			and riskFileNo =#{riskReportMainVo.riskFileNo}
-<!--   			<include refid="queryRiskReportMain_sql"></include> -->
-<!--   			limit (pageNo-1)*pageSize,pageSize -->
+<!--   			and riskFileNo =#{riskReportMainVo.riskFileNo} -->
+  			<include refid="queryRiskReportMainPage_sql"></include> 
+  			limit #{offset},#{pageSize}
   		</where>
   	</select>
+  	<!-- 查询出总数 -->
+  	<select id="queryRiskReportMainCount"  parameterType="java.util.HashMap" resultMap="ResultMapWithBLOBs">
+  		select count(*) from  riskreport_main 
+  		<where>
+  			<include refid="queryRiskReportMainPage_sql"></include>
+  		</where>
+  	</select>
+  	
 <!--   	查询所需的where条件 -->
   	<sql id="queryRiskReportMainPage_sql">
   		 <if test="riskReportMainVo.riskFileNo != null" >
-  		        and riskFileNo =#{riskReportMainVo.riskFileNo}
+  		      and riskFileNo =#{riskReportMainVo.riskFileNo}
   		 </if>
-  		 <if test="riskReportMainVo.riskCode != null">
-  		   and riskCode =#{riskReportMainVo.riskCode} 
+  		  <if test="riskReportMainVo.riskCode != null">
+  		      and riskCode =#{riskReportMainVo.riskCode} 
   		 </if>
   	</sql>
 </mapper>

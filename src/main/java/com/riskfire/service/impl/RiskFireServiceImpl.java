@@ -188,7 +188,7 @@ public class RiskFireServiceImpl implements RiskFireService{
 	public AjaxResult  queryRiskReportMainPage(RiskRequestVo riskRequestVo){
 		AjaxResult ajaxResult =new AjaxResult();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("pageNo", riskRequestVo.getPageNo());
+		map.put("offset", (riskRequestVo.getPageNo()-1)*riskRequestVo.getPageSize());
 		map.put("pageSize", riskRequestVo.getPageSize());
 		map.put("riskReportMainVo", riskRequestVo.getRiskReportMainVo());
 		List<RiskReportMain> riskReportMainList =riskReportMainMapper.queryRiskReportMainPage(map);

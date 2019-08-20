@@ -66,6 +66,7 @@ import com.supermap.ui.MapControl;
  * @修改记录：
  */
 
+@SuppressWarnings("unused")
 public class MapUtils {
 	
 	//连接参数获取
@@ -148,6 +149,7 @@ public class MapUtils {
 	
 	
 	/*给面数据集增加融合数据*/
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static Recordset addUnionDataToDatasetVector (DatasetVector datasetVector,Object objectList,String radius,String flag){
 		/*转换成list集合*/
 		List<Object> list = (List)objectList;
@@ -282,6 +284,7 @@ public class MapUtils {
 		
 	}
 	/*给面数据集增加数据*/
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static Recordset addDataToDatasetVector (DatasetVector datasetVector,Object objectList,String radius){
 		
 		Recordset recordset = datasetVector.getRecordset(false, CursorType.DYNAMIC);
@@ -368,7 +371,7 @@ public class MapUtils {
 		}
 	}
 	/**通过get请求来获取某个类中的字段的值*/
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static Object getRadius(String radius,Object wzTFLslj){
 		Object  radiusData = "";
 		try {
@@ -383,6 +386,7 @@ public class MapUtils {
 		return radiusData;
 	}
 	/** 给面数据添加字段信息*/
+	@SuppressWarnings("rawtypes")
 	public static void addFieldInfo(DatasetVector datasetVector,Object wzTFLslj){
 		  FieldInfos  fieldInfosold = datasetVector.getFieldInfos();
 		  
