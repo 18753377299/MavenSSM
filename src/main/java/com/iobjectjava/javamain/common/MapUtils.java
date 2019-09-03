@@ -10,8 +10,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
-import vo.WzTFLslj;
-
+import com.iobjectjava.javamain.vo.WzTFLslj;
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetType;
 import com.supermap.data.DatasetVector;
@@ -31,8 +30,6 @@ import com.supermap.data.PrjCoordSys;
 import com.supermap.data.PrjCoordSysType;
 import com.supermap.data.Recordset;
 import com.supermap.data.Workspace;
-
-import encode.EncryptSecretInfo;
 
 	/**
  * @author  作者 E-mail: 

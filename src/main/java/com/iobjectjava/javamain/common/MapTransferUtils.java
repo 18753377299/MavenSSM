@@ -2,7 +2,7 @@ package com.iobjectjava.javamain.common;
 
 import java.math.BigDecimal;
 
-import vo.Gps;
+import com.common.po.Gps;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年5月10日 下午1:57:42

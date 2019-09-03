@@ -1,9 +1,10 @@
-package createDataSource;
+package com.iobjectjava.javamain.createDataSource;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.iobjectjava.javamain.common.MapUtils;
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetVector;
 import com.supermap.data.Datasource;
@@ -13,7 +14,6 @@ import com.supermap.data.Geometrist;
 import com.supermap.data.Geometry;
 import com.supermap.data.Recordset;
 import com.supermap.data.Workspace;
-import common.MapUtils;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年5月13日 下午2:29:03

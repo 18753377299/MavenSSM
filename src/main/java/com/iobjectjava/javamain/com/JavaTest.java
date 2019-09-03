@@ -1,9 +1,9 @@
-package com;
+package com.iobjectjava.javamain.com;
 
 import com.supermap.data.Workspace;
 	/**
- * @author  ×÷Õß E-mail: 
- * @date ´´½¨Ê±¼ä£º2019Äê1ÔÂ16ÈÕ ÏÂÎç5:49:30
+ * @author  ï¿½ï¿½ï¿½ï¿½ E-mail: 
+ * @date ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£º2019ï¿½ï¿½1ï¿½ï¿½16ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½5:49:30
  * @version 1.0 
  * @parameter 
  * @since  

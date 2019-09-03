@@ -1,4 +1,4 @@
-package createDataSource;
+package com.iobjectjava.javamain.createDataSource;
 
 import com.supermap.data.DatasetVector;
 import com.supermap.data.Datasource;
@@ -7,8 +7,6 @@ import com.supermap.data.EngineType;
 import com.supermap.data.GeoCircle;
 import com.supermap.data.Point2D;
 import com.supermap.data.Workspace;
-
-import encode.EncryptSecretInfo;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年5月6日 下午6:54:31

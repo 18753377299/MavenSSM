@@ -16,6 +16,8 @@ public class JdbcUtils {
 	
 	//连接参数获取
 	private static final String oracleDriver,oracleUrl,javaUser,javaPassword;
+	//mysql连接
+	private static final String mysqlDriver,mysqlUrl,mysqlUser,mysqlPassword;
     
     static {
 		 // 定义数据源连接信息，假设以下所有数据源设置都存在
@@ -23,6 +25,12 @@ public class JdbcUtils {
 		oracleUrl = "jdbc:oracle:thin:@10.10.68.248:1521:orcl";
 		javaUser =  "riskcontrol";
 		javaPassword =  "riskcontrol";
+		
+		mysqlDriver = "com.mysql.jdbc.Driver";
+		mysqlUrl = "jdbc:mysql://192.168.0.101:3306/shop?characterEncoding=utf-8";
+//		mysqlUrl = "jdbc:mysql://localhost:3306/shop?characterEncoding=utf-8";
+		mysqlUser =  "root";
+		mysqlPassword =  "admin";
     }
     
     /*进行oracle数据库的连接*/
@@ -31,6 +39,17 @@ public class JdbcUtils {
     	try {
 			Class.forName(oracleDriver);
 			connect = DriverManager.getConnection(oracleUrl, javaUser, javaPassword);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} 
+    	return connect;
+    }
+    /*进行mysql数据库的连接*/
+    public static Connection getMysqlConnection(){
+    	Connection connect = null;
+    	try {
+			Class.forName(mysqlDriver);
+			connect = DriverManager.getConnection(mysqlUrl, mysqlUser, mysqlPassword);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} 

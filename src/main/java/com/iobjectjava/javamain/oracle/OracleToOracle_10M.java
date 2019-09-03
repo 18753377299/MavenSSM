@@ -4,9 +4,8 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
-import common.JdbcUtils;
+import com.iobjectjava.javamain.common.JdbcUtils;
 
 
 public class OracleToOracle_10M {
@@ -89,7 +88,7 @@ public class OracleToOracle_10M {
 		ResultSet resultSet = null;
 		 try {
 			 // 进行参数连接
-			connect = common.JdbcUtils.getJdbcConnection();
+			connect = JdbcUtils.getJdbcConnection();
 
 			String sql = "insert into SMDTV_172(SMID,SMKEY,SMSDRIW,SMSDRIN,SMSDRIE,SMSDRIS,SMGRANULE,SMGEOMETRY,SMUSERID,SMLIBTILEID,SMAREA,SMPERIMETER,"
 					+ "ADMINCODE,KIND, NAME,PY,CITYADCODE,PROADCODE,CENTERX,CENTERY,LEVELFLAG,PROVINCENAME, CITYNAME)"
