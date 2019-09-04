@@ -1,20 +1,22 @@
-package com;
+package com.iobjectjava.javamain.test;
 
 import com.supermap.data.Workspace;
 	/**
- * @author  ×÷Õß E-mail: 
- * @date ´´½¨Ê±¼ä£º2019Äê1ÔÂ16ÈÕ ÏÂÎç5:49:30
+ * @author  ï¿½ï¿½ï¿½ï¿½ E-mail: 
+ * @date ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£º2019ï¿½ï¿½1ï¿½ï¿½16ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½5:49:30
  * @version 1.0 
  * @parameter 
  * @since  
  * @return  */
 
-public class JavaTest {
+public class WorkSpaceTest {
 	public static void main(String[] args) {
 		System.out.println("before-success11!");
 		
 		long start = System.currentTimeMillis();
-		new Workspace();
+		Workspace workspace =new Workspace();
+		//æ‰“å¼€ä¸€ä¸ªå›¾å½¢åŒ–çª—å£
+//		workspace.aboutBox();
 		long end = System.currentTimeMillis();
 		System.out.println("success-workspace!=" + (end - start));
 	}
