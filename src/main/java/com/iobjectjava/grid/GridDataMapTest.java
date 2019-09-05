@@ -5,6 +5,8 @@ import java.awt.Color;
 import com.supermap.data.DatasetGrid;
 import com.supermap.data.Datasource;
 import com.supermap.data.Maps;
+import com.supermap.data.PrjCoordSys;
+import com.supermap.data.PrjCoordSysType;
 import com.supermap.data.Workspace;
 import com.supermap.data.WorkspaceConnectionInfo;
 import com.supermap.data.WorkspaceType;
@@ -134,6 +136,8 @@ public class GridDataMapTest {
 		}
 //		m_workspace.open(info);
 		Datasource m_datasource = m_workspace.getDatasources().get(0);
+		// 删除指定名称的数据集
+//		m_datasource.getDatasets().delete("surf");
 		
 //		DataImport dataImport =new DataImport();
 //		String filePath ="C:/Users/Administrator/Desktop/aaaa.png";
@@ -158,6 +162,12 @@ public class GridDataMapTest {
 			importSettingGRD.setPyramidBuilt(true);
 			//设置 GRD 文件的忽略颜色值的模式,IGNORENONE 不忽略颜色值
 			importSettingGRD.setIgnoreMode(IgnoreMode.IGNORENONE);
+			
+			PrjCoordSys prjCoordSys = new PrjCoordSys();
+			  //地理经纬坐标
+			prjCoordSys.setType(PrjCoordSysType.PCS_EARTH_LONGITUDE_LATITUDE );
+			importSettingGRD.setTargetPrjCoordSys(prjCoordSys);
+			
 			System.out.println("======data======="+dataImport.getImportSettings().getCount());
 			dataImport.getImportSettings().add(importSettingGRD);
 			System.out.println("======data======="+dataImport.getImportSettings().getCount());
@@ -300,8 +310,10 @@ public class GridDataMapTest {
 		Datasource m_datasource = m_workspace.getDatasources().get(0);
 //		DatasetGrid m_datasetGrid = (DatasetGrid) m_datasource.getDatasets().get("Temp5000");
 //		DatasetGrid m_datasetGrid = (DatasetGrid) m_datasource.getDatasets().get("hail_n_days_annual_maxima");
-		DatasetGrid m_datasetGrid = (DatasetGrid) m_datasource.getDatasets().get("surf");
+//		DatasetGrid m_datasetGrid = (DatasetGrid) m_datasource.getDatasets().get("surf");
+		DatasetGrid m_datasetGrid = (DatasetGrid) m_datasource.getDatasets().get("surf_2");
 		
+//		m_datasetGrid.m_prjCoordSys
 		System.out.println("====栅格数据的总列数======="+m_datasetGrid.getColumnBlockCount());
 //		m_mapControl.getMap().setWorkspace(m_workspace);
 		//调整m_mapControl的状态
@@ -322,6 +334,7 @@ public class GridDataMapTest {
 				//初始化栅格分段专题图子项并设置各自的属性
 				ThemeGridRangeItem item0 = new ThemeGridRangeItem();
 				item0.setStart(-9999);
+//				item0.setStart(0);
 				item0.setEnd(m_datasetGrid.getMinValue());
 				item0.setColor(Color.CYAN);
 				item0.setVisible(true);
@@ -370,8 +383,8 @@ public class GridDataMapTest {
 //				maps.remove("Temp5001");
 //				maps.add("Temp5001",m_map.toXML());
 //				hail_n_days_annual_maxima
-				maps.remove("surf");
-				maps.add("surf",m_map.toXML());
+				maps.remove("surf_2");
+				maps.add("surf_2",m_map.toXML());
 				// 保存工作空间
 				m_workspace.save();
 				System.out.println("===setThemeRangeByData=====success==========");
