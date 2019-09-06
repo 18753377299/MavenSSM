@@ -1,4 +1,4 @@
-package vo;
+package com.iobjectjava.javamain.vo;
 
 public class MapData {
 	

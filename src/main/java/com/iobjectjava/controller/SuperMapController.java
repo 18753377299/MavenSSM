@@ -24,6 +24,7 @@ public class SuperMapController {
 	@Autowired
 	public SuperMapService superMapService;
 	
+	//进行面数据的测试
 	@RequestMapping(value="/testMapWarn",method= {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public AjaxResult testMapWarn(@RequestBody MapRequestInfoVo mapRequestInfoVo) {

@@ -1,4 +1,4 @@
-package com.iobjectjava.javamain.test;
+package com.iobjectjava.javamain.workspacetest;
 
 import com.supermap.data.Workspace;
 	/**

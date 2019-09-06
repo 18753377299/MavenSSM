@@ -10,8 +10,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
-import vo.WzTFLslj;
-
+import com.iobjectjava.javamain.vo.WzTFLslj;
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetType;
 import com.supermap.data.DatasetVector;
@@ -32,8 +31,6 @@ import com.supermap.data.PrjCoordSysType;
 import com.supermap.data.Recordset;
 import com.supermap.data.Workspace;
 
-import encode.EncryptSecretInfo;
-
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年5月8日 下午5:31:18
@@ -53,8 +50,8 @@ public class MapUtils {
 		iobjectJavaServer = "10.10.68.248:1521/orcl";
 		iobjectJavaDatabase = "riskcontrol";
 		iobjectJavaUser =  "riskcontrol";
-//		iobjectJavaPassword =  "riskcontrol";
-		iobjectJavaPassword =  "506963635f323031397269736b";
+		iobjectJavaPassword =  "riskcontrol";
+//		iobjectJavaPassword =  "506963635f323031397269736b";
 		
 		
 //		iobjectJavaServer = filePath.getString("iobjectJavaServer");
@@ -72,8 +69,8 @@ public class MapUtils {
 	       datasourceconnection.setServer(iobjectJavaServer);
 	       datasourceconnection.setDatabase(iobjectJavaDatabase);
 	       datasourceconnection.setUser(iobjectJavaUser); // riskcontrol_freeze
-//	       datasourceconnection.setPassword(iobjectJavaPassword);
-	       datasourceconnection.setPassword(EncryptSecretInfo.decodeSecretInfo(iobjectJavaPassword));
+	       datasourceconnection.setPassword(iobjectJavaPassword);
+//	       datasourceconnection.setPassword(EncryptSecretInfo.decodeSecretInfo(iobjectJavaPassword));
 		   datasourceconnection.setAlias("ORACLE");
 	      // 打开数据源
 	      Datasource datasource = workspace.getDatasources().open(datasourceconnection);
