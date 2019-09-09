@@ -1,4 +1,4 @@
-package dissolveDatasetVector;
+package com.iobjectjava.javamain.dissolveDatasetVector;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

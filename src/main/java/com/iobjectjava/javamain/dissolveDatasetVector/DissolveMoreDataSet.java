@@ -1,4 +1,4 @@
-package dissolveDatasetVector;
+package com.iobjectjava.javamain.dissolveDatasetVector;
 
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetType;

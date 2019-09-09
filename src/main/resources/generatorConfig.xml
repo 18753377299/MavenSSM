@@ -21,14 +21,24 @@
             <property name="addRemarkComments" value="true"/>
 <!--             <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss" /> -->
         </commentGenerator>
-		<!-- mysql数据库 -->
-        <jdbcConnection driverClass="${jdbc.driverClassName}"
-                        connectionURL="${jdbc.url}"
-                        userId="${jdbc.username}"
-                        password="${jdbc.password}">
+		<!-- master_mysql数据库 -->
+       <!--  <jdbcConnection driverClass="${jdbc.master.driverClassName}"
+                        connectionURL="${jdbc.master.url}"
+                        userId="${jdbc.master.username}"
+                        password="${jdbc.master.password}">
+            解决mysql驱动升级到8.0后不生成指定数据库代码的问题
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection> -->
+        
+        <!--salve_mysql数据库 -->
+        <jdbcConnection driverClass="${jdbc.slave.driverClassName}"
+                        connectionURL="${jdbc.slave.url}"
+                        userId="${jdbc.slave.username}"
+                        password="${jdbc.slave.password}">
 <!--             解决mysql驱动升级到8.0后不生成指定数据库代码的问题 -->
             <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
+        
         
 <!--         oracle数据库 -->
 <!--         <jdbcConnection driverClass="${jdbc.driverClassName.oracle}" -->
@@ -62,7 +72,7 @@
         </javaClientGenerator>
         
         <!--生成全部表tableName设为%-->
-        <table tableName="UtiWeight" domainObjectName="UtiWeight" enableInsert="true" enableCountByExample="false"
+        <table tableName="User" domainObjectName="User" enableInsert="true" enableCountByExample="false"
         		enableUpdateByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" selectByExampleQueryId="false"> 
 <!--             <generatedKey column="id" sqlStatement="MySql" identity="true"/> -->

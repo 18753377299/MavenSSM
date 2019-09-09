@@ -20,17 +20,53 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 <!-- 	</bean> -->
 
 <!-- 数据库链接信息 -->		
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="${jdbc.driverClassName}"/>
-		<property name="jdbcUrl" value="${jdbc.url}"/>
-		<property name="user" value="${jdbc.username}"/>
-		<property name="password" value="${jdbc.password}"/>
+<!-- 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"> -->
+<!-- 		<property name="driverClass" value="${jdbc.driverClassName}"/> -->
+<!-- 		<property name="jdbcUrl" value="${jdbc.url}"/> -->
+<!-- 		<property name="user" value="${jdbc.username}"/> -->
+<!-- 		<property name="password" value="${jdbc.password}"/> -->
 
-		<property name="maxPoolSize" value="${c3p0.pool.size.max}"/>
-		<property name="minPoolSize" value="${c3p0.pool.size.min}" />
-		<property name="initialPoolSize" value="${c3p0.pool.size.ini}"/>
-		<property name="acquireIncrement" value="${c3p0.pool.size.increment}"/>
+<!-- 		<property name="maxPoolSize" value="${c3p0.pool.size.max}"/> -->
+<!-- 		<property name="minPoolSize" value="${c3p0.pool.size.min}" /> -->
+<!-- 		<property name="initialPoolSize" value="${c3p0.pool.size.ini}"/> -->
+<!-- 		<property name="acquireIncrement" value="${c3p0.pool.size.increment}"/> -->
+<!-- 	</bean> -->
+<!--     	主数据源 -->
+	<bean id="masterDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.master.driverClassName}"/>
+		<property name="jdbcUrl" value="${jdbc.master.url}"/>
+		<property name="user" value="${jdbc.master.username}"/>
+		<property name="password" value="${jdbc.master.password}"/>
+
+		<property name="maxPoolSize" value="${c3p0.master.pool.size.max}"/>
+		<property name="minPoolSize" value="${c3p0.master.pool.size.min}" />
+		<property name="initialPoolSize" value="${c3p0.master.pool.size.ini}"/>
+		<property name="acquireIncrement" value="${c3p0.master.pool.size.increment}"/>
 	</bean>
+	<!--     	从数据源 -->
+	<bean id="slaveDataSource"  class="com.mchange.v2.c3p0.ComboPooledDataSource">
+       <property name="driverClass" value="${jdbc.slave..driverClassName}"/>
+		<property name="jdbcUrl" value="${jdbc.slave..url}"/>
+		<property name="user" value="${jdbc.slave..username}"/>
+		<property name="password" value="${jdbc.slave..password}"/>
+
+		<property name="maxPoolSize" value="${c3p0.slave..pool.size.max}"/>
+		<property name="minPoolSize" value="${c3p0.slave..pool.size.min}" />
+		<property name="initialPoolSize" value="${c3p0.slave..pool.size.ini}"/>
+		<property name="acquireIncrement" value="${c3p0.slave..pool.size.increment}"/>
+    </bean>
+	
+	<bean id="dataSource" class="com.common.db.datasource.DynamicDataSource">
+        <property name="targetDataSources">  
+              <map key-type="java.lang.String">  
+                  <!-- write -->
+                 <entry key="master" value-ref="masterDataSource"/>  
+                 <!-- read -->
+                 <entry key="slave" value-ref="slaveDataSource"/>  
+              </map>  
+        </property>  
+        <property name="defaultTargetDataSource" ref="masterDataSource"/>  
+    </bean>
 	
 	<!-- myBatis文件 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -81,7 +117,15 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		<aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
 	</aop:config>
 	
-	
-	
+	<!-- 配置数据库注解aop -->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+    <beans:bean id="manyDataSourceAspect" class="com.common.db.datasource.aspect.DataSourceAspect" />
+    <aop:config>
+        <aop:aspect id="c" ref="manyDataSourceAspect">
+            <aop:pointcut id="tx" expression="execution(* com.*.dao.*.*(..))"/>
+            <aop:before pointcut-ref="tx" method="before"/>
+        </aop:aspect>
+    </aop:config>
+    <!-- 配置数据库注解aop -->
 	
 </beans>

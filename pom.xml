@@ -53,10 +53,20 @@
 	    <version>0.9.0</version>
 	</dependency>	
 	<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>com.springsource.org.aspectj.weaver</artifactId>
-			<version>1.6.8.RELEASE</version>
+		<groupId>org.aspectj</groupId>
+		<artifactId>com.springsource.org.aspectj.weaver</artifactId>
+		<version>1.6.8.RELEASE</version>
 	</dependency>
+	<!-- <dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjrt</artifactId>
+	    <version>1.6.12</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjweaver</artifactId>
+	    <version>1.6.12</version>
+	</dependency> -->
 	<!-- 	mybatis,版本对应 很重要-->
 	<dependency>
 		<groupId>org.mybatis</groupId>
