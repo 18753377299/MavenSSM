@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.common.dao.RiskReportAssessMapper;
 import com.common.dao.RiskReportFireDangerMapper;
 import com.common.dao.RiskReportMainMapper;
+import com.common.dao.UserMapper;
 import com.common.dao.UtiWeightMapper;
 import com.common.service.RiskCommonService;
 import com.common.utils.RiskCommonMethodUtils;
@@ -21,6 +22,7 @@ import com.riskfire.dao.RiskFireDao;
 import com.riskfire.service.RiskFireService;
 import com.vo.RiskReportAssess;
 import com.vo.RiskReportMain;
+import com.vo.User;
 import com.vo.UtiFactor;
 import com.vo.UtiFormula;
 import com.vo.UtiWeight;
@@ -52,6 +54,9 @@ public class RiskFireServiceImpl implements RiskFireService{
 	
 	@Autowired
 	RiskReportFireDangerMapper  riskReportFireDangerMapper;
+	
+	@Autowired
+	UserMapper userMapper;
 	
 	
 	/**
@@ -210,5 +215,18 @@ public class RiskFireServiceImpl implements RiskFireService{
 		return ajaxResult;
 	}
 	
-	
+	// 测试
+	public  AjaxResult querySlaveAndMasterTable(){
+		AjaxResult ajaxResult =new AjaxResult();
+		User user =userMapper.selectByPrimaryKey("3");
+//		long index = 1L;
+//		UtiWeight  utiWeight= utiWeightMapper.selectByPrimaryKey(index);
+		return ajaxResult;
+	}
+	public  AjaxResult querySlaveAndMasterTable2(){
+		AjaxResult ajaxResult =new AjaxResult();
+		long index = 1L;
+		UtiWeight  utiWeight= utiWeightMapper.selectById(index);
+		return ajaxResult;
+	}
 } 

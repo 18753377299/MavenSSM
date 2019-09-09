@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.iobjectjava.javamain.common.JdbcUtils;
+import com.common.utils.JdbcUtils;
 
 
 public class MysqlConnect {

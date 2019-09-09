@@ -7,11 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.common.po.Gps;
-<<<<<<< HEAD
 import com.common.utils.MapTransferUtils;
-=======
-import com.iobjectjava.javamain.common.MapTransferUtils;
->>>>>>> 821f61fa5b9d7e6ab21a71a9faa4aabdeae3ecaa
+
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年5月10日 下午1:56:27

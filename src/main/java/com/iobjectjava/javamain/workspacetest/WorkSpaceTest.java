@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/main/java/com/iobjectjava/javamain/workspacetest/WorkSpaceTest.java
 package com.iobjectjava.javamain.workspacetest;
-=======
-package com.iobjectjava.javamain.com;
->>>>>>> 821f61fa5b9d7e6ab21a71a9faa4aabdeae3ecaa:src/main/java/com/iobjectjava/javamain/com/JavaTest.java
 
 import com.supermap.data.Workspace;
 	/**

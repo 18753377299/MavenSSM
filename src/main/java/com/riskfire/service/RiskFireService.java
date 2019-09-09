@@ -20,4 +20,8 @@ public interface RiskFireService {
 	/*分页查询*/
 	public AjaxResult  queryRiskReportMainPage(RiskRequestVo riskRequestVo);
 	
+	public  AjaxResult querySlaveAndMasterTable();
+	
+	public  AjaxResult querySlaveAndMasterTable2();
+	
 }

@@ -9,6 +9,7 @@ public interface UserMapper {
     int insert(User record);
 
     int insertSelective(User record);
+    
     @DataSource("slave")
     User selectByPrimaryKey(String userId);
 

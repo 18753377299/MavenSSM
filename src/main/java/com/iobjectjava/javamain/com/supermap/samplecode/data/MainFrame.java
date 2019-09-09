@@ -1,4 +1,4 @@
-package com.supermap.samplecode.data;
+package com.iobjectjava.javamain.com.supermap.samplecode.data;
 
 import java.awt.BorderLayout;
 import java.awt.Frame;

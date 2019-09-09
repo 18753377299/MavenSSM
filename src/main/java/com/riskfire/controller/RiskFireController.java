@@ -103,6 +103,9 @@ public class RiskFireController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("riskModel", "001");
 		map.put("dangeType", "01,02");
+		riskFireService.querySlaveAndMasterTable();
+		
+		riskFireService.querySlaveAndMasterTable2();
 //		List<UtiFactor>  utiFactorList = riskFireService.getUtiFactorById(map);
 		return ajaxResult;
 	}

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.picc.riskctrl.map.vo.exactsearch;
 
 /**
@@ -10,13 +7,13 @@ package com.picc.riskctrl.map.vo.exactsearch;
  * @date 2017年11月16日
  */
 public class Pinyin {
-private String list;
-
-public String getList() {
-	return list;
-}
-
-public void setList(String list) {
-	this.list = list;
-}
+	private String list;
+	
+	public String getList() {
+		return list;
+	}
+	
+	public void setList(String list) {
+		this.list = list;
+	}
 }

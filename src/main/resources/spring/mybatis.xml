@@ -45,15 +45,15 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	</bean>
 	<!--     	从数据源 -->
 	<bean id="slaveDataSource"  class="com.mchange.v2.c3p0.ComboPooledDataSource">
-       <property name="driverClass" value="${jdbc.slave..driverClassName}"/>
-		<property name="jdbcUrl" value="${jdbc.slave..url}"/>
-		<property name="user" value="${jdbc.slave..username}"/>
-		<property name="password" value="${jdbc.slave..password}"/>
+       <property name="driverClass" value="${jdbc.slave.driverClassName}"/>
+		<property name="jdbcUrl" value="${jdbc.slave.url}"/>
+		<property name="user" value="${jdbc.slave.username}"/>
+		<property name="password" value="${jdbc.slave.password}"/>
 
-		<property name="maxPoolSize" value="${c3p0.slave..pool.size.max}"/>
-		<property name="minPoolSize" value="${c3p0.slave..pool.size.min}" />
-		<property name="initialPoolSize" value="${c3p0.slave..pool.size.ini}"/>
-		<property name="acquireIncrement" value="${c3p0.slave..pool.size.increment}"/>
+		<property name="maxPoolSize" value="${c3p0.slave.pool.size.max}"/>
+		<property name="minPoolSize" value="${c3p0.slave.pool.size.min}" />
+		<property name="initialPoolSize" value="${c3p0.slave.pool.size.ini}"/>
+		<property name="acquireIncrement" value="${c3p0.slave.pool.size.increment}"/>
     </bean>
 	
 	<bean id="dataSource" class="com.common.db.datasource.DynamicDataSource">
@@ -120,10 +120,11 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	
 	<!-- 配置数据库注解aop -->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-    <beans:bean id="manyDataSourceAspect" class="com.common.db.datasource.aspect.DataSourceAspect" />
+    <bean id="manyDataSourceAspect" class="com.common.db.datasource.aspect.DataSourceAspect" />
     <aop:config>
         <aop:aspect id="c" ref="manyDataSourceAspect">
-            <aop:pointcut id="tx" expression="execution(* com.*.dao.*.*(..))"/>
+<!--             <aop:pointcut id="tx" expression="execution(* com.*.slave.*.service..*Impl.*(..))"/> -->
+            <aop:pointcut id="tx" expression="execution(* com.**.dao.*.*(..))"/>
             <aop:before pointcut-ref="tx" method="before"/>
         </aop:aspect>
     </aop:config>

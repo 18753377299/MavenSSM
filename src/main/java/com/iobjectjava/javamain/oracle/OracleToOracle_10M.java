@@ -5,11 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-<<<<<<< HEAD
 import com.common.utils.JdbcUtils;
-=======
-import com.iobjectjava.javamain.common.JdbcUtils;
->>>>>>> 821f61fa5b9d7e6ab21a71a9faa4aabdeae3ecaa
 
 
 public class OracleToOracle_10M {

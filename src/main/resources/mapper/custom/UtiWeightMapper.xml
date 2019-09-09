@@ -13,5 +13,9 @@
 			and riskModel= #{riskModel}
 		</if> 
   </sql>
+<!--   根据ID查询类的信息 -->
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select * from utiweight  where id = #{id,jdbcType=BIGINT}
+  </select>
   
 </mapper>

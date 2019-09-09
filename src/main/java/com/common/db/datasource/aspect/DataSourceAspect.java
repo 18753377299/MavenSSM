@@ -33,7 +33,6 @@ public class DataSourceAspect {
                 DynamicDataSourceHolder.putDataSource(data.value());
                 System.out.println(data.value());
             }
-            
         } catch (Exception e) {
             // TODO: handle exception
         }

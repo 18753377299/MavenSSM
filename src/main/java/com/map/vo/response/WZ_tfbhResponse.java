@@ -2,14 +2,14 @@ package com.picc.riskctrl.map.vo.response;
 
 import java.util.List;
 
-import com.picc.riskctrl.map.vo.request.WZ_tfbh;
+import com.map.vo.request.WZ_tfbh;
 
 public class WZ_tfbhResponse {
 	private  List<WZ_tfbh> resultList;
 	private Integer total;
 	private Integer pageNumber;
 	private Integer pageSize;
-	public List<WZ_tfbh> getResultList() {
+	public List<WZ_tfbh> getResultList() {o
 		return resultList;
 	}
 	public void setResultList(List<WZ_tfbh> resultList) {

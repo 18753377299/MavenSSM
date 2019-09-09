@@ -90,8 +90,8 @@ public class OperateDataSource {
       datasourceconnection.setServer(iobjectJavaServer);
       datasourceconnection.setDatabase(iobjectJavaDatabase);
       datasourceconnection.setUser(iobjectJavaUser); // riskcontrol_freeze
-//      datasourceconnection.setPassword(iobjectJavaPassword);
-      datasourceconnection.setPassword(EncryptSecretInfo.decodeSecretInfo(iobjectJavaPassword));
+      datasourceconnection.setPassword(iobjectJavaPassword);
+//      datasourceconnection.setPassword(EncryptSecretInfo.decodeSecretInfo(iobjectJavaPassword));
       datasourceconnection.setAlias("ORACLE");
       // 打开数据源
       Datasource datasource = workspace.getDatasources().open(datasourceconnection);
