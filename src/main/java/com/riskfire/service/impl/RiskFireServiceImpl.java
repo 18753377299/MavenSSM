@@ -13,11 +13,13 @@ import com.common.dao.RiskReportFireDangerMapper;
 import com.common.dao.RiskReportMainMapper;
 import com.common.dao.UtiWeightMapper;
 import com.common.service.RiskCommonService;
+import com.common.utils.RiskCommonMethodUtils;
 import com.po.request.RiskRequestVo;
 import com.po.response.AjaxResult;
 import com.po.response.RiskGradeVo;
 import com.riskfire.dao.RiskFireDao;
 import com.riskfire.service.RiskFireService;
+import com.vo.RiskReportAssess;
 import com.vo.RiskReportMain;
 import com.vo.UtiFactor;
 import com.vo.UtiFormula;
@@ -66,10 +68,16 @@ public class RiskFireServiceImpl implements RiskFireService{
 			// 打分
 			RiskGradeVo riskGradeVo =this.assessScore(riskRequestVo);
 			RiskReportMain riskReportMain = riskRequestVo.getRiskReportMainVo();
+			riskReportMain.setRiskReportAssess(riskGradeVo.getRiskReportAssess());
 			//进行保存
 			riskReportMainMapper.insertSelective(riskReportMain);
+			//给大对象的公共字段设置统一值
+			RiskCommonMethodUtils.setValueforSpecificField(riskReportMain, "RiskFileNo", riskReportMain.getRiskFileNo());
+			
+			RiskReportAssess riskReportAssess =riskGradeVo.getRiskReportAssess();
+			riskReportAssess.setRiskFileNo(riskReportMain.getRiskFileNo());
 			//保存echarts图表分值信息
-			riskReportAssessMapper.insertSelective(riskGradeVo.getRiskReportAssess());
+			riskReportAssessMapper.insertSelective(riskReportAssess);
 			//保存火灾风险信息
 			riskReportFireDangerMapper.insertBatchFireDanger(riskRequestVo.getRiskReportFireDangerList());
 			
@@ -191,7 +199,14 @@ public class RiskFireServiceImpl implements RiskFireService{
 		map.put("offset", (riskRequestVo.getPageNo()-1)*riskRequestVo.getPageSize());
 		map.put("pageSize", riskRequestVo.getPageSize());
 		map.put("riskReportMainVo", riskRequestVo.getRiskReportMainVo());
+		// 进行分页查询
 		List<RiskReportMain> riskReportMainList =riskReportMainMapper.queryRiskReportMainPage(map);
+		 //根据条件查询出总的条数
+		Integer count = riskReportMainMapper.queryRiskReportMainCount(map);
+		Map<String, Object> mapPage= new HashMap<String, Object>();
+		mapPage.put("count", count);
+		ajaxResult.setData(riskReportMainList);
+		ajaxResult.setMap(mapPage);
 		return ajaxResult;
 	}
 	

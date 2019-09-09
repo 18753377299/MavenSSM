@@ -1,4 +1,3 @@
-
 package com.iobjectjava.javamain.createDataSource;
 
 import java.sql.Connection;
@@ -11,8 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import vo.WzTFLslj;
-
+import com.iobjectjava.javamain.common.MapUtils;
+import com.iobjectjava.javamain.vo.WzTFLslj;
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetVector;
 import com.supermap.data.Datasource;
@@ -23,7 +22,6 @@ import com.supermap.data.Geometry;
 import com.supermap.data.Point2D;
 import com.supermap.data.Recordset;
 import com.supermap.data.Workspace;
-import common.MapUtils;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年5月7日 上午9:42:20

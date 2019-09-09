@@ -1,4 +1,4 @@
-package createDataSource;
+package com.iobjectjava.javamain.createDataSource;
 
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetType;

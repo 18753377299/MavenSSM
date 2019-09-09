@@ -31,7 +31,7 @@
   		</where>
   	</select>
   	<!-- 查询出总数 -->
-  	<select id="queryRiskReportMainCount"  parameterType="java.util.HashMap" resultMap="ResultMapWithBLOBs">
+  	<select id="queryRiskReportMainCount"  parameterType="java.util.HashMap" resultType="Integer">
   		select count(*) from  riskreport_main 
   		<where>
   			<include refid="queryRiskReportMainPage_sql"></include>
@@ -47,4 +47,5 @@
   		      and riskCode =#{riskReportMainVo.riskCode} 
   		 </if>
   	</sql>
+  	
 </mapper>

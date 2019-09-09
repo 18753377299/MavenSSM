@@ -1,8 +1,8 @@
-package createDataSource;
+package com.iobjectjava.javamain.createDataSource;
 
+import com.iobjectjava.javamain.common.MapUtils;
 import com.supermap.data.DatasourceConnectionInfo;
 import com.supermap.data.Workspace;
-import common.MapUtils;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年6月5日 下午3:54:26
