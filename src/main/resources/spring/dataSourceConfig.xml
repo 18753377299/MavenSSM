@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:tx="http://www.springframework.org/schema/tx" 
+xmlns:aop="http://www.springframework.org/schema/aop" 
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx.xsd
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<!-- 配置数据源 -->
+<!-- 	<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource"> -->
+<!-- 		<property name="driverClass" value="${jdbc_driverClassName}"/> -->
+<!-- 		<property name="url" value="${jdbc_url}" /> -->
+<!-- 		<property name="username" value="${jdbc_username}" /> -->
+<!-- 		<property name="password" value="${jdbc_password}" /> -->
+<!-- 	</bean> -->
+
+<!-- 数据库链接信息 -->		
+<!-- 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"> -->
+<!-- 		<property name="driverClass" value="${jdbc.driverClassName}"/> -->
+<!-- 		<property name="jdbcUrl" value="${jdbc.url}"/> -->
+<!-- 		<property name="user" value="${jdbc.username}"/> -->
+<!-- 		<property name="password" value="${jdbc.password}"/> -->
+
+<!-- 		<property name="maxPoolSize" value="${c3p0.pool.size.max}"/> -->
+<!-- 		<property name="minPoolSize" value="${c3p0.pool.size.min}" /> -->
+<!-- 		<property name="initialPoolSize" value="${c3p0.pool.size.ini}"/> -->
+<!-- 		<property name="acquireIncrement" value="${c3p0.pool.size.increment}"/> -->
+<!-- 	</bean> -->
+<!--     	主数据源 -->
+	<bean id="masterDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.master.driverClassName}"/>
+		<property name="jdbcUrl" value="${jdbc.master.url}"/>
+		<property name="user" value="${jdbc.master.username}"/>
+		<property name="password" value="${jdbc.master.password}"/>
+
+		<property name="maxPoolSize" value="${c3p0.master.pool.size.max}"/>
+		<property name="minPoolSize" value="${c3p0.master.pool.size.min}" />
+		<property name="initialPoolSize" value="${c3p0.master.pool.size.ini}"/>
+		<property name="acquireIncrement" value="${c3p0.master.pool.size.increment}"/>
+	</bean>
+	<!--     	从数据源 -->
+	<bean id="slaveDataSource"  class="com.mchange.v2.c3p0.ComboPooledDataSource">
+       <property name="driverClass" value="${jdbc.slave.driverClassName}"/>
+		<property name="jdbcUrl" value="${jdbc.slave.url}"/>
+		<property name="user" value="${jdbc.slave.username}"/>
+		<property name="password" value="${jdbc.slave.password}"/>
+
+		<property name="maxPoolSize" value="${c3p0.slave.pool.size.max}"/>
+		<property name="minPoolSize" value="${c3p0.slave.pool.size.min}" />
+		<property name="initialPoolSize" value="${c3p0.slave.pool.size.ini}"/>
+		<property name="acquireIncrement" value="${c3p0.slave.pool.size.increment}"/>
+    </bean>
+	
+	<bean id="dataSource" class="com.common.db.datasource.DynamicDataSource">
+        <property name="targetDataSources">  
+              <map key-type="java.lang.String">  
+                  <!-- write -->
+                 <entry key="master" value-ref="masterDataSource"/>  
+                 <!-- read -->
+                 <entry key="slave" value-ref="slaveDataSource"/>  
+              </map>  
+        </property>  
+        <property name="defaultTargetDataSource" ref="masterDataSource"/>  
+    </bean>
+    
+    <bean id="dataSources" class="com.common.db.datasource.DataSources">
+		<property name="dataSources">
+			<map key-type="java.lang.String">
+				<entry key="master">
+					<list>
+						<value>master</value>
+					</list>
+				</entry>
+				<entry key="slave">
+					<list>
+						<value>slave</value>
+					</list>
+				</entry>
+			</map>
+		</property>
+	</bean>
+    
+    
+</beans>

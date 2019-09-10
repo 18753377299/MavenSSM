@@ -215,7 +215,7 @@ public class RiskFireServiceImpl implements RiskFireService{
 		return ajaxResult;
 	}
 	
-	// 测试
+	// 从数据源
 	public  AjaxResult querySlaveAndMasterTable(){
 		AjaxResult ajaxResult =new AjaxResult();
 		User user =userMapper.selectByPrimaryKey("3");
@@ -223,6 +223,7 @@ public class RiskFireServiceImpl implements RiskFireService{
 //		UtiWeight  utiWeight= utiWeightMapper.selectByPrimaryKey(index);
 		return ajaxResult;
 	}
+	// 主数据源
 	public  AjaxResult querySlaveAndMasterTable2(){
 		AjaxResult ajaxResult =new AjaxResult();
 		long index = 1L;

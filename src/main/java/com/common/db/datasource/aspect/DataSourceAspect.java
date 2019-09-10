@@ -17,8 +17,8 @@ import com.common.db.datasource.holder.DynamicDataSourceHolder;
  * @return  */
 public class DataSourceAspect {
 
-    public void before(JoinPoint point)
-    {
+    public void before(JoinPoint point){
+    	
         Object target = point.getTarget();
         String method = point.getSignature().getName();
 

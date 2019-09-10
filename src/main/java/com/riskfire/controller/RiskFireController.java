@@ -94,9 +94,6 @@ public class RiskFireController {
 	}
 	
 	
-	
-	
-	
 	@RequestMapping(value="/test",method={RequestMethod.POST,RequestMethod.GET})
 	public AjaxResult getInfo(){
 		AjaxResult ajaxResult =new AjaxResult();
