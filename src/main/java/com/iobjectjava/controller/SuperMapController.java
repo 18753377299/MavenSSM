@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iobjectjava.service.SuperMapService;
+import com.iobjectjava.vo.ReceivePolygonVector;
 import com.map.vo.request.MapRequestInfoVo;
 import com.po.response.AjaxResult;
 	/**
@@ -36,12 +37,29 @@ public class SuperMapController {
 		}
 		return ajaxResult;
 	}
+	
 	@RequestMapping(value="/operateWorkSpace",method= {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public AjaxResult operateWorkSpace() {
 		AjaxResult ajaxResult =new AjaxResult();
 		
 		superMapService.operateWorkSpace();
+		
+		return ajaxResult;
+	}
+	/**
+     * @Description 操作台风面
+     * @Author 
+     * @param obj
+     * @return void
+     * @Date 20190917
+     */
+	@RequestMapping(value="/operateEarlyWarn",method= {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public AjaxResult operateEarlyWarn(@RequestBody ReceivePolygonVector receivePolygonVector) {
+		AjaxResult ajaxResult =new AjaxResult();
+		
+		ajaxResult = superMapService.operateEarlyWarn(receivePolygonVector);
 		
 		return ajaxResult;
 	}

@@ -1,5 +1,6 @@
 package com.iobjectjava.service;
 
+import com.iobjectjava.vo.ReceivePolygonVector;
 import com.po.response.AjaxResult;
 	/**
  * @author  作者 E-mail: 
@@ -13,5 +14,7 @@ public interface SuperMapService {
 	public AjaxResult testMapWarn(String tfbh);
 	
 	public  void operateWorkSpace();
+	
+	public  AjaxResult operateEarlyWarn(ReceivePolygonVector receivePolygonVector);
 	
 }

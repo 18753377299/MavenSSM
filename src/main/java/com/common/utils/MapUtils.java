@@ -76,15 +76,16 @@ public class MapUtils {
     	/*获取连接iobjectjava的数据信息*/
 		ResourceBundle filePath = ResourceBundle.getBundle("config.map", Locale.getDefault());
 		 // 定义数据源连接信息，假设以下所有数据源设置都存在
-//		iobjectJavaServer = filePath.getString("iobjectJavaServer");
-//		iobjectJavaDatabase = filePath.getString("iobjectJavaDatabase");
-//		iobjectJavaUser = filePath.getString("iobjectJavaUser");
-//		iobjectJavaPassword = filePath.getString("iobjectJavaPassword");
+		iobjectJavaServer = filePath.getString("iobjectJavaServer");
+		iobjectJavaDatabase = filePath.getString("iobjectJavaDatabase");
+		iobjectJavaUser = filePath.getString("iobjectJavaUser");
+		iobjectJavaPassword = filePath.getString("iobjectJavaPassword");
 		
-		iobjectJavaServer = "10.10.68.248:1521/orcl";
-		iobjectJavaDatabase = "riskcontrol_freeze";
-		iobjectJavaUser = "riskcontrol_freeze";
-		iobjectJavaPassword = "Picc_2019risk";
+//		iobjectJavaServer = "10.10.68.248:1521/orcl";
+//		iobjectJavaDatabase = "riskcontrol_freeze";
+//		iobjectJavaUser = "riskcontrol_freeze";
+//		iobjectJavaPassword = "Picc_2019risk";
+		
     }
     
 	/**连接数据源*/
@@ -442,35 +443,38 @@ public class MapUtils {
      * @Date 20190509
      */
     public static Map<String,Object> getResultByReflect(Object obj){
-
-        Map<String, Object> map = new HashMap<>();
-        Field[] fields = obj.getClass().getDeclaredFields();
-        for(Field field:fields){
-            if (field.getName().equals("serialVersionUID")
-                    || field.getType().getName().equals("java.util.List")){
-                continue;
-            }
-            String fieldName = field.getName();
-            fieldName = fieldName.substring(0, 1).toUpperCase()+fieldName.substring(1);
-            try {
-                Method method = obj.getClass().getMethod("get"+fieldName, new Class[]{});
-                Object invokeResult = method.invoke(obj);
-                //假如为日期类型，需要处理后再进行放入map中
-                if(field.getType().getName().equals("java.util.Date")){
-                	SimpleDateFormat  format = new SimpleDateFormat("yyyy/MM/dd");
-     				try {
-     					invokeResult = format.parse(format.format(invokeResult));
-     				} catch (ParseException e) {
-     					// TODO Auto-generated catch block
-     					e.printStackTrace();
-     				}
+    	Map<String, Object> map = new HashMap<>();
+    	/*判断对象是否为空*/
+    	if(null!=obj){
+            Field[] fields = obj.getClass().getDeclaredFields();
+            for(Field field:fields){
+                if (field.getName().equals("serialVersionUID")
+                        || field.getType().getName().equals("java.util.List")){
+                    continue;
                 }
-                map.put(field.getName(), invokeResult);
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new RuntimeException("构建插值数据异常");
+                String fieldName = field.getName();
+                fieldName = fieldName.substring(0, 1).toUpperCase()+fieldName.substring(1);
+                try {
+                    Method method = obj.getClass().getMethod("get"+fieldName, new Class[]{});
+                    Object invokeResult = method.invoke(obj);
+                    //假如为日期类型，需要处理后再进行放入map中
+                    if(field.getType().getName().equals("java.util.Date")){
+                    	SimpleDateFormat  format = new SimpleDateFormat("yyyy/MM/dd");
+         				try {
+         					invokeResult = format.parse(format.format(invokeResult));
+         				} catch (ParseException e) {
+         					// TODO Auto-generated catch block
+         					e.printStackTrace();
+         				}
+                    }
+                    map.put(field.getName(), invokeResult);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    throw new RuntimeException("构建插值数据异常");
+                }
             }
-        }
+    	}
+        
         return map;
     }
     
