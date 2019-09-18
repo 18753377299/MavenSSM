@@ -1,6 +1,6 @@
 package com.iobjectjava.service.impl;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -108,14 +108,15 @@ public class SuperMapServiceImpl implements  SuperMapService{
      */
 	public  AjaxResult operateEarlyWarn(ReceivePolygonVector receivePolygonVector){
 		AjaxResult ajaxResult =new AjaxResult();
+		
+		String dataSetName = dataEarlyWarn+UUID.randomUUID().toString().replace("-", "");
 		Workspace workspace = new Workspace();
 		// 定义数据源连接信息，假设以下所有数据源设置都存在
 	    DatasourceConnectionInfo datasourceconnection = new  DatasourceConnectionInfo();
 		Datasource datasource = MapUtils.connectDataSource(workspace,datasourceconnection);
 		AttributeVo attributeVo =new AttributeVo();
 		//创建面数据集
-		DatasetVector datasetVector_new = MapUtils.createDataSet(dataEarlyWarn+UUID.randomUUID().toString().replace("-", ""),
-				datasource,attributeVo);
+		DatasetVector datasetVector_new = MapUtils.createDataSet(dataSetName,datasource,attributeVo);
 		// 将面数据增加到面数据集中
 		// 新增的数据集
 		Recordset recordset_new = datasetVector_new.getRecordset(false, CursorType.DYNAMIC);
@@ -165,6 +166,90 @@ public class SuperMapServiceImpl implements  SuperMapService{
 		}
 		return recordset_new;
 	}
-	
+	/**
+     * @Description 将数据源中的数据集进行 在页面展示
+     * @Author 
+     * @param obj
+     * @return AjaxResult
+     * @Date 20190918
+     */
+	public AjaxResult operateEarlyWarnArea(){
+		AjaxResult ajaxResult =new AjaxResult();
+		
+		String dataSetName = "TyphoonEarlyWarna13708bee20440909b34bf2b7866529e";
+		Workspace workspace = new Workspace();
+		// 定义数据源连接信息，假设以下所有数据源设置都存在
+	    DatasourceConnectionInfo datasourceconnection = new  DatasourceConnectionInfo();
+		Datasource datasource = MapUtils.connectDataSource(workspace,datasourceconnection);
+		DatasetVector datasetVector_new = (DatasetVector)datasource.getDatasets().get(dataSetName);
+		// 新增的数据集
+		Recordset recordset_new = datasetVector_new.getRecordset(false, CursorType.DYNAMIC);
+//		List<Geometry> geometryList = new ArrayList<Geometry>();
+		List<FeatureVo>  featureVoList= this.getPolygonVector(recordset_new);
+		ajaxResult.setData(featureVoList);
+		ajaxResult.setStatus(1);
+	 // 关闭地图资源
+	    MapUtils.closeMapResource(recordset_new,null,datasetVector_new,null,null,null,
+	    		datasource,datasourceconnection,workspace);
+	    return ajaxResult;
+	}
+	/**
+     * @Description 获取返回的对象的值
+     * @Author 
+     * @param obj
+     * @return List<FeatureVo>
+     * @Date 20190918
+     */
+	public List<FeatureVo> getPolygonVector(Recordset recordset_new){
+//		ReceivePolygonVector receivePolygonVector =new ReceivePolygonVector();
+		List<FeatureVo> featureVoList =new ArrayList<FeatureVo>();
+		if(recordset_new != null){
+			Map<Integer,Feature>  features= recordset_new.getAllFeatures();
+			for(Feature feature:features.values()){
+				FeatureVo featureVo  =new FeatureVo();
+	    		Geometry geometry= feature.getGeometry(); 
+	    		String geometryJson = Toolkit.GemetryToGeoJson(geometry);
+	    		featureVo.setGeometry(geometryJson);
+	    		AttributeVo attributeVo =  this.setAttributeVo(feature);
+	    		featureVo.setAttributes(attributeVo);
+	    		featureVoList.add(featureVo);
+	    		if(feature!=null){
+	    			feature.dispose();
+	    		}
+			}
+		}
+		return  featureVoList;
+	} 
+	/**
+     * @Description 将字段中值设置到对象中去
+     * @Author 
+     * @param obj
+     * @return AttributeVo
+     * @Date 20190918
+     */
+	public AttributeVo setAttributeVo(Feature feature){
+		AttributeVo attributeVo =new AttributeVo();
+		if(feature!=null){
+			String areaDesc = feature.getString("areaDesc");
+			String description = feature.getString("description");
+			String eventType = feature.getString("eventType");
+			String headline = feature.getString("headline");
+			String identifier = feature.getString("identifier");
+			String sendTime = feature.getString("sendTime");
+			String severity = feature.getString("severity");
+			String x = feature.getString("x");
+			String y = feature.getString("y");
+			attributeVo.setAreaDesc(areaDesc);
+			attributeVo.setDescription(description);
+			attributeVo.setEventType(eventType);
+			attributeVo.setHeadline(headline);
+			attributeVo.setIdentifier(identifier);
+			attributeVo.setSendTime(sendTime);
+			attributeVo.setSeverity(severity);
+			attributeVo.setX(x);
+			attributeVo.setY(y);
+		}
+		return attributeVo;
+	}
 	
 }

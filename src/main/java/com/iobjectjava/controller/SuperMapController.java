@@ -64,5 +64,22 @@ public class SuperMapController {
 		return ajaxResult;
 	}
 	
+	/**
+     * @Description 操作台风面
+     * @Author 
+     * @param obj
+     * @return void
+     * @Date 20190917
+     */
+	@RequestMapping(value="/operateEarlyWarnArea",method= {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public AjaxResult operateEarlyWarnArea() {
+		AjaxResult ajaxResult =new AjaxResult();
+		
+		ajaxResult = superMapService.operateEarlyWarnArea();
+		
+		return ajaxResult;
+	}
+	
 	
 }

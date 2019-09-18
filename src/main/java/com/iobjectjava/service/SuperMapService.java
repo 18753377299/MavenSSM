@@ -17,4 +17,6 @@ public interface SuperMapService {
 	
 	public  AjaxResult operateEarlyWarn(ReceivePolygonVector receivePolygonVector);
 	
+	public AjaxResult operateEarlyWarnArea();
+	
 }
