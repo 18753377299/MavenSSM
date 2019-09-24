@@ -16,7 +16,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		try {
-			
+			System.out.println(System.currentTimeMillis());
 			// TODO Auto-generated method stub
 			List<String> riskAssess = new ArrayList<String>();
 			riskAssess.addAll(Arrays.asList("12.2", "32.93", "28.05", "9.76",

@@ -8,7 +8,7 @@ import com.common.db.datasource.holder.DynamicDataSourceHolder;
  * @date 创建时间：2019年9月9日 下午4:34:04
  * @version 1.0  
  * @parameter 
- * @since 创建双数据源
+ * @since  创建双数据源
  * @return  */
 public class DynamicDataSource extends AbstractRoutingDataSource{
 

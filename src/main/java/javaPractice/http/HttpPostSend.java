@@ -25,7 +25,7 @@ public class HttpPostSend {
 
 	
 	/**
-	 * @功能：获取气象局栅格数据
+	 * @功能：获取气象局栅格数据,success: 看看是不是因为内网的原因，家中的网络能够成功的调用这个接口，并能够获取到信息，数据格式和之前商定的不太统一，需要确认一下
 	 * @param 
 	 * @return void
 	 * @author liqiankun
@@ -39,7 +39,10 @@ public class HttpPostSend {
 //		String responseJson =this.doGet(url, param);
 		
 		String url = "http://60.205.166.252/renbaofile/FileProvider/downloadFileByJson?secretuid=433f3dd6-d9eb-11e9-9637-00163e30bfa0&secretkey=YYUTAKPEV6Y4F3P8NQZD3CWF5J&Content-type=application/text";
-		String jsonString = "{'pattern': 'name','type': 'fst','files': [{'file_name': 'Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201909210800.json'}]}";
+		/*json文件能够成功*/
+//		String jsonString = "{'pattern': 'name','type': 'fst','files': [{'file_name': 'Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201909250800.json'}]}";
+		/*asc文件，也能够成功，需要将asc文件内容直接输出到一个asc文件中，获取直接生成栅格数据*/
+		String jsonString = "{'pattern': 'name','type': 'fst','files': [{'file_name': 'Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201909250800.asc'}]}";
 
 		//		?clearingFlag=1
 //		String url = "http://11.205.243.35:8022/riskcontrol/riskmap/testHttpPost";

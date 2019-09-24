@@ -23,7 +23,7 @@ import net.sf.json.JSONObject;
  * @parameter 
  * @since  
  * @return  */
-public class ReadJson {
+public class ReadJson { 
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
