@@ -1,17 +1,11 @@
 package javaPractice.http;
 
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.charset.Charset;
 
 import org.apache.commons.io.IOUtils;
-import org.springframework.http.HttpStatus;
-import org.springframework.util.StreamUtils;
-
-import sun.net.www.http.HttpClient;
 
 import com.po.response.AjaxResult;
 	/**
@@ -42,7 +36,7 @@ public class HttpPostSend {
 		/*json文件能够成功*/
 //		String jsonString = "{'pattern': 'name','type': 'fst','files': [{'file_name': 'Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201909250800.json'}]}";
 		/*asc文件，也能够成功，需要将asc文件内容直接输出到一个asc文件中，获取直接生成栅格数据*/
-		String jsonString = "{'pattern': 'name','type': 'fst','files': [{'file_name': 'Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201909250800.asc'}]}";
+		String jsonString = "{'pattern': 'name','type': 'fst','files': [{'file_name': 'Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201909270800.asc'}]}";
 
 		//		?clearingFlag=1
 //		String url = "http://11.205.243.35:8022/riskcontrol/riskmap/testHttpPost";
@@ -69,6 +63,10 @@ public class HttpPostSend {
         String jwtToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJ1c2VyTmFtZVwiOlwi6aOO5o6n5YWo5Zu9XCIsXCJyaXNrQ29kZVwiOm51bGwsXCJjb21Db2RlXCI6XCIwMDAwMDAwMFwiLFwidXNlckNvZGVcIjpcIkEwMDAwMTE1MzNcIixcInJpc2tDb21Db2RlXCI6bnVsbCxcImNsYXNzQ29kZVwiOm51bGwsXCJlbWFpbFwiOm51bGwsXCJ2ZXJzaW9uXCI6XCJ2MS4wLjEuMFwiLFwiY29tQ05hbWVcIjpcIuaAu-WFrOWPuFwiLFwic2Vzc2lvbklEXCI6bnVsbCxcImxvZ2luQ29tQ29kZVwiOm51bGwsXCJncm91cFVzZXJDb2RlXCI6bnVsbCxcInRhc2tDb2RlTGlzdFwiOltcInJpc2tjb250cm9sXCIsXCJyaXNraW5zXCIsXCJyaXNraW5zXCIsXCJyaXNrc2FsZVwiLFwicmlza3NldFwiLFwicmlza2luc19pbnB1dFwiLFwicmlza2luc19xdWVyeVwiLFwicmlza2luc19xdWVyeVwiLFwicmlza3NhbGVfZXhhbWluZVwiLFwicmlza3NhbGVfY29sbGVjdFwiLFwicmlza3NldF9jbGVhckNhY2hlXCIsXCJyaXNrc2V0X3Jpc2tEbmF0dXJhbFwiLFwicmlza3NldF9yaXNrRG5hdHVyYWxcIixcInJpc2tJbmZvXCIsXCJyaXNraW5zX3NldFwiLFwicmlza2luc191bmRcIixcInJpc2tpbnNleHBfc2V0XCIsXCJyaXNraW5zX3VuZGZpclwiLFwicmlza2luc191bmRzZWNcIixcInJpc2tjaGVja19pbnB1dEFuZFF1ZXJ5XCIsXCJyaXNrY2hlY2tfZGlzdHJpYnV0ZVwiLFwicmlza2luc19zY29yZVwiXSxcInBvc3RMaXN0XCI6W1wicmlza2luc191bmRzZWMt6aOO5o6n5oql5ZGK5LqM57qn5a6h5qC45bKXXCIsXCJyaXNraW5zX3NldC3po47mjqfkv6Hmga_nu7TmiqTlspdcIixcInJpc2tpbnNfdW5kZmlyLemjjuaOp-aKpeWRiuS4gOe6p-WuoeaguOWyl1wiLFwicmlza2luc19pbnB1dC3po47mjqfmiqXlkYrlvZXlhaXlspdcIixcInJpc2tpbnMt6aOO5o6n57uT5p6c5p-l6K-i5bKXXCIsXCJyaXNraW5zZXhwX3NldC3po47mjqfkuJPlrrbnu7TmiqTlspdcIixcInJpc2tjaGVja19pbnB1dEFuZFF1ZXJ5LemjjuaOp-W3oeajgOWyl1wiLFwicmlza3NhbGVfY29sbGVjdC3nhafniYfmoaPmoYjph4fpm4blspdcIixcInJpc2tpbnNfdW5kLemjjuaOp-S_oeaBr-WuoeaguOWyl1wiLFwicmlza3NldC3po47mjqfnrqHnkIblspdcIixcInJpc2tjaGVja19kaXN0cmlidXRlLemjjuaOp-W3oeajgOa0vuWPkeWyl1wiLFwicmlza2luc19xdWVyeS3po47mjqfmiqXlkYrmn6Xor6LlspdcIixcInJpc2tzYWxlX2V4YW1pbmUt54Wn54mH5qGj5qGI5a6h5qC45bKXXCIsXCJyaXNraW5mby3po47mjqfkv6Hmga_lspdcIl0sXCJpc1BDXCI6dHJ1ZSxcImlzT3V0ZXJTeXN0ZW1cIjpmYWxzZX0iLCJleHAiOjE1NjkwMjQ3MjB9.Bv9-bblmn4tRe96lkAMgF8MLk3wBjARleueYZwO18XD70gegAbhC_blcwoW2s-UB8P-zO8M7tFzSBkj_IwCl6g";
         try {
             URL url = new URL(URL);
+            //设置代理
+//            Proxy proxy = new Proxy(Proxy.Type.HTTP,new InetSocketAddress("127.0.0.1"/*proxy addr*/,8080/*proxy port*/));
+//            HttpURLConnection urlCon = (HttpURLConnection) url.openConnection(proxy);
+
             URLConnection urlCon = url.openConnection();
             urlCon.setDoOutput(true);
             urlCon.setDoInput(true);
