@@ -10,6 +10,10 @@ import org.apache.commons.httpclient.SimpleHttpConnectionManager;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpClientParams;
 import org.apache.commons.httpclient.params.HttpMethodParams;
+import org.apache.http.HttpHost;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.conn.params.ConnRouteParams;
 import org.springframework.util.StreamUtils;
 
 import com.po.response.AjaxResult;
@@ -30,6 +34,7 @@ public class HttpGetSendTest {
 	 * @时间：20190924
 	 * @修改记录：
 	 */	
+	@SuppressWarnings("unused")
 	public static  void main(String[]args) {
 		AjaxResult ajaxResult =new AjaxResult();
 		String url = "http://60.205.166.252/renbaofile/FileProvider/downloadFileByJson";
@@ -50,6 +55,9 @@ public class HttpGetSendTest {
 //        GetMethod method = new GetMethod(url + "?" + param);
         String urlstr = "http://60.205.166.252/typhoon/getTyphoonFstNew?startTime=20190210000000&endTime=20190720000000&secretuid=433f3dd6-d9eb-11e9-9637-00163e30bfa0&secretkey=U7WJVZDK8PDNM9W1APFTFMJ1DK";
         GetMethod method = new GetMethod(urlstr);
+        
+        HttpHost proxy = new HttpHost("Proxy.piccnet.com.cn", 3128);
+        method.getParams().setParameter(ConnRouteParams.DEFAULT_PROXY, proxy);
         method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,new DefaultHttpMethodRetryHandler());
         try {
             client.executeMethod(method);
@@ -65,4 +73,25 @@ public class HttpGetSendTest {
         }
         return "";
     }
+    /**
+	 * @功能：设置代理
+	 * @param
+	 * @return HttpClient
+	 * @throws 
+	 * 			@日期：2018-02-05 @修改记录：
+	 */
+	public static GetMethod getHttpClient(GetMethod method) {
+//		DefaultHttpClient httpClient = new DefaultHttpClient();
+		 String proxyHost = "Proxy.piccnet.com.cn";
+		 int proxyPort = 3128;
+//		String proxyHost = "10.130.67.170";
+//		int proxyPort = 10011;
+//		 String userName = "71012993";
+//		 String password = "77CD8DE7";
+//		 method.getCredentialsProvider().setCredentials(new AuthScope(proxyHost,
+//		 proxyPort),new UsernamePasswordCredentials(userName, password));
+		HttpHost proxy = new HttpHost(proxyHost, proxyPort);
+		method.getParams().setParameter(ConnRouteParams.DEFAULT_PROXY, proxy);
+		return method;
+	}
 }

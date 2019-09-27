@@ -48,7 +48,7 @@ public class SuperMapController {
 		return ajaxResult;
 	}
 	/**
-     * @Description 操作台风面
+     * @Description 操作台风面，调用的文件名称是earlywarning.json
      * @Author 
      * @param obj
      * @return void
@@ -65,7 +65,7 @@ public class SuperMapController {
 	}
 	
 	/**
-     * @Description 操作台风面
+     * @Description 操作台风面，将面数据在页面展示
      * @Author 
      * @param obj
      * @return void
