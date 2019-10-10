@@ -36,9 +36,9 @@ public class GridDataMapTest {
 //		setThemeRangeByFile(true);
 		long startDate =System.currentTimeMillis();
 		// 绘制专题图
-		setThemeRangeByData(true);
+//		setThemeRangeByData(true);
 		// 导入栅格文件
-//		setThemeRangeByDataPng(true);
+		setThemeRangeByDataPng(true);
 //		setThemeRangeByFilePng(true);
 		long endDate =System.currentTimeMillis();
 		System.out.println("=====所需的时间=========="+(endDate-startDate));
@@ -151,7 +151,8 @@ public class GridDataMapTest {
 		try {
 			DataImport dataImport =new DataImport();
 //			String filePath ="C:/Users/Administrator/Desktop/aaaa.png";
-			String filePath ="C:/Users/Administrator/Desktop/surf.asc";
+			String filePath ="C:/Users/Administrator/Desktop/aaaaa.asc";
+//			String filePath ="http://10.10.2.241:5001/riskcontrol_file/downloadSuperMap/mapGridData.asc";
 			
 //			ImportSettingPNG importSettingPNG =new ImportSettingPNG(filePath,m_datasource);
 //			importSettingPNG.setImportingAsGrid(true);

@@ -8,6 +8,9 @@ import java.net.Proxy;
 import java.net.URL;
 import java.net.URLConnection;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import org.apache.commons.io.IOUtils;
 
 import com.po.response.AjaxResult;
@@ -20,9 +23,9 @@ import com.po.response.AjaxResult;
  * @return  */
 public class HttpPostSend {
 
-	
 	/**
-	 * @功能：获取气象局栅格数据,success: 看看是不是因为内网的原因，家中的网络能够成功的调用这个接口，并能够获取到信息，数据格式和之前商定的不太统一，需要确认一下
+	 * @功能：获取气象局栅格数据,success: 看看是不是因为内网的原因，家中的网络能够成功的调用这个接口，
+	 * 并能够获取到信息，数据格式和之前商定的不太统一，需要确认一下
 	 * @param 
 	 * @return void
 	 * @author liqiankun
@@ -37,18 +40,41 @@ public class HttpPostSend {
 		
 		String url = "http://60.205.166.252/renbaofile/FileProvider/downloadFileByJson?secretuid=433f3dd6-d9eb-11e9-9637-00163e30bfa0&secretkey=YYUTAKPEV6Y4F3P8NQZD3CWF5J&Content-type=application/text";
 		/*json文件能够成功*/
-//		String jsonString = "{'pattern': 'name','type': 'fst','files': [{'file_name': 'Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201909250800.json'}]}";
+//		String jsonString = "{'pattern': 'name','type': 'fst','files': [{'file_name': 'Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201910112000.json'}]}";
 		/*asc文件，也能够成功，需要将asc文件内容直接输出到一个asc文件中，获取直接生成栅格数据*/
-		String jsonString = "{'pattern': 'name','type': 'fst','files': [{'file_name': 'Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201909280800.asc'}]}";
-
-		//		?clearingFlag=1
-//		String url = "http://11.205.243.35:8022/riskcontrol/riskmap/testHttpPost";
-//		String jsonString = "{'returnCode': '1111','returnMessage': 'success'}";
-
+//		String jsonString = "{'pattern': 'name','type': 'fst','files': [{'file_name': 'Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201910110800.asc'}]}";
+		
+		String jsonString = generateJson().toString();
 		String responseJson =doHttpPost(jsonString, url);
 		System.out.println("success");
 		
 	}
+	/**
+	 * @功能：组织调用气象局接口数据参数的组织
+	 * @param 
+	 * @return void
+	 * @author liqiankun
+	 * @时间：20190930
+	 * @修改记录：
+	 */	
+	public static JSONObject generateJson() {
+		// 推送目标
+		JSONObject audience = new JSONObject();
+		audience.put("pattern", "name");
+		audience.put("type", "fst");
+		//数组
+		JSONArray platform = new JSONArray();
+		//数组中对象
+		JSONObject message = new JSONObject();
+//		message.put("file_name", "Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201910112000.json");
+		message.put("file_name", "Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201910112000.asc");
+		
+		platform.add(message);
+		// 将数组添加到大对象中
+		audience.put("files", platform);
+		return audience;
+	}
+	
 	/**
      * 发送Http post请求
      * 
@@ -113,30 +139,4 @@ public class HttpPostSend {
         }
     }
 	
-	/**
-     * 执行一个带参数的HTTP GET请求，返回请求响应的JSON字符串
-     *
-     * @param url 请求的URL地址
-     * @return 返回请求响应的JSON字符串
-     */
-//    public static String doGet(String url, String param) {
-//        HttpClient client = new HttpClient(new HttpClientParams(),new SimpleHttpConnectionManager(true));
-//        GetMethod method = new GetMethod(url + "?" + param);
-//        method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,new DefaultHttpMethodRetryHandler());
-//        method.setRequestHeader("secretuid", "433f3dd6-d9eb-11e9-9637-00163e30bfa0");
-//        method.setRequestHeader("secretkey","YYUTAKPEV6Y4F3P8NQZD3CWF5J");
-//        try {
-//            client.executeMethod(method);
-//            if (method.getStatusCode() == HttpStatus.SC_OK) {
-//                return StreamUtils.copyToString(method.getResponseBodyAsStream(), Charset.forName("utf-8"));
-//            }
-//        } catch (IOException e) {
-//        	e.printStackTrace();
-////        	LOGGER.info("执行HTTP Get请求" + url + "时，发生异常！",e);
-//        	throw new RuntimeException("执行HTTP Get请求" + url + "时，发生异常！",e);
-//        } finally {
-//            method.releaseConnection();
-//        }
-//        return "";
-//    }
 }
