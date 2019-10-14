@@ -350,7 +350,24 @@
             <version>2.7.0</version>
         </dependency>
         
+       <!--  <dependency>
+	      <groupId>com.supermap.iserver</groupId>
+	      <artifactId>iserver-all</artifactId>
+	      <version>8.0.2</version>
+	    </dependency> -->
+        
   </dependencies>
+  
+	<!-- <repositories>
+	    <repository>
+	      <id>supermap</id>
+	      <url>http://maven.supermap.io/</url>
+	    </repository>
+	    <repository>
+	      <id>ispeco</id>
+	      <url>http://maven.supermapol.com/</url>
+	    </repository>
+	</repositories>  -->
 
   <build>
     <finalName>MavenSSM</finalName>

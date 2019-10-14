@@ -1,10 +1,12 @@
 package action;
 
 import org.junit.Test;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import service.facade.Axe;
+import service.facade.Person;
+import service.impl.Japan;
 
 import com.Action.Action;
 	/**
@@ -20,15 +22,25 @@ public class TestAction {
 	public void testQuickStart(){
 		
 //		ApplicationContext ctx=new FileSystemXmlApplicationContext("beans.xml");
-//		ApplicationContext ctx=new ClassPathXmlApplicationContext("beans.xml");
+		//从类的加载路径下搜索配置文件
+		ApplicationContext ctx=new ClassPathXmlApplicationContext("beans.xml");
 		
-		Resource rs=new FileSystemResource("beans.xml");
-		BeanFactory ctx=new XmlBeanFactory(rs);
+//		Resource rs=new FileSystemResource("beans.xml");
+//		BeanFactory ctx=new XmlBeanFactory(rs);
 		
 		Action action = (Action) ctx.getBean("TheAction");
 //		System.out.println(action.getMessage());
-		System.out.println(action.execute("Rod Johnson"));
+		System.out.println(action.execute(" Rod Johnson"));
 		
+		Person person = ctx.getBean("chinese",Person.class);
+		person.useAxe();
+		
+		Axe axe = ctx.getBean("stoneAxe",Axe.class);
+		Person p2 =new Japan(axe);
+		p2.useAxe();
+		
+		Person p = ctx.getBean("japan",Person.class);
+		p.useAxe();
 		
 	}
 }
