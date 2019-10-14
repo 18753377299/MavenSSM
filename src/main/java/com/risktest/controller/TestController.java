@@ -5,6 +5,9 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,10 +57,30 @@ public class TestController extends AbstractController{
 	
 	@RequestMapping(value="/login",method={RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView login(){
+		
 		ModelAndView mav =new ModelAndView();
 		mav.setViewName("hello");
 		System.out.println("success22");
+		System.out.println(generateJson().toString());
 		return mav;
+	}
+	/*拼接json数据*/
+	public static JSONObject generateJson() {
+		// 推送目标
+		JSONObject audience = new JSONObject();
+		//数组
+		JSONArray platform = new JSONArray();
+		//数组中对象
+		JSONObject message = new JSONObject();
+		Object aObject="1111";
+		message.put(aObject, aObject);
+		message.put("file_name", "Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201909270800.json");
+		platform.add(message);
+		// 将数组添加到大对象中
+		audience.put("files", platform);
+		audience.put("pattern", "name");
+		audience.put("type", "fst");
+		return audience;
 	}
 	
 	// 根据id来查找

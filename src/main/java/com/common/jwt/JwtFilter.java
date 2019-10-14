@@ -8,6 +8,8 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年3月26日 上午10:00:19
@@ -27,6 +29,9 @@ public class JwtFilter implements Filter{
 		@Override
 		public void doFilter(ServletRequest request, ServletResponse response,
 				FilterChain chain) throws IOException, ServletException {
+			HttpServletRequest req = (HttpServletRequest) request;
+			HttpServletResponse res = (HttpServletResponse) response;
+			String jwtToken = req.getHeader("jwtToken");
 			// TODO Auto-generated method stub
 //			System.out.println("================================");
 			chain.doFilter(request, response);
