@@ -15,6 +15,7 @@ import com.supermap.data.FieldInfo;
 import com.supermap.data.FieldInfos;
 import com.supermap.data.FieldType;
 import com.supermap.data.GeoCircle;
+import com.supermap.data.GeoPie;
 import com.supermap.data.GeoRegion;
 import com.supermap.data.Geometry;
 import com.supermap.data.Point2D;
@@ -35,7 +36,7 @@ public class OperateDataSet {
 		private static final  String  iobjectJavaServer = "10.10.68.248:1521/orcl";
 		private static final  String  iobjectJavaDatabase = "riskcontrol";
 		private static final  String  iobjectJavaUser = "riskcontrol";
-		private static final  String  iobjectJavaPassword = "riskcontrol";
+		private static final  String  iobjectJavaPassword = "Picc_2019risk";
 		private static final  String  riskMap_address  = "SMDTV_60";
 	
 //	private static final  String  iobjectJavaServer = "localhost:3306/shop";
@@ -152,7 +153,7 @@ public class OperateDataSet {
       DatasetVectorInfo datasetVectorInfo = new DatasetVectorInfo();
        //面数据集类型
       datasetVectorInfo.setType(DatasetType.REGION);
-	  datasetVectorInfo.setName("circleName");
+	  datasetVectorInfo.setName("circleName3");
 	  
 	  DatasetVector datasetVector = datasets.create(datasetVectorInfo);
 	  
@@ -221,7 +222,8 @@ public class OperateDataSet {
       
       /**添加多个面数据集的方式*/
        double  [][]dataList = {{22,116,36},{10,110,22}};
-       Recordset recordsetNew = addMoreRecordset(datasetVector ,dataList);
+//       Recordset recordsetNew = addMoreRecordset(datasetVector ,dataList);
+       Recordset recordsetNew = addMorePieRecordset(datasetVector ,dataList);
        
        if(recordsetNew!=null){
     	   recordsetNew.close();
@@ -247,6 +249,8 @@ public class OperateDataSet {
 		}
 		
 	}
+	
+	
 	
 	/**添加多个面数据集的方式*/
 	public static Recordset addMoreRecordset(DatasetVector datasetVector ,double  [][]dataList){
@@ -306,5 +310,64 @@ public class OperateDataSet {
 
 		return  recordset;
 	}
+	/*增加扇形的面数据集*/
+	public static Recordset addMorePieRecordset(DatasetVector datasetVector ,double  [][]dataList){
+//		BatchEditor editor = recordset.getBatch();
+//		// 设置批量更新每次提交的记录数目
+//        editor.setMaxRecordCount(50);
+//        // 从 World 数据集中读取几何对象和字段值，批量更新到 example 数据集中
+//        editor.begin();
+		Recordset recordset = datasetVector.getRecordset(false, CursorType.DYNAMIC);
+		
+		if(dataList.length>0){
+			for(int i=0;i<dataList.length;i++){
+				Map<String , Object> map =new HashMap<String, Object>();
+				
+				recordset.edit();
+				/*初始化半径*/
+				double radius = dataList[i][0];
+				/*设置中心点坐标*/
+				Point2D  point2D =new Point2D(dataList[i][1], dataList[i][2]);
+				
+				GeoCircle geoCircle =new GeoCircle();
+				geoCircle.setRadius(radius);
+				geoCircle.setCenter(point2D);
+				
+				/*绘制扇形*/
+//			    GeoPie geoPie =new GeoPie(point2D,radius,radius,0,90,0);
+				/*参数含义： 中心、椭圆的长半轴长度、椭圆的短半轴长度、起始角度、椭圆弧扫过的角度、扇面几何对象的旋转角度*/
+			    GeoPie geoPie =new GeoPie(point2D,radius,radius,90,90,0);
+				/*将圆几何对象转换为面几何对象。*/
+//				GeoRegion geoRegion = geoCircle.convertToRegion(50);
+				/*将扇形转换成面几何对象*/
+				GeoRegion geoRegion = geoPie.convertToRegion(50);
+				
+				Geometry geometry = (Geometry)geoRegion;
+				
+			    
+				recordset.update();
+				recordset.addNew(geometry,map);
+				// 没有这个数据集更新不能够成功
+				recordset.update();
+				
+				
+				if(geoRegion!=null){
+					geoRegion.clone();
+					geoRegion.dispose();
+				}
+				if(geoPie!=null){
+					geoPie.dispose();
+				}
+				if(point2D!=null){
+					point2D.clone();
+				}
+			}
+		}
+		 // 批量操作统一提交
+//        editor.update();
+
+		return  recordset;
+	}
+	
 
 }

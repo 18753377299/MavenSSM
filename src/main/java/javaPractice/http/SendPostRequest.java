@@ -42,7 +42,6 @@ public class SendPostRequest {
 		// 将数组添加到大对象中
 		audience.put("files", platform);
 		return audience;
-
 	}
 	/**
 	 * @功能：发送Post请求（json格式） @param pushUrl,data,encodeCharset,authorization
