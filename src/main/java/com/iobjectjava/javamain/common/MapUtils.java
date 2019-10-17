@@ -50,7 +50,7 @@ public class MapUtils {
 		iobjectJavaServer = "10.10.68.248:1521/orcl";
 		iobjectJavaDatabase = "riskcontrol";
 		iobjectJavaUser =  "riskcontrol";
-		iobjectJavaPassword =  "riskcontrol";
+		iobjectJavaPassword =  "Picc_2019risk";
 //		iobjectJavaPassword =  "506963635f323031397269736b";
 		
 		

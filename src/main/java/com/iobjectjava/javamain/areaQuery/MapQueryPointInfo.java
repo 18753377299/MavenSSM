@@ -1,6 +1,7 @@
 package com.iobjectjava.javamain.areaQuery;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
@@ -36,16 +37,22 @@ public class MapQueryPointInfo {
 		if(datasource!=null){
 			// 点矢量集
 			DatasetVector datasetVector_address = (DatasetVector)datasource.getDatasets().get("RISKMAP_ADDRESS");
-			DatasetVector datasetVector_p = (DatasetVector)datasource.getDatasets().get("TF_New");
+//			DatasetVector datasetVector_p = (DatasetVector)datasource.getDatasets().get("TF_New");
+			DatasetVector datasetVector_rain = (DatasetVector)datasource.getDatasets().get("dataEarlyWarnRain_new");
 			// 数据集表的名称
 			String tableName = datasetVector_address.getTableName();
 			
 			QueryParameter parameter_p = new QueryParameter();
-			parameter_p.setSpatialQueryObject(datasetVector_p);
+//			parameter_p.setSpatialQueryObject(datasetVector_p);
+			parameter_p.setSpatialQueryObject(datasetVector_rain);
 			parameter_p.setSpatialQueryMode(SpatialQueryMode.INTERSECT);
 			// 进行日期查询
-		    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
-		    String tfdate = sdf.format(new Date());
+		    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		    Calendar calendar = Calendar.getInstance();
+		    calendar.setTime(new Date());
+		    calendar.set(Calendar.YEAR, (calendar.get(Calendar.YEAR)+10));
+		    calendar.set(Calendar.HOUR_OF_DAY, (calendar.get(Calendar.HOUR_OF_DAY)-24));
+		    String tfdate = sdf.format(calendar.getTime());
 //		    String tfdate = "2017-04-11 00:00:00";
 		    String filter = " RISKMAP_MAIN.ENDDATE>to_date('" +tfdate+ "','yyyy-MM-dd hh24:mi:ss')";
 			//通过点数据集和新增面数据集的交集的有效的点的个数
