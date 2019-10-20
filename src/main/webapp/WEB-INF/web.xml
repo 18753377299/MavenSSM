@@ -24,6 +24,20 @@
 	<listener>  
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>  
      </listener>
+     
+<!--      <listener> -->
+<!--      	<listener-class>org.springframework.web.context.RequestContextListener</listener-class> -->
+<!--      </listener> -->
+     <!-- 配置之后支持scope为request和session生效 ，只支持servlet2.4之前的web容器，
+     		使用Springmvc之后使用DispatcherServlet进行请求的拦截，无需使用该配置-->
+     <filter>
+        <filter-name>requestContextFilter</filter-name>
+        <filter-class>org.springframework.web.filter.RequestContextFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>requestContextFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
   
   <!--配置拦截器-->
   <servlet>

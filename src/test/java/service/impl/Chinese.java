@@ -17,7 +17,7 @@ public class Chinese implements Person{
 
 	public void useAxe() {
 		// TODO Auto-generated method stub
-		System.out.print(axe.chop());
+		System.out.println(axe.chop());
 	}
 
 }

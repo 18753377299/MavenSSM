@@ -16,9 +16,9 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 		<property name="axe" ref="stoneAxe"/>
 	</bean>
 	<bean id="stoneAxe" class="service.impl.StoneAxe"></bean>
-	<!-- 构造注入 -->
-	<bean id="japan" class="service.impl.Japan">
-		<constructor-arg  ref="stoneAxe">
-	</bean>
+	<!-- 构造注入 ,lazy-init：可以阻止spring容器预初始化容器中的singleton bean-->
+	<bean id="japan" class="service.impl.Japan" lazy-init="true">
+		<constructor-arg  ref="stoneAxe"/>
+	</bean> 
 </beans>
  

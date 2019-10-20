@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:tx="http://www.springframework.org/schema/tx" 
+xmlns:aop="http://www.springframework.org/schema/aop" 
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx.xsd
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!--    使用hibernate   begin-->
+	<bean id="sessionFactoryMaster"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="masterDataSource" />
+		<!-- 可以加多个包 -->
+		<property name="packagesToScan" value="ins.**.schema,ins.**.model,com.**.schema,com.**.model" />
+		<property name="hibernateProperties">
+			<props>
+<!-- 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> -->
+<!-- 				<prop key="hibernate.dialect">ins.framework.dialect.InformixDialect</prop> -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
+
+				<!-- 开启二级缓存 -->
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<!-- 开启查询缓存 -->
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<!-- 二级缓存区域名的前缀 -->
+				<!-- <prop key="hibernate.cache.region_prefix">h3test</prop> -->
+				<!-- 高速缓存提供程序 -->
+				<!-- <prop key="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.EhCacheRegionFactory</prop> -->
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
+				</prop>
+				<!-- 指定缓存配置文件位置 -->
+				<prop key="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</prop>
+				<!-- 强制Hibernate以更人性化的格式将数据存入二级缓存 -->
+				<prop key="hibernate.cache.use_structured_entries">true</prop>
+				<!-- Hibernate将收集有助于性能调节的统计数据 -->
+				<prop key="hibernate.generate_statistics">true</prop>
+			</props>
+		</property>
+		<!-- 工作流相关配置开始 -->
+<!-- 		<property name="mappingLocations"> -->
+<!-- 			<list> -->
+<!-- 				<value>classpath:jbpm.execution.hbm.xml</value> -->
+<!-- 				<value>classpath:jbpm.history.hbm.xml</value> -->
+<!-- 				<value>classpath:jbpm.identity.hbm.xml</value> -->
+<!-- 				<value>classpath:jbpm.repository.hbm.xml</value> -->
+<!-- 				<value>classpath:jbpm.task.hbm.xml</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+		<!-- 工作流相关配置结束 -->
+	</bean>
+	
+	<bean id="sessionFactorySlave"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="slaveDataSource" />
+		<!-- 可以加多个包 -->
+		<property name="packagesToScan" value="ins.**.schema,ins.**.model,com.**.schema,com.**.model" />
+		<property name="hibernateProperties">
+			<props>
+<!-- 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
+
+				<!-- 开启二级缓存 -->
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<!-- 开启查询缓存 -->
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<!-- 二级缓存区域名的前缀 -->
+				<!-- <prop key="hibernate.cache.region_prefix">h3test</prop> -->
+				<!-- 高速缓存提供程序 -->
+				<!-- <prop key="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.EhCacheRegionFactory</prop> -->
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
+				</prop>
+				<!-- 指定缓存配置文件位置 -->
+				<prop key="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</prop>
+				<!-- 强制Hibernate以更人性化的格式将数据存入二级缓存 -->
+				<prop key="hibernate.cache.use_structured_entries">true</prop>
+				<!-- Hibernate将收集有助于性能调节的统计数据 -->
+				<prop key="hibernate.generate_statistics">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="sessionFactoryMain" class="com.common.db.sessionfactory.hibernate.DynamicSessionFactoryImpl">
+        <property name="defaultTargetSessionFactory" ref="sessionFactoryMaster"/>
+        <property name="targetSessionFactorys">
+            <map>     
+                <entry value-ref="sessionFactoryMaster" key="masterSession"/>
+                <entry value-ref="sessionFactorySlave" key="slaveSession"/>
+            </map> 
+        </property>
+    </bean>
+    
+    <!-- 配置Hibernate事务管理器 -->
+	<bean id="transactionManager" class="com.common.db.sessionfactory.hibernate.DynamicTransactionManager">
+		<property name="sessionFactory" ref="sessionFactoryMain" />
+	</bean>
+	
+	<!-- 动态切换sessionfactory 切面 -->
+	<bean id="manySessionFactoryAspect" class="com.common.db.sessionfactory.hibernate.SessionFactoryAspect" />
+	<aop:config>
+		<aop:aspect id="c" ref="manySessionFactoryAspect">
+			<aop:pointcut id="tx"
+				expression="execution(public * com.picc.riskctrl.map.service..*Service.*(..)) || execution(public * com.picc.riskctrl.typhoonearlywarning.service..*Service.*(..))" />
+			<aop:before pointcut-ref="tx" method="before" />
+			<aop:after pointcut-ref="tx" method="after" />
+		</aop:aspect>
+	</aop:config>
+	
+    <!-- 使用hibernate   end-->
+    
+</beans>

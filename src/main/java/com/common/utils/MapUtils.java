@@ -10,7 +10,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -39,7 +38,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.map.vo.typhoonRequest.TyphoonLatestInfo;
-import com.picc.riskctrl.map.vo.typhoonRequest.TyphoonPath;
+import com.map.vo.typhoonRequest.TyphoonPath;
 import com.po.response.AjaxResult;
 import com.supermap.data.BlockSizeOption;
 import com.supermap.data.CursorType;
