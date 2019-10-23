@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @return  */
 public class JdbcUtils {
 	
-	//连接参数获取
+	//oracle连接参数获取
 	private static final String oracleDriver,oracleUrl,javaUser,javaPassword;
 	//mysql连接
 	private static final String mysqlDriver,mysqlUrl,mysqlUser,mysqlPassword;
