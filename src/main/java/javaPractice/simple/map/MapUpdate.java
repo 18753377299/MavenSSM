@@ -20,18 +20,17 @@ public class MapUpdate {
 	/*七、使用静态代码块实现赋值静态成员变量*/
 	/*对于集合类型的静态成员变量，应该使用静态代码块赋值，而不是使用集合实现来赋值。*/
 	//赋值静态成员变量反例
-	private static Map<String, Integer> map = new HashMap<String, Integer>(){
-	    {
-	        map.put("Leo",1);
-	        map.put("Family-loving",2);
-	        map.put("Cold on the out side passionate on the inside",3);
-	    }
-	};
+	//赋值静态成员变量反例
+	private static Map<String, Integer> map = new HashMap<String, Integer>(){{
+	        put("Leo",1);
+	        put("Family-loving",2);
+	        put("Cold on the out side passionate on the inside",3);
+	    }};
 	private static List<String> list = new ArrayList<String>(){
 	    {
-	        list.add("Sagittarius");
-	        list.add("Charming");
-	        list.add("Perfectionist");
+	        add("Sagittarius");
+	        add("Charming");
+	        add("Perfectionist");
 	    }
 	};
 	//赋值静态成员变量正例
@@ -151,7 +150,8 @@ public class MapUpdate {
 	
 	/*十一、字符串转化使用String.valueOf(value) 代替 " " + value*/
 	/*把其它对象或类型转化为字符串时，使用String.valueOf(value) 比 ""+value 的效率更高。*/
-	static int numnew ; 
+//	static int numnew ;   // 直接输出为0 
+	static Integer numnew ;   // 直接输出为null
 	public static void transferStr(){
 		try {
 			//把其它对象或类型转化为字符串反例：
@@ -159,6 +159,7 @@ public class MapUpdate {
 			// "" + value
 			String strLove = "" + num;
 			System.out.println(strLove);
+		/*只要不是类字段和数组，其它变量一律要赋值。*/
 //		int numnew ;
 			String love = String.valueOf(numnew);
 			System.out.println(love);
