@@ -1,4 +1,4 @@
-package com.simple.map;
+package javaPractice.simple.map;
 
 import java.util.Collections;
 import java.util.Comparator;

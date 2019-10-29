@@ -91,11 +91,17 @@ import com.supermap.ui.MapControl;
 
 @SuppressWarnings("unused")
 public class MapUtils {
+	/*九、工具类中屏蔽构造函数*/
+	/*工具类是一堆静态字段和函数的集合，其不应该被实例化；
+	但是，Java 为每个没有明确定义构造函数的类添加了一个隐式公有构造函数，
+	为了避免不必要的实例化，应该显式定义私有构造函数来屏蔽这个隐式公有构造函数。*/
+	public MapUtils() {}
 	
 	//连接参数获取
     private static final String iobjectJavaServer,iobjectJavaDatabase,iobjectJavaUser,iobjectJavaPassword;
 
-    static {
+   
+	static {
     	/*获取连接iobjectjava的数据信息*/
 		ResourceBundle filePath = ResourceBundle.getBundle("config.map", Locale.getDefault());
 		 // 定义数据源连接信息，假设以下所有数据源设置都存在
@@ -108,7 +114,6 @@ public class MapUtils {
 //		iobjectJavaDatabase = "riskcontrol_freeze";
 //		iobjectJavaUser = "riskcontrol_freeze";
 //		iobjectJavaPassword = "Picc_2019risk";
-		
     }
     
 	/**连接数据源*/

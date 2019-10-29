@@ -1,4 +1,4 @@
-package javaPractice.http;
+package javaPractice.simple.http;
 
 import java.io.BufferedReader;
 import java.io.IOException;
