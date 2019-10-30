@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.common.dao.RiskMapMainMapper" >
-  <resultMap id="BaseResultMap" type="com.vo.RiskMapMain" >
+<mapper namespace="com.example.dao.RiskMapMainMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.RiskMapMain" >
     <id column="addressid" property="addressid" jdbcType="INTEGER" />
     <id column="proposalno" property="proposalno" jdbcType="CHAR" />
     <result column="policyno" property="policyno" jdbcType="CHAR" />
@@ -33,7 +33,7 @@
     where addressid = #{addressid,jdbcType=INTEGER}
       and proposalno = #{proposalno,jdbcType=CHAR}
   </delete>
-  <insert id="insert" parameterType="com.vo.RiskMapMain" >
+  <insert id="insert" parameterType="com.example.vo.RiskMapMain" >
     insert into riskmap_main (addressid, proposalno, policyno, 
       classcode, riskcode, startdate, 
       starthour, enddate, endhour, 
@@ -45,7 +45,7 @@
       #{sumamount,jdbcType=DECIMAL}, #{coinsflag,jdbcType=CHAR}, #{coinsrate,jdbcType=DECIMAL}, 
       #{comcode,jdbcType=CHAR}, #{reamountchg,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="com.vo.RiskMapMain" >
+  <insert id="insertSelective" parameterType="com.example.vo.RiskMapMain" >
     insert into riskmap_main
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="addressid != null" >
@@ -136,7 +136,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.vo.RiskMapMain" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.RiskMapMain" >
     update riskmap_main
     <set >
       <if test="policyno != null" >
@@ -179,7 +179,7 @@
     where addressid = #{addressid,jdbcType=INTEGER}
       and proposalno = #{proposalno,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.vo.RiskMapMain" >
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.RiskMapMain" >
     update riskmap_main
     set policyno = #{policyno,jdbcType=CHAR},
       classcode = #{classcode,jdbcType=CHAR},

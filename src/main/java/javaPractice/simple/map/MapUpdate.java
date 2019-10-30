@@ -1,14 +1,21 @@
 package javaPractice.simple.map;
 
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
+import javaPractice.simple.enumTest.SwitchStatus;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.ibatis.annotations.Result;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年10月29日 下午4:38:23
@@ -50,6 +57,9 @@ public class MapUpdate {
 	public static void main(String[]args){
 		MapUpdate.checkIsNull();
 		MapUpdate.transferStr();
+		MapUpdate.testBigDecimal();
+		MapUpdate.testEnum();
+		MapUpdate.testString();
 	}
 	public void operateMap(){
 		//Map 获取value 反例:
@@ -167,7 +177,90 @@ public class MapUpdate {
 			e.printStackTrace();
 		}
 	}
+	/*十二、避免使用BigDecimal(double)*/
+	/*BigDecimal(double) 存在精度损失风险，在精确计算或值比较的场景中可能会导致业务逻辑异常。*/
+	public static void testBigDecimal(){
+//		反例：
+		BigDecimal bigDecimal = new BigDecimal(0.11D);
+		// 输出的值如下： 0.11000000000000000055511151231257827021181583404541015625
+		System.out.println(bigDecimal);  
+//		正例：
+		BigDecimal bigDecimal2 = BigDecimal.valueOf(0.11D);
+		// 输出的值如下： 0.11
+		System.out.println(bigDecimal2);
+	}
+	/*十三、返回空数组和集合而非 null*/
+	/*若程序运行返回null，需要调用方强制检测null，否则就会抛出空指针异常；
+	返回空数组或空集合，有效地避免了调用方因为未检测null 而抛出空指针异
+	常的情况，还可以删除调用方检测null 的语句使代码更简洁。*/
+//	反例：
+	//返回null 反例
+	public static Result [] getResults() {
+	    return null;
+	}
+	public static List<Result> getResultList() {
+	    return null;
+	}
+	public static Map<String, Result> getResultMap() {
+	    return null;
+	}
+//	正例：
+	//返回空数组和空集正例
+	public static Result[] getResultsNew() {
+	    return new Result[0];
+	}
+
+	public static List<Result> getResultListNew() {
+	    return Collections.emptyList();
+	}
+
+	public static Map<String, Result> getResultMapNew() {
+	    return Collections.emptyMap();
+	}
+	/*十四、优先使用常量或确定值调用equals 方法*/
+	/*对象的equals 方法容易抛空指针异常，应使用常量或确定有值的对象来调用equals 方法。*/
+//	反例：
+	//调用 equals 方法反例
+	private static boolean fileReader(String fileName)throws IOException{
+
+	 // 可能抛空指针异常
+	 return fileName.equals("Charming");
+	}
+//	正例：
+	//调用 equals 方法正例
+	private static boolean fileReaderNew(String fileName)throws IOException{
+
+	    // 使用常量或确定有值的对象来调用 equals 方法
+//	    return "Charming".equals(fileName);
+
+	    //或使用：java.util.Objects.equals() 方法
+	   return Objects.equals("Charming",fileName);
+	}
+	/*十五、枚举的属性字段必须是私有且不可变*/
+	/*枚举通常被当做常量使用，如果枚举中存在公共属性字段或设置字段方法，
+	那么这些枚举常量的属性很容易被修改；理想情况下，枚举中的属性字段
+	是私有的，并在私有构造函数中赋值，没有对应的Setter 方法，最好加上final 修饰符。*/
 	
+	public static void testEnum(){
+		//对枚举类型的数进行操作
+		SwitchStatus [] switchs = SwitchStatus.values();
+		for (SwitchStatus status: switchs){
+			System.out.println(status.name()); 
+		}
+	}
+	/*十六、tring.split(String regex)部分关键字需要转译*/
+	/*使用字符串String 的plit 方法时，传入的分隔字符串是正则表达式，则部分关键字（比如 .[]()| 等）需要转义。*/
+	public static void testString(){
+		// String.split(String regex) 正例
+		// . 需要转译
+		String[] split2 = "a.ab.abc".split("\\.");
+		System.out.println(Arrays.toString(split2));  // 结果为["a", "ab", "abc"]
+
+		// | 需要转译
+		String[] split3 = "a|ab|abc".split("\\|");
+		System.out.println(Arrays.toString(split3));  // 结果为["a", "ab", "abc"]
+	}
+
 	
 
 }

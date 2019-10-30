@@ -1,4 +1,4 @@
-package com.simple.abstractclass;
+package javaPractice.simple.abstractclass;
 /**
  * @功能：
  * @author liqiankun

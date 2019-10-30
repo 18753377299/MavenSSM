@@ -15,18 +15,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.common.RiskControlConst;
-import com.common.dao.UtiFactorMapper;
-import com.common.dao.UtiFormulaMapper;
-import com.common.dao.UtiScoreMapper;
 import com.common.service.RiskCommonService;
 import com.common.utils.GradeConfigUtils;
-import com.po.response.RiskGradeVo;
-import com.vo.RiskReportAssess;
-import com.vo.RiskReportMain;
-import com.vo.UtiFactor;
-import com.vo.UtiFormula;
-import com.vo.UtiScore;
-import com.vo.UtiWeight;
+import com.example.dao.UtiFactorMapper;
+import com.example.dao.UtiFormulaMapper;
+import com.example.dao.UtiScoreMapper;
+import com.example.po.response.RiskGradeVo;
+import com.example.vo.RiskReportAssess;
+import com.example.vo.RiskReportMain;
+import com.example.vo.UtiFactor;
+import com.example.vo.UtiFormula;
+import com.example.vo.UtiScore;
+import com.example.vo.UtiWeight;
 /**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年7月19日 下午4:46:18

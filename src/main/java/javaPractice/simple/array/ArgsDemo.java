@@ -1,4 +1,4 @@
-package com.simple.array;
+package javaPractice.simple.array;
 
 	/**
  * @author  作者 E-mail: 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.common.dao.UtiWeightMapper" >
-  <resultMap id="BaseResultMap" type="com.vo.UtiWeight" >
+<mapper namespace="com.example.dao.UtiWeightMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.UtiWeight" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="riskModel" property="riskModel" jdbcType="VARCHAR" />
     <result column="comCode" property="comCode" jdbcType="VARCHAR" />
@@ -34,7 +34,7 @@
     delete from utiweight
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.vo.UtiWeight" >
+  <insert id="insert" parameterType="com.example.vo.UtiWeight" >
     insert into utiweight (id, riskModel, comCode, 
       operatorCode, operatorName, fireDanger, 
       waterDanger, windDanger, thunderDanger, 
@@ -48,7 +48,7 @@
       #{geologyDanger,jdbcType=DECIMAL}, #{validStatus,jdbcType=CHAR}, #{insertTimeForHis,jdbcType=TIMESTAMP}, 
       #{operateTimeForHis,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.vo.UtiWeight" >
+  <insert id="insertSelective" parameterType="com.example.vo.UtiWeight" >
     insert into utiweight
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.vo.UtiWeight" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.UtiWeight" >
     update utiweight
     <set >
       <if test="riskModel != null" >
@@ -202,7 +202,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.vo.UtiWeight" >
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.UtiWeight" >
     update utiweight
     set riskModel = #{riskModel,jdbcType=VARCHAR},
       comCode = #{comCode,jdbcType=VARCHAR},

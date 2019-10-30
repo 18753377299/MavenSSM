@@ -1,6 +1,5 @@
-package com.simple.array;
+package javaPractice.simple.array;
 
-import org.apache.pdfbox.pdmodel.interactive.viewerpreferences.PDViewerPreferences.PRINT_SCALING;
 
 /**
  * @功能：
@@ -19,7 +18,7 @@ public class ReverseArray {
 		System.out.print(reverse.add(11)+"、");
 		System.out.print(reverse.add(8)+"、");
 		System.out.print(reverse.add(9)+"、");
-		System.out.print(reverse.add(7)+"、");
+		System.out.println(reverse.add(7)+"、");
 		print(reverse.getTemp());
 	}
 

@@ -37,9 +37,9 @@ import java.util.ResourceBundle;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import com.map.vo.typhoonRequest.TyphoonLatestInfo;
-import com.map.vo.typhoonRequest.TyphoonPath;
-import com.po.response.AjaxResult;
+import com.example.func.map.vo.typhoonRequest.TyphoonLatestInfo;
+import com.example.func.map.vo.typhoonRequest.TyphoonPath;
+import com.example.po.response.AjaxResult;
 import com.supermap.data.BlockSizeOption;
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetGrid;

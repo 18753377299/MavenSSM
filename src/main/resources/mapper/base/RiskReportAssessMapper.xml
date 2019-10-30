@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.common.dao.RiskReportAssessMapper" >
-  <resultMap id="BaseResultMap" type="com.vo.RiskReportAssess" >
+<mapper namespace="com.example.dao.RiskReportAssessMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.RiskReportAssess" >
     <id column="riskFileNo" property="riskFileNo" jdbcType="CHAR" />
     <result column="fireDanger" property="fireDanger" jdbcType="DECIMAL" />
     <result column="waterDanger" property="waterDanger" jdbcType="DECIMAL" />
@@ -28,7 +28,7 @@
     delete from riskreport_assess
     where riskFileNo = #{riskFileNo,jdbcType=CHAR}
   </delete>
-  <insert id="insert" parameterType="com.vo.RiskReportAssess" >
+  <insert id="insert" parameterType="com.example.vo.RiskReportAssess" >
     insert into riskreport_assess (riskFileNo, fireDanger, waterDanger, 
       windDanger, thunderDanger, snowDanger, 
       theftDanger, earthQuakeDanger, geologyDanger, 
@@ -40,7 +40,7 @@
       #{inserttimeforhis,jdbcType=TIMESTAMP}, #{operatetimeforhis,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.vo.RiskReportAssess" >
+  <insert id="insertSelective" parameterType="com.example.vo.RiskReportAssess" >
     insert into riskreport_assess
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="riskFileNo != null" >
@@ -113,7 +113,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.vo.RiskReportAssess" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.RiskReportAssess" >
     update riskreport_assess
     <set >
       <if test="fireDanger != null" >
@@ -149,7 +149,7 @@
     </set>
     where riskFileNo = #{riskFileNo,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.vo.RiskReportAssess" >
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.RiskReportAssess" >
     update riskreport_assess
     set fireDanger = #{fireDanger,jdbcType=DECIMAL},
       waterDanger = #{waterDanger,jdbcType=DECIMAL},

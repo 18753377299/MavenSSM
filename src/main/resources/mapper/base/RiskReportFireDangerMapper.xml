@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.common.dao.RiskReportFireDangerMapper" >
-  <resultMap id="BaseResultMap" type="com.vo.RiskReportFireDanger" >
+<mapper namespace="com.example.dao.RiskReportFireDangerMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.RiskReportFireDanger" >
     <id column="riskFileNo" property="riskFileNo" jdbcType="CHAR" />
     <result column="fireProofSeparate" property="fireProofSeparate" jdbcType="VARCHAR" />
     <result column="buildStructure" property="buildStructure" jdbcType="VARCHAR" />
@@ -63,7 +63,7 @@
     delete from riskreport_firedanger
     where riskFileNo = #{riskFileNo,jdbcType=CHAR}
   </delete>
-  <insert id="insert" parameterType="com.vo.RiskReportFireDanger" >
+  <insert id="insert" parameterType="com.example.vo.RiskReportFireDanger" >
     insert into riskreport_firedanger (riskFileNo, fireProofSeparate, buildStructure, 
       buildUseYear, buildOwnerShipNature, fireLoadDensity, 
       mainMaterialBurnNature, explodeProductEnviron, 
@@ -97,7 +97,7 @@
       #{fireControlDuty,jdbcType=VARCHAR}, #{rectificateSuggest,jdbcType=VARCHAR}, #{insertTimeForHis,jdbcType=TIMESTAMP}, 
       #{operateTimeForHis,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.vo.RiskReportFireDanger" >
+  <insert id="insertSelective" parameterType="com.example.vo.RiskReportFireDanger" >
     insert into riskreport_firedanger
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="riskFileNo != null" >
@@ -344,7 +344,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.vo.RiskReportFireDanger" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.RiskReportFireDanger">
     update riskreport_firedanger
     <set >
       <if test="fireProofSeparate != null" >
@@ -467,7 +467,7 @@
     </set>
     where riskFileNo = #{riskFileNo,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.vo.RiskReportFireDanger" >
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.RiskReportFireDanger" >
     update riskreport_firedanger
     set fireProofSeparate = #{fireProofSeparate,jdbcType=VARCHAR},
       buildStructure = #{buildStructure,jdbcType=VARCHAR},

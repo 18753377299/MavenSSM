@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.LeaveSpecialDateMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.LeaveSpecialDate" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="date_type" property="dateType" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="DATE" />
+    <result column="insert_time_for_his" property="insertTimeForHis" jdbcType="TIMESTAMP" />
+    <result column="operate_time_for_his" property="operateTimeForHis" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, date_type, date, insert_time_for_his, operate_time_for_his
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.example.vo.LeaveSpecialDate" >
+    select 
+    <include refid="Base_Column_List" />
+    from leave_special_date
+    <where>
+    	<if test="date != null" >
+    	  and date = #{date}
+    	</if>
+    </where>
+  </select>
+  
+  
+  
+  
+</mapper>

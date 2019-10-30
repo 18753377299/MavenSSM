@@ -22,23 +22,23 @@
 <!--             <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss" /> -->
         </commentGenerator>
 		<!-- master_mysql数据库 -->
-       <!--  <jdbcConnection driverClass="${jdbc.master.driverClassName}"
+      <jdbcConnection driverClass="${jdbc.master.driverClassName}"
                         connectionURL="${jdbc.master.url}"
                         userId="${jdbc.master.username}"
                         password="${jdbc.master.password}">
-            解决mysql驱动升级到8.0后不生成指定数据库代码的问题
+<!--             解决mysql驱动升级到8.0后不生成指定数据库代码的问题 -->
             <property name="nullCatalogMeansCurrent" value="true" />
-        </jdbcConnection> -->
+        </jdbcConnection> 
         
         <!--salve_mysql数据库 -->
-        <jdbcConnection driverClass="${jdbc.slave.driverClassName}"
+       <!--  <jdbcConnection driverClass="${jdbc.slave.driverClassName}"
                         connectionURL="${jdbc.slave.url}"
                         userId="${jdbc.slave.username}"
                         password="${jdbc.slave.password}">
-<!--             解决mysql驱动升级到8.0后不生成指定数据库代码的问题 -->
+            解决mysql驱动升级到8.0后不生成指定数据库代码的问题
             <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
-        
+         -->
         
 <!--         oracle数据库 -->
 <!--         <jdbcConnection driverClass="${jdbc.driverClassName.oracle}" -->
@@ -55,7 +55,7 @@
 <!--         </jdbcConnection> -->
 
 
-        <javaModelGenerator targetPackage="com.vo" targetProject="F:\eclipse\MavenSSM\src\main\java">
+        <javaModelGenerator targetPackage="com.example.vo" targetProject="F:\eclipse\MavenSSM\src\main\java">
         	<!-- TODO enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true" />
             <!-- 从数据库返回的值被清理前后的空格 -->
@@ -66,21 +66,21 @@
         	<property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
         
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.common.dao"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.dao"
                              targetProject="F:\eclipse\MavenSSM\src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         
         <!--生成全部表tableName设为%-->
-        <table tableName="User" domainObjectName="User" enableInsert="true" enableCountByExample="false"
+        <table tableName="leave_special_date" domainObjectName="LeaveSpecialDate" enableInsert="true" enableCountByExample="false"
         		enableUpdateByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" selectByExampleQueryId="false"> 
 <!--             <generatedKey column="id" sqlStatement="MySql" identity="true"/> -->
 <!--             <generatedKey column="riskmodel" sqlStatement="MySql" identity="true"/> -->
 <!--              <generatedKey column="factorno" sqlStatement="MySql" identity="true"/> -->
 <!--              <generatedKey column="dangertype" sqlStatement="MySql" identity="true"/> -->
-
-				<property name="useActualColumnNames" value="true" />
+ 				<!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法 -->
+				<property name="useActualColumnNames" value="false" />
         </table>
     </context>
 </generatorConfiguration>

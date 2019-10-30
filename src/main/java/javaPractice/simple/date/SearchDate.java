@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import com.common.utils.DateUtils;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年1月6日 下午4:50:01
@@ -31,15 +33,20 @@ public class SearchDate {
 			System.out.println((new SimpleDateFormat("yyyy-MM-dd")).format(new Date())); 
 			
 			SearchDate searchDate=new SearchDate();
-			searchDate.aa();
-			System.out.println(searchDate.getMaxDayByYearMonth(year,month));
+			System.out.println(DateUtils.getStartDateOfDay(date));
+			System.out.println(DateUtils.getEndDateOfDay(date));
+			System.out.println(DateUtils.getNextDate(date));
+			System.out.println(DateUtils.getMaxDayByYearMonth(year,month));
 //        int year = 2019;
 //        int month = 0;//月份从0开始,10代表11月份
 			Calendar calendar = new GregorianCalendar(year, month, 1);
 			int i = 1;
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			// 获取当前月中的周六周天中的日期
 			while (calendar.get(Calendar.MONTH) < month + 1) {
+				// 指示当前年中的星期数
 			    calendar.set(Calendar.WEEK_OF_YEAR, i++);
+			    // 指示一个星期中的某天
 			    calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
 			    if (calendar.get(Calendar.MONTH) == month) {
 			    	String  aString = sdf.format(calendar.getInstance().getTime());
@@ -57,20 +64,5 @@ public class SearchDate {
 			e.printStackTrace();
 		}
     }
-	public int getMaxDayByYearMonth(int year, int month) {
-		  Calendar calendar = Calendar.getInstance();
-		  calendar.set(Calendar.YEAR, year);
-		  calendar.set(Calendar.MONTH, month);
-		  return calendar.getActualMaximum(Calendar.DATE);
-	}
-	public String  aa() {
-		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date());
-//		System.out.println("当前日期:"+sf.format(c.getTime()));
-		c.add(Calendar.DAY_OF_MONTH, 1);
-		System.out.println("增加一天后日期:"+sf.format(c.getTime()));
-		return null;
-	}
 	
 }

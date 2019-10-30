@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.common.dao.UtiScoreMapper" >
-  <resultMap id="BaseResultMap" type="com.vo.UtiScore" >
+<mapper namespace="com.example.dao.UtiScoreMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.UtiScore" >
     <id column="riskModel" property="riskModel" jdbcType="CHAR" />
     <id column="factorNo" property="factorNo" jdbcType="CHAR" />
     <id column="dangerType" property="dangerType" jdbcType="CHAR" />
@@ -31,7 +31,7 @@
       and dangerType = #{dangerType,jdbcType=CHAR}
       and factorValue = #{factorValue,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.vo.UtiScore" >
+  <insert id="insert" parameterType="com.example.vo.UtiScore" >
     insert into utiscore (riskModel, factorNo, dangerType, 
       factorValue, factorScore, validStatus, 
       insertTimeForHis, operateTimeForHis
@@ -41,7 +41,7 @@
       #{insertTimeForHis,jdbcType=TIMESTAMP}, #{operateTimeForHis,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.vo.UtiScore" >
+  <insert id="insertSelective" parameterType="com.example.vo.UtiScore" >
     insert into utiscore
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="riskModel != null" >
@@ -96,7 +96,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.vo.UtiScore" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.UtiScore" >
     update utiscore
     <set >
       <if test="factorScore != null" >
@@ -117,7 +117,7 @@
       and dangerType = #{dangerType,jdbcType=CHAR}
       and factorValue = #{factorValue,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.vo.UtiScore" >
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.UtiScore" >
     update utiscore
     set factorScore = #{factorScore,jdbcType=DECIMAL},
       validStatus = #{validStatus,jdbcType=CHAR},

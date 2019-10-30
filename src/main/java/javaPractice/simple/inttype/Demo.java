@@ -1,4 +1,4 @@
-package com.simple.inttype;
+package javaPractice.simple.inttype;
 
 /**
  * @author  作者 E-mail: 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.common.dao.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.vo.User" >
+<mapper namespace="com.example.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.User" >
     <id column="userId" property="userId" jdbcType="VARCHAR" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -20,13 +20,13 @@
     delete from user
     where userId = #{userId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.vo.User" >
+  <insert id="insert" parameterType="com.example.vo.User" >
     insert into user (userId, username, password, 
       level)
     values (#{userId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{level,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.vo.User" >
+  <insert id="insertSelective" parameterType="com.example.vo.User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.vo.User" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.User" >
     update user
     <set >
       <if test="username != null" >
@@ -72,7 +72,7 @@
     </set>
     where userId = #{userId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.vo.User" >
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.User" >
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

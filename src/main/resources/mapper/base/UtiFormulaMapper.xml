@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.common.dao.UtiFormulaMapper" >
-  <resultMap id="BaseResultMap" type="com.vo.UtiFormula" >
+<mapper namespace="com.example.dao.UtiFormulaMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.UtiFormula" >
     <id column="riskModel" property="riskModel" jdbcType="CHAR" />
     <id column="factorNo" property="factorNo" jdbcType="CHAR" />
     <id column="dangerType" property="dangerType" jdbcType="CHAR" />
@@ -10,7 +10,7 @@
     <result column="insertTimeForHis" property="insertTimeForHis" jdbcType="TIMESTAMP" />
     <result column="operateTimeForHis" property="operateTimeForHis" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.vo.UtiFormula" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.example.vo.UtiFormula" extends="BaseResultMap" >
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -35,7 +35,7 @@
       and factorNo = #{factorNo,jdbcType=CHAR}
       and dangerType = #{dangerType,jdbcType=CHAR}
   </delete>
-  <insert id="insert" parameterType="com.vo.UtiFormula" >
+  <insert id="insert" parameterType="com.example.vo.UtiFormula" >
     insert into utiformula (riskModel, factorNo, dangerType, 
       listType, validStatus, insertTimeForHis, 
       operateTimeForHis, content)
@@ -43,7 +43,7 @@
       #{listType,jdbcType=CHAR}, #{validStatus,jdbcType=CHAR}, #{insertTimeForHis,jdbcType=TIMESTAMP}, 
       #{operateTimeForHis,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.vo.UtiFormula" >
+  <insert id="insertSelective" parameterType="com.example.vo.UtiFormula" >
     insert into utiformula
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="riskModel != null" >
@@ -98,7 +98,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.vo.UtiFormula" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.UtiFormula" >
     update utiformula
     <set >
       <if test="listType != null" >
@@ -121,7 +121,7 @@
       and factorNo = #{factorNo,jdbcType=CHAR}
       and dangerType = #{dangerType,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.vo.UtiFormula" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.vo.UtiFormula" >
     update utiformula
     set listType = #{listType,jdbcType=CHAR},
       validStatus = #{validStatus,jdbcType=CHAR},
@@ -132,7 +132,7 @@
       and factorNo = #{factorNo,jdbcType=CHAR}
       and dangerType = #{dangerType,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.vo.UtiFormula" >
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.UtiFormula" >
     update utiformula
     set listType = #{listType,jdbcType=CHAR},
       validStatus = #{validStatus,jdbcType=CHAR},

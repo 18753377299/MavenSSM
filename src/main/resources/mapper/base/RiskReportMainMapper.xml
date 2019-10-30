@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.common.dao.RiskReportMainMapper" >
-  <resultMap id="BaseResultMap" type="com.vo.RiskReportMain" >
+<mapper namespace="com.example.dao.RiskReportMainMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.RiskReportMain" >
     <id column="riskFileNo" property="riskFileNo" jdbcType="CHAR" />
     <result column="classCode" property="classCode" jdbcType="CHAR" />
     <result column="riskCode" property="riskCode" jdbcType="CHAR" />
@@ -56,7 +56,7 @@
     <result column="insertTimeForHis" property="insertTimeForHis" jdbcType="TIMESTAMP" />
     <result column="operateTimeForHis" property="operateTimeForHis" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.vo.RiskReportMain" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.example.vo.RiskReportMain" extends="BaseResultMap" >
     <result column="customerExplain" property="customerExplain" jdbcType="LONGVARCHAR" />
     <result column="riskUnitExplain" property="riskUnitExplain" jdbcType="LONGVARCHAR" />
     <result column="highlightRisk" property="highlightRisk" jdbcType="LONGVARCHAR" />
@@ -91,7 +91,7 @@
     delete from riskreport_main
     where riskFileNo = #{riskFileNo,jdbcType=CHAR}
   </delete>
-  <insert id="insert" parameterType="com.vo.RiskReportMain" >
+  <insert id="insert" parameterType="com.example.vo.RiskReportMain" >
     insert into riskreport_main (riskFileNo, classCode, riskCode, 
       comCode, stockRate, riskModel, 
       insuredType, insuredCode, insuredName, 
@@ -137,7 +137,7 @@
       #{othSuggest,jdbcType=LONGVARCHAR}, #{addMessage,jdbcType=LONGVARCHAR}, #{repulseSugggest,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.vo.RiskReportMain" >
+  <insert id="insertSelective" parameterType="com.example.vo.RiskReportMain" >
     insert into riskreport_main
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="riskFileNo != null" >
@@ -504,7 +504,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.vo.RiskReportMain" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.RiskReportMain" >
     update riskreport_main
     <set >
       <if test="classCode != null" >
@@ -687,7 +687,7 @@
     </set>
     where riskFileNo = #{riskFileNo,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.vo.RiskReportMain" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.vo.RiskReportMain" >
     update riskreport_main
     set classCode = #{classCode,jdbcType=CHAR},
       riskCode = #{riskCode,jdbcType=CHAR},
@@ -750,7 +750,7 @@
       repulseSugggest = #{repulseSugggest,jdbcType=LONGVARCHAR}
     where riskFileNo = #{riskFileNo,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.vo.RiskReportMain" >
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.RiskReportMain" >
     update riskreport_main
     set classCode = #{classCode,jdbcType=CHAR},
       riskCode = #{riskCode,jdbcType=CHAR},

@@ -1,6 +1,6 @@
-package com.simple.digui;
+package javaPractice.simple.digui;
 
-import com.vo.Gps;
+import com.common.po.Gps;
 
 /**
  * @功能：通过递归求1-100的和
@@ -18,7 +18,6 @@ public class DiGuiApplication {
 		System.out.println(sumTotal(5));
 		String aa="hello";
 		Gps Gps =new Gps(39,116);
-		
 	}
 	
 	/*加法递归*/

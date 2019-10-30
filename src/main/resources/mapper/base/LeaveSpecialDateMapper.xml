@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.LeaveSpecialDateMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.LeaveSpecialDate" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="date_type" property="dateType" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="DATE" />
+    <result column="insert_time_for_his" property="insertTimeForHis" jdbcType="TIMESTAMP" />
+    <result column="operate_time_for_his" property="operateTimeForHis" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, date_type, date, insert_time_for_his, operate_time_for_his
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from leave_special_date
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from leave_special_date
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.vo.LeaveSpecialDate" >
+    insert into leave_special_date (id, date_type, date, 
+      insert_time_for_his, operate_time_for_his
+      )
+    values (#{id,jdbcType=CHAR}, #{dateType,jdbcType=VARCHAR}, #{date,jdbcType=DATE}, 
+      #{insertTimeForHis,jdbcType=TIMESTAMP}, #{operateTimeForHis,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.vo.LeaveSpecialDate" >
+    insert into leave_special_date
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="dateType != null" >
+        date_type,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="insertTimeForHis != null" >
+        insert_time_for_his,
+      </if>
+      <if test="operateTimeForHis != null" >
+        operate_time_for_his,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="dateType != null" >
+        #{dateType,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="insertTimeForHis != null" >
+        #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.LeaveSpecialDate" >
+    update leave_special_date
+    <set >
+      <if test="dateType != null" >
+        date_type = #{dateType,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=DATE},
+      </if>
+      <if test="insertTimeForHis != null" >
+        insert_time_for_his = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        operate_time_for_his = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.LeaveSpecialDate" >
+    update leave_special_date
+    set date_type = #{dateType,jdbcType=VARCHAR},
+      date = #{date,jdbcType=DATE},
+      insert_time_for_his = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operate_time_for_his = #{operateTimeForHis,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
