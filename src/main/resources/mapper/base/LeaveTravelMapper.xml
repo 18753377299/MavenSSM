@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.LeaveTravelMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.LeaveTravel" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="job_num" property="jobNum" jdbcType="VARCHAR" />
+    <result column="employee_name" property="employeeName" jdbcType="VARCHAR" />
+    <result column="team_code" property="teamCode" jdbcType="VARCHAR" />
+    <result column="team_name" property="teamName" jdbcType="VARCHAR" />
+    <result column="project_code" property="projectCode" jdbcType="VARCHAR" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="travel_type" property="travelType" jdbcType="VARCHAR" />
+    <result column="travel_site" property="travelSite" jdbcType="VARCHAR" />
+    <result column="travel_desc" property="travelDesc" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="DATE" />
+    <result column="end_time" property="endTime" jdbcType="DATE" />
+    <result column="travel_day" property="travelDay" jdbcType="INTEGER" />
+    <result column="insert_time_for_his" property="insertTimeForHis" jdbcType="TIMESTAMP" />
+    <result column="operate_time_for_his" property="operateTimeForHis" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, job_num, employee_name, team_code, team_name, project_code, project_name, travel_type, 
+    travel_site, travel_desc, start_time, end_time, travel_day, insert_time_for_his, 
+    operate_time_for_his
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from leave_travel
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from leave_travel
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.vo.LeaveTravel" >
+    insert into leave_travel (id, job_num, employee_name, 
+      team_code, team_name, project_code, 
+      project_name, travel_type, travel_site, 
+      travel_desc, start_time, end_time, 
+      travel_day, insert_time_for_his, operate_time_for_his
+      )
+    values (#{id,jdbcType=INTEGER}, #{jobNum,jdbcType=VARCHAR}, #{employeeName,jdbcType=VARCHAR}, 
+      #{teamCode,jdbcType=VARCHAR}, #{teamName,jdbcType=VARCHAR}, #{projectCode,jdbcType=VARCHAR}, 
+      #{projectName,jdbcType=VARCHAR}, #{travelType,jdbcType=VARCHAR}, #{travelSite,jdbcType=VARCHAR}, 
+      #{travelDesc,jdbcType=VARCHAR}, #{startTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}, 
+      #{travelDay,jdbcType=INTEGER}, #{insertTimeForHis,jdbcType=TIMESTAMP}, #{operateTimeForHis,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.vo.LeaveTravel" >
+    insert into leave_travel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="jobNum != null" >
+        job_num,
+      </if>
+      <if test="employeeName != null" >
+        employee_name,
+      </if>
+      <if test="teamCode != null" >
+        team_code,
+      </if>
+      <if test="teamName != null" >
+        team_name,
+      </if>
+      <if test="projectCode != null" >
+        project_code,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="travelType != null" >
+        travel_type,
+      </if>
+      <if test="travelSite != null" >
+        travel_site,
+      </if>
+      <if test="travelDesc != null" >
+        travel_desc,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="travelDay != null" >
+        travel_day,
+      </if>
+      <if test="insertTimeForHis != null" >
+        insert_time_for_his,
+      </if>
+      <if test="operateTimeForHis != null" >
+        operate_time_for_his,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="jobNum != null" >
+        #{jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeName != null" >
+        #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCode != null" >
+        #{teamCode,jdbcType=VARCHAR},
+      </if>
+      <if test="teamName != null" >
+        #{teamName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null" >
+        #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="travelType != null" >
+        #{travelType,jdbcType=VARCHAR},
+      </if>
+      <if test="travelSite != null" >
+        #{travelSite,jdbcType=VARCHAR},
+      </if>
+      <if test="travelDesc != null" >
+        #{travelDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="travelDay != null" >
+        #{travelDay,jdbcType=INTEGER},
+      </if>
+      <if test="insertTimeForHis != null" >
+        #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.LeaveTravel" >
+    update leave_travel
+    <set >
+      <if test="jobNum != null" >
+        job_num = #{jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeName != null" >
+        employee_name = #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCode != null" >
+        team_code = #{teamCode,jdbcType=VARCHAR},
+      </if>
+      <if test="teamName != null" >
+        team_name = #{teamName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null" >
+        project_code = #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="travelType != null" >
+        travel_type = #{travelType,jdbcType=VARCHAR},
+      </if>
+      <if test="travelSite != null" >
+        travel_site = #{travelSite,jdbcType=VARCHAR},
+      </if>
+      <if test="travelDesc != null" >
+        travel_desc = #{travelDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="travelDay != null" >
+        travel_day = #{travelDay,jdbcType=INTEGER},
+      </if>
+      <if test="insertTimeForHis != null" >
+        insert_time_for_his = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        operate_time_for_his = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.LeaveTravel" >
+    update leave_travel
+    set job_num = #{jobNum,jdbcType=VARCHAR},
+      employee_name = #{employeeName,jdbcType=VARCHAR},
+      team_code = #{teamCode,jdbcType=VARCHAR},
+      team_name = #{teamName,jdbcType=VARCHAR},
+      project_code = #{projectCode,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      travel_type = #{travelType,jdbcType=VARCHAR},
+      travel_site = #{travelSite,jdbcType=VARCHAR},
+      travel_desc = #{travelDesc,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE},
+      travel_day = #{travelDay,jdbcType=INTEGER},
+      insert_time_for_his = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operate_time_for_his = #{operateTimeForHis,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

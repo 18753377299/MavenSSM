@@ -14,6 +14,22 @@ import java.util.Date;
 public class DateUtils {
 	public static SimpleDateFormat  sdf_YMD = new SimpleDateFormat("yyyy-MM-dd");
 	public static SimpleDateFormat  sdf_HMS = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+	public static SimpleDateFormat  sdf_YM = new SimpleDateFormat("yyyy-MM");
+	/**
+	 * 获得某个月最大天数,传递参数是日期类型的字符串
+	 * @param year 年份
+	 * @param month 月份 (1-12)
+	 * @return 某个月最大天数
+	 */
+	public  static int getMaxDayByYearMonth(String yearMonth){
+		Calendar calendar = Calendar.getInstance();
+		try {
+			calendar.setTime(sdf_YM.parse(yearMonth));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return calendar.getActualMaximum(Calendar.DATE);
+	}
 	/**
 	 * 获得某个月最大天数
 	 * @param year 年份
@@ -25,6 +41,24 @@ public class DateUtils {
 		calendar.set(Calendar.YEAR, year);
 		calendar.set(Calendar.MONTH, month);
 		return calendar.getActualMaximum(Calendar.DATE);
+	}
+	/**
+	 * 将日期格式转换为字符串类型,年月日类型yyyy-MM-dd
+	 * @param year 年份
+	 * @param month 月份 (1-12)
+	 * @return 某个月最大天数
+	 */
+	public static String dateTransferStrYMD(Date date){
+		return  sdf_YMD.format(date);
+	}
+	/**
+	 * 将日期格式转换为字符串类型,年月日类型YYYY-MM-dd HH:mm:ss
+	 * @param year 年份
+	 * @param month 月份 (1-12)
+	 * @return 某个月最大天数
+	 */
+	public static String dateTransferStrHMS(Date date){
+		return  sdf_HMS.format(date);
 	}
 	/**
 	 * 获取某一日期的下一天的日期
@@ -39,6 +73,27 @@ public class DateUtils {
 		calendar.add(Calendar.DAY_OF_MONTH, 1);
 		return  sdf_YMD.format(calendar.getTime());
 	}
+	/**
+	 * 获取当前日期是周几
+	 * @param year 年份
+	 * @param month 月份 (1-12)
+	 * @return 
+	 */
+	public static String getWeekOfDate(String dayOfYear){
+		String [] weekDays ={"7","1","2","3","4","5","6"};
+		Calendar calendar = Calendar.getInstance();
+		try {
+			calendar.setTime(sdf_YMD.parse(dayOfYear));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		int week = calendar.get(Calendar.DAY_OF_WEEK)-1;
+		if(week<0){
+			week = 0;
+		}
+		return  weekDays[week];
+	}
+	
 	/**
 	 * 获取的一天的开始时间
 	 * @param year 年份

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.func.leave.request.AttendanceNotice;
-import com.example.func.leave.service.LeaveService;
+import com.example.func.oa.leave.request.AttendanceNotice;
+import com.example.func.oa.leave.service.LeaveService;
 import com.example.po.response.AjaxResult;
 	/**
  * @author  作者 E-mail: 
@@ -22,7 +22,7 @@ import com.example.po.response.AjaxResult;
 public class LeaveController {
 	
 	@Autowired
-    LeaveService leaveService;
+    private LeaveService leaveService;
 	/**
 	 * @功能：考勤数据导入之后对人员信息进行操作
 	 * @param 
@@ -36,6 +36,13 @@ public class LeaveController {
 	public  AjaxResult operateAttendanceData(@RequestBody AttendanceNotice attendanceNotice){
 		AjaxResult ajaxResult =new AjaxResult();
 		ajaxResult =leaveService.operateAttendanceData(attendanceNotice);
+		return ajaxResult;
+	}
+	@RequestMapping(value="/test",method={RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public  AjaxResult test(){
+		AjaxResult ajaxResult =new AjaxResult();
+		leaveService.queryLeaveSpecialDate();
 		return ajaxResult;
 	}
 }

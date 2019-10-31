@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
-public class LeaveMain implements Serializable {
+public class LeaveTravel implements Serializable {
     @ApiModelProperty(value = "id")
     private Integer id;
 
@@ -26,26 +26,29 @@ public class LeaveMain implements Serializable {
     @ApiModelProperty(value = "所属项目名称")
     private String projectName;
 
-    @ApiModelProperty(value = "--**请假类型:A倒休,B倒休（本月）,C年假,D病假,E事假,F婚假,G丧假,H产假,I陪产假,J旷工")
-    private String leaveType;
+    @ApiModelProperty(value = "出差类型")
+    private String travelType;
 
-    @ApiModelProperty(value = "请假开始时间")
+    @ApiModelProperty(value = "出差地点")
+    private String travelSite;
+
+    @ApiModelProperty(value = "出差说明")
+    private String travelDesc;
+
+    @ApiModelProperty(value = "出差开始时间")
     private Date startTime;
 
-    @ApiModelProperty(value = "请假结束时间")
+    @ApiModelProperty(value = "出差结束时间")
     private Date endTime;
 
-    @ApiModelProperty(value = "请假天数")
-    private Integer sumDay;
+    @ApiModelProperty(value = "出差天数")
+    private Integer travelDay;
 
     @ApiModelProperty(value = "插入时间")
     private Date insertTimeForHis;
 
     @ApiModelProperty(value = "更新时间")
     private Date operateTimeForHis;
-
-    @ApiModelProperty(value = "详细说明")
-    private String detailDesc;
 
     private static final long serialVersionUID = 1L;
 
@@ -105,12 +108,28 @@ public class LeaveMain implements Serializable {
         this.projectName = projectName == null ? null : projectName.trim();
     }
 
-    public String getLeaveType() {
-        return leaveType;
+    public String getTravelType() {
+        return travelType;
     }
 
-    public void setLeaveType(String leaveType) {
-        this.leaveType = leaveType == null ? null : leaveType.trim();
+    public void setTravelType(String travelType) {
+        this.travelType = travelType == null ? null : travelType.trim();
+    }
+
+    public String getTravelSite() {
+        return travelSite;
+    }
+
+    public void setTravelSite(String travelSite) {
+        this.travelSite = travelSite == null ? null : travelSite.trim();
+    }
+
+    public String getTravelDesc() {
+        return travelDesc;
+    }
+
+    public void setTravelDesc(String travelDesc) {
+        this.travelDesc = travelDesc == null ? null : travelDesc.trim();
     }
 
     public Date getStartTime() {
@@ -129,12 +148,12 @@ public class LeaveMain implements Serializable {
         this.endTime = endTime;
     }
 
-    public Integer getSumDay() {
-        return sumDay;
+    public Integer getTravelDay() {
+        return travelDay;
     }
 
-    public void setSumDay(Integer sumDay) {
-        this.sumDay = sumDay;
+    public void setTravelDay(Integer travelDay) {
+        this.travelDay = travelDay;
     }
 
     public Date getInsertTimeForHis() {
@@ -153,14 +172,6 @@ public class LeaveMain implements Serializable {
         this.operateTimeForHis = operateTimeForHis;
     }
 
-    public String getDetailDesc() {
-        return detailDesc;
-    }
-
-    public void setDetailDesc(String detailDesc) {
-        this.detailDesc = detailDesc == null ? null : detailDesc.trim();
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -174,13 +185,14 @@ public class LeaveMain implements Serializable {
         sb.append(", teamName=").append(teamName);
         sb.append(", projectCode=").append(projectCode);
         sb.append(", projectName=").append(projectName);
-        sb.append(", leaveType=").append(leaveType);
+        sb.append(", travelType=").append(travelType);
+        sb.append(", travelSite=").append(travelSite);
+        sb.append(", travelDesc=").append(travelDesc);
         sb.append(", startTime=").append(startTime);
         sb.append(", endTime=").append(endTime);
-        sb.append(", sumDay=").append(sumDay);
+        sb.append(", travelDay=").append(travelDay);
         sb.append(", insertTimeForHis=").append(insertTimeForHis);
         sb.append(", operateTimeForHis=").append(operateTimeForHis);
-        sb.append(", detailDesc=").append(detailDesc);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

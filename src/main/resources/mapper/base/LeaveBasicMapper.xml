@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.LeaveBasicMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.LeaveBasic" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="job_num" property="jobNum" jdbcType="VARCHAR" />
+    <result column="employee_name" property="employeeName" jdbcType="VARCHAR" />
+    <result column="team_code" property="teamCode" jdbcType="VARCHAR" />
+    <result column="team_name" property="teamName" jdbcType="VARCHAR" />
+    <result column="project_code" property="projectCode" jdbcType="VARCHAR" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="annual_day" property="annualDay" jdbcType="TINYINT" />
+    <result column="used_annual_day" property="usedAnnualDay" jdbcType="TINYINT" />
+    <result column="retreat_day" property="retreatDay" jdbcType="TINYINT" />
+    <result column="used_retreat_day" property="usedRetreatDay" jdbcType="TINYINT" />
+    <result column="sick_day" property="sickDay" jdbcType="TINYINT" />
+    <result column="used_sick_day" property="usedSickDay" jdbcType="TINYINT" />
+    <result column="insert_time_for_his" property="insertTimeForHis" jdbcType="TIMESTAMP" />
+    <result column="operate_time_for_his" property="operateTimeForHis" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, job_num, employee_name, team_code, team_name, project_code, project_name, annual_day, 
+    used_annual_day, retreat_day, used_retreat_day, sick_day, used_sick_day, insert_time_for_his, 
+    operate_time_for_his
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from leave_basic
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from leave_basic
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.vo.LeaveBasic" >
+    insert into leave_basic (id, job_num, employee_name, 
+      team_code, team_name, project_code, 
+      project_name, annual_day, used_annual_day, 
+      retreat_day, used_retreat_day, sick_day, 
+      used_sick_day, insert_time_for_his, operate_time_for_his
+      )
+    values (#{id,jdbcType=INTEGER}, #{jobNum,jdbcType=VARCHAR}, #{employeeName,jdbcType=VARCHAR}, 
+      #{teamCode,jdbcType=VARCHAR}, #{teamName,jdbcType=VARCHAR}, #{projectCode,jdbcType=VARCHAR}, 
+      #{projectName,jdbcType=VARCHAR}, #{annualDay,jdbcType=TINYINT}, #{usedAnnualDay,jdbcType=TINYINT}, 
+      #{retreatDay,jdbcType=TINYINT}, #{usedRetreatDay,jdbcType=TINYINT}, #{sickDay,jdbcType=TINYINT}, 
+      #{usedSickDay,jdbcType=TINYINT}, #{insertTimeForHis,jdbcType=TIMESTAMP}, #{operateTimeForHis,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.vo.LeaveBasic" >
+    insert into leave_basic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="jobNum != null" >
+        job_num,
+      </if>
+      <if test="employeeName != null" >
+        employee_name,
+      </if>
+      <if test="teamCode != null" >
+        team_code,
+      </if>
+      <if test="teamName != null" >
+        team_name,
+      </if>
+      <if test="projectCode != null" >
+        project_code,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="annualDay != null" >
+        annual_day,
+      </if>
+      <if test="usedAnnualDay != null" >
+        used_annual_day,
+      </if>
+      <if test="retreatDay != null" >
+        retreat_day,
+      </if>
+      <if test="usedRetreatDay != null" >
+        used_retreat_day,
+      </if>
+      <if test="sickDay != null" >
+        sick_day,
+      </if>
+      <if test="usedSickDay != null" >
+        used_sick_day,
+      </if>
+      <if test="insertTimeForHis != null" >
+        insert_time_for_his,
+      </if>
+      <if test="operateTimeForHis != null" >
+        operate_time_for_his,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="jobNum != null" >
+        #{jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeName != null" >
+        #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCode != null" >
+        #{teamCode,jdbcType=VARCHAR},
+      </if>
+      <if test="teamName != null" >
+        #{teamName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null" >
+        #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="annualDay != null" >
+        #{annualDay,jdbcType=TINYINT},
+      </if>
+      <if test="usedAnnualDay != null" >
+        #{usedAnnualDay,jdbcType=TINYINT},
+      </if>
+      <if test="retreatDay != null" >
+        #{retreatDay,jdbcType=TINYINT},
+      </if>
+      <if test="usedRetreatDay != null" >
+        #{usedRetreatDay,jdbcType=TINYINT},
+      </if>
+      <if test="sickDay != null" >
+        #{sickDay,jdbcType=TINYINT},
+      </if>
+      <if test="usedSickDay != null" >
+        #{usedSickDay,jdbcType=TINYINT},
+      </if>
+      <if test="insertTimeForHis != null" >
+        #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.LeaveBasic" >
+    update leave_basic
+    <set >
+      <if test="jobNum != null" >
+        job_num = #{jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeName != null" >
+        employee_name = #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="teamCode != null" >
+        team_code = #{teamCode,jdbcType=VARCHAR},
+      </if>
+      <if test="teamName != null" >
+        team_name = #{teamName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null" >
+        project_code = #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="annualDay != null" >
+        annual_day = #{annualDay,jdbcType=TINYINT},
+      </if>
+      <if test="usedAnnualDay != null" >
+        used_annual_day = #{usedAnnualDay,jdbcType=TINYINT},
+      </if>
+      <if test="retreatDay != null" >
+        retreat_day = #{retreatDay,jdbcType=TINYINT},
+      </if>
+      <if test="usedRetreatDay != null" >
+        used_retreat_day = #{usedRetreatDay,jdbcType=TINYINT},
+      </if>
+      <if test="sickDay != null" >
+        sick_day = #{sickDay,jdbcType=TINYINT},
+      </if>
+      <if test="usedSickDay != null" >
+        used_sick_day = #{usedSickDay,jdbcType=TINYINT},
+      </if>
+      <if test="insertTimeForHis != null" >
+        insert_time_for_his = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateTimeForHis != null" >
+        operate_time_for_his = #{operateTimeForHis,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.LeaveBasic" >
+    update leave_basic
+    set job_num = #{jobNum,jdbcType=VARCHAR},
+      employee_name = #{employeeName,jdbcType=VARCHAR},
+      team_code = #{teamCode,jdbcType=VARCHAR},
+      team_name = #{teamName,jdbcType=VARCHAR},
+      project_code = #{projectCode,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      annual_day = #{annualDay,jdbcType=TINYINT},
+      used_annual_day = #{usedAnnualDay,jdbcType=TINYINT},
+      retreat_day = #{retreatDay,jdbcType=TINYINT},
+      used_retreat_day = #{usedRetreatDay,jdbcType=TINYINT},
+      sick_day = #{sickDay,jdbcType=TINYINT},
+      used_sick_day = #{usedSickDay,jdbcType=TINYINT},
+      insert_time_for_his = #{insertTimeForHis,jdbcType=TIMESTAMP},
+      operate_time_for_his = #{operateTimeForHis,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

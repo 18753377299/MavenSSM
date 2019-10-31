@@ -32,6 +32,11 @@ public class Demo {
          num+=2;
          int i=1;
          int j=2;
+         // 初始化的问题
+         int l,m,n;
+         l=0;m=0;n=0;
+         l= ++ l;
+         System.out.println("l:"+l+",m:"+m+",n:"+n);
          int max=Integer.MAX_VALUE;
          System.out.println("max="+max);
          System.out.println(num) ; 
