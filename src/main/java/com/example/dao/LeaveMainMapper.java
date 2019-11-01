@@ -16,4 +16,5 @@ public interface LeaveMainMapper {
     int updateByPrimaryKeyWithBLOBs(LeaveMain record);
 
     int updateByPrimaryKey(LeaveMain record);
+    
 }

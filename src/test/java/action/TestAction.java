@@ -28,7 +28,7 @@ public class TestAction {
 		
 //		ApplicationContext ctx=new FileSystemXmlApplicationContext("beans.xml");
 		//从类的加载路径下搜索配置文件，可以加载多个xml文件
-		ApplicationContext ctx=new ClassPathXmlApplicationContext("beans.xml");
+		ApplicationContext ctx=new ClassPathXmlApplicationContext("spring/beans.xml");
 		
 //		Resource rs=new FileSystemResource("beans.xml");
 //		BeanFactory ctx=new XmlBeanFactory(rs);

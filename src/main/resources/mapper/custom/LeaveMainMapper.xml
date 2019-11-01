@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.impl.LeaveMainMapperImpl" >
+  <select id="queryLeaveMainList" resultMap="ResultMapWithBLOBs" parameterType="java.util.Map" >
+	    select 
+	    <include refid="Base_Column_List" />
+	    ,
+	    <include refid="Blob_Column_List" />
+	    from leave_main
+	   <where>
+	   		<if test="userCode !=null and userCode!='' ">
+	   		  and job_num =#{userCode}
+	   		</if>
+	   		<if test="startTime != null and startTime != ''">
+	   		  and start_time &gt;=#{startTime}
+	   		</if>
+	   		<if test="endTime != null and endTime != ''">
+	   		  and start_time &lt;=#{endTime}
+	   		</if>
+	   </where>
+  </select>
+  
+
+</mapper>

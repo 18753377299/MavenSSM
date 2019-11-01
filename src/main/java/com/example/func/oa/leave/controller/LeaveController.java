@@ -42,7 +42,8 @@ public class LeaveController {
 	@ResponseBody
 	public  AjaxResult test(){
 		AjaxResult ajaxResult =new AjaxResult();
-		leaveService.queryLeaveSpecialDate();
+//		leaveService.queryLeaveSpecialDate();
+		leaveService.queryLeaveMainList("","2018-12");
 		return ajaxResult;
 	}
 }

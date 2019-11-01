@@ -26,7 +26,7 @@ public class LeaveMain implements Serializable {
     @ApiModelProperty(value = "所属项目名称")
     private String projectName;
 
-    @ApiModelProperty(value = "--**请假类型:A倒休,B倒休（本月）,C年假,D病假,E事假,F婚假,G丧假,H产假,I陪产假,J旷工")
+    @ApiModelProperty(value = "请假类型:A倒休,B倒休（本月）,C年假,D病假,E事假,F婚假,G丧假,H产假,I陪产假,J旷工,K迟到,L:早退")
     private String leaveType;
 
     @ApiModelProperty(value = "请假开始时间")
