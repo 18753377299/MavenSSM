@@ -23,7 +23,7 @@ public class ObjectMapperTest {
 			map.put("password", "123");
 					
 			ObjectMapper  objectMapper = new ObjectMapper();
-			User user=objectMapper.convertValue(map, User.class);
+			User_1 user=objectMapper.convertValue(map, User_1.class);
 			System.out.println("user"+user.getUserId()+":"
 					+user.getUsername()+":"+user.getPassword());
 			System.out.println(objectMapper.writeValueAsString(user));

@@ -13,7 +13,7 @@ public class ReflectTest {
 	public static void main(String[]args) throws Exception{
 //		Class class1=User.class;
 //		Field [] fields  =class1.getDeclaredFields();
-		User user =new User();
+		User_1 user =new User_1();
 		user.setName("222");
 		String name=(String)reflect(user,"name");
 		setMethod(user, "info", "3333");

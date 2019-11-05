@@ -1,4 +1,4 @@
-package com.typhoonearlywarning.vo;
+package com.example.func.typhoonearlywarning.vo;
 
 import java.util.Date;
 

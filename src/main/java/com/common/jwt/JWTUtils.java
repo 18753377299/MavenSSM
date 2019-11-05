@@ -43,9 +43,9 @@ public class JWTUtils {
 		} catch (ExpiredJwtException e) { // token超时
 			checkResult.setErrCode(JWT_ERRCODE_EXPIRE);
 			checkResult.setSuccess(false);
-		} catch (SignatureException e) { // 校验失败
-			checkResult.setErrCode(JWT_ERRCODE_FAIL);
-			checkResult.setSuccess(false);
+//		} catch (SignatureException e) { // 校验失败
+//			checkResult.setErrCode(JWT_ERRCODE_FAIL);
+//			checkResult.setSuccess(false);
 		} catch (Exception e) {
 			checkResult.setErrCode(JWT_ERRCODE_FAIL);
 			checkResult.setSuccess(false);
@@ -57,13 +57,22 @@ public class JWTUtils {
 	 * 
 	 * 解析JWT字符串
 	 * @param jwt 就是服务器为客户端生成的签名数据，就是token。
-	 * @return
+	 * @return解析之后的内容：{jti=ffe9aa20-d4c2-4596-84a4-ebecf2a4a079, iss=sxt-test-jwt, 
+	 *	sub={"username":"A000011533","password":"a11111"}, iat=1572944024, exp=1572958424}
 	 * @throws Exception
 	 */
-	public static Claims parseJWT(String jwt) throws Exception {
+	public static Claims parseJWT(String jwt) {
 		SecretKey secretKey = generalKey();
-		return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwt)
-			.getBody(); // getBody获取的就是token中记录的payload数据。就是payload中保存的所有的claims。
+		Claims  claims  =  null;
+		try {
+			// getBody获取的就是token中记录的payload数据。就是payload中保存的所有的claims。
+			claims  = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwt).getBody();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+//		return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwt)
+//			.getBody(); // getBody获取的就是token中记录的payload数据。就是payload中保存的所有的claims。
+		return claims;
 	}
 	
 	public static SecretKey generalKey() {

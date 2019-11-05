@@ -1,4 +1,4 @@
-package com.typhoonearlywarning.vo;
+package com.example.func.typhoonearlywarning.vo;
 
 import java.math.BigDecimal;
 import java.util.Date;

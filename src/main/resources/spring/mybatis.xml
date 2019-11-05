@@ -16,9 +16,12 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref ="dataSource"/>
 		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+		<!-- ？：匹配一个字符,*：匹配任意字符,**：匹配多层路径 -->
 		<property name="mapperLocations" value="classpath:mapper/**/*.xml" />
-		 <!-- 自动扫描mybatis配置文件 -->
-    	<property name="configLocation" value="classpath:spring/mybatis-config.xml"></property>
+		 <!-- 自动扫描mybatis配置文件，tomcat解析web.xml文件时，配置文件扫描到这个文件，
+		    从而会加载头文件中的约束 ，tomcat加载不到这个约束。所以在路径前添加dtd,使配置文件不扫描这个文件，
+		    不会出现java.net.UnknownHostException: mybatis.org这个错误-->
+    	<property name="configLocation" value="classpath:spring/dtd/mybatis-config.xml"></property>
 	</bean>
 	  
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

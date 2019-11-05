@@ -59,7 +59,16 @@
 		<!-- webroot到某一指定的文件夹的路径 -->
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<!-- 视图名称的后缀 -->
+		<!-- 对于类似html/css/jpg等资源的访问就会得不到，所以需要在web.xml中加入以下类型的支持：
+		 <servlet-mapping>
+	     	<servlet-name>default</servlet-name>
+	      	<url-pattern>*.css</url-pattern>
+		</servlet-mapping> -->
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	<!-- 风控模板图片,Spring MVC 自己处理静态资源，默认缓存1年(31536000)-->
+	<mvc:resources mapping="/model/**"
+		location="/WEB-INF/riskctrl/riskinfo/model/" cache-period="31536000" />
+	
 	
 </beans>

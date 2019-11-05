@@ -9,10 +9,17 @@ package com.common.jwt;
 public class JWTSubject {
 	
 	private String username;
+	private String password;
 
 	public JWTSubject(String username) {
 		super();
 		this.username = username;
+	}
+	
+	public JWTSubject(String username,String password) {
+		super();
+		this.username = username;
+		this.password = password;
 	}
 
 	public JWTSubject() {
@@ -26,6 +33,12 @@ public class JWTSubject {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }

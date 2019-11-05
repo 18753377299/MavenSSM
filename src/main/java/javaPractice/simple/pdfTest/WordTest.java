@@ -48,13 +48,13 @@ public class WordTest {
         Map<String, Object> dataMap = new HashMap<String, Object>();
         
         try {
-        	List<User> users=new ArrayList<User>();
+        	List<User_1> users=new ArrayList<User_1>();
         	
         	List<Image> images=new ArrayList<Image>();
         	
 //        	Image image=new Image();
         	for(int i=0;i<2;i++){
-        		User user =new User();
+        		User_1 user =new User_1();
         		user.setName("（若计值>=1且<40)");
         		users.add(user);
         		
@@ -81,7 +81,7 @@ public class WordTest {
 	       	 DateFormat df1 = null ;     // 声明一个DateFormat  
 	         DateFormat df2 = null ;     // 声明一个DateFormat  
 	         df1 = DateFormat.getDateInstance(DateFormat.YEAR_FIELD,new Locale("zh","CN")) ;
-	         User user =new User();
+	         User_1 user =new User_1();
 	         user.setName("（若计值>=1且<40)");
 //	        dataMap.put("sb",  df1.format(new Date()));
 	        dataMap.put("sb",  123.343434000);

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.UserRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.example.vo.UserRole" >
+    <id column="user_code" property="userCode" jdbcType="VARCHAR" />
+    <id column="lever_code" property="leverCode" jdbcType="VARCHAR" />
+    <result column="lever_name" property="leverName" jdbcType="VARCHAR" />
+    <result column="super_lever_code" property="superLeverCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_code, lever_code, lever_name, super_lever_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where user_code = #{userCode,jdbcType=VARCHAR}
+      and lever_code = #{leverCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from user_role
+    where user_code = #{userCode,jdbcType=VARCHAR}
+      and lever_code = #{leverCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.vo.UserRole" >
+    insert into user_role (user_code, lever_code, lever_name, 
+      super_lever_code)
+    values (#{userCode,jdbcType=VARCHAR}, #{leverCode,jdbcType=VARCHAR}, #{leverName,jdbcType=VARCHAR}, 
+      #{superLeverCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.vo.UserRole" >
+    insert into user_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userCode != null" >
+        user_code,
+      </if>
+      <if test="leverCode != null" >
+        lever_code,
+      </if>
+      <if test="leverName != null" >
+        lever_name,
+      </if>
+      <if test="superLeverCode != null" >
+        super_lever_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userCode != null" >
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="leverCode != null" >
+        #{leverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="leverName != null" >
+        #{leverName,jdbcType=VARCHAR},
+      </if>
+      <if test="superLeverCode != null" >
+        #{superLeverCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.UserRole" >
+    update user_role
+    <set >
+      <if test="leverName != null" >
+        lever_name = #{leverName,jdbcType=VARCHAR},
+      </if>
+      <if test="superLeverCode != null" >
+        super_lever_code = #{superLeverCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_code = #{userCode,jdbcType=VARCHAR}
+      and lever_code = #{leverCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.UserRole" >
+    update user_role
+    set lever_name = #{leverName,jdbcType=VARCHAR},
+      super_lever_code = #{superLeverCode,jdbcType=VARCHAR}
+    where user_code = #{userCode,jdbcType=VARCHAR}
+      and lever_code = #{leverCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

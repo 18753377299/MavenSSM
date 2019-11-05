@@ -1,48 +1,75 @@
 package com.example.vo;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String userId;
+    @ApiModelProperty(value = "用户代码")
+    private String userCode;
 
-    private String username;
+    @ApiModelProperty(value = "用户密码")
+    private String passWord;
 
-    private String password;
+    @ApiModelProperty(value = "用户名称")
+    private String userName;
 
-    private Long level;
+    @ApiModelProperty(value = "年龄")
+    private Integer age;
+
+    @ApiModelProperty(value = "邮箱")
+    private String email;
+
+    @ApiModelProperty(value = "身份证号")
+    private String identityNumber;
 
     private static final long serialVersionUID = 1L;
 
-    public String getUserId() {
-        return userId;
+    public String getUserCode() {
+        return userCode;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setUserCode(String userCode) {
+        this.userCode = userCode == null ? null : userCode.trim();
     }
 
-    public String getUsername() {
-        return username;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setPassWord(String passWord) {
+        this.passWord = passWord == null ? null : passWord.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 
-    public Long getLevel() {
-        return level;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setLevel(Long level) {
-        this.level = level;
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getIdentityNumber() {
+        return identityNumber;
+    }
+
+    public void setIdentityNumber(String identityNumber) {
+        this.identityNumber = identityNumber == null ? null : identityNumber.trim();
     }
 
     @Override
@@ -51,10 +78,12 @@ public class User implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", userId=").append(userId);
-        sb.append(", username=").append(username);
-        sb.append(", password=").append(password);
-        sb.append(", level=").append(level);
+        sb.append(", userCode=").append(userCode);
+        sb.append(", passWord=").append(passWord);
+        sb.append(", userName=").append(userName);
+        sb.append(", age=").append(age);
+        sb.append(", email=").append(email);
+        sb.append(", identityNumber=").append(identityNumber);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

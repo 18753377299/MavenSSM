@@ -53,7 +53,7 @@ public class WordDocxTest {
        * @throws TemplateException
        */
        Map<String, Object> dataMap = new HashMap<String, Object>();
-       User user =new User();
+       User_1 user =new User_1();
        user.setName("张三");
        user.setInfo("123");
        dataMap.put("user", user);
@@ -70,13 +70,13 @@ public class WordDocxTest {
        Map<String, Object> dataMap = new HashMap<String, Object>();
        
        try {
-       	List<User> users=new ArrayList<User>();
+       	List<User_1> users=new ArrayList<User_1>();
        	
        	List<Image> images=new ArrayList<Image>();
        	
 //       	Image image=new Image();
        	for(int i=0;i<2;i++){
-       		User user =new User();
+       		User_1 user =new User_1();
        		user.setName("  ");
        		users.add(user);
        		

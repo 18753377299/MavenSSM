@@ -13,7 +13,7 @@ import com.common.utils.RiskCommonMethodUtils;
 import com.example.dao.RiskReportAssessMapper;
 import com.example.dao.RiskReportFireDangerMapper;
 import com.example.dao.RiskReportMainMapper;
-import com.example.dao.UserMapper;
+import com.example.dao.User_1Mapper;
 import com.example.dao.UtiWeightMapper;
 import com.example.func.riskfire.dao.RiskFireDao;
 import com.example.func.riskfire.service.RiskFireService;
@@ -22,7 +22,7 @@ import com.example.po.response.AjaxResult;
 import com.example.po.response.RiskGradeVo;
 import com.example.vo.RiskReportAssess;
 import com.example.vo.RiskReportMain;
-import com.example.vo.User;
+import com.example.vo.User_1;
 import com.example.vo.UtiFactor;
 import com.example.vo.UtiFormula;
 import com.example.vo.UtiWeight;
@@ -56,7 +56,7 @@ public class RiskFireServiceImpl implements RiskFireService{
 	RiskReportFireDangerMapper  riskReportFireDangerMapper;
 	
 	@Autowired
-	UserMapper userMapper;
+	User_1Mapper user_1Mapper;
 	
 	
 	/**
@@ -218,7 +218,7 @@ public class RiskFireServiceImpl implements RiskFireService{
 	// 从数据源
 	public  AjaxResult querySlaveAndMasterTable(){
 		AjaxResult ajaxResult =new AjaxResult();
-		User user =userMapper.selectByPrimaryKey("3");
+		User_1 user =user_1Mapper.selectByPrimaryKey("3");
 //		long index = 1L;
 //		UtiWeight  utiWeight= utiWeightMapper.selectByPrimaryKey(index);
 		return ajaxResult;

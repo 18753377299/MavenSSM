@@ -156,7 +156,12 @@ public class TestController extends AbstractController{
 		return responseData;
 	}
 	
-	
+	@RequestMapping(value="/test",method={RequestMethod.PUT,RequestMethod.POST})
+	public ModelAndView test(){
+		ModelAndView mav =new ModelAndView();
+		System.out.println("put");
+		return mav;
+	}
 	
 	
 }

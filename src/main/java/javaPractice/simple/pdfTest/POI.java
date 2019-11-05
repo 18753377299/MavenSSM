@@ -34,10 +34,10 @@ public class POI {
         BaseFont baseFont = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
         Font font = new Font(baseFont);
         
-        List<User> users = new ArrayList<User>();
+        List<User_1> users = new ArrayList<User_1>();
         // 循环添加对象
         for (int i = 0; i < 5; i++) {
-            User user = new User();
+            User_1 user = new User_1();
             user.setId(""+i);
             user.setInfo("开发者测试"+i);
             user.setName("测试"+i);
@@ -52,7 +52,7 @@ public class POI {
         document.close();
     }
     
-    public static Table setTable(List<User> users) throws BadElementException{
+    public static Table setTable(List<User_1> users) throws BadElementException{
         //创建一个有3列的表格
         Table table = new Table(3);
         table.setBorderWidth(1);

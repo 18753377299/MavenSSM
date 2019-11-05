@@ -1,4 +1,4 @@
-package com.simple.array;
+package javaPractice.simple.array;
 	/**
  * @author  作者 E-mail: liqiankun
  * @date 创建时间：2019年4月12日 上午11:06:52
