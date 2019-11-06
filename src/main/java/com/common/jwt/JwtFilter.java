@@ -42,7 +42,7 @@ public class JwtFilter implements Filter{
 				if(ignoreKey.indexOf(",")>-1){
 					ignoreKeys = ignoreKey.split(",");
 				}else {
-					ignoreKeys = new String[0];
+					ignoreKeys = new String[1];
 					ignoreKeys[0] =  ignoreKey;
 				}
 			}else{

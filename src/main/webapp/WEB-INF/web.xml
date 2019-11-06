@@ -80,10 +80,15 @@
   <filter>
 	<filter-name>jwtFilter</filter-name>
 	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	<!-- 委托Spring来管理过滤器的生命周期 -->
+	<init-param>
+        <param-name>targetFilterLifecycle</param-name>
+        <param-value>true</param-value>
+    </init-param>
 	<!-- 用于过滤需要特殊放过的请求 -->
 	<init-param>
 		<param-name>ignoreKey</param-name>
-		<param-value>/login</param-value>
+		<param-value>/login/userLogin</param-value>
 	</init-param>
   </filter>
   <filter-mapping>
