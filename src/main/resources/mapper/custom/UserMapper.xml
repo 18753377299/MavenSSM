@@ -3,7 +3,7 @@
 <mapper namespace="com.example.dao.UserMapper" >
  
   <!-- 返回的类型是boolean -->
-  <select id="queryUserCodePass" resultType="BaseResultMap" parameterType="com.example.vo.User">
+  <select id="queryUserCodePass" resultMap="BaseResultMap" parameterType="com.example.vo.User">
 	    select  * from user
 	    <where>
 	    	<if test ="userCode != null and userCode != ''">

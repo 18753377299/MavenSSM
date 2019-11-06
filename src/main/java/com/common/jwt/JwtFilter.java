@@ -35,10 +35,16 @@ public class JwtFilter implements Filter{
 		
 		@Override
 		public void init(FilterConfig filterConfig) throws ServletException {
-//			ignoreKey
+			System.out.println("===================21232==========================");
 			String ignoreKey =  filterConfig.getInitParameter("ignoreKey");
+			System.out.println(ignoreKey);
 			if(StringUtils.isNotBlank(ignoreKey)){
-				ignoreKeys = ignoreKey.split(",");
+				if(ignoreKey.indexOf(",")>-1){
+					ignoreKeys = ignoreKey.split(",");
+				}else {
+					ignoreKeys = new String[0];
+					ignoreKeys[0] =  ignoreKey;
+				}
 			}else{
 				ignoreKeys = new String[0];
 			}
@@ -52,26 +58,27 @@ public class JwtFilter implements Filter{
 			HttpServletResponse res = (HttpServletResponse) response;
 			String requestUri = req.getRequestURI();
 		    System.out.println("requestURI："+requestUri);
-		    AjaxResult  ajaxResult =  this.checkTokenIsCorrect(req);
-			
 		    boolean jumpFlag = false;
-		    
-		    // 除了符合token条件的，剩下的可以跳过的
-		    if(true){
-		    	  chain.doFilter(request, response);
-		    }else {
-		    	 if(null!=ignoreKeys&&ignoreKeys.length>0){
-				    	for(String key:ignoreKeys){
-				    		if(key.contains(requestUri)){
-				    			jumpFlag = true;
-				    			break;
-				    		}
-				    	}
-				    }
-				    if(jumpFlag){
-				    	chain.doFilter(request, response);
-				    }
-		    }
+		    AjaxResult  ajaxResult =  this.checkTokenIsCorrect(req);
+			if(1 ==ajaxResult.getStatus()){
+				chain.doFilter(request, response);
+			}else{
+				if(null!=ignoreKeys&&ignoreKeys.length>0){
+			    	for(String key:ignoreKeys){
+			    		// 如果该地址是以配置的信息结尾的，则放过
+			    		if(requestUri.endsWith(key)){
+			    			jumpFlag = true;
+			    			break;
+			    		}
+			    	}
+			    }
+			    if(jumpFlag){
+			    	chain.doFilter(request, response);
+			    }else{
+			    	// 向前台返回错误信息:过滤器中怎样返回错误信息
+			    	handleErrorMessage(ajaxResult);
+			    }
+			}
 
 		}
 
@@ -79,12 +86,19 @@ public class JwtFilter implements Filter{
 		public void destroy() {
 			
 		}
+		public void handleErrorMessage(AjaxResult ajaxResult){
+			
+		}
+		//用于校验token是否正常
 		public AjaxResult  checkTokenIsCorrect(HttpServletRequest req){
 			AjaxResult ajaxResult =new AjaxResult();
 			try {
 				String jwtToken = req.getHeader("jwtToken");
 				UserInfo  userInfo = (UserInfo)req.getAttribute("userInfo");
-				if(StringUtils.isNotBlank(jwtToken) && jwtToken != "undefined" && jwtToken != "null"){
+				if(StringUtils.isBlank(jwtToken) || jwtToken == "undefined" || jwtToken != "null"){
+					ajaxResult.setStatus(2);
+					ajaxResult.setMessage("token传递异常，请重新确认！");
+				}else {
 					Claims  claims =  JWTUtils.parseJWT(jwtToken);
 					System.out.println(claims);
 					if(claims!=null){
@@ -95,17 +109,16 @@ public class JwtFilter implements Filter{
 						if(userInfo.getUserCode().equals(userVo.getUserCode())&&
 								userInfo.getPassword().equals(userVo.getPassWord())){
 							ajaxResult.setStatus(1);
+							ajaxResult.setMessage("校验token成功，可以正常使用该token！");
 						}else {
-							
+							ajaxResult.setStatus(4);
+							ajaxResult.setMessage("使用的token与该用户不匹配");
 						}
 					}else {
 						// jwt解析异常
 						ajaxResult.setStatus(3);
 						ajaxResult.setMessage("token解析异常！");
 					}
-				}else {
-					ajaxResult.setStatus(2);
-					ajaxResult.setMessage("token传递异常，请重新确认！");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
