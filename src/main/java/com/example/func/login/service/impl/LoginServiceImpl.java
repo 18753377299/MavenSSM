@@ -67,6 +67,7 @@ public class LoginServiceImpl implements LoginService{
 				JWTUtils.generalSubject(subject), expireDate);
 		return jwtToken;
 	}
+	// 查询用户名密码是否存在
 	public boolean queryUserCodePass(User user){
 		boolean flag = false;
 		try {
