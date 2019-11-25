@@ -1,4 +1,4 @@
-package com.simple.cycleFor;
+package javaPractice.simple.cycleFor;
 
 /**
  * @功能：1.查询出所有的“水仙花数”，水仙花数是一个三位数，三位数字的立方和等于该数本身

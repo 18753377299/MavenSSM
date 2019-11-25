@@ -1,4 +1,4 @@
-package com.simple.duotai;
+package javaPractice.simple.duotai;
 
 /**
  * @功能：

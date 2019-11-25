@@ -19,4 +19,5 @@ public class UserInfo {
 	private String  jwtToken;
 	// 权限list
 	private List<String> permissionList;
+	
 }

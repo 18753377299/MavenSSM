@@ -1,4 +1,4 @@
-package com.simple.cycleFor;
+package javaPractice.simple.cycleFor;
 
 /**
  * @功能：99 乘法表
