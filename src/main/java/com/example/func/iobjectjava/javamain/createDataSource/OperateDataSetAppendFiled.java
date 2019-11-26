@@ -1,27 +1,16 @@
 package com.example.func.iobjectjava.javamain.createDataSource;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
-import com.supermap.data.CursorType;
-import com.supermap.data.DatasetType;
+import com.common.utils.MapUtils;
 import com.supermap.data.DatasetVector;
-import com.supermap.data.DatasetVectorInfo;
-import com.supermap.data.Datasets;
 import com.supermap.data.Datasource;
 import com.supermap.data.DatasourceConnectionInfo;
 import com.supermap.data.EngineType;
 import com.supermap.data.FieldInfo;
 import com.supermap.data.FieldInfos;
 import com.supermap.data.FieldType;
-import com.supermap.data.GeoCircle;
-import com.supermap.data.GeoPie;
-import com.supermap.data.GeoRegion;
-import com.supermap.data.Geometry;
-import com.supermap.data.Point2D;
-import com.supermap.data.PrjCoordSys;
-import com.supermap.data.PrjCoordSysType;
-import com.supermap.data.Recordset;
 import com.supermap.data.Workspace;
 	/**
  * @author  作者 E-mail: 
@@ -31,16 +20,23 @@ import com.supermap.data.Workspace;
  * @since  
  * @return  */
 public class OperateDataSetAppendFiled {
+		private static final ResourceBundle bundle = ResourceBundle.getBundle("config.map", Locale.getDefault());
 		/*静态变量*/
 		private static final  String  iobjectJavaServer = "10.10.68.248:1521/orcl";
 		private static final  String  iobjectJavaDatabase = "riskcontrol";
 		private static final  String  iobjectJavaUser = "riskcontrol";
 		private static final  String  iobjectJavaPassword = "Picc_2019risk";
 		private static final  String  riskMap_address  = "SMDTV_60";
-		
+		private static String url = "";
+		private static String INSERT_TFMAIN = "";
+		static {
+			url = bundle.getString("riskMap_address");
+			INSERT_TFMAIN = MapUtils.getDataSetTableName(url);
+		}
 		public static void main(String[]args){
 			/*读取圆形 的面数据集*/
 //				getRegionDataSet();
+			System.out.println(INSERT_TFMAIN);
 		}
 		
 		/*读取圆形 的面数据集*/

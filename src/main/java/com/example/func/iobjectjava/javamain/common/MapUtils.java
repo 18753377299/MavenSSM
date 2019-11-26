@@ -1,4 +1,4 @@
-package com.iobjectjava.javamain.common;
+package com.example.func.iobjectjava.javamain.common;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.iobjectjava.javamain.vo.WzTFLslj;
+import com.example.func.iobjectjava.javamain.vo.WzTFLslj;
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetType;
 import com.supermap.data.DatasetVector;

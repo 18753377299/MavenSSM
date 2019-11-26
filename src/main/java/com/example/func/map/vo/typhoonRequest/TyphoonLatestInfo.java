@@ -1,4 +1,4 @@
-package com.map.vo.typhoonRequest;
+package com.example.func.map.vo.typhoonRequest;
 
 import java.io.Serializable;
 import java.util.Date;

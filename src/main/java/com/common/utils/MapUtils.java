@@ -1277,7 +1277,6 @@ public class MapUtils {
 		        	recordset.close();
 		        	recordset.dispose();
 				}
-		        
 	    }
 	    /**
 		 * @功能：iobjectjava 关闭Vector地图资源
@@ -1379,5 +1378,17 @@ public class MapUtils {
 					workspace.dispose();
 				}
 	    } 
+	  //获取数据集对应数据库中的表名
+		public static String getDataSetTableName(String dataSetName){
+			Workspace workspace = new Workspace();
+			// 定义数据源连接信息，假设以下所有数据源设置都存在
+		    DatasourceConnectionInfo dsconnection = new  DatasourceConnectionInfo();
+			//进行数据源的连接
+			Datasource datasource =MapUtils.connectDataSource(workspace,dsconnection);
+			DatasetVector datasetVector = (DatasetVector)datasource.getDatasets().get(dataSetName);
+			String tableName = datasetVector.getTableName();
+			MapUtils.closeMapResource(null,null,null,null,null,null,datasetVector,datasource,dsconnection,workspace);
+			return tableName;
+		}
 	
 }
