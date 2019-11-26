@@ -1,4 +1,4 @@
-package com.iobjectjava.javamain.createDataSource;
+package com.example.func.iobjectjava.javamain.createDataSource;
 
 import com.supermap.data.DatasetVector;
 import com.supermap.data.Datasource;

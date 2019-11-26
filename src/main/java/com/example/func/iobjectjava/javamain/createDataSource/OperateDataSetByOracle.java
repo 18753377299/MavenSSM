@@ -1,4 +1,4 @@
-package com.iobjectjava.javamain.createDataSource;
+package com.example.func.iobjectjava.javamain.createDataSource;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.iobjectjava.javamain.common.MapUtils;
-import com.iobjectjava.javamain.vo.WzTFLslj;
+import com.example.func.iobjectjava.javamain.common.MapUtils;
+import com.example.func.iobjectjava.javamain.vo.WzTFLslj;
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetVector;
 import com.supermap.data.Datasource;

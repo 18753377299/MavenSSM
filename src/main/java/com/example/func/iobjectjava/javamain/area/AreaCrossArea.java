@@ -1,4 +1,4 @@
-package com.iobjectjava.javamain.area;
+package com.example.func.iobjectjava.javamain.area;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ public class AreaCrossArea {
 		String  iobjectJavaServer = "10.10.68.248:1521/orcl";
 		String  iobjectJavaDatabase = "riskcontrol_freeze";
 		String  iobjectJavaUser = "riskcontrol_freeze";
-		String  iobjectJavaPassword = "riskcontrol_freeze";
+		String  iobjectJavaPassword = "Picc_2019risk";
 		String  riskMap_address  = "SMDTV_2";
 	     // 定义数据源连接信息，假设以下所有数据源设置都存在
        DatasourceConnectionInfo datasourceconnection = new  DatasourceConnectionInfo();
@@ -45,6 +45,9 @@ public class AreaCrossArea {
        Datasource datasource = workspace.getDatasources().open(datasourceconnection);
        // 获取的点数据集
        DatasetVector datasetVector = (DatasetVector)datasource.getDatasets().get("RISKMAP_ADDRESS");
+       /**此数据集在数据库中所对应的数据表名称*/
+       String tableName = datasetVector.getTableName();
+       
        if (datasource == null) {
            System.out.println("打开数据源失败");
 	    } else {
@@ -65,6 +68,7 @@ public class AreaCrossArea {
 //		parameter.setCursorType(CursorType.DYNAMIC);
 				
 		Recordset queryRecordset = datasetVector.query(parameter);
+		
 		Map<Integer,Feature>  features= queryRecordset.getAllFeatures();
 		System.out.println(queryRecordset.getRecordCount());
 		

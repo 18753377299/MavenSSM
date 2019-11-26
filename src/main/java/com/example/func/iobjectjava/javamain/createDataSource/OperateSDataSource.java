@@ -1,6 +1,6 @@
-package com.iobjectjava.javamain.createDataSource;
+package com.example.func.iobjectjava.javamain.createDataSource;
 
-import com.iobjectjava.javamain.common.MapUtils;
+import com.example.func.iobjectjava.javamain.common.MapUtils;
 import com.supermap.data.DatasourceConnectionInfo;
 import com.supermap.data.Workspace;
 	/**

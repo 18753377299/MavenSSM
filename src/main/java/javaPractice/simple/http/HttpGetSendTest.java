@@ -11,12 +11,10 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpClientParams;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.apache.http.HttpHost;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.conn.params.ConnRouteParams;
 import org.springframework.util.StreamUtils;
 
-import com.po.response.AjaxResult;
+import com.example.po.response.AjaxResult;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年9月19日 下午3:11:41

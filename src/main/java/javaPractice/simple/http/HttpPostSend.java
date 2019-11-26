@@ -6,14 +6,13 @@ import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
-import java.net.URLConnection;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.io.IOUtils;
 
-import com.po.response.AjaxResult;
+import com.example.po.response.AjaxResult;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年9月19日 下午3:11:41
@@ -61,13 +60,16 @@ public class HttpPostSend {
 		// 推送目标
 		JSONObject audience = new JSONObject();
 		audience.put("pattern", "name");
-		audience.put("type", "fst");
+//		audience.put("type", "fst");
+		audience.put("type", "obs");
 		//数组
 		JSONArray platform = new JSONArray();
 		//数组中对象
 		JSONObject message = new JSONObject();
-//		message.put("file_name", "Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201910112000.json");
-		message.put("file_name", "Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201910112000.asc");
+//		message.put("file_name", "Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201911200800.json");
+//		message.put("file_name", "Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201911210800.asc");
+		//实况雨场数据请求
+		message.put("file_name", "Z_SURF_C_BABJ_P_CMPA_FAST_CHN_0P05_DAY-PRE-2019112008.json");
 		
 		platform.add(message);
 		// 将数组添加到大对象中
