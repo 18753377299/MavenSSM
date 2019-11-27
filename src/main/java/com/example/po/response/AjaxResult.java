@@ -18,5 +18,6 @@ public class AjaxResult {
 	private Map<String, Object> map;
 	private long status;
 	private String message;
+	private UserInfo userInfo;
 	
 }

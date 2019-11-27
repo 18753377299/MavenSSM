@@ -3,6 +3,8 @@ package com.common.jwt;
 import io.jsonwebtoken.Claims;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -19,6 +21,7 @@ import com.example.po.response.AjaxResult;
 import com.example.po.response.UserInfo;
 import com.example.vo.User;
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 	/**
@@ -76,26 +79,61 @@ public class JwtFilter implements Filter{
 			    	chain.doFilter(request, response);
 			    }else{
 			    	// 向前台返回错误信息:过滤器中怎样返回错误信息
-			    	handleErrorMessage(ajaxResult);
+			    	handleErrorMessage(ajaxResult,res);
 			    }
 			}
 
 		}
 
-		@Override
-		public void destroy() {
-			
+		
+		/*方式一：用于向前端返回错误信息*/
+		public void handleErrorMessage(AjaxResult ajaxResult,HttpServletResponse res ){
+			try {
+				PrintWriter printWriter = res.getWriter();
+				res.setContentType("application/json; charset=utf-8");
+				printWriter.print(ajaxResult);
+				printWriter.flush();
+				printWriter.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		public void handleErrorMessage(AjaxResult ajaxResult){
-			
+		/*方法二*/
+		public void handleErrorMessageOut(AjaxResult ajaxResult,HttpServletResponse res ){
+			try {
+				res.setContentType("application/json; charset=utf-8");
+				res.setCharacterEncoding("UTF-8");
+				OutputStream outputStream = res.getOutputStream();
+				String jsonString= convertObjectToJson(ajaxResult);
+				outputStream.write(jsonString.getBytes("UTF-8"));
+				outputStream.flush();
+				outputStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+		public String convertObjectToJson(Object object){
+			String  str=null;
+			if(object==null){
+				return null;
+			}
+			try {
+				ObjectMapper objectMapper = new ObjectMapper();
+				str=objectMapper.writeValueAsString(object);
+			} catch (JsonProcessingException e) {
+				e.printStackTrace();
+			}
+			return str;
+		}
+		
+		
 		//用于校验token是否正常
 		public AjaxResult  checkTokenIsCorrect(HttpServletRequest req){
 			AjaxResult ajaxResult =new AjaxResult();
 			try {
 				String jwtToken = req.getHeader("jwtToken");
 				UserInfo  userInfo = (UserInfo)req.getAttribute("userInfo");
-				if(StringUtils.isBlank(jwtToken) || jwtToken == "undefined" || jwtToken != "null"){
+				if(StringUtils.isBlank(jwtToken) || jwtToken == "undefined" || jwtToken == "null"){
 					ajaxResult.setStatus(2);
 					ajaxResult.setMessage("token传递异常，请重新确认！");
 				}else {
@@ -124,6 +162,11 @@ public class JwtFilter implements Filter{
 				e.printStackTrace();
 			}
 			return ajaxResult;
+		}
+		
+		@Override
+		public void destroy() {
+			
 		}
 		
 		
