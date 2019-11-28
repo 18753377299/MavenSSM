@@ -6,13 +6,18 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-import java.security.SignatureException;
+import java.io.IOException;
 import java.util.Date;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
+import com.example.po.response.AjaxResult;
+import com.example.po.response.UserInfo;
+import com.example.vo.User;
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 	/**
  * @author  作者 E-mail: 
@@ -132,6 +137,57 @@ public class JWTUtils {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	/**
+	 * @功能：对token进行校验,看是否符合条件
+	 * @param 
+	 * @author 
+	 * @throws Exception
+	 * @时间：20191105
+	 * @修改记录：
+	 */
+	public static AjaxResult validateJwtToken(UserInfo  userInfo,String jwtToken){
+		AjaxResult ajaxResult =new AjaxResult();
+		try {
+			// 校验token是否过期
+			JWTResult jwtResult = JWTUtils.validateJWT(jwtToken);
+			if(!jwtResult.isSuccess()){
+				if(1005 == jwtResult.getErrCode()){
+					ajaxResult.setStatus(5); 
+					ajaxResult.setMessage("token已过期，请重新进行登录！");
+				}else if(1006 == jwtResult.getErrCode()){
+					ajaxResult.setStatus(6); 
+					ajaxResult.setMessage("token校验失败，请重新进行登录！");
+				}
+			}else {
+				Claims  claims =  JWTUtils.parseJWT(jwtToken);
+				System.out.println(claims);
+				if(claims!=null){
+					// 进行jwtToken中用户基本信息的解析
+					String subject = claims.getSubject();
+					User userVo = MAPPER.readValue(subject, User.class);
+					// 校验token是否正确
+					if(userInfo!=null && userInfo.getUserCode().equals(userVo.getUserCode())&&
+							userInfo.getPassword().equals(userVo.getPassWord())){
+						ajaxResult.setStatus(1);
+						ajaxResult.setMessage("校验token成功，可以正常使用该token！");
+						ajaxResult.setData(userInfo);
+					}else {
+						ajaxResult.setStatus(4);
+						ajaxResult.setMessage("使用的token与该用户不匹配");
+					}
+				}else {
+					// jwt解析异常
+					ajaxResult.setStatus(3);
+					ajaxResult.setMessage("token解析异常！");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			ajaxResult.setStatus(7); 
+			ajaxResult.setMessage("token解析处理异常！");
+		}
+		return ajaxResult;
 	}
 	
 }

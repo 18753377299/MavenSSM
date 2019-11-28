@@ -1,7 +1,5 @@
 package com.common.jwt;
 
-import io.jsonwebtoken.Claims;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -19,10 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.example.po.response.AjaxResult;
 import com.example.po.response.UserInfo;
-import com.example.vo.User;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 	/**
  * @author  作者 E-mail: 
@@ -84,7 +79,6 @@ public class JwtFilter implements Filter{
 			}
 
 		}
-
 		
 		/*方式一：用于向前端返回错误信息*/
 		public void handleErrorMessage(AjaxResult ajaxResult,HttpServletResponse res ){
@@ -133,29 +127,14 @@ public class JwtFilter implements Filter{
 			try {
 				String jwtToken = req.getHeader("jwtToken");
 				UserInfo  userInfo = (UserInfo)req.getAttribute("userInfo");
-				if(StringUtils.isBlank(jwtToken) || jwtToken == "undefined" || jwtToken == "null"){
-					ajaxResult.setStatus(2);
+				if(StringUtils.isBlank(jwtToken) ||  "undefined".equals(jwtToken) || "null".equals(jwtToken)){
+					ajaxResult.setStatus(2); 
 					ajaxResult.setMessage("token传递异常，请重新确认！");
 				}else {
-					Claims  claims =  JWTUtils.parseJWT(jwtToken);
-					System.out.println(claims);
-					if(claims!=null){
-						// 进行jwtToken中用户基本信息的解析
-						String subject = claims.getSubject();
-						User userVo = MAPPER.readValue(subject, User.class);
-						// 校验token是否正确
-						if(userInfo.getUserCode().equals(userVo.getUserCode())&&
-								userInfo.getPassword().equals(userVo.getPassWord())){
-							ajaxResult.setStatus(1);
-							ajaxResult.setMessage("校验token成功，可以正常使用该token！");
-						}else {
-							ajaxResult.setStatus(4);
-							ajaxResult.setMessage("使用的token与该用户不匹配");
-						}
-					}else {
-						// jwt解析异常
-						ajaxResult.setStatus(3);
-						ajaxResult.setMessage("token解析异常！");
+					try {
+						ajaxResult =JWTUtils.validateJwtToken(userInfo,jwtToken);
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			} catch (Exception e) {

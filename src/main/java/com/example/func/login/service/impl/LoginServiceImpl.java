@@ -1,7 +1,5 @@
 package com.example.func.login.service.impl;
 
-import io.jsonwebtoken.Claims;
-
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -61,6 +59,7 @@ public class LoginServiceImpl implements LoginService{
 	// 生成token文件
 	public String generateToken(User user){
 		// 设置过期时间,设置时间为四个小时
+//		long  expireDate = 1000*60*60*4;
 		long  expireDate = 1000*60*60*4;
 		JWTSubject subject = new JWTSubject(user.getUserCode(),user.getPassWord());
 		String jwtToken = JWTUtils.createJWT(UUID.randomUUID().toString(), "sxt-test-jwt", 

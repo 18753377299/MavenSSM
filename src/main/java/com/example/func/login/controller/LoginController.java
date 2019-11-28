@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.common.jwt.JWTResult;
+import com.common.jwt.JWTUtils;
 import com.example.func.login.service.LoginService;
 import com.example.po.response.AjaxResult;
 import com.example.vo.User;
@@ -40,6 +42,30 @@ public class LoginController {
 		try {
 			ajaxResult=loginService.userLogin(user,request);
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ajaxResult;
+	}
+	@RequestMapping(value="/getUserInfo",method={RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public AjaxResult  getUserInfo(@RequestBody String jwtToken,HttpServletRequest request){
+		AjaxResult ajaxResult =new AjaxResult();
+		try {
+			// 校验token是否过期
+			JWTResult jwtResult = JWTUtils.validateJWT(jwtToken);
+			if(!jwtResult.isSuccess()){
+				if(1005 == jwtResult.getErrCode()){
+					ajaxResult.setStatus(5); 
+					ajaxResult.setMessage("token已过期，请重新进行登录！");
+				}else if(1006 == jwtResult.getErrCode()){
+					ajaxResult.setStatus(6); 
+					ajaxResult.setMessage("token校验失败，请重新进行登录！");
+				}
+			}else {
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ajaxResult;
