@@ -8,17 +8,17 @@ package com.common.jwt;
  * @return  */
 public class JWTSubject {
 	
-	private String username;
+	private String userCode;
 	private String password;
 
-	public JWTSubject(String username) {
+	public JWTSubject(String userCode) {
 		super();
-		this.username = username;
+		this.userCode = userCode;
 	}
 	
-	public JWTSubject(String username,String password) {
+	public JWTSubject(String userCode,String password) {
 		super();
-		this.username = username;
+		this.userCode = userCode;
 		this.password = password;
 	}
 
@@ -27,13 +27,15 @@ public class JWTSubject {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getUsername() {
-		return username;
+	
+	public String getUserCode() {
+		return userCode;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserCode(String userCode) {
+		this.userCode = userCode;
 	}
+
 	public String getPassword() {
 		return password;
 	}

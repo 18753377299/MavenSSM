@@ -165,10 +165,10 @@ public class JWTUtils {
 				if(claims!=null){
 					// 进行jwtToken中用户基本信息的解析
 					String subject = claims.getSubject();
-					User userVo = MAPPER.readValue(subject, User.class);
+					JWTSubject userVo = MAPPER.readValue(subject, JWTSubject.class);
 					// 校验token是否正确
 					if(userInfo!=null && userInfo.getUserCode().equals(userVo.getUserCode())&&
-							userInfo.getPassword().equals(userVo.getPassWord())){
+							userInfo.getPassword().equals(userVo.getPassword())){
 						ajaxResult.setStatus(1);
 						ajaxResult.setMessage("校验token成功，可以正常使用该token！");
 						ajaxResult.setData(userInfo);
