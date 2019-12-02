@@ -14,4 +14,6 @@ import com.example.vo.User;
 public interface LoginService {
 	
 	public AjaxResult userLogin(User user,HttpServletRequest request);
+	
+	public AjaxResult getUserInfo(String jwtToken,HttpServletRequest request);
 }

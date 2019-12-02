@@ -1,5 +1,7 @@
 package com.example.func.oa.leave.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.func.oa.leave.request.AttendanceNotice;
 import com.example.func.oa.leave.service.LeaveService;
 import com.example.po.response.AjaxResult;
+import com.example.po.response.UserInfo;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年10月30日 上午10:51:28
@@ -40,7 +43,8 @@ public class LeaveController {
 	}
 	@RequestMapping(value="/test",method={RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public  AjaxResult test(){
+	public  AjaxResult test(HttpServletRequest request){
+		UserInfo userInfo =(UserInfo)request.getAttribute("userInfo");
 		AjaxResult ajaxResult =new AjaxResult();
 //		leaveService.queryLeaveSpecialDate();
 		leaveService.queryLeaveMainList("","2018-12");

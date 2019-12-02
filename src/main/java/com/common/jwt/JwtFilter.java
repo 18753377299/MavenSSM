@@ -57,27 +57,28 @@ public class JwtFilter implements Filter{
 			String requestUri = req.getRequestURI();
 		    System.out.println("requestURI："+requestUri);
 		    boolean jumpFlag = false;
-		    AjaxResult  ajaxResult =  this.checkTokenIsCorrect(req);
-			if(1 ==ajaxResult.getStatus()){
-				chain.doFilter(request, response);
-			}else{
-				if(null!=ignoreKeys&&ignoreKeys.length>0){
-			    	for(String key:ignoreKeys){
-			    		// 如果该地址是以配置的信息结尾的，则放过
-			    		if(requestUri.endsWith(key)){
-			    			jumpFlag = true;
-			    			break;
-			    		}
-			    	}
-			    }
-			    if(jumpFlag){
-			    	chain.doFilter(request, response);
-			    }else{
-			    	// 向前台返回错误信息:过滤器中怎样返回错误信息
+		    //首先看是否是需要放过的页面
+		    if(null!=ignoreKeys&&ignoreKeys.length>0){
+		    	for(String key:ignoreKeys){
+		    		// 如果该地址是以配置的信息结尾的，则放过
+		    		if(requestUri.endsWith(key)){
+		    			jumpFlag = true;
+		    			break;
+		    		}
+		    	}
+		    }
+		    if(jumpFlag){
+		    	chain.doFilter(request, response);
+		    }else{
+		    	// 每次请求将需要设置一下userInfo信息
+		    	 AjaxResult  ajaxResult =  this.checkTokenIsCorrect(req);
+		    	 if(1 ==ajaxResult.getStatus()){
+					chain.doFilter(request, response);
+				}else{
+					// 向前台返回错误信息:过滤器中怎样返回错误信息
 			    	handleErrorMessage(ajaxResult,res);
-			    }
-			}
-
+				}
+		    }
 		}
 		
 		/*方式一：用于向前端返回错误信息*/
@@ -126,13 +127,13 @@ public class JwtFilter implements Filter{
 			AjaxResult ajaxResult =new AjaxResult();
 			try {
 				String jwtToken = req.getHeader("jwtToken");
-				UserInfo  userInfo = (UserInfo)req.getAttribute("userInfo");
+//				UserInfo  userInfo = (UserInfo)req.getAttribute("userInfo");
 				if(StringUtils.isBlank(jwtToken) ||  "undefined".equals(jwtToken) || "null".equals(jwtToken)){
 					ajaxResult.setStatus(2); 
 					ajaxResult.setMessage("token传递异常，请重新确认！");
 				}else {
 					try {
-						ajaxResult =JWTUtils.validateJwtToken(userInfo,jwtToken);
+						ajaxResult =JWTUtils.validateJwtToken(jwtToken,req);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

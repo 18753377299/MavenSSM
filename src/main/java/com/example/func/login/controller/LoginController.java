@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.common.jwt.JWTResult;
 import com.common.jwt.JWTUtils;
 import com.example.func.login.service.LoginService;
 import com.example.po.response.AjaxResult;
@@ -58,14 +58,11 @@ public class LoginController {
 	 */
 	@RequestMapping(value="/getUserInfo",method={RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
-	public AjaxResult  getUserInfo(@RequestBody String jwtToken,HttpServletRequest request){
+	public AjaxResult  getUserInfo(@RequestParam(value="jwtToken",required=true) String jwtToken,HttpServletRequest request){
 		AjaxResult ajaxResult =new AjaxResult();
-		UserInfo userInfo = (UserInfo)request.getAttribute("userInfo");
 		try {
-			//对token进行校验，看传递的token是否正确
-			ajaxResult = JWTUtils.validateJwtToken(userInfo,jwtToken);
+			ajaxResult = loginService.getUserInfo(jwtToken,request);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ajaxResult;

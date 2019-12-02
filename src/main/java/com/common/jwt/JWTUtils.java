@@ -11,6 +11,7 @@ import java.util.Date;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import javax.servlet.http.HttpServletRequest;
 
 import com.example.po.response.AjaxResult;
 import com.example.po.response.UserInfo;
@@ -146,12 +147,13 @@ public class JWTUtils {
 	 * @时间：20191105
 	 * @修改记录：
 	 */
-	public static AjaxResult validateJwtToken(UserInfo  userInfo,String jwtToken){
+	public static AjaxResult validateJwtToken(String jwtToken,HttpServletRequest req){
 		AjaxResult ajaxResult =new AjaxResult();
 		try {
 			// 校验token是否过期
 			JWTResult jwtResult = JWTUtils.validateJWT(jwtToken);
 			if(!jwtResult.isSuccess()){
+				// token如果过期则进行续期
 				if(1005 == jwtResult.getErrCode()){
 					ajaxResult.setStatus(5); 
 					ajaxResult.setMessage("token已过期，请重新进行登录！");
@@ -165,13 +167,15 @@ public class JWTUtils {
 				if(claims!=null){
 					// 进行jwtToken中用户基本信息的解析
 					String subject = claims.getSubject();
-					JWTSubject userVo = MAPPER.readValue(subject, JWTSubject.class);
+//					JWTSubject userVo = MAPPER.readValue(subject, JWTSubject.class);
+					UserInfo userVo = MAPPER.readValue(subject, UserInfo.class);
 					// 校验token是否正确
-					if(userInfo!=null && userInfo.getUserCode().equals(userVo.getUserCode())&&
-							userInfo.getPassword().equals(userVo.getPassword())){
+					if(userVo!=null && "MavenSSM".equals(userVo.getOnlyFlag()) ){
 						ajaxResult.setStatus(1);
 						ajaxResult.setMessage("校验token成功，可以正常使用该token！");
-						ajaxResult.setData(userInfo);
+						userVo.setJwtToken(jwtToken);
+						ajaxResult.setData(userVo);
+						req.setAttribute("userInfo", userVo);
 					}else {
 						ajaxResult.setStatus(4);
 						ajaxResult.setMessage("使用的token与该用户不匹配");

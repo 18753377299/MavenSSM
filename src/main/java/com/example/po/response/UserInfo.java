@@ -15,6 +15,8 @@ public class UserInfo {
 	// 用户名和密码
 	private String userCode;
 	private String password;
+	/*唯一性标志位校验*/
+	private String onlyFlag;
 	// 用户的token信息
 	private String  jwtToken;
 	// 权限list
