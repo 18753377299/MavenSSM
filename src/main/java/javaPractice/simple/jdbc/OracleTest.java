@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.common.utils.JdbcUtils;
+import com.common.utils.map.JdbcUtils;
 
 public class OracleTest {
 	public static void main(String [] args){

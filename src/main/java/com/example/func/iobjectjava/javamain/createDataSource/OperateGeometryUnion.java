@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.iobjectjava.javamain.common.MapUtils;
+import com.common.utils.MapUtils;
+import com.common.utils.map.MapDataSetUtils;
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetVector;
 import com.supermap.data.Datasource;
@@ -46,7 +47,7 @@ public class OperateGeometryUnion {
 	    
 	    DatasetVector datasetVector_10 = (DatasetVector)datasource.getDatasets().get("TF_10M");
 	    // 新建面数据集
-	    DatasetVector datasetVectorUnion_7 =  MapUtils.createDataSet("UnionTF_7_10",datasource);
+	    DatasetVector datasetVectorUnion_7 =  MapDataSetUtils.createDataSet("UnionTF_7_10",datasource);
 	    
 	    Recordset recordsetUnion = datasetVectorUnion_7.getRecordset(false, CursorType.DYNAMIC);
 	    

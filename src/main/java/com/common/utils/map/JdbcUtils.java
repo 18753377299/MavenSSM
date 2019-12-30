@@ -1,4 +1,4 @@
-package com.common.utils;
+package com.common.utils.map;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,6 +18,8 @@ public class JdbcUtils {
 	private static final String oracleDriver,oracleUrl,javaUser,javaPassword;
 	//mysql连接
 	private static final String mysqlDriver,mysqlUrl,mysqlUser,mysqlPassword;
+	//postgreSQL连接
+	private static final String postgreDriver,postgreUrl,postgreUser,postgrePassword;
     
     static {
 		 // 定义数据源连接信息，假设以下所有数据源设置都存在
@@ -31,8 +33,29 @@ public class JdbcUtils {
 //		mysqlUrl = "jdbc:mysql://localhost:3306/shop?characterEncoding=utf-8";
 		mysqlUser =  "root";
 		mysqlPassword =  "admin";
+		
+		postgreDriver = "org.postgresql.Driver";
+		postgreUrl = "jdbc:postgresql://localhost:5432/platform_devdb";
+		postgreUser =  "postgres";
+		postgrePassword =  "123456";
+		
     }
-    
+    /*进行postgreSQL数据库的连接*/
+    public static Connection getPostgreConnection(){
+    	Connection connect = null;
+    	try {
+			Class.forName(postgreDriver);
+			connect = DriverManager.getConnection(postgreUrl, postgreUser, postgrePassword);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} 
+    	if(connect!=null){
+    		System.out.println("数据库连接成功!");
+    	}else {
+    		System.out.println("数据库连接失败!");
+    	}
+    	return connect;
+    }
     /*进行oracle数据库的连接*/
     public static Connection getJdbcConnection(){
     	Connection connect = null;
@@ -66,12 +89,6 @@ public class JdbcUtils {
              e.printStackTrace();
          }
     }
-    
-    
-    
-    
-    
-    
     
 	
 }

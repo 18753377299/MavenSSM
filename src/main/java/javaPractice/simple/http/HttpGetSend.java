@@ -3,9 +3,11 @@ package javaPractice.simple.http;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
+import java.net.Proxy;
 import java.net.URL;
-import java.net.URLConnection;
 
 
 	/**
@@ -17,7 +19,7 @@ import java.net.URLConnection;
  * @return  */
 public class HttpGetSend {
 	public static void main(String []args){
-		 String urlString="http://60.205.166.252/typhoon/getTyphoonFstNew?startTime=20190922000000&endTime=20190925000000&secretuid=433f3dd6-d9eb-11e9-9637-00163e30bfa0&secretkey=U7WJVZDK8PDNM9W1APFTFMJ1DK";
+		 String urlString="http://60.205.166.252/typhoon/getTyphoonFstNew?startTime=20191201000000&endTime=20191225000000&secretuid=433f3dd6-d9eb-11e9-9637-00163e30bfa0&secretkey=U7WJVZDK8PDNM9W1APFTFMJ1DK";
 		String result  = get(urlString);
 		System.out.println(result);
 	}
@@ -27,10 +29,10 @@ public class HttpGetSend {
         try {
 			URL realUrl = new URL(url);
 			// 设置代理请求
-//           Proxy proxy = new Proxy(Proxy.Type.HTTP,new InetSocketAddress("Proxy.piccnet.com.cn",3128));
-//           HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection(proxy);
+           Proxy proxy = new Proxy(Proxy.Type.HTTP,new InetSocketAddress("Proxy.piccnet.com.cn",3128));
+           HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection(proxy);
 			// 打开和URL之间的连接
-			URLConnection connection = realUrl.openConnection();
+//			URLConnection connection = realUrl.openConnection();
 			// 设置通用的请求属性
 //			connection.setRequestProperty("accept", "*/*");
 //			connection.setRequestProperty("connection", "Keep-Alive");

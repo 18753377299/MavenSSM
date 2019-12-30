@@ -17,7 +17,7 @@ import com.example.po.response.AjaxResult;
  * @author  作者 E-mail: 
  * @date 创建时间：2019年9月19日 下午3:11:41
  * @version 1.0 
- * @parameter 
+ * @parameter 获取气象局栅格数据,success
  * @since  
  * @return  */
 public class HttpPostSend {

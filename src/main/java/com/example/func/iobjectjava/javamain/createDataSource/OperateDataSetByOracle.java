@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.func.iobjectjava.javamain.common.MapUtils;
+import com.common.utils.MapUtils;
+import com.common.utils.map.MapDataSetUtils;
 import com.example.func.iobjectjava.javamain.vo.WzTFLslj;
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetVector;
@@ -115,9 +116,9 @@ public class OperateDataSetByOracle {
 	    // 创建面数据集
 		String dataSetName_7 = "TF_7M",dataSetName_10="TF_10M";
 		// 创建七级风圈数据集
-		DatasetVector datasetVector_7 =  MapUtils.createDataSet(dataSetName_7,datasource);
+		DatasetVector datasetVector_7 =  MapDataSetUtils.createDataSet(dataSetName_7,datasource);
 		// 创建十级风圈数据集
-		DatasetVector datasetVector_10 =  MapUtils.createDataSet(dataSetName_10,datasource);
+		DatasetVector datasetVector_10 =  MapDataSetUtils.createDataSet(dataSetName_10,datasource);
 		
 		//为面数据集增加vo类中的字段
 		WzTFLslj wzTFLslj =new WzTFLslj();

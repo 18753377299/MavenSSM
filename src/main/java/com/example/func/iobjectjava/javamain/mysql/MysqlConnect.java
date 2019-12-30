@@ -1,10 +1,10 @@
-package com.iobjectjava.javamain.mysql;
+package com.example.func.iobjectjava.javamain.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.common.utils.JdbcUtils;
+import com.common.utils.map.JdbcUtils;
 
 
 public class MysqlConnect {

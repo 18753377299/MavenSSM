@@ -1,22 +1,10 @@
 package com.example.func.iobjectjava.grid;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 import com.common.utils.MapUtils;
-import com.supermap.data.CursorType;
+import com.common.utils.map.MapDataSetUtils;
 import com.supermap.data.DatasetGrid;
-import com.supermap.data.DatasetType;
-import com.supermap.data.DatasetVector;
-import com.supermap.data.DatasetVectorInfo;
-import com.supermap.data.Datasets;
 import com.supermap.data.Datasource;
 import com.supermap.data.DatasourceConnectionInfo;
-import com.supermap.data.Geometry;
-import com.supermap.data.PrjCoordSys;
-import com.supermap.data.PrjCoordSysType;
-import com.supermap.data.Recordset;
-import com.supermap.data.Toolkit;
 import com.supermap.data.Workspace;
 	/**
  * @author  作者 E-mail: 
@@ -49,7 +37,7 @@ public class CreateGridData {
 	    DatasourceConnectionInfo datasourceconnection = new  DatasourceConnectionInfo();
 		Datasource datasource = MapUtils.connectDataSource(workspace,datasourceconnection);
 		// 创建栅格数据集
-		DatasetGrid datasetGridNew =MapUtils.createDatasetGrid(datasource);
+		DatasetGrid datasetGridNew =MapDataSetUtils.createDatasetGrid(datasource);
 		// 用于给栅格数据创建金字塔
 		datasetGridNew.buildPyramid(); 
 		datasetGridNew.open();

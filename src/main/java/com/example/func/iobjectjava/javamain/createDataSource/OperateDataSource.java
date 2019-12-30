@@ -7,6 +7,8 @@ import com.supermap.data.EngineType;
 import com.supermap.data.GeoCircle;
 import com.supermap.data.Point2D;
 import com.supermap.data.Workspace;
+
+import encode.EncryptSecretInfo;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年5月6日 下午6:54:31
@@ -90,9 +92,9 @@ public class OperateDataSource {
       datasourceconnection.setServer(iobjectJavaServer);
       datasourceconnection.setDatabase(iobjectJavaDatabase);
       datasourceconnection.setUser(iobjectJavaUser); // riskcontrol_freeze
-      datasourceconnection.setPassword(iobjectJavaPassword);
-//      datasourceconnection.setPassword(EncryptSecretInfo.decodeSecretInfo(iobjectJavaPassword));
-      datasourceconnection.setAlias("ORACLE");
+//      datasourceconnection.setPassword(iobjectJavaPassword);
+      datasourceconnection.setPassword(EncryptSecretInfo.decodeSecretInfo(iobjectJavaPassword));
+//      datasourceconnection.setAlias("ORACLE");
       // 打开数据源
       Datasource datasource = workspace.getDatasources().open(datasourceconnection);
       // 获取的点数据集

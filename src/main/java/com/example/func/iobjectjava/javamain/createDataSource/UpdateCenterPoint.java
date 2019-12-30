@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.common.utils.MapTransferUtils;
-import com.example.func.iobjectjava.javamain.common.MapUtils;
+import com.common.utils.MapUtils;
 import com.example.func.iobjectjava.javamain.vo.MapData;
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetVector;

@@ -1,11 +1,11 @@
-package com.iobjectjava.javamain.oracle;
+package com.example.func.iobjectjava.javamain.oracle;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.common.utils.JdbcUtils;
+import com.common.utils.map.JdbcUtils;
 
 
 public class OracleToOracle_10M {

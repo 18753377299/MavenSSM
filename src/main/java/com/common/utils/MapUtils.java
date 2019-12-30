@@ -37,6 +37,8 @@ import java.util.ResourceBundle;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import com.common.utils.map.MapGeometryUtils;
+import com.common.utils.map.MapReflectUtils;
 import com.example.func.map.vo.typhoonRequest.TyphoonLatestInfo;
 import com.example.func.map.vo.typhoonRequest.TyphoonPath;
 import com.example.po.response.AjaxResult;
@@ -44,9 +46,7 @@ import com.supermap.data.BlockSizeOption;
 import com.supermap.data.CursorType;
 import com.supermap.data.DatasetGrid;
 import com.supermap.data.DatasetGridInfo;
-import com.supermap.data.DatasetType;
 import com.supermap.data.DatasetVector;
-import com.supermap.data.DatasetVectorInfo;
 import com.supermap.data.Datasets;
 import com.supermap.data.Datasource;
 import com.supermap.data.DatasourceConnectionInfo;
@@ -99,6 +99,8 @@ public class MapUtils {
 	
 	//连接参数获取
     private static final String iobjectJavaServer,iobjectJavaDatabase,iobjectJavaUser,iobjectJavaPassword;
+    // 连接postgreSQL数据源的参数
+    private static final String iobjectJavaServerPostgre,iobjectJavaDatabasePostgre,iobjectJavaUserPostgre,iobjectJavaPasswordPostgre;
 
    
 	static {
@@ -114,6 +116,11 @@ public class MapUtils {
 //		iobjectJavaDatabase = "riskcontrol_freeze";
 //		iobjectJavaUser = "riskcontrol_freeze";
 //		iobjectJavaPassword = "Picc_2019risk";
+		// postgreSQL
+		iobjectJavaServerPostgre="localhost:5432/platform_devdb";
+		iobjectJavaDatabasePostgre= "platform_devdb";
+		iobjectJavaUserPostgre="postgres";
+		iobjectJavaPasswordPostgre = "123456";
     }
     
 	/**连接数据源*/
@@ -130,407 +137,38 @@ public class MapUtils {
 	      Datasource datasource = workspace.getDatasources().open(datasourceconnection);
 	      
 	      if (datasource == null) {
-	          System.out.println("打开数据源失败");
+	          System.out.println("ORACLE打开数据源失败");
 	          return null;
 	      } else {
-	         System.out.println("数据源打开成功！");
+	         System.out.println("ORACLE数据源打开成功！");
 	         return datasource;
 	      }
 	}
-	// 创建面数据集
-	public static DatasetVector createDataSet(String dataSetName,Datasource datasource,Object object){
-		  //如果不为null，则直接返回， 若为null则新建面数据集
-		  DatasetVector datasetVector_exist = (DatasetVector)datasource.getDatasets().get(dataSetName);
-		  if(datasetVector_exist!=null){
-			  return datasetVector_exist;
-		  }else {
-			  Datasets datasets = datasource.getDatasets();
-		      DatasetVectorInfo datasetVectorInfo = new DatasetVectorInfo();
-		      // 名称中含有point 为点数据集
-		      if(dataSetName.indexOf("POINT")>0){
-		    	//点数据集类型
-			    datasetVectorInfo.setType(DatasetType.POINT);
-		      }else {
-		    	//面数据集类型
-			    datasetVectorInfo.setType(DatasetType.REGION);
-		      }
-		      
-		      datasetVectorInfo.setName(dataSetName);
-			  
-			  DatasetVector datasetVector = datasets.create(datasetVectorInfo);
-			  
-			  PrjCoordSys prjCoordSys = new PrjCoordSys();
-			  //地理经纬坐标
-			  prjCoordSys.setType(PrjCoordSysType.PCS_EARTH_LONGITUDE_LATITUDE );
-//				  GeoCoordSys geoCoordSys = new GeoCoordSys(GeoCoordSysType.GCS_CHINA_2000,GeoSpatialRefType.SPATIALREF_EARTH_LONGITUDE_LATITUDE );
-//				  prjCoordSys.setCoordUnit(Unit.KILOMETER); // 千米
-			  datasetVector.setPrjCoordSys(prjCoordSys);
-//			  Recordset recordset = datasetVector.getRecordset(false, CursorType.DYNAMIC);
-//			  recordset.edit();
-			  
-			  //为面数据集增加vo类中的字段
-			  MapUtils.addFieldInfo(datasetVector,object);
-			  
-		      return datasetVector;
-		  }
-		  
+	/**连接Postgre数据源*/
+	public static Datasource connectPostgresDataSource(Workspace workspace,DatasourceConnectionInfo dataCon){
+		
+		  dataCon.setEngineType(EngineType.POSTGRESQL);
+		  dataCon.setServer(iobjectJavaServerPostgre);
+		  dataCon.setDatabase(iobjectJavaDatabasePostgre);
+		  dataCon.setUser(iobjectJavaUserPostgre); // riskcontrol_freeze
+		  dataCon.setPassword(iobjectJavaPasswordPostgre);
+		  dataCon.setAlias("POSTGRESQL");
+	      // 打开数据源
+	      Datasource datasource = workspace.getDatasources().open(dataCon);
+	      
+	      if (datasource == null) {
+	          System.out.println("POSTGRESQL打开数据源失败");
+	          return null;
+	      } else {
+	         System.out.println("POSTGRESQL数据源打开成功！");
+	         return datasource;
+	      }
 	}
 	
 	
-	/*给面数据集增加融合数据*/
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static Recordset addUnionDataToDatasetVector (DatasetVector datasetVector,Object objectList,String radius,String flag){
-		/*转换成list集合*/
-		List<Object> list = (List)objectList;
-		
-		String tfbh = getMethod(list.get(0),"tfbh").toString();
-		String filter = "TFBH ="+tfbh;
-		Map<String , Object> map = new HashMap<String, Object>();
-		map.put("tfbh", tfbh);
-		
-		Recordset recordset = datasetVector.query(filter,CursorType.DYNAMIC );
-//		Recordset recordset = datasetVector.getRecordset(false, CursorType.DYNAMIC);
-		List<Geometry> geoList=new ArrayList<Geometry>();
-		
-		if(flag.equals("YJ")){
-			// 假如是预警则是新增
-			if(null!=objectList&&list.size()>0){
-				geoList = getGeometryList(list,radius,"");
-				recordset.edit();
-				if(geoList!=null&&geoList.size()>0){
-					Geometry geometry = geoList.get(0);
-			    	for (int j = 1;j<geoList.size();j++) {
-		    			Geometry geome= geoList.get(j);
-		    			geometry = Geometrist.union(geometry, geome);
-		    		}
-			    	recordset.update();
-			    	recordset.delete();
-					recordset.addNew(geometry,map);
-					// 没有这个数据集更新不能够成功
-					recordset.update();
-					if(geometry!=null){
-						geometry.dispose();
-					}
-				}
-				
-			}
-		}else if(flag.equals("LS")){
-			// 假如有数据，则进行合并，否则新增
-			if(recordset.getRecordCount()>0){
-				Geometry geometry = recordset.getGeometry();
-				geoList = getGeometryList(list,radius,"");
-				recordset.edit();
-				if(geoList!=null&&geoList.size()>0){
-			    	for (int j = 0;j<geoList.size();j++) {
-		    			Geometry geome= geoList.get(j);
-		    			geometry = Geometrist.union(geometry, geome);
-		    		}
-			    	recordset.update(); 
-			    	recordset.delete();
-			    	recordset.addNew(geometry,map);
-//					// 没有这个数据集更新不能够成功
-					recordset.update();
-					if(geometry!=null){
-						geometry.dispose();
-					}
-				}
-			} else {
-				if(null!=objectList&&list.size()>0){
-					geoList = getGeometryList(list,radius,"");
-					recordset.edit();
-					if(geoList!=null&&geoList.size()>0){
-						Geometry geometry = geoList.get(0);
-				    	for (int j = 1;j<geoList.size();j++) {
-			    			Geometry geome= geoList.get(j);
-			    			geometry = Geometrist.union(geometry, geome);
-			    		}
-				    	recordset.update();
-						recordset.addNew(geometry,map);
-						// 没有这个数据集更新不能够成功
-						recordset.update();
-						if(geometry!=null){
-							geometry.dispose();
-						}
-					}
-					
-				}
-				
-			}
-		}
-		
-		return  recordset;
-	}
-	/*需要整合面数据的集合*/
-	public static List<Geometry> getGeometryList(List<Object> list,String radius,String flag){
-		
-		List<Geometry> geoList=new ArrayList<Geometry>();
-		if(list!=null&&list.size()>0){
-			for (Object obj :list){
-				// 获取半径的值,如果半径为空，则不给相应的面数据集添加数据
-				Object object  = new Object();
-				if("YJ".equals(flag)){
-					object = radius;
-				}else {
-					object = getRadius(radius,obj);
-				}
-				String jd = getMethod(obj,"jd").toString();
-				String wd = getMethod(obj,"wd").toString();
-				if(null != object&&StringUtils.isNotBlank(jd)&&StringUtils.isNotBlank(wd)){
-					/*初始化半径*/
-					double radiusN = Double.parseDouble(object.toString());
-					/*半径应该大于0*/
-					if (radiusN<=0){
-						continue;
-					}
-					double distance =  getDistance(obj);
-					radiusN = radiusN*1000/distance;
-					// 通过反射把vo类中字段整合到map中
-//					Map<String , Object> map =getResultByReflect(obj);
-					/*设置中心点坐标*/
-					Point2D  point2D =new Point2D(Double.parseDouble(jd), Double.parseDouble(wd));
-					
-					GeoCircle geoCircle =new GeoCircle();
-					geoCircle.setRadius(radiusN);
-					geoCircle.setCenter(point2D);
-					/*将圆几何对象转换为面几何对象。*/
-					GeoRegion geoRegion = geoCircle.convertToRegion(50);
-					Geometry geometry = (Geometry)geoRegion;
-					geoList.add(geometry);
-					
-//					if(geoCircle!=null){
-//						geoCircle.dispose();
-//					}
-//					if(geometry!=null){
-//						geometry.dispose();
-//					}
-//					if(geoRegion!=null){
-//						geoRegion.dispose();
-//					}
-				}
-			}
-		}
-		return geoList;
-		
-	}
-	/*给面数据集增加数据*/
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static Recordset addDataToDatasetVector (DatasetVector datasetVector,Object objectList,String radius){
-		
-		Recordset recordset = datasetVector.getRecordset(false, CursorType.DYNAMIC);
-//		BatchEditor editor = recordset.getBatch();
-//		// 设置批量更新每次提交的记录数目
-//        editor.setMaxRecordCount(50);
-//        // 从 World 数据集中读取几何对象和字段值，批量更新到 example 数据集中
-//        editor.begin();
-		double  [][]dataList = {{22,116,36},{10,110,22}};
-		/*转换成list集合*/
-		List<Object> list = (List)objectList;
-		if(null!=objectList&&list.size()>0){
-			for (Object obj :list){
-				// 获取半径的值,如果半径为空，则不给相应的面数据集添加数据
-				Object object = getRadius(radius,obj);
-				String jd = getMethod(obj,"jd").toString();
-				String wd = getMethod(obj,"wd").toString();
-				if(null != object&&StringUtils.isNotBlank(jd)&&StringUtils.isNotBlank(wd)){
-					/*初始化半径*/
-					double radiusN = Double.parseDouble(object.toString());
-					/*半径应该大于0*/
-					if (radiusN<=0){
-						continue;
-					}
-					
-					double distance =  getDistance(obj);
-					radiusN = radiusN*1000/distance;
-					
-					// 通过反射把vo类中字段整合到map中
-					Map<String , Object> map =getResultByReflect(obj);
-					
-					recordset.edit();
-					/*设置中心点坐标*/
-					Point2D  point2D =new Point2D(Double.parseDouble(jd), Double.parseDouble(wd));
-					
-					GeoCircle geoCircle =new GeoCircle();
-					geoCircle.setRadius(radiusN);
-					geoCircle.setCenter(point2D);
-					
-					/*将圆几何对象转换为面几何对象。*/
-					GeoRegion geoRegion = geoCircle.convertToRegion(50);
-					Geometry geometry = (Geometry)geoRegion;
-					
-					recordset.update();
-					recordset.addNew(geometry,map);
-					// 没有这个数据集更新不能够成功
-					recordset.update();
-					
-					if(geoCircle!=null){
-						geoCircle.dispose();
-					}
-					if(geometry!=null){
-						geometry.dispose();
-					}
-					if(geoRegion!=null){
-						geoRegion.dispose();
-					}
-				}
-				
-				
-			}
-			
-		}
-//		  批量操作统一提交
-//        editor.update();
-
-		return  recordset;
-	}
-	/*对geometry中list数据进行融合*/
-	public static void unionGeometryList(List<Geometry> geometryList,Recordset recordset_new,Map<String,Object> map){
-		// 将新增的数据集进行整合成一个面数据
-		if(geometryList!=null&&geometryList.size()>0){
-			Geometry geometryNew = geometryList.get(0);
-			for(int i=0;i<geometryList.size();i++){
-				Geometry geome= geometryList.get(i);
-				geometryNew = Geometrist.union(geometryNew, geome);
-			}
-			recordset_new.edit();
-			recordset_new.update();
-			recordset_new.delete();
-			recordset_new.addNew(geometryNew,map);
-			/*没有这个数据集更新不能够成功*/
-			recordset_new.update();
-		}
-	}
-	/**通过get请求来获取某个类中的字段的值*/
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static Object getRadius(String radius,Object wzTFLslj){
-		Object  radiusData = "";
-		try {
-			Class wzclass = wzTFLslj.getClass();
-			String radiusName = "get"+radius.substring(0,1).toUpperCase()+radius.substring(1);
-			Method method= wzclass.getDeclaredMethod(radiusName,new Class[]{});
-			method.setAccessible(true);
-			radiusData = (String)method.invoke(wzTFLslj);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return radiusData;
-	}
-	/** 给面数据添加字段信息*/
-	@SuppressWarnings("rawtypes")
-	public static void addFieldInfo(DatasetVector datasetVector,Object wzTFLslj){
-		  FieldInfos  fieldInfosold = datasetVector.getFieldInfos();
-		  
-		  Class clas = wzTFLslj.getClass(); 
-		  Field []  fields =  clas.getDeclaredFields();
-		  if (fields.length>0){
-			  for (Field field : fields){
-				  String  type = field.getType().getName();
-				  String fieldName = field.getName();
-				  if(fieldName.equals("serialVersionUID")||type.equals("java.util.List")){
-					  continue;
-				  }
-				  FieldInfo fieldInfoNew = new FieldInfo();
-				  fieldInfoNew.setName(fieldName);
-				  // 别名
-				  fieldInfoNew.setCaption(fieldName);
-				  // 设置默认值
-//				      fieldInfoNew.setDefaultValue("0");
-				  if(type.equals("java.lang.String")){
-					  fieldInfoNew.setType(FieldType.TEXT);
-				  }else if(type.equals("java.util.Date")){
-					  fieldInfoNew.setType(FieldType.DATETIME);
-				  }else if(type.equals("java.math.BigDecimal")){
-					  fieldInfoNew.setType(FieldType.DOUBLE);
-				  }
-				  // 设置是否必录
-//				      fieldInfoNew.setRequired(true);
-			      fieldInfosold.add(fieldInfoNew);
-			  } 
-		  }
-	}
-	// 获取类中相应字段的值
-	public static Object getMethod(Object object, String fieldName) {
-		Field f;
-		Object obj = new Object();
-		try {
-			f = object.getClass().getDeclaredField(fieldName);
-			f.setAccessible(true);
-			obj = f.get(object);
-			if (obj == null) {
-				obj = "";
-			}
-		} catch (Exception  e) {
-			e.printStackTrace();
-		}
-		return obj;
-	}	
-	/**
-     * @Description 通过java反射生成map数据
-     * @Author 
-     * @param obj
-     * @return java.util.Map<java.lang.String,java.lang.Object>
-     * @Date 20190509
-     */
-    public static Map<String,Object> getResultByReflect(Object obj){
-    	Map<String, Object> map = new HashMap<>();
-    	/*判断对象是否为空*/
-    	if(null!=obj){
-            Field[] fields = obj.getClass().getDeclaredFields();
-            for(Field field:fields){
-                if (field.getName().equals("serialVersionUID")
-                        || field.getType().getName().equals("java.util.List")){
-                    continue;
-                }
-                String fieldName = field.getName();
-                fieldName = fieldName.substring(0, 1).toUpperCase()+fieldName.substring(1);
-                try {
-                    Method method = obj.getClass().getMethod("get"+fieldName, new Class[]{});
-                    Object invokeResult = method.invoke(obj);
-                    //假如为日期类型，需要处理后再进行放入map中
-                    if(field.getType().getName().equals("java.util.Date")){
-                    	SimpleDateFormat  format = new SimpleDateFormat("yyyy/MM/dd");
-         				try {
-         					invokeResult = format.parse(format.format(invokeResult));
-         				} catch (ParseException e) {
-         					// TODO Auto-generated catch block
-         					e.printStackTrace();
-         				}
-                    }
-                    map.put(field.getName(), invokeResult);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    throw new RuntimeException("构建插值数据异常");
-                }
-            }
-    	}
-        
-        return map;
-    }
-    
-   /** 计算相差一个经度和一个纬度之间的距离*/
-    public static double getDistance(Object obj){
-    	int  EARTH_RADIUS = 6378137; 
-//    	String lng1 = wzTFLslj.getJd();
-//    	String lat1 = wzTFLslj.getWd();
-    	String lng1 = getMethod(obj,"jd")+"";
-		String lat1 = getMethod(obj,"wd")+"";
-    	double  latDouble1 = rad(Double.parseDouble(lat1));
-    	double  latDouble2 = rad(Double.parseDouble(lat1));
-    	
-    	double latSub = latDouble1 - latDouble2;
-    	
-//    	double  lngDouble1 = rad(Double.parseDouble(lng1));
-//    	double  lngDouble2 = rad(Double.parseDouble(lng1)+1);
-    	double lonSub =rad(Double.parseDouble(lng1)) - rad(Double.parseDouble(lng1)+1);
-    	double distance = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(latSub / 2), 2) + Math.cos(latDouble1) * Math.cos(latDouble2) * Math.pow(Math.sin(lonSub / 2), 2)));
-    	distance = distance*EARTH_RADIUS;
-    	distance = Math.round(distance * 10000) / 10000;
-    	
-    	return distance;
-    }
-    
-    public static double rad(double distance){
-    	return distance * Math.PI / 180.0;
-    }
+	
+	
+  
     /**查询标的信息*/
     public static void queryCorporePInfo(Object SMID,Object POINTX_2000,Object  POINTY_2000){
 		Connection connect = null;
@@ -557,8 +195,6 @@ public class MapUtils {
 //           resultSet = statement.executeQuery("select * from SMDTV_45 where SMID=3");
            	
            resultSet = preState.executeQuery();        
-
-          
            while (resultSet.next()){
 //        	   byte[] SMGEOMETRY = null;
                Integer  SMID1 = resultSet.getInt("SMID");
@@ -609,7 +245,7 @@ public class MapUtils {
     		for(Object object: list){
     			/*获取编号信息*/
     			List<Object> wzTFYbljList = new ArrayList<Object>();
-    			String tm = MapUtils.getMethod(list.get(0),"tm").toString();
+    			String tm = MapReflectUtils.getMethod(list.get(0),"tm").toString();
     			if(map.containsKey(tm)){
     				map.get(tm).add(object);
     			}else{
@@ -716,98 +352,9 @@ public class MapUtils {
         return output;
     }
     
-	/*创建栅格数据集*/
-    public static DatasetGrid createDatasetGrid(Datasource datasource){
-    	 // 假设打开一个工作空间 workspace 对象，工作空间中存在一个数据源 datasource 对象
-        // 创建一个栅格数据集信息对象，对其进行必要的设置
-//    	String name = "Grid"+java.util.UUID.randomUUID().toString().replace("-", "");
-    	String name = "Grid";
-    	// 用于删除指定名称的数据集
-    	boolean flag =datasource.getDatasets().delete(name);
-    	
-        DatasetGridInfo datasetGridInfo = new DatasetGridInfo();
-        datasetGridInfo.setName(name);
-        datasetGridInfo.setBlockSizeOption(BlockSizeOption.BS_128);
-        datasetGridInfo.setWidth(3524);
-        datasetGridInfo.setHeight(3040);
-        datasetGridInfo.setNoValue(1.0);
-        datasetGridInfo.setPixelFormat(PixelFormat.SINGLE);
-        datasetGridInfo.setEncodeType(EncodeType.LZW);
-        
-        // 通过栅格数据集信息创建栅格数据集
-        DatasetGrid datasetGrid = datasource.getDatasets().create(
-                datasetGridInfo);
-        if (datasetGrid != null) {
-            System.out.println(datasetGrid.getName() + "创建成功！");
-        }
-    	return datasetGrid;
-    }
+	
     
-    /*创建工作空间*/
-    public static  AjaxResult   createWorkspace(){
-    	AjaxResult ajaxResult =new AjaxResult();
-    	Workspace workspace = new Workspace();
-    	WorkspaceConnectionInfo connectionInfo = new WorkspaceConnectionInfo();
-		connectionInfo.setType(WorkspaceType.ORACLE);		
-		connectionInfo.setServer(iobjectJavaServer);
-		connectionInfo.setDatabase(iobjectJavaDatabase);
-		connectionInfo.setUser(iobjectJavaUser);
-		connectionInfo.setPassword(iobjectJavaPassword);
-		connectionInfo.setName("GridWorkspace"+java.util.UUID.randomUUID().toString().replace("-", ""));
-		
-		connectionInfo.setVersion(WorkspaceVersion.UGC60);
-		boolean saveResult = workspace.create(connectionInfo);
-		if (saveResult) {
-			 System.out.println("创建工作空间成功！");
-			 ajaxResult.setStatus(1);
-		} else {
-			System.out.println("创建工作空间失败！");
-			 ajaxResult.setStatus(2);
-		}
-		return ajaxResult;
-    }
-    /*打开工作空间*/
-    public static  AjaxResult   openWorkSpace(){
-    	AjaxResult ajaxResult =new AjaxResult();
-    	Workspace workspace = new Workspace();
-		
-		WorkspaceConnectionInfo connectionInfo = new WorkspaceConnectionInfo();
-		connectionInfo.setType(WorkspaceType.ORACLE);
-		connectionInfo.setServer(iobjectJavaServer);
-		connectionInfo.setDatabase(iobjectJavaDatabase);
-		connectionInfo.setUser(iobjectJavaUser);
-		connectionInfo.setPassword(iobjectJavaPassword);
-		connectionInfo.setName("fcfk");
-		
-		boolean openResult = workspace.open(connectionInfo);
-		
-		Datasource datasource = workspace.getDatasources().get(0);
-		Datasets datasets=  datasource.getDatasets();
-		int count = datasets.getCount();
-		for(int i=0;i<count;i++){
-			System.out.println(datasets.get(i).getName());
-		}
-		
-//		DatasetVector datasetVector = (DatasetVector) datasource.getDatasets().get("typhoon_hazard_scale_1km");
-//		System.out.println("+++++++++++++++++++"+datasetVector.getName());
-		// 保存工作空间
-	    workspace.save();
-	      
-		if (openResult) {
-			System.out.println("打开工作空间成功！");
-			 ajaxResult.setStatus(1);
-		} else {
-			System.out.println("打开工作空间失败！");
-			 ajaxResult.setStatus(2);
-		}
-		// 释放资源
-//		datasetVector.close();
-        connectionInfo.dispose();
-        workspace.close();
-        workspace.dispose();
-        
-    	return ajaxResult;
-    }
+   
     /**
 	 * 设置是否显示栅格分段专题图
 	 */

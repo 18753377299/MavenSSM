@@ -122,6 +122,13 @@
 		   <artifactId>ojdbc14</artifactId>
 		   <version>10.2.0.4.0</version>
 	</dependency>
+	<!-- postgresql数据库连接包 -->
+	<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.2-1004-jdbc41</version>
+<!-- 			<version>42.2.2</version> -->
+		</dependency>
 	<dependency>
 		<groupId>log4j</groupId>
 		<artifactId>log4j</artifactId>

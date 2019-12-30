@@ -1,6 +1,9 @@
 package com.example.func.iobjectjava.javamain.createDataSource;
 
-import com.example.func.iobjectjava.javamain.common.MapUtils;
+
+import com.common.utils.MapUtils;
+import com.supermap.data.Dataset;
+import com.supermap.data.Datasource;
 import com.supermap.data.DatasourceConnectionInfo;
 import com.supermap.data.Workspace;
 	/**
@@ -15,7 +18,12 @@ public class OperateSDataSource {
 		Workspace workspace = new Workspace();
 		// 定义数据源连接信息，假设以下所有数据源设置都存在
        DatasourceConnectionInfo datasourceconnection = new  DatasourceConnectionInfo();
-       MapUtils.connectDataSource(workspace,datasourceconnection);
-       System.out.println("success");
+//       MapUtils.connectDataSource(workspace,datasourceconnection);
+       Datasource datasource=  MapUtils.connectPostgresDataSource(workspace,datasourceconnection);
+       Dataset  dataset = datasource.getDatasets().get("china_R");
+       String  name = dataset.getName();
+       System.out.println("success:"+name);
 	}
+	
+	
 }
