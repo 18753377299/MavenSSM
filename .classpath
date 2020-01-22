@@ -24,6 +24,11 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/com.supermap.analyst.spatialanalyst.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/com.supermap.data.conversion.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/com.supermap.data.jar"/>
@@ -32,10 +37,5 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/EncryptSecretInfo.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ifxjdbc.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ojdbc14-10.2.0.4.0.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
-		<attributes>
-			<attribute name="owner.project.facets" value="java"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

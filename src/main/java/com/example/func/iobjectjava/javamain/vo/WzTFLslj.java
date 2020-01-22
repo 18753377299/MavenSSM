@@ -1,4 +1,4 @@
-package com.iobjectjava.javamain.vo;
+package com.example.func.iobjectjava.javamain.vo;
 
 import java.io.Serializable;
 import java.util.Date;
