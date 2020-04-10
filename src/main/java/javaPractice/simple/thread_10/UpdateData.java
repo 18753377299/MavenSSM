@@ -1,4 +1,4 @@
-package com.simple.thread_10;
+package javaPractice.simple.thread_10;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,20 +22,15 @@ import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.ConnectionKeepAliveStrategy;
-import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultConnectionKeepAliveStrategy;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.protocol.HttpContext;
 import org.springframework.util.StreamUtils;
 
 import com.alibaba.fastjson.JSON;
-import com.vo.GridValue;
+import com.example.func.iobjectjava.javamain.vo.GridValue;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2018年11月22日 下午6:11:35

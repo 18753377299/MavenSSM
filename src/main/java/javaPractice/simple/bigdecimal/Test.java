@@ -16,6 +16,10 @@ public class Test {
 
 	public static void main(String[] args) {
 		try {
+			String bbString = "12.01";
+			BigDecimal bigDecimal = new BigDecimal(bbString.trim());
+			
+			System.out.println(bigDecimal);
 			System.out.println(System.currentTimeMillis());
 			// TODO Auto-generated method stub
 			List<String> riskAssess = new ArrayList<String>();

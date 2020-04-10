@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
-import java.net.Proxy;
 import java.net.URL;
 
 
@@ -29,10 +27,10 @@ public class HttpGetSend {
         try {
 			URL realUrl = new URL(url);
 			// 设置代理请求
-           Proxy proxy = new Proxy(Proxy.Type.HTTP,new InetSocketAddress("Proxy.piccnet.com.cn",3128));
-           HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection(proxy);
+//           Proxy proxy = new Proxy(Proxy.Type.HTTP,new InetSocketAddress("Proxy.piccnet.com.cn",3128));
+//           HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection(proxy);
 			// 打开和URL之间的连接
-//			URLConnection connection = realUrl.openConnection();
+			HttpURLConnection connection = (HttpURLConnection)realUrl.openConnection();
 			// 设置通用的请求属性
 //			connection.setRequestProperty("accept", "*/*");
 //			connection.setRequestProperty("connection", "Keep-Alive");

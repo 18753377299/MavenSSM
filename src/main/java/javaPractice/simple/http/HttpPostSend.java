@@ -69,7 +69,7 @@ public class HttpPostSend {
 //		message.put("file_name", "Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201911200800.json");
 //		message.put("file_name", "Z_NWGD_C_BABJ_P_RFFC_SCMOC-ER24_201911210800.asc");
 		//实况雨场数据请求
-		message.put("file_name", "Z_SURF_C_BABJ_P_CMPA_FAST_CHN_0P05_DAY-PRE-2019112008.json");
+		message.put("file_name", "Z_SURF_C_BABJ_P_CMPA_FAST_CHN_0P05_DAY-PRE-2020040808.json");
 		
 		platform.add(message);
 		// 将数组添加到大对象中
@@ -95,10 +95,11 @@ public class HttpPostSend {
         try {
             URL url = new URL(URL);
             //设置代理，（试验成功）
-            Proxy proxy = new Proxy(Proxy.Type.HTTP,new InetSocketAddress("Proxy.piccnet.com.cn",3128));
-            HttpURLConnection urlCon = (HttpURLConnection) url.openConnection(proxy);
+//            Proxy proxy = new Proxy(Proxy.Type.HTTP,new InetSocketAddress("Proxy.piccnet.com.cn",3128));
+//            HttpURLConnection urlCon = (HttpURLConnection) url.openConnection(proxy);
 
 //            URLConnection urlCon = url.openConnection();
+            HttpURLConnection urlCon = (HttpURLConnection) url.openConnection();
          // 发送POST请求必须设置如下两行
             urlCon.setDoOutput(true);
             urlCon.setDoInput(true);

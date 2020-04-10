@@ -1,7 +1,9 @@
-package com.simple.listFile;
+package javaPractice.simple.listFile;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
 
 	/**
  * @author  作者 E-mail: 
@@ -16,11 +18,13 @@ public class ListTest {
 	   books.add("aaa");
 	   books.add("bbbb");
 	   books.add("ccccc");
+	   System.out.println(StringUtils.join(books,","));
 	   System.out.println(books);
 	   books.remove(new A());
 	   System.out.println(books);
 	   books.remove(new A());
 	   System.out.println(books);
+	   
 	   List<String> list =new ArrayList<String>();
 	   try {
 		   for(String temp:list){
