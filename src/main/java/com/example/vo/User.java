@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class User implements Serializable {
+	
     @ApiModelProperty(value = "用户代码")
     private String userCode;
 
@@ -14,7 +15,7 @@ public class User implements Serializable {
     private String userName;
 
     @ApiModelProperty(value = "年龄")
-    private Integer age;
+    private long age;
 
     @ApiModelProperty(value = "邮箱")
     private String email;
@@ -48,11 +49,11 @@ public class User implements Serializable {
         this.userName = userName == null ? null : userName.trim();
     }
 
-    public Integer getAge() {
+    public long getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(long age) {
         this.age = age;
     }
 
