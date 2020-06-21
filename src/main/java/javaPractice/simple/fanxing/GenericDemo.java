@@ -1,4 +1,4 @@
-package com.simple.fanxing;
+package javaPractice.simple.fanxing;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年7月15日 下午3:01:22

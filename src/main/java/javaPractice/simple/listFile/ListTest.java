@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2017年12月11日 下午4:08:40
@@ -18,7 +21,15 @@ public class ListTest {
 	   books.add("aaa");
 	   books.add("bbbb");
 	   books.add("ccccc");
-	   System.out.println(StringUtils.join(books,","));
+	   JSONObject audienceAll = new JSONObject();
+	   JSONArray baseform = new JSONArray();
+	   for(Object str: books){
+		   baseform.add(str) ;
+	   }
+	   audienceAll.put("vtreeDelList", baseform);
+	   
+	   System.out.println(audienceAll.toString());
+	   System.out.println(StringUtils.join(books,"\",\""));
 	   System.out.println(books);
 	   books.remove(new A());
 	   System.out.println(books);
