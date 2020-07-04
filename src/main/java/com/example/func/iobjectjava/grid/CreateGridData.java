@@ -30,7 +30,7 @@ public class CreateGridData {
 	public static void main(String[] args) {
 		createGridData();
 	}
-	/**通过传递行号列号和value值来阻止栅格数据*/
+	/**通过传递行号列号和value值来组织栅格数据*/
 	public static void createGridData(){
 		Workspace workspace = new Workspace();
 		// 定义数据源连接信息，假设以下所有数据源设置都存在

@@ -11,12 +11,26 @@ import java.nio.charset.Charset;
 public class FileWriteToTxt {
 
 	public static void main(String[] args) {
+		for(int i =0;i<10;i++){
+			String fiePath="D:/lqk/";
+			String name ="test"+i+".txt";
+			fiePath = fiePath+name;
+			writeToFile(fiePath);
+		}
+
+	}
+	/*将数据输出到文件中*/
+	public static  void writeToFile (String fiePath){
 		File file = null;
         FileWriter fw = null;
-        file = new File("D:/test123.txt");
+        file = new File(fiePath);
         try {
-            if (!file.exists()) {
-                file.createNewFile();
+//            if (!file.exists()) {
+//                file.createNewFile();
+//            }
+        	// 如果输出目标文件夹不存在，则创建
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs();
             }
             fw = new FileWriter(file);
             for(int i = 1;i <=3000;i++){
@@ -37,8 +51,8 @@ public class FileWriteToTxt {
                 }
             }
         }
-
 	}
+	
 	 public static byte[] getBytes(char[] chars) {
 	        Charset cs = Charset.forName("UTF-8");
 	        CharBuffer cb = CharBuffer.allocate(chars.length);
