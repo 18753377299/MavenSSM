@@ -21,6 +21,10 @@ public class StringSplice {
 		strList.add("17");
 		String strNew = StringUtils.join(strList,",");
 		System.out.println("========new======"+strNew);
+		String   newStr = "2";
+		/*如果只有一个字段，执行split 之后也会转换为数组。*/
+		String [] newArray = newStr.split(",");
+		System.out.println("=======array========="+newArray);
 	}
 
 }

@@ -13,9 +13,9 @@ import com.alibaba.fastjson.JSONObject;
  * @date 创建时间：2017年12月11日 下午4:08:40
  * @version 1.0 
  * @parameter 
- * @since  
+ * @since  主要是List方法中remove的用法
  * @return  */
-public class ListTest {
+public class ListRemoveTest {
    public static void main(String[]args){
 	   List books=new ArrayList();
 	   books.add("aaa");
@@ -33,6 +33,7 @@ public class ListTest {
 	   System.out.println(books);
 	   books.remove(new A());
 	   System.out.println(books);
+	   
 	   books.remove(new A());
 	   System.out.println(books);
 	   
@@ -48,6 +49,8 @@ public class ListTest {
 	   
    }
 }
+/* 移除满足 (o==null ? get(i)==null : o.equals(get(i))) 的最低索引的元素（如果存在此类元素）
+。如果列表中包含指定的元素，则返回 true*/
 class A{
 	public boolean equals(Object object){
 		return true;

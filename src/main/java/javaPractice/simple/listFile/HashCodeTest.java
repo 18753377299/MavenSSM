@@ -2,6 +2,7 @@ package javaPractice.simple.listFile;
 
 import java.util.*;
 
+// 去除重复数据
 public class HashCodeTest {  
   
     public static void main(String[] args){  

@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.RiskReportSaleMainMapper">
+  <resultMap id="BaseResultMap" type="com.example.vo.RiskReportSaleMain">
+    <id column="archivesno" jdbcType="CHAR" property="archivesno" />
+    <result column="explorecomcode" jdbcType="CHAR" property="explorecomcode" />
+    <result column="explorer" jdbcType="VARCHAR" property="explorer" />
+    <result column="comcode" jdbcType="VARCHAR" property="comcode" />
+    <result column="checkupcode" jdbcType="VARCHAR" property="checkupcode" />
+    <result column="companyname" jdbcType="VARCHAR" property="companyname" />
+    <result column="exploreaddress" jdbcType="VARCHAR" property="exploreaddress" />
+    <result column="exploredate" jdbcType="DATE" property="exploredate" />
+    <result column="checkupflag" jdbcType="CHAR" property="checkupflag" />
+    <result column="mobileflag" jdbcType="CHAR" property="mobileflag" />
+    <result column="inserttimeforhis" jdbcType="TIMESTAMP" property="inserttimeforhis" />
+    <result column="operatetimeforhis" jdbcType="TIMESTAMP" property="operatetimeforhis" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    archivesno, explorecomcode, explorer, comcode, checkupcode, companyname, exploreaddress, 
+    exploredate, checkupflag, mobileflag, inserttimeforhis, operatetimeforhis
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from riskreport_salemain
+    where archivesno = #{archivesno,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from riskreport_salemain
+    where archivesno = #{archivesno,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.vo.RiskReportSaleMain">
+    insert into riskreport_salemain (archivesno, explorecomcode, explorer, 
+      comcode, checkupcode, companyname, 
+      exploreaddress, exploredate, checkupflag, 
+      mobileflag, inserttimeforhis, operatetimeforhis
+      )
+    values (#{archivesno,jdbcType=CHAR}, #{explorecomcode,jdbcType=CHAR}, #{explorer,jdbcType=VARCHAR}, 
+      #{comcode,jdbcType=VARCHAR}, #{checkupcode,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, 
+      #{exploreaddress,jdbcType=VARCHAR}, #{exploredate,jdbcType=DATE}, #{checkupflag,jdbcType=CHAR}, 
+      #{mobileflag,jdbcType=CHAR}, #{inserttimeforhis,jdbcType=TIMESTAMP}, #{operatetimeforhis,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.vo.RiskReportSaleMain">
+    insert into riskreport_salemain
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="archivesno != null">
+        archivesno,
+      </if>
+      <if test="explorecomcode != null">
+        explorecomcode,
+      </if>
+      <if test="explorer != null">
+        explorer,
+      </if>
+      <if test="comcode != null">
+        comcode,
+      </if>
+      <if test="checkupcode != null">
+        checkupcode,
+      </if>
+      <if test="companyname != null">
+        companyname,
+      </if>
+      <if test="exploreaddress != null">
+        exploreaddress,
+      </if>
+      <if test="exploredate != null">
+        exploredate,
+      </if>
+      <if test="checkupflag != null">
+        checkupflag,
+      </if>
+      <if test="mobileflag != null">
+        mobileflag,
+      </if>
+      <if test="inserttimeforhis != null">
+        inserttimeforhis,
+      </if>
+      <if test="operatetimeforhis != null">
+        operatetimeforhis,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="archivesno != null">
+        #{archivesno,jdbcType=CHAR},
+      </if>
+      <if test="explorecomcode != null">
+        #{explorecomcode,jdbcType=CHAR},
+      </if>
+      <if test="explorer != null">
+        #{explorer,jdbcType=VARCHAR},
+      </if>
+      <if test="comcode != null">
+        #{comcode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkupcode != null">
+        #{checkupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="exploreaddress != null">
+        #{exploreaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="exploredate != null">
+        #{exploredate,jdbcType=DATE},
+      </if>
+      <if test="checkupflag != null">
+        #{checkupflag,jdbcType=CHAR},
+      </if>
+      <if test="mobileflag != null">
+        #{mobileflag,jdbcType=CHAR},
+      </if>
+      <if test="inserttimeforhis != null">
+        #{inserttimeforhis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatetimeforhis != null">
+        #{operatetimeforhis,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.RiskReportSaleMain">
+    update riskreport_salemain
+    <set>
+      <if test="explorecomcode != null">
+        explorecomcode = #{explorecomcode,jdbcType=CHAR},
+      </if>
+      <if test="explorer != null">
+        explorer = #{explorer,jdbcType=VARCHAR},
+      </if>
+      <if test="comcode != null">
+        comcode = #{comcode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkupcode != null">
+        checkupcode = #{checkupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        companyname = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="exploreaddress != null">
+        exploreaddress = #{exploreaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="exploredate != null">
+        exploredate = #{exploredate,jdbcType=DATE},
+      </if>
+      <if test="checkupflag != null">
+        checkupflag = #{checkupflag,jdbcType=CHAR},
+      </if>
+      <if test="mobileflag != null">
+        mobileflag = #{mobileflag,jdbcType=CHAR},
+      </if>
+      <if test="inserttimeforhis != null">
+        inserttimeforhis = #{inserttimeforhis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatetimeforhis != null">
+        operatetimeforhis = #{operatetimeforhis,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where archivesno = #{archivesno,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.RiskReportSaleMain">
+    update riskreport_salemain
+    set explorecomcode = #{explorecomcode,jdbcType=CHAR},
+      explorer = #{explorer,jdbcType=VARCHAR},
+      comcode = #{comcode,jdbcType=VARCHAR},
+      checkupcode = #{checkupcode,jdbcType=VARCHAR},
+      companyname = #{companyname,jdbcType=VARCHAR},
+      exploreaddress = #{exploreaddress,jdbcType=VARCHAR},
+      exploredate = #{exploredate,jdbcType=DATE},
+      checkupflag = #{checkupflag,jdbcType=CHAR},
+      mobileflag = #{mobileflag,jdbcType=CHAR},
+      inserttimeforhis = #{inserttimeforhis,jdbcType=TIMESTAMP},
+      operatetimeforhis = #{operatetimeforhis,jdbcType=TIMESTAMP}
+    where archivesno = #{archivesno,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.vo.RiskReportSaleMain">
+    <id column="archivesno" jdbcType="CHAR" property="archivesno" />
+    <result column="explorecomcode" jdbcType="CHAR" property="explorecomcode" />
+    <result column="explorer" jdbcType="VARCHAR" property="explorer" />
+    <result column="comcode" jdbcType="VARCHAR" property="comcode" />
+    <result column="checkupcode" jdbcType="VARCHAR" property="checkupcode" />
+    <result column="companyname" jdbcType="VARCHAR" property="companyname" />
+    <result column="exploreaddress" jdbcType="VARCHAR" property="exploreaddress" />
+    <result column="exploredate" jdbcType="DATE" property="exploredate" />
+    <result column="checkupflag" jdbcType="CHAR" property="checkupflag" />
+    <result column="mobileflag" jdbcType="CHAR" property="mobileflag" />
+    <result column="inserttimeforhis" jdbcType="TIMESTAMP" property="inserttimeforhis" />
+    <result column="operatetimeforhis" jdbcType="TIMESTAMP" property="operatetimeforhis" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    archivesno, explorecomcode, explorer, comcode, checkupcode, companyname, exploreaddress, 
+    exploredate, checkupflag, mobileflag, inserttimeforhis, operatetimeforhis
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from riskreport_salemain
+    where archivesno = #{archivesno,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from riskreport_salemain
+    where archivesno = #{archivesno,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.vo.RiskReportSaleMain">
+    insert into riskreport_salemain (archivesno, explorecomcode, explorer, 
+      comcode, checkupcode, companyname, 
+      exploreaddress, exploredate, checkupflag, 
+      mobileflag, inserttimeforhis, operatetimeforhis
+      )
+    values (#{archivesno,jdbcType=CHAR}, #{explorecomcode,jdbcType=CHAR}, #{explorer,jdbcType=VARCHAR}, 
+      #{comcode,jdbcType=VARCHAR}, #{checkupcode,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, 
+      #{exploreaddress,jdbcType=VARCHAR}, #{exploredate,jdbcType=DATE}, #{checkupflag,jdbcType=CHAR}, 
+      #{mobileflag,jdbcType=CHAR}, #{inserttimeforhis,jdbcType=TIMESTAMP}, #{operatetimeforhis,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.vo.RiskReportSaleMain">
+    insert into riskreport_salemain
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="archivesno != null">
+        archivesno,
+      </if>
+      <if test="explorecomcode != null">
+        explorecomcode,
+      </if>
+      <if test="explorer != null">
+        explorer,
+      </if>
+      <if test="comcode != null">
+        comcode,
+      </if>
+      <if test="checkupcode != null">
+        checkupcode,
+      </if>
+      <if test="companyname != null">
+        companyname,
+      </if>
+      <if test="exploreaddress != null">
+        exploreaddress,
+      </if>
+      <if test="exploredate != null">
+        exploredate,
+      </if>
+      <if test="checkupflag != null">
+        checkupflag,
+      </if>
+      <if test="mobileflag != null">
+        mobileflag,
+      </if>
+      <if test="inserttimeforhis != null">
+        inserttimeforhis,
+      </if>
+      <if test="operatetimeforhis != null">
+        operatetimeforhis,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="archivesno != null">
+        #{archivesno,jdbcType=CHAR},
+      </if>
+      <if test="explorecomcode != null">
+        #{explorecomcode,jdbcType=CHAR},
+      </if>
+      <if test="explorer != null">
+        #{explorer,jdbcType=VARCHAR},
+      </if>
+      <if test="comcode != null">
+        #{comcode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkupcode != null">
+        #{checkupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="exploreaddress != null">
+        #{exploreaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="exploredate != null">
+        #{exploredate,jdbcType=DATE},
+      </if>
+      <if test="checkupflag != null">
+        #{checkupflag,jdbcType=CHAR},
+      </if>
+      <if test="mobileflag != null">
+        #{mobileflag,jdbcType=CHAR},
+      </if>
+      <if test="inserttimeforhis != null">
+        #{inserttimeforhis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatetimeforhis != null">
+        #{operatetimeforhis,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.RiskReportSaleMain">
+    update riskreport_salemain
+    <set>
+      <if test="explorecomcode != null">
+        explorecomcode = #{explorecomcode,jdbcType=CHAR},
+      </if>
+      <if test="explorer != null">
+        explorer = #{explorer,jdbcType=VARCHAR},
+      </if>
+      <if test="comcode != null">
+        comcode = #{comcode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkupcode != null">
+        checkupcode = #{checkupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        companyname = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="exploreaddress != null">
+        exploreaddress = #{exploreaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="exploredate != null">
+        exploredate = #{exploredate,jdbcType=DATE},
+      </if>
+      <if test="checkupflag != null">
+        checkupflag = #{checkupflag,jdbcType=CHAR},
+      </if>
+      <if test="mobileflag != null">
+        mobileflag = #{mobileflag,jdbcType=CHAR},
+      </if>
+      <if test="inserttimeforhis != null">
+        inserttimeforhis = #{inserttimeforhis,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatetimeforhis != null">
+        operatetimeforhis = #{operatetimeforhis,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where archivesno = #{archivesno,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.vo.RiskReportSaleMain">
+    update riskreport_salemain
+    set explorecomcode = #{explorecomcode,jdbcType=CHAR},
+      explorer = #{explorer,jdbcType=VARCHAR},
+      comcode = #{comcode,jdbcType=VARCHAR},
+      checkupcode = #{checkupcode,jdbcType=VARCHAR},
+      companyname = #{companyname,jdbcType=VARCHAR},
+      exploreaddress = #{exploreaddress,jdbcType=VARCHAR},
+      exploredate = #{exploredate,jdbcType=DATE},
+      checkupflag = #{checkupflag,jdbcType=CHAR},
+      mobileflag = #{mobileflag,jdbcType=CHAR},
+      inserttimeforhis = #{inserttimeforhis,jdbcType=TIMESTAMP},
+      operatetimeforhis = #{operatetimeforhis,jdbcType=TIMESTAMP}
+    where archivesno = #{archivesno,jdbcType=CHAR}
+  </update>
+</mapper>

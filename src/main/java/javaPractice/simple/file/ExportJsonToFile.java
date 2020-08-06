@@ -1,4 +1,4 @@
-package javaPractice.file;
+package javaPractice.simple.file;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

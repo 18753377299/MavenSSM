@@ -42,6 +42,5 @@ public class ListTest2 {
 		   }
 	   }
 	   System.out.println(objectNewList);
-	   
    }
 }

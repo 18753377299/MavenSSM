@@ -1,19 +1,14 @@
 package action;
 
 
-import org.junit.Test;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
+
+import com.Action.Action;
 
 import service.facade.Axe;
 import service.facade.Person;
 import service.impl.Japan;
-
-import com.Action.Action;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年6月19日 上午11:16:50

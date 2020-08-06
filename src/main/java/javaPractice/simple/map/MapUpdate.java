@@ -118,13 +118,12 @@ public class MapUpdate {
 		if(CollectionUtils.isEmpty(linkedListNew)){
 			System.out.println("CollectionUtils isEmpty");
 		}
-		
 		return true;
 	}
 	/*四、初始化集合时尽量指定其大小*/
 	/*尽量在初始化时指定集合的大小，能有效减少集合的扩容次数，因为集合每次扩容的时间复杂度很可能时O(n)，耗费时间和性能。*/
 	public  void initList(){
-		int []arr = {1,2,3,4,5};
+		int [] arr = {1,2,3,4,5};
 		List<Integer> list = new ArrayList<Integer>(arr.length);
 		for(int i: arr){
 			list.add(i);

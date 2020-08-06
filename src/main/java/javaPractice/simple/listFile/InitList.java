@@ -11,13 +11,12 @@ public class InitList {
 		// TODO Auto-generated method stub
 		/*通过数组转换为list信息*/
 		String [] strArray = {"1","2","3"};
+		String [] strArray1 = new String [10];
+		strArray1[0] ="aaa";
+		String [] strArray2 = new String [] {"1","2","3"};
 		List<String> strList = new ArrayList<String>();
 		strList = Arrays.asList(strArray);
 		System.out.println(strList);
-		
-		
-		
-		
 	}
 
 }
