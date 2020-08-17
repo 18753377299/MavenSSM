@@ -97,281 +97,281 @@ CREATE TABLE
     );
 COMMENT ON COLUMN riskreport_enterpriseinfo.companycname
 IS
-    'ÆóÒµÃû³Æ,¿óÉ½ËùÊôÆóÒµÃû³Æ,';
+    'ä¼ä¸šåç§°,çŸ¿å±±æ‰€å±ä¼ä¸šåç§°,';
 COMMENT ON COLUMN riskreport_enterpriseinfo.companyaddress
 IS
-    '¹«Ë¾µØµã,¿óÉ½µØµã,ÅÅÍÁ³¡µØµã,¹«Ë¾µØÖ·';
+    'å…¬å¸åœ°ç‚¹,çŸ¿å±±åœ°ç‚¹,æ’åœŸåœºåœ°ç‚¹,å…¬å¸åœ°å€';
 COMMENT ON COLUMN riskreport_enterpriseinfo.companycorporation
 IS
-    '·¨ÈË´ú±í,';
+    'æ³•äººä»£è¡¨,';
 COMMENT ON COLUMN riskreport_enterpriseinfo.postaddress
 IS
-    'µØÖÊ¹¹Ôì¸´ÔÓ³Ì¶È,ÓÊ±à';
+    'åœ°è´¨æ„é€ å¤æ‚ç¨‹åº¦,é‚®ç¼–';
 COMMENT ON COLUMN riskreport_enterpriseinfo.companymanager
 IS
-    'Ë®ÎÄµØÖÊÀàĞÍ,Ö÷Òª¸ºÔğÈË£¬ÆóÒµ°²È«¸ºÔğÈË';
+    'æ°´æ–‡åœ°è´¨ç±»å‹,ä¸»è¦è´Ÿè´£äººï¼Œä¼ä¸šå®‰å…¨è´Ÿè´£äºº';
 COMMENT ON COLUMN riskreport_enterpriseinfo.businessscope
 IS
-    'ÍßË¹µÈ¼¶,¾­Óª·¶Î§£º';
+    'ç“¦æ–¯ç­‰çº§,ç»è¥èŒƒå›´ï¼š';
 COMMENT ON COLUMN riskreport_enterpriseinfo.qualificationlevel
 IS
-    '×ÔÈ»·¢»ğÇãÏòĞÔ,×ÊÖÊµÈ¼¶,×¢²áµØÖ·';
+    'è‡ªç„¶å‘ç«å€¾å‘æ€§,èµ„è´¨ç­‰çº§,æ³¨å†Œåœ°å€';
 COMMENT ON COLUMN riskreport_enterpriseinfo.registrationcompany
 IS
-    'Ãº³¾±¬Õ¨Î£ÏÕĞÔ,µÇ¼Ç»ú¹Ø';
+    'ç…¤å°˜çˆ†ç‚¸å±é™©æ€§,ç™»è®°æœºå…³';
 COMMENT ON COLUMN riskreport_enterpriseinfo.productaddress
 IS
-    '³å»÷µØÑ¹Î£ÏÕĞÔ,ÆóÒµÉú²ú¾­ÓªµØÖ·';
+    'å†²å‡»åœ°å‹å±é™©æ€§,ä¼ä¸šç”Ÿäº§ç»è¥åœ°å€';
 COMMENT ON COLUMN riskreport_enterpriseinfo.safetylicense
 IS
-    '²É¿óÖ¤ºÅÂë,ÓªÒµÖ´ÕÕºÅ,Í³Ò»Éç»áĞÅÓÃ´úÂë';
+    'é‡‡çŸ¿è¯å·ç ,è¥ä¸šæ‰§ç…§å·,ç»Ÿä¸€ç¤¾ä¼šä¿¡ç”¨ä»£ç ';
 COMMENT ON COLUMN riskreport_enterpriseinfo.safetycompany
 IS
-    '·¢Ö¤»ú¹¹1';
+    'å‘è¯æœºæ„1';
 COMMENT ON COLUMN riskreport_enterpriseinfo.mininglicense
 IS
-    '°²È«Éú²úĞí¿ÉÖ¤ºÅÂë';
+    'å®‰å…¨ç”Ÿäº§è®¸å¯è¯å·ç ';
 COMMENT ON COLUMN riskreport_enterpriseinfo.safetyprolicense
 IS
-    '·¢Ö¤»ú¹¹2';
+    'å‘è¯æœºæ„2';
 COMMENT ON COLUMN riskreport_enterpriseinfo.emailaddress
 IS
-    '¿óÉ½Ãû³Æ,ÅÅÍÁ³¡Ãû³Æ,ÓÊÏä';
+    'çŸ¿å±±åç§°,æ’åœŸåœºåç§°,é‚®ç®±';
 COMMENT ON COLUMN riskreport_enterpriseinfo.phonenum
 IS
-    '²»ÔÚ»¯¹¤Ô°ÇøÄÚ£¨×¢Ã÷ËùÔÚÇøÓò£©,ÊÖ»úºÅÂë';
+    'ä¸åœ¨åŒ–å·¥å›­åŒºå†…ï¼ˆæ³¨æ˜æ‰€åœ¨åŒºåŸŸï¼‰,æ‰‹æœºå·ç ';
 COMMENT ON COLUMN riskreport_enterpriseinfo.telephone
 IS
-    'ÁªÏµµç»°,¹Ì¶¨µç»°';
+    'è”ç³»ç”µè¯,å›ºå®šç”µè¯';
 COMMENT ON COLUMN riskreport_enterpriseinfo.designscalendec
 IS
-    'ºË¶¨Éú²úÄÜÁ¦(Íò¶Ö/Äê),Éè¼Æ¿ª²É¹æÄ£,ÅÅÍÁ³¡Éè¼ÆÈİÁ¿,Éè¼Æ¹æÄ££¬×¢²á×Ê½ğ';
+    'æ ¸å®šç”Ÿäº§èƒ½åŠ›(ä¸‡å¨/å¹´),è®¾è®¡å¼€é‡‡è§„æ¨¡,æ’åœŸåœºè®¾è®¡å®¹é‡,è®¾è®¡è§„æ¨¡ï¼Œæ³¨å†Œèµ„é‡‘';
 COMMENT ON COLUMN riskreport_enterpriseinfo.actualyielddec
 IS
-    'ÉÏÄê¶ÈÊµ¼Ê²úÁ¿(Íò¶Ö),ÉÏÄê¶ÈÊµ¼ÊÉú²úÁ¿,ÅÅÍÁ³¡ÏÖÈİÁ¿,ÉÏÄê¶ÈÊµ¼ÊÉú²úÁ¿(ÍòÏä)£¬ÉÏÄê¶ÈÊµ¼Ê¿ª¹¤Ãæ»ı';
+    'ä¸Šå¹´åº¦å®é™…äº§é‡(ä¸‡å¨),ä¸Šå¹´åº¦å®é™…ç”Ÿäº§é‡,æ’åœŸåœºç°å®¹é‡,ä¸Šå¹´åº¦å®é™…ç”Ÿäº§é‡(ä¸‡ç®±)ï¼Œä¸Šå¹´åº¦å®é™…å¼€å·¥é¢ç§¯';
 COMMENT ON COLUMN riskreport_enterpriseinfo.surplusyielddec
 IS
-    'Ê£Óà¿É²É´¢Á¿(Íò¶Ö),²úÖµ(ÍòÔª/Äê),¹Ì¶¨×Ê²ú×ÜÖµ';
+    'å‰©ä½™å¯é‡‡å‚¨é‡(ä¸‡å¨),äº§å€¼(ä¸‡å…ƒ/å¹´),å›ºå®šèµ„äº§æ€»å€¼';
 COMMENT ON COLUMN riskreport_enterpriseinfo.saleslastydec
 IS
-    'ÉÏÄê¶ÈÏúÊÛ¶î(Íò¶Ö),ÉÏÄê¶ÈÏúÊÛ¶î£¬ÉÏÄê¶ÈºÏÍ¬×Ü¶î';
+    'ä¸Šå¹´åº¦é”€å”®é¢(ä¸‡å¨),ä¸Šå¹´åº¦é”€å”®é¢ï¼Œä¸Šå¹´åº¦åˆåŒæ€»é¢';
 COMMENT ON COLUMN riskreport_enterpriseinfo.profitlastydec
 IS
-    'ÉÏÄê¶ÈÀûÈó×Ü¶î(Íò¶Ö),ÉÏÄê¶ÈÀûÈó×Ü¶î';
+    'ä¸Šå¹´åº¦åˆ©æ¶¦æ€»é¢(ä¸‡å¨),ä¸Šå¹´åº¦åˆ©æ¶¦æ€»é¢';
 COMMENT ON COLUMN riskreport_enterpriseinfo.investmentlastydec
 IS
-    'ÉÏÄê¶È°²È«Éú²úÍ¶Èë(Íò¶Ö),ÉÏÄê¶È°²È«Éú²úÍ¶Èë,ÉÏÄê¶È°²È«Éú²úÍ¶Èë×Ü¶î';
+    'ä¸Šå¹´åº¦å®‰å…¨ç”Ÿäº§æŠ•å…¥(ä¸‡å¨),ä¸Šå¹´åº¦å®‰å…¨ç”Ÿäº§æŠ•å…¥,ä¸Šå¹´åº¦å®‰å…¨ç”Ÿäº§æŠ•å…¥æ€»é¢';
 COMMENT ON COLUMN riskreport_enterpriseinfo.currentheightdec
 IS
-    'µ±Ç°¿ª²ÉÉî¶È(m),ÏÖ¿ªÅÅÍÁ¸ß¶È,ÒıÏß¿â2(kg)';
+    'å½“å‰å¼€é‡‡æ·±åº¦(m),ç°å¼€æ’åœŸé«˜åº¦,å¼•çº¿åº“2(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.miningdepthdec
 IS
-    '¿ª²ÉÉî¶È£¨m£©,ºÚ»ğÒ©¿â(kg)';
+    'å¼€é‡‡æ·±åº¦ï¼ˆmï¼‰,é»‘ç«è¯åº“(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.designminingdeptdec
 IS
-    'Éè¼Æ¿ª²ÉÉî¶È£¨m£©,Éè¼ÆÅÅÍÁ¸ß¶È,ÁÁÖé¿â(kg)';
+    'è®¾è®¡å¼€é‡‡æ·±åº¦ï¼ˆmï¼‰,è®¾è®¡æ’åœŸé«˜åº¦,äº®ç åº“(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.areacovereddec
 IS
-    '¿óÇøÕ¼µØÃæ»ı,»¯¹¤²ÄÁÏ¿â(kg)';
+    'çŸ¿åŒºå åœ°é¢ç§¯,åŒ–å·¥ææ–™åº“(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.sumcovereddec
 IS
-    '×ÜÃæ»ı';
+    'æ€»é¢ç§¯';
 COMMENT ON COLUMN riskreport_enterpriseinfo.productioncovereddec
 IS
-    'Éú²úÇø½¨ÖşÃæ»ı,³ÉÆ·¿âÃæ»ı';
+    'ç”Ÿäº§åŒºå»ºç­‘é¢ç§¯,æˆå“åº“é¢ç§¯';
 COMMENT ON COLUMN riskreport_enterpriseinfo.workcovereddec
 IS
-    '°ì¹«ÇøÃæ»ı,Òı»ğÏßÖĞ×ª¿â2(kg)';
+    'åŠå…¬åŒºé¢ç§¯,å¼•ç«çº¿ä¸­è½¬åº“2(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.othercovereddec
 IS
-    'ÆäËûÃæ»ı£¬ÂÌ»¯Ãæ»ı,¿ª°üÒ©ÖĞ×ª¿â(kg)';
+    'å…¶ä»–é¢ç§¯ï¼Œç»¿åŒ–é¢ç§¯,å¼€åŒ…è¯ä¸­è½¬åº“(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.worddaysyeardec
 IS
-    '¿ª¹¤ÂÊ(Äê¹¤×÷XÌì)';
+    'å¼€å·¥ç‡(å¹´å·¥ä½œXå¤©)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.worksumhoursdec
 IS
-    '¹¤×÷Ê±Êı×Ü¼Æ(h/a)';
+    'å·¥ä½œæ—¶æ•°æ€»è®¡(h/a)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.checkdayesdec
 IS
-    '¼ìĞŞÊ±¼ä£¨Ìì/Äê£©';
+    'æ£€ä¿®æ—¶é—´ï¼ˆå¤©/å¹´ï¼‰';
 COMMENT ON COLUMN riskreport_enterpriseinfo.designcapacitydec
 IS
-    'Òı»ğÏßÖĞ×ª¿â1(kg)';
+    'å¼•ç«çº¿ä¸­è½¬åº“1(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.actualycapacitydec
 IS
-    '²åÒı±ıÖĞ×ª¿â (kg)';
+    'æ’å¼•é¥¼ä¸­è½¬åº“ (kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.surpluscapacitydec
 IS
-    '·â¿Ú±ıÖĞ×ª¿â(kg)';
+    'å°å£é¥¼ä¸­è½¬åº“(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.usedcapacitydec
 IS
-    'ÒıÏß¿â1(kg)';
+    'å¼•çº¿åº“1(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.designstockdec
 IS
-    '»¯¹¤¿â1(kg)';
+    'åŒ–å·¥åº“1(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.actualystockdec
 IS
-    '³ÉÆ·¿â1(kg)';
+    'æˆå“åº“1(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.surplusstockdec
 IS
-    'ºÚ»ğÒ©ÖĞ×ª¿â(kg)';
+    'é»‘ç«è¯ä¸­è½¬åº“(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.usedstockdec
 IS
-    'ÁÁÖéÖĞ×ª¿â(kg)';
+    'äº®ç ä¸­è½¬åº“(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.designproductdec
 IS
-    '×°Ò©ÄÚÍ²ÖĞ×ª¿â(kg)';
+    'è£…è¯å†…ç­’ä¸­è½¬åº“(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.actualyproductdec
 IS
-    '×°·¢ÉäÒ©ºó°ë³ÉÆ·ÖĞ×ª(kg)';
+    'è£…å‘å°„è¯ååŠæˆå“ä¸­è½¬(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.surplusproductdec
 IS
-    '×é×°ºó³ÉÆ·ÖĞ×ª(kg)';
+    'ç»„è£…åæˆå“ä¸­è½¬(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.usednproductdec
 IS
-    'ÁÁÖéÉ¹³¡ºÍºæ·¿(kg)';
+    'äº®ç æ™’åœºå’Œçƒ˜æˆ¿(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.othercapacitydec
 IS
-    '»¯¹¤²ÄÁÏÖĞ×ª¿â(kg)';
+    'åŒ–å·¥ææ–™ä¸­è½¬åº“(kg)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.minestoretypesel
 IS
-    'Î²¿ó¶Ñ´æ·½Ê½';
+    'å°¾çŸ¿å †å­˜æ–¹å¼';
 COMMENT ON COLUMN riskreport_enterpriseinfo.minefloodtypesel
 IS
-    'ÊÇ·ñ°²×°ÔÚÏß¼à²âÏµÍ³';
+    'æ˜¯å¦å®‰è£…åœ¨çº¿ç›‘æµ‹ç³»ç»Ÿ';
 COMMENT ON COLUMN riskreport_enterpriseinfo.isonlinesupervisel
 IS
-    'ÊÇ·ñÔÚÏÖ¼à¶½';
+    'æ˜¯å¦åœ¨ç°ç›‘ç£';
 COMMENT ON COLUMN riskreport_enterpriseinfo.isallonlinesuperviseoksel
 IS
-    'ÔÚÏß¼à¶½ÊÇ·ñÈ«²¿°²È«';
+    'åœ¨çº¿ç›‘ç£æ˜¯å¦å…¨éƒ¨å®‰å…¨';
 COMMENT ON COLUMN riskreport_enterpriseinfo.operatingstatusel
 IS
-    'ÔËĞĞ×´Ì¬';
+    'è¿è¡ŒçŠ¶æ€';
 COMMENT ON COLUMN riskreport_enterpriseinfo.extensiondate
 IS
-    '¸ÄÀ©½¨ÈÕÆÚ,·¢Ö¤ÈÕÆÚ1';
+    'æ”¹æ‰©å»ºæ—¥æœŸ,å‘è¯æ—¥æœŸ1';
 COMMENT ON COLUMN riskreport_enterpriseinfo.signdate
 IS
-    'ÓĞĞ§ÆÚÏŞ1£¬·¢Ö¤ÈÕÆÚ2';
+    'æœ‰æ•ˆæœŸé™1ï¼Œå‘è¯æ—¥æœŸ2';
 COMMENT ON COLUMN riskreport_enterpriseinfo.validitydate
 IS
-    'ÓĞĞ§ÆÚÏŞ2';
+    'æœ‰æ•ˆæœŸé™2';
 COMMENT ON COLUMN riskreport_enterpriseinfo.invaliddate
 IS
-    '³ÉÁ¢Ê±ÈÕÆÚ';
+    'æˆç«‹æ—¶æ—¥æœŸ';
 COMMENT ON COLUMN riskreport_enterpriseinfo.establishmentdate
 IS
-    '´´Á¢ÈÕÆÚ';
+    'åˆ›ç«‹æ—¥æœŸ';
 COMMENT ON COLUMN riskreport_enterpriseinfo.completeddate
 IS
-    '¿¢¹¤ÈÕÆÚ';
+    'ç«£å·¥æ—¥æœŸ';
 COMMENT ON COLUMN riskreport_enterpriseinfo.checkdate
 IS
-    'ÑéÊÕÈÕÆÚ';
+    'éªŒæ”¶æ—¥æœŸ';
 COMMENT ON COLUMN riskreport_enterpriseinfo.inserttimeforhis
 IS
-    '²åÈëÊ±¼ä';
+    'æ’å…¥æ—¶é—´';
 COMMENT ON COLUMN riskreport_enterpriseinfo.operatetimeforhis
 IS
-    '¸üĞÂÊ±¼ä';
+    'æ›´æ–°æ—¶é—´';
 COMMENT ON COLUMN riskreport_enterpriseinfo.sumemployeecount
 IS
-    'Ö°¹¤ÈËÊı(ÈË),Ö°¹¤ÈËÊı,×ÔÓĞÖ°¹¤×ÜÊı,´ÓÒµÈËÔ±ÊıÁ¿';
+    'èŒå·¥äººæ•°(äºº),èŒå·¥äººæ•°,è‡ªæœ‰èŒå·¥æ€»æ•°,ä»ä¸šäººå‘˜æ•°é‡';
 COMMENT ON COLUMN riskreport_enterpriseinfo.prodessionemployeecount
 IS
-    'Éú²ú°àÏÖ³¡×÷ÒµÈËÊı(ÈË),Ã¿°àÆ½¾ùÔÚ¸ÚÈËÊı,Ã¿ÌìÆ½¾ùÔÚ¸ÚÈËÊı,ÉæÂãÂ¶Ò©²Ù×÷¸ÚÎ»ÈËÊı£¬¸ß¼¶¹¤³ÌÊ¦×ÜÊı,ÌØÖÖ×÷ÒµÈËÔ±ÊıÁ¿';
+    'ç”Ÿäº§ç­ç°åœºä½œä¸šäººæ•°(äºº),æ¯ç­å¹³å‡åœ¨å²—äººæ•°,æ¯å¤©å¹³å‡åœ¨å²—äººæ•°,æ¶‰è£¸éœ²è¯æ“ä½œå²—ä½äººæ•°ï¼Œé«˜çº§å·¥ç¨‹å¸ˆæ€»æ•°,ç‰¹ç§ä½œä¸šäººå‘˜æ•°é‡';
 COMMENT ON COLUMN riskreport_enterpriseinfo.midemployeecount
 IS
-    'Ã¿°àÏÂ¾®ÈËÊı£¬ÖĞ¼¶¹¤³ÌÊ¦×ÜÊı';
+    'æ¯ç­ä¸‹äº•äººæ•°ï¼Œä¸­çº§å·¥ç¨‹å¸ˆæ€»æ•°';
 COMMENT ON COLUMN riskreport_enterpriseinfo.architectcount
 IS
-    'Ò»ÌìX°à£¬×¢²á½¨ÔìÊ¦×ÜÊı';
+    'ä¸€å¤©Xç­ï¼Œæ³¨å†Œå»ºé€ å¸ˆæ€»æ•°';
 COMMENT ON COLUMN riskreport_enterpriseinfo.costengineercount
 IS
-    '×¢²áÔì¼ÛÊ¦×ÜÊı';
+    'æ³¨å†Œé€ ä»·å¸ˆæ€»æ•°';
 COMMENT ON COLUMN riskreport_enterpriseinfo.safetyofficercout
 IS
-    '×¢²á°²È«¹¤³ÌÊ¦×ÜÊı';
+    'æ³¨å†Œå®‰å…¨å·¥ç¨‹å¸ˆæ€»æ•°';
 COMMENT ON COLUMN riskreport_enterpriseinfo.firemancount
 IS
-    '×¢²áÏû·À¹¤³ÌÊ¦×ÜÊı';
+    'æ³¨å†Œæ¶ˆé˜²å·¥ç¨‹å¸ˆæ€»æ•°';
 COMMENT ON COLUMN riskreport_enterpriseinfo.safetymanangercount
 IS
-    '°²È«¹ÜÀíÈËÔ±ÊıÁ¿';
+    'å®‰å…¨ç®¡ç†äººå‘˜æ•°é‡';
 COMMENT ON COLUMN riskreport_enterpriseinfo.asafeconductcount
 IS
-    '°²È«¿¼ºËÖ¤£¨A±¾£©Êı';
+    'å®‰å…¨è€ƒæ ¸è¯ï¼ˆAæœ¬ï¼‰æ•°';
 COMMENT ON COLUMN riskreport_enterpriseinfo.bsafeconductcount
 IS
-    '°²È«¿¼ºËÖ¤£¨B±¾£©Êı';
+    'å®‰å…¨è€ƒæ ¸è¯ï¼ˆBæœ¬ï¼‰æ•°';
 COMMENT ON COLUMN riskreport_enterpriseinfo.asafeconductcounc
 IS
-    '°²È«¿¼ºËÖ¤£¨C±¾£©Êı';
+    'å®‰å…¨è€ƒæ ¸è¯ï¼ˆCæœ¬ï¼‰æ•°';
 COMMENT ON COLUMN riskreport_enterpriseinfo.projectcount
 IS
-    'ÉÏÄê¶ÈÔÚÊ©ÏîÄ¿×ÜÊı';
+    'ä¸Šå¹´åº¦åœ¨æ–½é¡¹ç›®æ€»æ•°';
 COMMENT ON COLUMN riskreport_enterpriseinfo.companytypesel
 IS
-    'ÆóÒµÀàĞÍ£¨A´óĞÍ¡¢BÖĞĞÍ¡¢CĞ¡ĞÍ£©';
+    'ä¼ä¸šç±»å‹ï¼ˆAå¤§å‹ã€Bä¸­å‹ã€Cå°å‹ï¼‰';
 COMMENT ON COLUMN riskreport_enterpriseinfo.companynaturesel
 IS
-    'ÆóÒµĞÔÖÊ£¨A¹úÓĞÖØµã¡¢BµØ·½¹úÓĞ¡¢CÏçÕòÃº¿ó£©
-,¿óÉ½ĞÔÖÊ£¨A¹úÓĞ¡¢B¹É·İ¡¢CË½Óª£©';
+    'ä¼ä¸šæ€§è´¨ï¼ˆAå›½æœ‰é‡ç‚¹ã€Båœ°æ–¹å›½æœ‰ã€Cä¹¡é•‡ç…¤çŸ¿ï¼‰
+,çŸ¿å±±æ€§è´¨ï¼ˆAå›½æœ‰ã€Bè‚¡ä»½ã€Cç§è¥ï¼‰';
 COMMENT ON COLUMN riskreport_enterpriseinfo.damtypesel
 IS
-    '¿óÉ½ÖÖÀà£¨A½ğÊô¿óÉ½£¬B·Ç½ğÊô¿óÉ½ £©';
+    'çŸ¿å±±ç§ç±»ï¼ˆAé‡‘å±çŸ¿å±±ï¼ŒBéé‡‘å±çŸ¿å±± ï¼‰';
 COMMENT ON COLUMN riskreport_enterpriseinfo.exploitationtypesel
 IS
-    '¿ª²ÉÀàĞÍ£¨AµØÏÂ¿ª²É£¬BÂ¶Ìì×ªµØÏÂ¿ª²É£©';
+    'å¼€é‡‡ç±»å‹ï¼ˆAåœ°ä¸‹å¼€é‡‡ï¼ŒBéœ²å¤©è½¬åœ°ä¸‹å¼€é‡‡ï¼‰';
 COMMENT ON COLUMN riskreport_enterpriseinfo.extensiontypesel
 IS
-    '¿ªÍØ·½Ê½£¨AÆ½íÏ¿ªÍØ £¬BĞ±¾®¿ªÍØ£¬CÊú¾®¿ªÍØ£¬DÆ½íÏÃ¤Ğ±¾®ÁªºÏ¿ªÍØ £¬EÆ½íÏÃ¤Êú¾®ÁªºÏ¿ªÍØ£¬FÊú¾®Ğ±ÆÂµÀÁªºÏ¿ªÍØ   £©';
+    'å¼€æ‹“æ–¹å¼ï¼ˆAå¹³ç¡å¼€æ‹“ ï¼ŒBæ–œäº•å¼€æ‹“ï¼ŒCç«–äº•å¼€æ‹“ï¼ŒDå¹³ç¡ç›²æ–œäº•è”åˆå¼€æ‹“ ï¼ŒEå¹³ç¡ç›²ç«–äº•è”åˆå¼€æ‹“ï¼ŒFç«–äº•æ–œå¡é“è”åˆå¼€æ‹“   ï¼‰';
 COMMENT ON COLUMN riskreport_enterpriseinfo.composetypesel
 IS
-    'ÆóÒµ¹¹³É£¨A²É¿ó ,BÑ¡¿ó,CÎ²¿ó¿â£©';
+    'ä¼ä¸šæ„æˆï¼ˆAé‡‡çŸ¿ ,Bé€‰çŸ¿,Cå°¾çŸ¿åº“ï¼‰';
 COMMENT ON COLUMN riskreport_enterpriseinfo.typeofshippingsel
 IS
-    'ÅÅÍÁÔËÊä·½Ê½(AÆû³µÅÅÍÁ,BÌúÂ·ÅÅÍÁ,CÍÆÍÁÀæÅÅÍÁ,Dµ¥¶¼ÍÚ¾ò»úÅÅÍÁ,EÅÅÍÁ»úÅÅÍÁ )';
+    'æ’åœŸè¿è¾“æ–¹å¼(Aæ±½è½¦æ’åœŸ,Bé“è·¯æ’åœŸ,Cæ¨åœŸæ¢¨æ’åœŸ,Då•éƒ½æŒ–æ˜æœºæ’åœŸ,Eæ’åœŸæœºæ’åœŸ )';
 COMMENT ON COLUMN riskreport_enterpriseinfo.worktypesel
 IS
-    'ÅÅÍÁ×÷Òµ·½Ê½(Aµ¥Ì¨½×ÅÅÍÁ,B¸²¸ÇÊ½¶àÌ¨½×ÅÅÍÁ , CÑ¹ÆÂ½ÅÊ½×éºÏÌ¨½×ÅÅÍÁ)';
+    'æ’åœŸä½œä¸šæ–¹å¼(Aå•å°é˜¶æ’åœŸ,Bè¦†ç›–å¼å¤šå°é˜¶æ’åœŸ , Cå‹å¡è„šå¼ç»„åˆå°é˜¶æ’åœŸ)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.dumplevelsel
 IS
-    'ÅÅÍÁ³¡µÈ¼¶£¨AÒ»¼¶,B¶ş¼¶,CÈı¼¶,DËÄ¼¶)';
+    'æ’åœŸåœºç­‰çº§ï¼ˆAä¸€çº§,BäºŒçº§,Cä¸‰çº§,Då››çº§)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.dumpstatesel
 IS
-    'ÅÅÍÁ³¡×´Ì¬(AÔÚÓÃ,BÍ£ÓÃ,C¹Ø±Õ²¢¸´¸û,D¹Ø±ÕÎ´¸´¿Ñ,EÆäËû)';
+    'æ’åœŸåœºçŠ¶æ€(Aåœ¨ç”¨,Båœç”¨,Cå…³é—­å¹¶å¤è€•,Då…³é—­æœªå¤å¦,Eå…¶ä»–)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.businesssel
 IS
-    'ĞĞÒµÀàĞÍ£¨¹úÃñ¾­¼ÃĞĞÒµ·ÖÀà£©';
+    'è¡Œä¸šç±»å‹ï¼ˆå›½æ°‘ç»æµè¡Œä¸šåˆ†ç±»ï¼‰';
 COMMENT ON COLUMN riskreport_enterpriseinfo.issafetysel
 IS
-    'ÊÇ·ñÔÚ»¯¹¤Ô°ÇøÄÚ(AÊÇ£¬B·ñ),°²È«»ú¹¹ÉèÖÃÇé¿ö(AÊÇB·ñ)';
+    'æ˜¯å¦åœ¨åŒ–å·¥å›­åŒºå†…(Aæ˜¯ï¼ŒBå¦),å®‰å…¨æœºæ„è®¾ç½®æƒ…å†µ(Aæ˜¯Bå¦)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.isregistersel
 IS
-    'ÊÇ·ñ×¢²á°²È«¹¤³ÌÊ¦£¨AÊÇB·ñ£©';
+    'æ˜¯å¦æ³¨å†Œå®‰å…¨å·¥ç¨‹å¸ˆï¼ˆAæ˜¯Bå¦ï¼‰';
 COMMENT ON COLUMN riskreport_enterpriseinfo.islistsel
 IS
-    'ÊÇ·ñÉÏÊĞ¹«Ë¾(AÊÇB·ñ)';
+    'æ˜¯å¦ä¸Šå¸‚å…¬å¸(Aæ˜¯Bå¦)';
 COMMENT ON COLUMN riskreport_enterpriseinfo.mineclasslevelsel
 IS
-    'Î²¿ó¿âµÈ±ğ';
+    'å°¾çŸ¿åº“ç­‰åˆ«';
 COMMENT ON COLUMN riskreport_enterpriseinfo.damearlytypesel
 IS
-    '³õÆÚ°ÓÀàĞÍ';
+    'åˆæœŸåç±»å‹';
 COMMENT ON COLUMN riskreport_enterpriseinfo.damearlykindsel
 IS
-    '³õÆÚ°Ó°ÓĞÍ';
+    'åˆæœŸååå‹';
 COMMENT ON COLUMN riskreport_enterpriseinfo.damfoundationsel
 IS
-    '°Ó»ùµØÖÊÇé¿ö';
+    'ååŸºåœ°è´¨æƒ…å†µ';
 COMMENT ON COLUMN riskreport_enterpriseinfo.validstatus
 IS
-    'ÓĞĞ§×´Ì¬±êÖ¾';
+    'æœ‰æ•ˆçŠ¶æ€æ ‡å¿—';
 COMMENT ON COLUMN riskreport_enterpriseinfo.riskfileno
 IS
-    '·ç¿Ø±¨¸æµ¥ºÅ';
+    'é£æ§æŠ¥å‘Šå•å·';
 	
 ALTER TABLE riskreport_enterpriseinfo ADD CONSTRAINT "pk_riskreport_enterpriseinfo" PRIMARY KEY ("riskfileno");
 
