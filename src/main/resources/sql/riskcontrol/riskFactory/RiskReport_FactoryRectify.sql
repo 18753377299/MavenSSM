@@ -8,6 +8,7 @@ CREATE TABLE RiskReport_FactoryRectify (
         RectifyaforeProblem CHARACTER VARYING(4000),
         Rectifyflag CHARACTER VARYING(2),
         operatecode CHARACTER VARYING(20),
+        rectifycode CHARACTER VARYING(20),
         submitDate DATE,
         RectifyDate DATE,
 		insertTimeForHis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -22,6 +23,7 @@ comment on column RiskReport_FactoryRectify.RectifybeforeProblem is '整改前�
 comment on column RiskReport_FactoryRectify.RectifyaforeProblem is '整改后问题';
 comment on column RiskReport_FactoryRectify.Rectifyflag is '整改标记';
 comment on column RiskReport_FactoryRectify.operatecode is '提交人员';
+comment on column RiskReport_FactoryRectify.rectifycode is '整改人员';
 comment on column RiskReport_FactoryRectify.submitDate is '提交日期';
 comment on column RiskReport_FactoryRectify.RectifyDate is '整改期限';
 comment on column RiskReport_FactoryRectify.insertTimeForHis is '插入时间';

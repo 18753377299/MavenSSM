@@ -1,6 +1,5 @@
 drop table if exists riskreport_safefactorymain;
-CREATE TABLE
-    riskreport_safefactorymain
+CREATE TABLE riskreport_safefactorymain
     (
         riskfileno CHARACTER VARYING(22) NOT NULL,
         comcode CHARACTER VARYING(8),
@@ -10,19 +9,32 @@ CREATE TABLE
         insuredname CHARACTER VARYING(120),
         businesssource CHARACTER VARYING(6),
         businessclass CHARACTER VARYING(2),
-        underwritestatus CHARACTER VARYING(1),
+        operatorcode CHARACTER VARYING(10),
         undwrtsubmitdate DATE,
         underwriteflag CHARACTER VARYING(1),
+		rectifyFlag  CHARACTER VARYING(1),
         underwritedate DATE,
         underwritecode CHARACTER VARYING(10),
         underwritename CHARACTER VARYING(120),
         explorecomcode CHARACTER VARYING(8),
         explorer CHARACTER VARYING(10),
         exploredate DATE,
+        madedate DATE,
+        exploretype CHARACTER VARYING(1),
+        lastriskfileno CHARACTER VARYING(22),
         mobileflag CHARACTER VARYING(1),
         archivesno CHARACTER VARYING(22),
+        addrisk CHARACTER VARYING(15),
+        customerexplain CHARACTER VARYING(4000),
+        highlightrisk CHARACTER VARYING(4000),
         score NUMERIC(5,2),
+        risksuggest CHARACTER VARYING(1),
+        othsuggest CHARACTER VARYING(4000),
+        addmessage CHARACTER VARYING(4000),
         executionid CHARACTER VARYING(50),
+		rectifyExecutionid CHARACTER VARYING(50),
+        repulsesugggest CHARACTER VARYING(1000),
+        valuation CHARACTER VARYING(1),
         inserttimeforhis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
         operatetimeforhis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT pk_riskreport_safefactorymain PRIMARY KEY (riskfileno)
