@@ -16,6 +16,7 @@ CREATE TABLE  RiskReport_SmeltMetal(
         spec_safe_man_sys CHARACTER VARYING(1),
         main_tain_man_sys CHARACTER VARYING(1),
         no_smoke_house_keep_sys CHARACTER VARYING(1),
+        electr_work_man_sys CHARACTER VARYING(1),
         fire_plan_drill_sys CHARACTER VARYING(1),
         danger_work_man_sys CHARACTER VARYING(1),
         safe_pro_sale_ratio CHARACTER VARYING(1),
@@ -36,6 +37,7 @@ CREATE TABLE  RiskReport_SmeltMetal(
         general_operate CHARACTER VARYING(1),
         hot_operate_worker CHARACTER VARYING(1),
         press_equip_safe_measure CHARACTER VARYING(1),
+        press_equip_safe_run_measure CHARACTER VARYING(1),
         equip_mainten_safe_measure CHARACTER VARYING(1),
         pre_light_measure CHARACTER VARYING(1),
         anti_static_measure CHARACTER VARYING(1),
@@ -104,7 +106,9 @@ CREATE TABLE  RiskReport_SmeltMetal(
         constraint ck_RiskReport_SmeltMetal47 check (resid_school_area in ('A','B','C')),
         constraint ck_RiskReport_SmeltMetal48 check (farm_forest_more_area in ('A','B')),
         constraint ck_RiskReport_SmeltMetal49 check (around_exist_smelt_comp in ('A','B')),
-        constraint ck_RiskReport_SmeltMetal50 check (base_hidden_danger in ('A','B','C'))
+        constraint ck_RiskReport_SmeltMetal50 check (base_hidden_danger in ('A','B','C')),
+        constraint ck_RiskReport_SmeltMetal51 check (electr_work_man_sys in ('A','B','C')),
+        constraint ck_RiskReport_SmeltMetal52 check (press_equip_safe_run_measure in ('A','B'))
     );
     
 comment on column RiskReport_SmeltMetal.risk_File_No is '风控报告编号';
@@ -122,7 +126,9 @@ comment on column RiskReport_SmeltMetal.hot_work_man_sys is '动火作业管理�
 comment on column RiskReport_SmeltMetal.spec_safe_man_sys is '特种设备安全管理制度';
 comment on column RiskReport_SmeltMetal.main_tain_man_sys is '设施维修保养管理制度';
 comment on column RiskReport_SmeltMetal.no_smoke_house_keep_sys is '禁烟制度内务管理';
---comment on column RiskReport_SmeltMetal.risk_File_No is '动电作业管理制度';
+
+comment on column RiskReport_SmeltMetal.electr_work_man_sys is '动电作业管理制度';
+
 comment on column RiskReport_SmeltMetal.fire_plan_drill_sys is '火灾应急预案演练制度';
 comment on column RiskReport_SmeltMetal.danger_work_man_sys is '危险作业管理制度';
 comment on column RiskReport_SmeltMetal.safe_pro_sale_ratio is '安全生产投入占销售额比例';
@@ -143,7 +149,7 @@ comment on column RiskReport_SmeltMetal.emerge_supply is '应急救援装备和�
 comment on column RiskReport_SmeltMetal.general_operate is '一般操作人员';
 comment on column RiskReport_SmeltMetal.hot_operate_worker is '动火、特种操作工（焊工、电工）';
 comment on column RiskReport_SmeltMetal.press_equip_safe_measure is '起重设备、压力容器和压力管道等特种设备设计安全措施';
---comment on column RiskReport_SmeltMetal.risk_File_No is '起重设备、压力容器和压力管道等特种设备安全运行措施';
+comment on column RiskReport_SmeltMetal.press_equip_safe_run_measure is '起重设备、压力容器和压力管道等特种设备安全运行措施';
 comment on column RiskReport_SmeltMetal.equip_mainten_safe_measure is '设备设施检维修过程中的安全措施';
 comment on column RiskReport_SmeltMetal.pre_light_measure is '防雷措施';
 comment on column RiskReport_SmeltMetal.anti_static_measure is '防静电措施';

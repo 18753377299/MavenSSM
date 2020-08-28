@@ -13,8 +13,6 @@ CREATE TABLE RISKREPORT_FIRECRACKER
     operatingYears                     CHARACTER VARYING(1),
     operatingRate                      CHARACTER VARYING(1),
     businessRisk                       CHARACTER VARYING(1),
-
-
     safeProductionSys                 CHARACTER VARYING(1),
     headDutySys                       CHARACTER VARYING(1),
     employeeRegistrationSys           CHARACTER VARYING(1),
@@ -24,12 +22,10 @@ CREATE TABLE RISKREPORT_FIRECRACKER
     dangerGovernanceSys               CHARACTER VARYING(1),
     majorHazardManageSys             CHARACTER VARYING(1),
     safeProductionExpenseUseSys     CHARACTER VARYING(1),
-
     safeEquipmentManageSys           CHARACTER VARYING(1),
     newThingManageSys                CHARACTER VARYING(1),
     rawMaterialManageSys             CHARACTER VARYING(1),
     drugManageSys                     CHARACTER VARYING(1),
-
     productFlowManageSys             CHARACTER VARYING(1),
     occupationalPreventionSys CHARACTER VARYING(1),
     protectiveEquipmentManageSys     CHARACTER VARYING(1),
@@ -40,7 +36,6 @@ CREATE TABLE RISKREPORT_FIRECRACKER
     emergencyManageSys                CHARACTER VARYING(1),
     constructionSafeManageSys        CHARACTER VARYING(1),
     documentManageSys                 CHARACTER VARYING(1),
-
     safeProductionRatio               CHARACTER VARYING(1),
     insuranceSituation                 CHARACTER VARYING(1),
     fireManageSystem                  CHARACTER VARYING(1),
@@ -49,7 +44,6 @@ CREATE TABLE RISKREPORT_FIRECRACKER
     enterpriseSafeTraining            CHARACTER VARYING(1),
     safeProductionAccident            CHARACTER VARYING(1),
     safeStandardization                CHARACTER VARYING(1),
-
     mainIngreadient                    CHARACTER VARYING(1),
     processLayout                      CHARACTER VARYING(1),
     buildingStructure                  CHARACTER VARYING(1),
@@ -63,8 +57,6 @@ CREATE TABLE RISKREPORT_FIRECRACKER
     explosionProofMeasures            CHARACTER VARYING(1),
     wastewaterCollectionSys           CHARACTER VARYING(1),
     protectiveEquipment                CHARACTER VARYING(1),
-
-
     fireBarrier                        CHARACTER VARYING(1),
     fireExtinguisher                   CHARACTER VARYING(1),
     loadingManageSys                  CHARACTER VARYING(1),

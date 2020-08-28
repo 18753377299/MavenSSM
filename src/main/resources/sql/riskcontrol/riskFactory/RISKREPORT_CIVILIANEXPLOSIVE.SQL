@@ -6,23 +6,19 @@ CREATE TABLE RISKREPORT_CIVILIANEXPLOSIVE
     civilianExplosivesOperation      CHARACTER VARYING(1),
     civilianExplosivesTransportation CHARACTER VARYING(1),
     productionScale                   CHARACTER VARYING(1),
-
     itemHazardLevel                  CHARACTER VARYING(1),
     buildingHazardLevel              CHARACTER VARYING(1),
     dangerousGoodsAmount             CHARACTER VARYING(1),
-
     generalLayout                     CHARACTER VARYING(1),
     productionAreaMinDistance       CHARACTER VARYING(1),
     warehouseMinDistance             CHARACTER VARYING(1),
     processEquipmentLayout           CHARACTER VARYING(1),
-
     dangerousBuildingsSelection      CHARACTER VARYING(1),
     dangerousBuildingsConstruction   CHARACTER VARYING(1),
     antiBlastRoom                    CHARACTER VARYING(1),
     safeEvacuation                    CHARACTER VARYING(1),
     dangerousBuildingsArchitectural  CHARACTER VARYING(1),
     dangerousWarehouseConstruction   CHARACTER VARYING(1),
-
     safeProductionManageSys         CHARACTER VARYING(1),
     contractorManageSys              CHARACTER VARYING(1),
     dangerInvestigationSys           CHARACTER VARYING(1),
@@ -33,24 +29,18 @@ CREATE TABLE RISKREPORT_CIVILIANEXPLOSIVE
     facilityMaintenanceManageSys    CHARACTER VARYING(1),
     smokingSysManage                 CHARACTER VARYING(1),
     emergencyPlanDrillSys           CHARACTER VARYING(1),
-
-
     safeProductionInvestment         CHARACTER VARYING(1),
     productionSafeAccident           CHARACTER VARYING(1),
     safeTraining                      CHARACTER VARYING(1),
     safeStandardization               CHARACTER VARYING(1),
     electricalSafe                    CHARACTER VARYING(1),
-
     detectionControlDevice           CHARACTER VARYING(1),
     safeFacilityEquipment            CHARACTER VARYING(1),
     securitySys                       CHARACTER VARYING(1),
     fireAlarmSystem                  CHARACTER VARYING(1),
-
     employeeNumber                    CHARACTER VARYING(1),
     professionalTechnical   CHARACTER VARYING(1),
     holdingRatePersonnel             CHARACTER VARYING(1),
-
-
     businessLocation                  CHARACTER VARYING(1),
     geologicalCondition               CHARACTER VARYING(1),
     naturalDisaster                   CHARACTER VARYING(1),

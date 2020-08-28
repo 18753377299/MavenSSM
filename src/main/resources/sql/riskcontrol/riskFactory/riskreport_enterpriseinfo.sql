@@ -1,7 +1,7 @@
 drop table if exists riskreport_enterpriseinfo;
-CREATE TABLE
-    riskreport_enterpriseinfo
+CREATE TABLE riskreport_enterpriseinfo
     (
+    	riskfileno CHARACTER VARYING(22) NOT NULL,
         companycname CHARACTER VARYING(255) NOT NULL,
         companyaddress CHARACTER VARYING(255),
         companycorporation CHARACTER VARYING(255),
@@ -60,8 +60,6 @@ CREATE TABLE
         establishmentdate DATE,
         completeddate DATE,
         checkdate DATE,
-        inserttimeforhis TIMESTAMP(6) WITHOUT TIME ZONE DEFAULT now() NOT NULL,
-        operatetimeforhis TIMESTAMP(6) WITHOUT TIME ZONE DEFAULT now() NOT NULL,
         sumemployeecount SMALLINT,
         prodessionemployeecount SMALLINT,
         midemployeecount SMALLINT,
@@ -93,7 +91,8 @@ CREATE TABLE
         damearlykindsel CHARACTER(1),
         damfoundationsel CHARACTER(1),
         validstatus CHARACTER(1) NOT NULL,
-        riskfileno CHARACTER VARYING(22) NOT NULL
+        insertTimeForHis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+        operatetimeforhis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
     );
 COMMENT ON COLUMN riskreport_enterpriseinfo.companycname
 IS

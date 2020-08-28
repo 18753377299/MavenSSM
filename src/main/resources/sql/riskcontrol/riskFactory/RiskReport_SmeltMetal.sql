@@ -16,6 +16,7 @@ CREATE TABLE  RiskReport_SmeltMetal(
         specsafemansys CHARACTER VARYING(1),
         maintainmansys CHARACTER VARYING(1),
         nosmokehousekeepsys CHARACTER VARYING(1),
+        electrworkmansys CHARACTER VARYING(1),
         fireplandrillsys CHARACTER VARYING(1),
         dangerworkmansys CHARACTER VARYING(1),
         safeprosaleratio CHARACTER VARYING(1),
@@ -36,6 +37,7 @@ CREATE TABLE  RiskReport_SmeltMetal(
         generaloperate CHARACTER VARYING(1),
         hotoperateworker CHARACTER VARYING(1),
         pressequipsafemeasure CHARACTER VARYING(1),
+        pressEquipSafeRunMeasure CHARACTER VARYING(1),
         equipmaintensafemeasure CHARACTER VARYING(1),
         prelightmeasure CHARACTER VARYING(1),
         antistaticmeasure CHARACTER VARYING(1),
@@ -104,7 +106,9 @@ CREATE TABLE  RiskReport_SmeltMetal(
         constraint ck_RiskReport_SmeltMetal47 check (residschoolarea in ('A','B','C')),
         constraint ck_RiskReport_SmeltMetal48 check (farmforestmorearea in ('A','B')),
         constraint ck_RiskReport_SmeltMetal49 check (aroundexistsmeltcomp in ('A','B')),
-        constraint ck_RiskReport_SmeltMetal50 check (basehiddendanger in ('A','B','C'))
+        constraint ck_RiskReport_SmeltMetal50 check (basehiddendanger in ('A','B','C')),
+        constraint ck_RiskReport_SmeltMetal51 check (electrworkmansys in ('A','B','C')),
+        constraint ck_RiskReport_SmeltMetal52 check (pressEquipSafeRunMeasure in ('A','B'))
     );
     
 comment on column RiskReport_SmeltMetal.riskFileNo is '风控报告编号';
@@ -122,7 +126,9 @@ comment on column RiskReport_SmeltMetal.hotworkmansys is '动火作业管理制�
 comment on column RiskReport_SmeltMetal.specsafemansys is '特种设备安全管理制度';
 comment on column RiskReport_SmeltMetal.maintainmansys is '设施维修保养管理制度';
 comment on column RiskReport_SmeltMetal.nosmokehousekeepsys is '禁烟制度内务管理';
---comment on column RiskReport_SmeltMetal.riskFileNo is '动电作业管理制度';
+
+comment on column RiskReport_SmeltMetal.electrworkmansys is '动电作业管理制度';
+
 comment on column RiskReport_SmeltMetal.fireplandrillsys is '火灾应急预案演练制度';
 comment on column RiskReport_SmeltMetal.dangerworkmansys is '危险作业管理制度';
 comment on column RiskReport_SmeltMetal.safeprosaleratio is '安全生产投入占销售额比例';
@@ -143,7 +149,9 @@ comment on column RiskReport_SmeltMetal.emergesupply is '应急救援装备和�
 comment on column RiskReport_SmeltMetal.generaloperate is '一般操作人员';
 comment on column RiskReport_SmeltMetal.hotoperateworker is '动火、特种操作工（焊工、电工）';
 comment on column RiskReport_SmeltMetal.pressequipsafemeasure is '起重设备、压力容器和压力管道等特种设备设计安全措施';
---comment on column RiskReport_SmeltMetal.riskFileNo is '起重设备、压力容器和压力管道等特种设备安全运行措施';
+
+comment on column RiskReport_SmeltMetal.pressEquipSafeRunMeasure is '起重设备、压力容器和压力管道等特种设备安全运行措施';
+
 comment on column RiskReport_SmeltMetal.equipmaintensafemeasure is '设备设施检维修过程中的安全措施';
 comment on column RiskReport_SmeltMetal.prelightmeasure is '防雷措施';
 comment on column RiskReport_SmeltMetal.antistaticmeasure is '防静电措施';

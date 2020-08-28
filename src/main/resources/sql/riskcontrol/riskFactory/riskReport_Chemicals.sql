@@ -9,8 +9,6 @@ CREATE TABLE RISKREPORT_CHEMICALS (
 	businessRisk CHARACTER VARYING(1),
 	HSEManagementSys CHARACTER VARYING(1),
 	safeProductionManageSys CHARACTER VARYING(1),
-
-
 	contractorManageSys CHARACTER VARYING(1),
 	dangerGovernanceSys CHARACTER VARYING(1),
 	safeEducationSys CHARACTER VARYING(1),
@@ -21,14 +19,12 @@ CREATE TABLE RISKREPORT_CHEMICALS (
 	noSmokingManageSys CHARACTER VARYING(1),
 	emergencyPlanDrillSyshighly CHARACTER VARYING(1),
 	emergencyPlanDrillSysgeneral CHARACTER VARYING(1),
-
 	safeProductionInvestment CHARACTER VARYING(1),
 	fireManageSys CHARACTER VARYING(1),
 	fireFacilities CHARACTER VARYING(1),
 	businessSafeTraining CHARACTER VARYING(1),
 	safeProductionAccident CHARACTER VARYING(1),
 	safeStandardization CHARACTER VARYING(1),
-
 	mainProducts CHARACTER VARYING(1),
 	majorDangerSource CHARACTER VARYING(1),
 	productionTemperature CHARACTER VARYING(1),
@@ -46,8 +42,7 @@ CREATE TABLE RISKREPORT_CHEMICALS (
 	loadingOperationManageSys CHARACTER VARYING(1),
 	residentialSchoolsHospitals CHARACTER VARYING(10),
 	farmlandGrassland CHARACTER VARYING(10),
-	chemicalPark CHARACTER VARYING(1),
-	
+	chemicalPark CHARACTER VARYING(1),	
 	majorDangers CHARACTER VARYING(1),
 
 	insertTimeForHis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,

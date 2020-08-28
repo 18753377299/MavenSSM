@@ -15,6 +15,10 @@ CREATE TABLE RiskReport_mechanismInfo (
         operate_User_Code CHARACTER VARYING(20) NOT NULL,
         user_Code CHARACTER VARYING(20) NOT NULL,
         
+        profession  CHARACTER VARYING(255),
+        education  CHARACTER VARYING(255),
+        mail_address  CHARACTER VARYING(255),
+         
         unify_social_credit_code CHARACTER VARYING(50),
         company_type CHARACTER VARYING(255),
         establishment_date DATE,
@@ -47,6 +51,7 @@ comment on column RiskReport_mechanismInfo.inser_User_Code is '信息创建人�
 comment on column RiskReport_mechanismInfo.operate_User_Code is '信息变更人员';
 comment on column RiskReport_mechanismInfo.user_Code is '用户账号';
 
+
 comment on column RiskReport_mechanismInfo.unify_social_credit_code is '统一社会信用代码';
 comment on column RiskReport_mechanismInfo.company_type is '公司类型';
 comment on column RiskReport_mechanismInfo.establishment_date is '成立日期';
@@ -57,6 +62,8 @@ comment on column RiskReport_mechanismInfo.issue_Date is '发照日期';
 comment on column RiskReport_mechanismInfo.registration_authority is '登记机关';
 comment on column RiskReport_mechanismInfo.company_address is '企业地址';
 comment on column RiskReport_mechanismInfo.business_Scope is '经营范围';
+comment on column RiskReport_mechanismInfo.contact_name is '联系人名称';
+comment on column RiskReport_mechanismInfo.contact_number is '联系人号码';
 comment on column RiskReport_mechanismInfo.insert_Time_For_His is '插入时间';
 comment on column RiskReport_mechanismInfo.operate_Time_For_His is '更新时间';
 

@@ -27,6 +27,14 @@ CREATE TABLE RiskReport_expertInfo (
         health CHARACTER VARYING(255),
         occupationCode CHARACTER VARYING(50),
         educationCode CHARACTER VARYING(50),
+        
+        workExpertise CHARACTER VARYING(4000),
+        projectExperience CHARACTER VARYING(4000),
+        workExperience CHARACTER VARYING(4000),
+        professionalDirection CHARACTER VARYING(4000),
+        prospectingIndustry CHARACTER VARYING(4000),
+        personalQualification CHARACTER VARYING(4000),
+        
 		insertTimeForHis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 	    operateTimeForHis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 		CONSTRAINT pk_RiskReport_expertInfo PRIMARY KEY (registrationNumber,comCode)
@@ -46,6 +54,9 @@ comment on column RiskReport_expertInfo.identifyNumber is '身份证号';
 comment on column RiskReport_expertInfo.inserUserCode is '信息创建人员';
 comment on column RiskReport_expertInfo.operateUserCode is '信息变更人员';
 comment on column RiskReport_expertInfo.userCode is '用户账号';
+
+
+
 comment on column RiskReport_expertInfo.newUserCode is '新用户代码';
 comment on column RiskReport_expertInfo.telePhone is '固定电话';
 comment on column RiskReport_expertInfo.faxNumber is '传真号';
@@ -57,6 +68,13 @@ comment on column RiskReport_expertInfo.age is '年龄';
 comment on column RiskReport_expertInfo.health is '健康状况';
 comment on column RiskReport_expertInfo.occupationCode is '职业';
 comment on column RiskReport_expertInfo.educationCode is '学历';
+
+comment on column RiskReport_expertInfo.workExpertise is '工作专长';
+comment on column RiskReport_expertInfo.projectExperience is '项目经验';
+comment on column RiskReport_expertInfo.workExperience is '工作经验';
+comment on column RiskReport_expertInfo.professionalDirection is '专业方向';
+comment on column RiskReport_expertInfo.prospectingIndustry is '查勘行业';
+comment on column RiskReport_expertInfo.personalQualification is '个人资质';
 
 comment on column RiskReport_expertInfo.insertTimeForHis is '插入时间';
 comment on column RiskReport_expertInfo.operateTimeForHis is '更新时间';

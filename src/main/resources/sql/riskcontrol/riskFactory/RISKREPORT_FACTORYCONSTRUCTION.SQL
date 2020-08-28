@@ -5,7 +5,6 @@ CREATE TABLE RISKREPORT_FACTORYCONSTRUCTION
     productionSafeAccident           CHARACTER VARYING(1),
     safeProductionLicense            CHARACTER VARYING(1),
     financialRisk                     CHARACTER VARYING(1),
-
     safeProductionResponsibility     CHARACTER VARYING(1),
     safeProductionAssessment         CHARACTER VARYING(1),
     fundGuaranteeSystem              CHARACTER VARYING(1),
@@ -13,41 +12,30 @@ CREATE TABLE RISKREPORT_FACTORYCONSTRUCTION
     safeInspectionSys                CHARACTER VARYING(1),
     securityIncidentHandlingSys     CHARACTER VARYING(1),
     emergencyRescueSys               CHARACTER VARYING(1),
-
     constructionOrganizationSys      CHARACTER VARYING(1),
     safetyTechnicalRegulations       CHARACTER VARYING(1),
     hazardSupervisionSys             CHARACTER VARYING(1),
     hazardDisclosureSys              CHARACTER VARYING(1),
     equipmentDisposalSys             CHARACTER VARYING(1),
     protectionProductsManageSys     CHARACTER VARYING(1),
-
     constructionFacilityManageSys   CHARACTER VARYING(1),
     constructionSafetyWarnSys       CHARACTER VARYING(1),
     constructionInspectionSys CHARACTER VARYING(1),
-
     securityRiskControlSys          CHARACTER VARYING(1),
     securityRiskIdentification       CHARACTER VARYING(1),
     securityRiskControl              CHARACTER VARYING(1),
-
     securityRiskControlMeasures     CHARACTER VARYING(1),
     dangerInvestigationSys           CHARACTER VARYING(1),
     majorDangerRectification         CHARACTER VARYING(1),
     emergencyPlan                     CHARACTER VARYING(1),
     emergencyRescueTeam              CHARACTER VARYING(1),
     emergencyRescueEquipment         CHARACTER VARYING(1),
-
-
     foundationPitEngineering         CHARACTER VARYING(1),
-
     templateEngineering               CHARACTER VARYING(1),
-
     liftingInstallationWorks         CHARACTER VARYING(1),
     scaffoldingProject                CHARACTER VARYING(1),
-
     demolition                         CHARACTER VARYING(1),
-
     subsurfaceExcavationProject      CHARACTER VARYING(1),
-
     otherProjects                     CHARACTER VARYING(1),
     safeManageQualification    CHARACTER VARYING(1),
     safeManageStaffing         CHARACTER VARYING(1),

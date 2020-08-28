@@ -15,7 +15,7 @@ CREATE TABLE RiskReport_expertInfo (
         inser_User_Code CHARACTER VARYING(20) NOT NULL,
         operate_User_Code CHARACTER VARYING(20) NOT NULL,
         user_Code CHARACTER VARYING(20) NOT NULL,
-        
+       
         new_User_Code CHARACTER VARYING(50),
         tele_Phone CHARACTER VARYING(50),
         fax_Number CHARACTER VARYING(50),
@@ -27,6 +27,14 @@ CREATE TABLE RiskReport_expertInfo (
         health CHARACTER VARYING(255),
         occupation_Code CHARACTER VARYING(50),
         education_Code CHARACTER VARYING(50),
+        
+        work_Expertise CHARACTER VARYING(4000),
+        project_Experience CHARACTER VARYING(4000),
+        work_Experience CHARACTER VARYING(4000),
+        professional_Direction CHARACTER VARYING(4000),
+        prospecting_Industry CHARACTER VARYING(4000),
+        personal_Qualification CHARACTER VARYING(4000),
+        
 		insert_Time_For_His TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 	    operate_Time_For_His TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 		CONSTRAINT pk_RiskReport_expertInfo PRIMARY KEY (registration_Number,com_Code)
@@ -40,12 +48,13 @@ comment on column RiskReport_expertInfo.user_Name is '用户名称';
 comment on column RiskReport_expertInfo.user_Type is '用户类型';
 comment on column RiskReport_expertInfo.com_Code is '归属机构';
 comment on column RiskReport_expertInfo.valid_Status is '有效状态';
-comment on column RiskReport_expertInfo.mobile is '电话';
+comment on column RiskReport_expertInfo.mobile is '手机号码';
 comment on column RiskReport_expertInfo.email is '邮箱';
 comment on column RiskReport_expertInfo.identify_Number is '身份证号';
 comment on column RiskReport_expertInfo.inser_User_Code is '信息创建人员';
 comment on column RiskReport_expertInfo.operate_User_Code is '信息变更人员';
 comment on column RiskReport_expertInfo.user_Code is '用户账号';
+
 comment on column RiskReport_expertInfo.new_User_Code is '新用户代码';
 comment on column RiskReport_expertInfo.tele_Phone is '固定电话';
 comment on column RiskReport_expertInfo.fax_Number is '传真号';
@@ -57,6 +66,13 @@ comment on column RiskReport_expertInfo.age is '年龄';
 comment on column RiskReport_expertInfo.health is '健康状况';
 comment on column RiskReport_expertInfo.occupation_Code is '职业';
 comment on column RiskReport_expertInfo.education_Code is '学历';
+
+comment on column RiskReport_expertInfo.work_Expertise is '工作专长';
+comment on column RiskReport_expertInfo.project_Experience is '项目经验';
+comment on column RiskReport_expertInfo.work_Experience is '工作经验';
+comment on column RiskReport_expertInfo.professional_Direction is '专业方向';
+comment on column RiskReport_expertInfo.prospecting_Industry is '查勘行业';
+comment on column RiskReport_expertInfo.personal_Qualification is '个人资质';
 
 comment on column RiskReport_expertInfo.insert_Time_For_His is '插入时间';
 comment on column RiskReport_expertInfo.operate_Time_For_His is '更新时间';

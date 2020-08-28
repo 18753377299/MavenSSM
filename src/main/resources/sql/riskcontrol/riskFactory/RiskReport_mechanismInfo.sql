@@ -32,9 +32,9 @@ CREATE TABLE RiskReport_mechanismInfo (
 		CONSTRAINT pk_RiskReport_mechanismInfo PRIMARY KEY (registrationNumber,comCode)
 );
 
-comment on column RiskReport_mechanismInfo.registrationNumber is '注册号';
+comment on column RiskReport_mechanismInfo.registrationNumber is '企业注册号';
 comment on column RiskReport_mechanismInfo.companyname is '企业名称';
-
+--用于进行生成用户账号 begin
 comment on column RiskReport_mechanismInfo.svrScope is '所属子公司类型';
 comment on column RiskReport_mechanismInfo.userName is '用户名称';
 comment on column RiskReport_mechanismInfo.userType is '用户类型';
@@ -46,6 +46,7 @@ comment on column RiskReport_mechanismInfo.identifyNumber is '身份证号';
 comment on column RiskReport_mechanismInfo.inserUserCode is '信息创建人员';
 comment on column RiskReport_mechanismInfo.operateUserCode is '信息变更人员';
 comment on column RiskReport_mechanismInfo.userCode is '用户账号';
+--用于进行生成用户账号 end
 
 comment on column RiskReport_mechanismInfo.unifysocialcreditcode is '统一社会信用代码';
 comment on column RiskReport_mechanismInfo.companytype is '公司类型';
@@ -57,6 +58,9 @@ comment on column RiskReport_mechanismInfo.issueDate is '发照日期';
 comment on column RiskReport_mechanismInfo.registrationauthority is '登记机关';
 comment on column RiskReport_mechanismInfo.companyaddress is '企业地址';
 comment on column RiskReport_mechanismInfo.businessScope is '经营范围';
+
+comment on column RiskReport_mechanismInfo.contactname is '联系人名称';
+comment on column RiskReport_mechanismInfo.contactnumber is '联系人号码';
 comment on column RiskReport_mechanismInfo.insertTimeForHis is '插入时间';
 comment on column RiskReport_mechanismInfo.operateTimeForHis is '更新时间';
 

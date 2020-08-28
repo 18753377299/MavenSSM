@@ -8,6 +8,7 @@ CREATE TABLE RISKREPORT_userinfo (
         insertusercode CHARACTER VARYING(20),
         operateusercode CHARACTER VARYING(20),
         validStatus CHARACTER VARYING(2),
+        expirationtime DATE,
 		insertTimeForHis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 	    operateTimeForHis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 		CONSTRAINT pk_RISKREPORT_userinfo PRIMARY KEY (usercode)
