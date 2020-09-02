@@ -10,7 +10,10 @@ CREATE TABLE RiskReport_factoryTask (
         taskflag CHARACTER VARYING(2),
         taskassignment CHARACTER VARYING(20),
         taskprincipal CHARACTER VARYING(20),
-        companycode CHARACTER VARYING(20),
+        
+        comCode CHARACTER VARYING(20),
+        riskModel CHARACTER VARYING(20),
+        
         linkName CHARACTER VARYING(50),
         linkNumber CHARACTER VARYING(50),
         Withspecialrequire CHARACTER VARYING(255),
@@ -28,7 +31,10 @@ comment on column RiskReport_factoryTask.expectedservicedate is '期望服务日
 comment on column RiskReport_factoryTask.taskflag is '任务状态';
 comment on column RiskReport_factoryTask.taskassignment is '任务分配人员';
 comment on column RiskReport_factoryTask.taskprincipal is '任务负责人';
-comment on column RiskReport_factoryTask.companycode is '企业机构';
+----用于进行任务分配 add by 20200902  begin
+comment on column RiskReport_factoryTask.comCode is '归属机构';
+comment on column RiskReport_factoryTask.riskModel is '报告模板类型';
+----用于进行任务分配 add by 20200902  end
 
 comment on column RiskReport_factoryTask.linkName is '联系人名称';
 comment on column RiskReport_factoryTask.linkNumber is '联系人电话';
