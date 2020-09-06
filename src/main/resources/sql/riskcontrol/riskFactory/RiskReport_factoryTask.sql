@@ -13,6 +13,7 @@ CREATE TABLE RiskReport_factoryTask (
         
         comCode CHARACTER VARYING(20),
         riskModel CHARACTER VARYING(20),
+        riskFileNo  CHARACTER VARYING(22),
         
         linkName CHARACTER VARYING(50),
         linkNumber CHARACTER VARYING(50),
@@ -34,6 +35,7 @@ comment on column RiskReport_factoryTask.taskprincipal is '任务负责人';
 ----用于进行任务分配 add by 20200902  begin
 comment on column RiskReport_factoryTask.comCode is '归属机构';
 comment on column RiskReport_factoryTask.riskModel is '报告模板类型';
+comment on column RiskReport_factoryTask.riskFileNo is '报告单号';
 ----用于进行任务分配 add by 20200902  end
 
 comment on column RiskReport_factoryTask.linkName is '联系人名称';

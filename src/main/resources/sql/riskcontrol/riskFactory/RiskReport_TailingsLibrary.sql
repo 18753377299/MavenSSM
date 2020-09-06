@@ -41,7 +41,7 @@ CREATE TABLE  RiskReport_TailingsLibrary(
         damsurfacesafe CHARACTER VARYING(1),
         floodstoragemeetrequire CHARACTER VARYING(1),
         overheadlibrary CHARACTER VARYING(1),
-        farmforest CHARACTER VARYING(20),
+        farmforest CHARACTER VARYING(30),
         minedumparound CHARACTER VARYING(1),
         basehiddendanger CHARACTER VARYING(1),
         inserttimeforhis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
