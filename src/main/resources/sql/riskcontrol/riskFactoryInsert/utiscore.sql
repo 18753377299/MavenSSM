@@ -1319,3 +1319,50 @@ INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore,
 INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('017', 'P00001', '01', 'E', 12.00, '1');
 INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('017', 'P00044', '05', 'C', 20.00, '1');
 INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('019', 'P00022', '01', 'A', 10.00, '1');
+
+
+delete  from  utiscore where riskModel ='012' and dangertype='02' and  factorno  in ('P00005','P00006','P00007');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('012', 'P00005', '02', 'A', 0.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('012', 'P00005', '02', 'B', 3.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('012', 'P00007', '02', 'A', 0.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('012', 'P00007', '02', 'B', 5.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('012', 'P00006', '02', 'A', 0.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('012', 'P00006', '02', 'B', 2.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('012', 'P00006', '02', 'C', 3.00, '1');
+
+delete from  utiscore where riskModel ='012' and dangertype='03' and factorno='P00004';
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('012', 'P00004', '03', 'A', 0.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('012', 'P00004', '03', 'B', 1.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('012', 'P00004', '03', 'C', 2.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('012', 'P00004', '03', 'D', 3.00, '1');
+
+delete from  utiscore where riskModel ='016' and dangertype='03';
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00001', '03', 'A', 0.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00002', '03', 'A', 0.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00002', '03', 'B', 1.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00003', '03', 'A', 0.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00003', '03', 'B', 1.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00003', '03', 'C', 2.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00004', '03', 'A', 0.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00004', '03', 'B', 1.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00005', '03', 'A', 0.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00005', '03', 'B', 1.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00006', '03', 'A', 0.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00006', '03', 'B', 1.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00006', '03', 'C', 2.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00001', '03', 'B', 1.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00001', '03', 'C', 2.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00006', '03', 'D', 3.00, '1');
+
+
+
+delete from  utiscore where riskmodel ='017' and dangertype='04' and factorno in ('P00040','P00041');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('017', 'P00040', '04', 'A', 6.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('017', 'P00040', '04', 'B', 0.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('017', 'P00041', '04', 'A', 6.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('017', 'P00041', '04', 'B', 0.00, '1');
+
+
+
+
+

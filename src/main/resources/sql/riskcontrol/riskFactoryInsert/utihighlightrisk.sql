@@ -192,4 +192,7 @@ INSERT INTO utihighlightrisk (riskmodel, fromtable, fromcolumn, riskvalue, riskf
 INSERT INTO utihighlightrisk (riskmodel, fromtable, fromcolumn, riskvalue, riskflag, riskreminder, validstatus, inserttimeforhis, operatetimeforhis) VALUES ('019', 'RiskReportSmeltMetal', 'aroundExistSmeltComp', 'A', '1', '企业所处地区属于工业园区，周围是否存在其他金属冶炼企业', '1', '2020-08-27 11:15:05', '2020-08-27 11:15:05');
 
 
+
+
+
  

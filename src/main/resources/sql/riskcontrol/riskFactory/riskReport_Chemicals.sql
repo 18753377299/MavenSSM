@@ -40,10 +40,11 @@ CREATE TABLE RISKREPORT_CHEMICALS (
 	monitoringWarningEquipment CHARACTER VARYING(1),
 	fireEmbankment CHARACTER VARYING(1),
 	loadingOperationManageSys CHARACTER VARYING(1),
-	residentialSchoolsHospitals CHARACTER VARYING(10),
-	farmlandGrassland CHARACTER VARYING(10),
+	residentialSchoolsHospitals CHARACTER VARYING(50),
+	farmlandGrassland CHARACTER VARYING(50),
 	chemicalPark CHARACTER VARYING(1),	
 	majorDangers CHARACTER VARYING(1),
+	
 
 	insertTimeForHis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 	operateTimeForHis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -55,7 +56,7 @@ CREATE TABLE RISKREPORT_CHEMICALS (
 	CONSTRAINT ck_riskreport_chemicals4 CHECK(operatingRate IN ('','A','B','C')),
 	CONSTRAINT ck_riskreport_chemicals5 CHECK(businessRisk IN ('','A','B','C')),
 	CONSTRAINT ck_riskreport_chemicals6 CHECK(HSEManagementSys IN ('','A','B')),
-	CONSTRAINT ck_riskreport_chemicals7 CHECK(safeProductionManageSys IN ('','A','B')),
+	CONSTRAINT ck_riskreport_chemicals7 CHECK(safeProductionManageSys IN ('','A','B','C')),
 
 
 	CONSTRAINT ck_riskreport_chemicals8 CHECK(contractorManageSys IN  ('','A','B','C')),

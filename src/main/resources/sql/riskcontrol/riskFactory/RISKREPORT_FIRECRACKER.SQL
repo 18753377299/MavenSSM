@@ -63,7 +63,8 @@ CREATE TABLE RISKREPORT_FIRECRACKER
     trunkRoad                          CHARACTER VARYING(1),
     roadHardening                      CHARACTER VARYING(1),
     transportationRoadGradient        CHARACTER VARYING(1),
-    areasSchoolsHospitals             CHARACTER VARYING(10),
+    areasSchoolsHospitals             CHARACTER VARYING(30),
+    
     majorDanger                        CHARACTER VARYING(1),
 	insertTimeForHis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     operateTimeForHis TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -84,7 +85,7 @@ CREATE TABLE RISKREPORT_FIRECRACKER
 
     CONSTRAINT ck_riskreport_firecracker12 CHECK (safeProductionSys IN ('', 'A', 'B','C')),
     CONSTRAINT ck_riskreport_firecracker13 CHECK (headDutySys IN ('', 'A', 'B','C')),
-    CONSTRAINT ck_riskreport_firecracker14 CHECK (employeeRegistrationSys IN ('', 'A', 'B')),
+    CONSTRAINT ck_riskreport_firecracker14 CHECK (employeeRegistrationSys IN ('', 'A', 'B', 'C')),
     CONSTRAINT ck_riskreport_firecracker15 CHECK (educationManageSys IN ('', 'A', 'B','C')),
     CONSTRAINT ck_riskreport_firecracker16 CHECK (guardDutySys IN ('', 'A', 'B','C')),
     CONSTRAINT ck_riskreport_firecracker17 CHECK (riskManageSys IN ('', 'A', 'B','C')),
