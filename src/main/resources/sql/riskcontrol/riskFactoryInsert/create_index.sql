@@ -1,9 +1,10 @@
 --为十大模板和主表创建索引，分别创建单个索引和联合索引
 
 --煤矿  
-drop index if exists  RiskReport_CoalMine_single_index;   
+drop index if exists  RiskReport_CoalMine_single_index; 
+create index  RiskReport_CoalMine_single_index  on  RiskReport_CoalMine(riskfileno); 
+
 drop index if exists  RiskReport_CoalMine_more_index;  
-create index  RiskReport_CoalMine_single_index  on  RiskReport_CoalMine(riskfileno);      
 create index  RiskReport_CoalMine_more_index  on  RiskReport_CoalMine(riskfileno,proSafeAccident,safeProLevel,judgeStand);
 
 --地下矿山     

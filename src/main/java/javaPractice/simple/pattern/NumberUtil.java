@@ -25,6 +25,16 @@ public class NumberUtil {
         Pattern pattern = Pattern.compile(regExp);
         return pattern.matcher(string).matches();
     }
+    /*校验一个数字是不是科学计数法的表示*/
+    public static boolean isScienceNumber(String string) {
+        if (string == null)
+            return false;
+        /*是否是数字，成功*/
+        String regExp = "^[+]?[\\d]+([\\.][\\d]+)?([Ee][+-]?[\\d]+)?$";
+        
+        Pattern pattern = Pattern.compile(regExp);
+        return pattern.matcher(string).matches();
+    }
     /* 是否从给定字符中取值,只取一个*/
     public static boolean isLetter(String string) {
         if (string == null)
@@ -90,10 +100,12 @@ public class NumberUtil {
     
     
     private static void isNumberTest() {
-    	System.out.println(isLetterMore("[\"A\",\"Q\",\"C\"]"));
-    	System.out.println(isPostAddress("010010"));
+//    	System.out.println(isLetterMore("[\"A\",\"Q\",\"C\"]"));
+//    	System.out.println(isPostAddress("010010"));
     	
-    	System.out.println(PhoneFormatCheckUtils.isChinaPhoneLegal("13717864823"));
+//    	System.out.println(PhoneFormatCheckUtils.isChinaPhoneLegal("13717864823"));
+    	System.out.println(isScienceNumber("2222222222222222222222"));
+    	
 //    	System.out.println(isNumber("D"));
 //        System.out.println(isPostiveInteger("123"));
 //        System.out.println(isPostiveInteger("-123.456"));

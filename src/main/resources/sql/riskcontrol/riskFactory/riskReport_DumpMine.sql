@@ -63,8 +63,11 @@ CREATE TABLE RISKREPORT_DUMPMINE (
     CONSTRAINT ck_riskreport_dumpmine17 CHECK (fireManageSys IN ('','A','B')),
     CONSTRAINT ck_riskreport_dumpmine18 CHECK (fireFacilities IN ('','A','B')),
     CONSTRAINT ck_riskreport_dumpmine19 CHECK (businessSafeTraining IN ('','A','B')),
-    CONSTRAINT ck_riskreport_dumpmine20 CHECK (safeProductionAccident IN ('','A','B','C','D','D')),
+    CONSTRAINT ck_riskreport_dumpmine20 CHECK (safeProductionAccident IN ('','A','B','C','D','E')),
     CONSTRAINT ck_riskreport_dumpmine21 CHECK (safeStandardization IN ('','A','B','C','D')),
+
+    
+
 
     CONSTRAINT ck_riskreport_dumpmine22 CHECK (dumpingByRequirements IN ('','A','B','C','D')),
     CONSTRAINT ck_riskreport_dumpmine23 CHECK (safeSignsOtherOperations IN ('','A','B','C')),

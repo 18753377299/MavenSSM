@@ -1363,6 +1363,17 @@ INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore,
 INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('017', 'P00041', '04', 'B', 0.00, '1');
 
 
+delete from   utifactor where riskModel ='016' and dangertype ='04';
+INSERT INTO utifactor (riskmodel, factorno, dangertype, factortype, fromtable, fromcolumn, nullable, columntype, columncname, factorexttype, factorext, validstatus) VALUES ('016', 'P00001', '04', '01', 'RiskReportFirecracker', 'areasSchoolsHospitals', '0', '02', '安全距离范围内有无居民区，学校、医院', '0', null, '1');
+
+delete  from  utiscore where riskModel ='016' and factorno='P00001'  and dangertype ='04';
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00001', '04', 'A', 5.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00001', '04', 'B', 5.00, '1');
+INSERT INTO utiscore (riskmodel, factorno, dangertype, factorvalue, factorscore, validstatus) VALUES ('016', 'P00001', '04', 'C', 5.00, '1');
+
+
+
+
 
 
 

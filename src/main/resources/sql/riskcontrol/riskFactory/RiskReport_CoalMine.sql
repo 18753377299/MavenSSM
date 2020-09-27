@@ -111,4 +111,9 @@ CREATE TABLE RiskReport_CoalMine(
 		CONSTRAINT ck_RiskReport_CoalMine52 CHECK (heatDamage IN ('','A' ,'B')),
 		CONSTRAINT ck_RiskReport_CoalMine53 CHECK (judgeStand IN ('','A' ,'B','C'))
     );
+    
+comment on column RiskReport_CoalMine.riskFileNo is '风控报告编号';
+
+
+    
 	
