@@ -1,3 +1,6 @@
+
+delete from utiweight where riskmodel  in ('010','011','012','013','014','015','016','017','018','019');
+
 INSERT INTO utiweight (id, comcode, operatorname, operatorcode, fireweight, waterweight, windweight, thunderweight, snowweight, theftweight, earthquakeweight, geologyweight, validstatus, riskmodel, inserttimeforhis, operatetimeforhis) VALUES 
 (11, '00000000', '风控全国', 'A000019300', 0.3000, 0.3000, 0.1000, 0.2000, 0.1000, 0.0000, 0.0000, 0.0000, '1', '010', '2018-08-01 15:32:40', '2019-12-12 09:29:13');
 

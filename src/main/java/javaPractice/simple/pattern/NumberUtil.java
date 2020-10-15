@@ -2,8 +2,6 @@ package javaPractice.simple.pattern;
 
 import java.util.regex.Pattern;
 
-import redis.clients.util.ShardInfo;
-
 public class NumberUtil {
     /**
        * 判断一个字符串是否是数字。
@@ -40,7 +38,7 @@ public class NumberUtil {
         if (string == null)
             return false;
         /*从A-E中取一个值*/
-        String regExp = "^[A-E]{1}$";
+        String regExp = "^[A-E]{1}|\\s{0}$";
         Pattern pattern = Pattern.compile(regExp);
         return pattern.matcher(string).matches();
     }
@@ -100,6 +98,7 @@ public class NumberUtil {
     
     
     private static void isNumberTest() {
+    	System.out.println(isLetter(""));
 //    	System.out.println(isLetterMore("[\"A\",\"Q\",\"C\"]"));
 //    	System.out.println(isPostAddress("010010"));
     	

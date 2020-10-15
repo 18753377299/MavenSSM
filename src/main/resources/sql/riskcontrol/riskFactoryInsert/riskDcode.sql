@@ -1,3 +1,5 @@
+
+delete from riskdcode where codetype='industryInfo';
 INSERT INTO "riskdcode"("codetype", "codecode", "comcode", "uppercode", "codecname", "codeename", "introduce", "validstatus", "inserttimeforhis", "operatetimeforhis") VALUES ('industryInfo', '01', NULL, NULL, '矿山', NULL, NULL, '1', '2020-09-04 09:36:00', '2020-09-04 09:36:00');
 INSERT INTO "riskdcode"("codetype", "codecode", "comcode", "uppercode", "codecname", "codeename", "introduce", "validstatus", "inserttimeforhis", "operatetimeforhis") VALUES ('industryInfo', '02', NULL, NULL, '危险化学品', NULL, NULL, '1', '2020-09-04 09:36:00', '2020-09-04 09:36:00');
 INSERT INTO "riskdcode"("codetype", "codecode", "comcode", "uppercode", "codecname", "codeename", "introduce", "validstatus", "inserttimeforhis", "operatetimeforhis") VALUES ('industryInfo', '03', NULL, NULL, '烟花爆竹', NULL, NULL, '1', '2020-09-04 09:36:00', '2020-09-04 09:36:00');
