@@ -1,2 +1,5 @@
 /classes/
 /test-classes/
+.settings
+target
+.tern-project

@@ -1,4 +1,4 @@
-package com.simple.whileFile;
+package javaPractice.simple.whileFile;
 
 
 /**
