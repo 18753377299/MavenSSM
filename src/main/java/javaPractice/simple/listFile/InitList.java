@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
+
+
+
 //初始化list数据
 public class InitList {
 
@@ -16,7 +20,13 @@ public class InitList {
 		String [] strArray2 = new String [] {"1","2","3"};
 		List<String> strList = new ArrayList<String>();
 		strList = Arrays.asList(strArray);
+		
 		System.out.println(strList);
+		
+		/*判断list集合非空的方式*/
+		if(CollectionUtils.isNotEmpty(strList)) {
+			System.out.println("isNotEmpty");
+		}
 	}
 
 }

@@ -8,7 +8,12 @@ import java.util.List;
  * @date 创建时间：2019年7月15日 下午3:01:22
  * @version 1.0 
  * @parameter 来源： https://mp.weixin.qq.com/s/-2aKMj2Ugd9GXrwb8HJ5Fw
- * @since  
+ * 	Java中所有的泛型必须是引用类型。Integer是引用类型，而int是基本类型。
+ * 其他8种基本数据类型byte、short、int、long、float、double、char也都不是引用类型，
+ * 所以8种基本数据类型都不能作为List的形参。但String、数组、class、interface是引用类型，
+ * 都可以作为List的形参，所以存在List<Runnable>接口类型的集合、
+ * List<int[]>数组类型的集合、List<String>类的集合。
+ * 但不存在list<byte>、list<short> 等基本类型的集合。
  * @return  */
 public class GenericDemo {
 
@@ -26,8 +31,8 @@ public class GenericDemo {
 		boolean resultTwo =  GenericDemo.<String ,String>compare(p1, p2);
 		System.out.println(resultTwo);    
 		
-		Integer [] array = {1,2,3,4,5};
-		Integer value = 3;
+//		Integer [] array = {1,2,3,4,5};
+//		Integer value = 3;
 		/**疑问，待解答 */
 //		int  count = countNum(array,value);
 	}

@@ -101,8 +101,13 @@
 	     	<servlet-name>default</servlet-name>
 	      	<url-pattern>*.css</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+       <servlet-name>default</servlet-name>
+       <url-pattern>*.html</url-pattern>
+ </servlet-mapping>
   <!-- 配置HiddenHttpMethodFilter：可以把POST请求转为DELETE或POST请求，主要用于form表单进行传值，
   	传递隐藏的input框<input type="hidden" name="_method" value="DELETE"/>进行解析，axios则不用这个，begin -->
+  	<!-- https://mp.weixin.qq.com/s/1k6jEjj1DyBvs5U05MpZjw -->
   <filter>
 	    <filter-name>HiddenHttpMethodFilter</filter-name>
 	    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>

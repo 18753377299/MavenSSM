@@ -97,7 +97,6 @@ public class MapUpdate {
 		    }
 		}
 		
-		
 	}
 	// 三、Collection.isEmpty()检测 非空 
 	/*使用Collection.size() 来检测是否为空在逻辑上没有问题，但是使用Collection.isEmpty()
