@@ -29,5 +29,48 @@ public class RiskRequestVo implements Serializable{
     private Integer pageNo;
     /*每页条数*/
     private Integer pageSize;
-    
-}
+
+		public static long getSerialVersionUID() {
+			return serialVersionUID;
+		}
+
+		public RiskReportMain getRiskReportMainVo() {
+			return riskReportMainVo;
+		}
+
+		public void setRiskReportMainVo(RiskReportMain riskReportMainVo) {
+			this.riskReportMainVo = riskReportMainVo;
+		}
+
+		public List<RiskReportFireDanger> getRiskReportFireDangerList() {
+			return riskReportFireDangerList;
+		}
+
+		public void setRiskReportFireDangerList(List<RiskReportFireDanger> riskReportFireDangerList) {
+			this.riskReportFireDangerList = riskReportFireDangerList;
+		}
+
+		public RiskReportAssess getRiskReportAssess() {
+			return riskReportAssess;
+		}
+
+		public void setRiskReportAssess(RiskReportAssess riskReportAssess) {
+			this.riskReportAssess = riskReportAssess;
+		}
+
+		public Integer getPageNo() {
+			return pageNo;
+		}
+
+		public void setPageNo(Integer pageNo) {
+			this.pageNo = pageNo;
+		}
+
+		public Integer getPageSize() {
+			return pageSize;
+		}
+
+		public void setPageSize(Integer pageSize) {
+			this.pageSize = pageSize;
+		}
+	}

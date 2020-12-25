@@ -1,4 +1,4 @@
-package com.map.vo.rainRequest;
+package com.example.func.map.vo.rainRequest;
 
 import java.io.Serializable;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.map.vo;
+package com.example.func.map.vo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

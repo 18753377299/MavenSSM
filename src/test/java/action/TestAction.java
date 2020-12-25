@@ -1,21 +1,22 @@
 package action;
 
 
+import com.Action.Action;
+import com.service.facade.Axe;
+import com.service.facade.Person;
+import com.service.impl.Japan;
+import config.NoXmlConfig;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.Action.Action;
-
-import service.facade.Axe;
-import service.facade.Person;
-import service.impl.Japan;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年6月19日 上午11:16:50
  * @version 1.0 
  * @parameter  
- * @since  
+ * @since    对spring的测试
  * @return  */
 public class TestAction {
 	
@@ -39,7 +40,7 @@ public class TestAction {
 //		System.out.println(action.getMessage());
 		System.out.println(action.execute(" Rod Johnson"));
 		/*依赖注入*/
-		Person person = ctx.getBean("chinese",Person.class);
+		Person person = ctx.getBean("chinese", Person.class);
 		person.useAxe();
 		/*构造注入*/
 		Axe axe = ctx.getBean("stoneAxe",Axe.class);
@@ -48,6 +49,20 @@ public class TestAction {
 		/*依赖注入*/
 		Person p = ctx.getBean("japan",Person.class);
 		p.useAxe();
-		
 	}
+	/*使用@Configuration注解完全代替xml配置文件*/
+	@Test
+	public void testNoXml() {
+		ApplicationContext  applicationContext = new AnnotationConfigApplicationContext(NoXmlConfig.class);
+		String result = (String)applicationContext.getBean("result");
+		System.out.println("=============>>"+result);
+	}
+
+
+
+	
+	
+	
+	
+	
 }

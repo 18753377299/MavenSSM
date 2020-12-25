@@ -17,7 +17,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-    <org.springframework.version>3.2.2.RELEASE</org.springframework.version>
+    <org.springframework.version>4.3.2.RELEASE</org.springframework.version>
     <hibernateVersion>5.0.7.Final</hibernateVersion>
   </properties>
 
@@ -29,17 +29,20 @@
 <!--     </dependency> -->
 <!-- springMVC的注解 @CrossOrigin(origins = "*", maxAge = 3600)  ， -->
 <!-- 这里要强调的是springMVC的版本要在4.2或以上版本才支持@CrossOrigin -->
-	<dependency>
-	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-webmvc</artifactId>
-	    <version>4.3.2.RELEASE</version>
-	</dependency>
-<!-- orm映射，导入的更加全面 -->
-    <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${org.springframework.version}</version>
-	</dependency>
+
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc</artifactId>
+          <version>${org.springframework.version}</version>
+      </dependency>
+
+      <!-- orm映射，导入的更加全面 -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-orm</artifactId>
+<!--          <version>${org.springframework.version}</version>-->
+      </dependency>
+
 	<!-- JWT核心依赖 -->
 	<dependency>
 		<groupId>com.auth0</groupId>
@@ -62,16 +65,19 @@
 	    <artifactId>aspectjrt</artifactId>
 	    <version>1.6.12</version>
 	</dependency>
+	
 	<dependency>
 	    <groupId>org.aspectj</groupId>
 	    <artifactId>aspectjweaver</artifactId>
 	    <version>1.6.12</version>
 	</dependency> -->
-<!-- 	<dependency> -->
-<!-- 			<groupId>org.aspectj</groupId> -->
-<!-- 			<artifactId>aspectjweaver</artifactId> -->
-<!-- 			<version>1.7.2</version> -->
-<!-- 		</dependency> -->
+	<!-- Aop begin -->
+	<dependency> 
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.4</version>
+		</dependency> 
+<!-- Aop end-->
 	<!-- 	mybatis,版本对应 很重要-->
 	<dependency>
 		<groupId>org.mybatis</groupId>
@@ -117,11 +123,11 @@
 		<version>5.1.10</version>
 	</dependency>
 	<!-- oracle数据库连接包 -->
-	<dependency>
+	<!-- <dependency>
 		   <groupId>com.oracle</groupId>
 		   <artifactId>ojdbc14</artifactId>
 		   <version>10.2.0.4.0</version>
-	</dependency>
+	</dependency> -->
 	<!-- postgresql数据库连接包 -->
 	<dependency>
 			<groupId>org.postgresql</groupId>
@@ -160,7 +166,7 @@
 	<dependency>
 		<groupId>junit</groupId>
 		<artifactId>junit</artifactId>
-		<version>4.9</version>
+<!--		<version>4.9</version>-->
 	</dependency>
 	<!-- 上传组件包 -->
 	<dependency>
@@ -387,9 +393,27 @@
 			<artifactId>postgresql</artifactId>
 			<version>9.2-1003-jdbc4</version>
 		</dependency>
+	  <dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-test</artifactId>
+		  <version>4.1.6.RELEASE</version>
+	  </dependency>
+
+
+	  <!-- 超图中iobjectJava的包begin -->
+	  <!--<dependency>
+		  <groupId>com.supermap</groupId>
+		  <artifactId>com.supermap.data</artifactId>
+		  <version>9.0.0-15319</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>com.supermap</groupId>
+		  <artifactId>com.supermap.mapping</artifactId>
+		  <version>9.0.0-15319</version>
+	  </dependency>-->
   </dependencies>
   
-	<!-- <repositories>
+	 <repositories>
 	    <repository>
 	      <id>supermap</id>
 	      <url>http://maven.supermap.io/</url>
@@ -398,7 +422,7 @@
 	      <id>ispeco</id>
 	      <url>http://maven.supermapol.com/</url>
 	    </repository>
-	</repositories>  -->
+	</repositories>
 
   <build>
     <finalName>MavenSSM</finalName>
@@ -435,5 +459,23 @@
         </plugin>
       </plugins>
     </pluginManagement>
+	  <resources>
+		  <resource>
+			  <directory>src/main/resources</directory>
+			  <filtering>true</filtering>
+			  <includes>
+				  <include>**/*.*</include>
+			  </includes>
+		  </resource>
+	  </resources>
+	  <!--单元测试时引用src/main/resources下的资源文件-->
+	  <testResources>
+		  <testResource>
+			  <directory>src/test/resources</directory>
+		  </testResource>
+		  <testResource>
+			  <directory>src/main/resources</directory>
+		  </testResource>
+	  </testResources>
   </build>
 </project>

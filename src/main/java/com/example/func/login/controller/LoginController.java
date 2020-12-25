@@ -1,20 +1,13 @@
 package com.example.func.login.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.common.jwt.JWTUtils;
 import com.example.func.login.service.LoginService;
 import com.example.po.response.AjaxResult;
-import com.example.po.response.UserInfo;
 import com.example.vo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年11月5日 下午2:34:46
@@ -22,7 +15,7 @@ import com.example.vo.User;
  * @parameter 
  * @since  
  * @return  */
-@RestController
+@Controller
 @RequestMapping("/login")
 public class LoginController {
 	

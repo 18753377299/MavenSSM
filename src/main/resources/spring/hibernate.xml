@@ -16,7 +16,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="masterDataSource" />
 		<!-- 可以加多个包 -->
-		<property name="packagesToScan" value="ins.**.schema,ins.**.model,com.**.schema,com.**.model" />
+		<property name="packagesToScan" value="com.**.schema,com.**.model" />
 		<property name="hibernateProperties">
 			<props>
 <!-- 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> -->
@@ -61,7 +61,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="slaveDataSource" />
 		<!-- 可以加多个包 -->
-		<property name="packagesToScan" value="ins.**.schema,ins.**.model,com.**.schema,com.**.model" />
+		<property name="packagesToScan" value="com.**.schema,com.**.model" />
 		<property name="hibernateProperties">
 			<props>
 <!-- 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> -->
@@ -109,8 +109,9 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<bean id="manySessionFactoryAspect" class="com.common.db.sessionfactory.hibernate.SessionFactoryAspect" />
 	<aop:config>
 		<aop:aspect id="c" ref="manySessionFactoryAspect">
+<!--			|| execution(public * com.picc.riskctrl.typhoonearlywarning.service..*Service.*(..))-->
 			<aop:pointcut id="tx"
-				expression="execution(public * com.picc.riskctrl.map.service..*Service.*(..)) || execution(public * com.picc.riskctrl.typhoonearlywarning.service..*Service.*(..))" />
+				expression="execution(public * com.example.func.map.service..*Service.*(..))" />
 			<aop:before pointcut-ref="tx" method="before" />
 			<aop:after pointcut-ref="tx" method="after" />
 		</aop:aspect>

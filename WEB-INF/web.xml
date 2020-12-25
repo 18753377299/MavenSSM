@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>classpath*:spring/*.xml</param-value>
+  </context-param>
+  <!-- 指定监听器加载的log4j配置文件 -->
+   <context-param>  
+      <param-name>log4jConfigLocation</param-name>  
+      <param-value>classpath:log4j.properties</param-value>  
+   </context-param>  
+  
+  <!--   加载spring -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- 配置的日志监听 -->
+	<listener>  
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>  
+     </listener>
+     
+<!--      <listener> -->
+<!--      	<listener-class>org.springframework.web.context.RequestContextListener</listener-class> -->
+<!--      </listener> -->
+     <!-- 配置之后支持scope为request和session生效 ，只支持servlet2.4之前的web容器，
+     		使用Springmvc之后使用DispatcherServlet进行请求的拦截，无需使用该配置-->
+     <filter>
+        <filter-name>requestContextFilter</filter-name>
+        <filter-class>org.springframework.web.filter.RequestContextFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>requestContextFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+  
+  <!--配置拦截器-->
+  <servlet>
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springmvc</servlet-name>
+    <url-pattern>/</url-pattern>
+<!--     <url-pattern>*.do</url-pattern> -->
+  </servlet-mapping>
+  <!-- 编码设置，针对于POST请求的  begin-->
+  <filter>
+       <filter-name>encodingFilter</filter-name>
+       <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+       <init-param>
+           <param-name>encoding</param-name>
+           <param-value>UTF-8</param-value>
+       </init-param>
+       <init-param>
+           <param-name>forceEncoding</param-name>
+           <param-value>true</param-value>
+       </init-param>
+   </filter>
+   <filter-mapping>
+       <filter-name>encodingFilter</filter-name>
+       <url-pattern>/*</url-pattern>
+   </filter-mapping>
+   <!-- 编码设置，针对于POST请求的  end-->
+   <!-- 针对于get方式的请求乱码情况处理  begin-->
+   <filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>com.common.filter.CharacterEncodingFilter</filter-class>
+	</filter>
+	 <filter-mapping>
+       <filter-name>CharacterEncodingFilter</filter-name>
+       <url-pattern>/*</url-pattern>
+   </filter-mapping>
+  <!-- 针对于get方式的请求乱码情况处理 end-->
+  <filter>
+	<filter-name>jwtFilter</filter-name>
+	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	<!-- 委托Spring来管理过滤器的生命周期,不加的话就是一个普通的filter。   begin-->
+	<init-param>
+        <param-name>targetFilterLifecycle</param-name>
+        <param-value>true</param-value>
+    </init-param>
+    <!-- 委托Spring来管理过滤器的生命周期   end--> 
+	<!-- 用于过滤需要特殊放过的请求 -->
+	<init-param>
+		<param-name>ignoreKey</param-name>
+		<param-value>/login/userLogin</param-value>
+	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>jwtFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!-- springmvc,对html/css/jpg等资源的访问就会得不到，所以添加如下配置 -->
+  <servlet-mapping>
+	     	<servlet-name>default</servlet-name>
+	      	<url-pattern>*.css</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+       <servlet-name>default</servlet-name>
+       <url-pattern>*.html</url-pattern>
+ </servlet-mapping>
+  <!-- 配置HiddenHttpMethodFilter：可以把POST请求转为DELETE或POST请求，主要用于form表单进行传值，
+  	传递隐藏的input框<input type="hidden" name="_method" value="DELETE"/>进行解析，axios则不用这个，begin -->
+  	<!-- https://mp.weixin.qq.com/s/1k6jEjj1DyBvs5U05MpZjw -->
+  <filter>
+	    <filter-name>HiddenHttpMethodFilter</filter-name>
+	    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+  </filter>
+  <filter-mapping>
+	    <filter-name>HiddenHttpMethodFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+  </filter-mapping> 
+  <!-- 配置HiddenHttpMethodFilter：可以把POST请求转为DELETE或POST请求， end -->
+  
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

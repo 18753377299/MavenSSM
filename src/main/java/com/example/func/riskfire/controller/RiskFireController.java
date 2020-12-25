@@ -1,20 +1,14 @@
 package com.example.func.riskfire.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.common.service.RiskCommonService;
 import com.example.func.riskfire.service.RiskFireService;
 import com.example.po.request.RiskRequestVo;
 import com.example.po.response.AjaxResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 	/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年7月19日 下午3:01:31

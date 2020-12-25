@@ -1,4 +1,4 @@
-package com.picc.riskctrl.map.vo.request;
+package com.example.func.map.vo.request;
 
 public class MapBound {
    private String bottom;

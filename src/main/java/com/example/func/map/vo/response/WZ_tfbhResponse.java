@@ -1,15 +1,16 @@
-package com.picc.riskctrl.map.vo.response;
+package com.example.func.map.vo.response;
+
+import com.example.func.map.vo.request.WZ_tfbh;
 
 import java.util.List;
 
-import com.map.vo.request.WZ_tfbh;
 
 public class WZ_tfbhResponse {
 	private  List<WZ_tfbh> resultList;
 	private Integer total;
 	private Integer pageNumber;
 	private Integer pageSize;
-	public List<WZ_tfbh> getResultList() {o
+	public List<WZ_tfbh> getResultList() {
 		return resultList;
 	}
 	public void setResultList(List<WZ_tfbh> resultList) {

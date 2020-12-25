@@ -1,4 +1,4 @@
-package com.picc.riskctrl.map.vo.request;
+package com.example.func.map.vo.request;
 	/**
  * @author  作者 E-mail: liqiankun
  * @date 创建时间：2017年10月30日 下午6:59:19

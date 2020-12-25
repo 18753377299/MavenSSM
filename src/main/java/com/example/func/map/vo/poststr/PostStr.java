@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.picc.riskctrl.map.vo.poststr;
+package com.example.func.map.vo.poststr;
 
 /**
  * <p>Title:PostStr</p>

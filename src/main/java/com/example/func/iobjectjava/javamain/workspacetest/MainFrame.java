@@ -1,4 +1,4 @@
-package com.iobjectjava.javamain.workspacetest;
+package com.example.func.iobjectjava.javamain.workspacetest;
 
 import java.awt.Color;
 import java.awt.Dimension;

@@ -1,4 +1,4 @@
-package com.picc.riskctrl.map.vo.exactsearch;
+package com.example.func.map.vo.exactsearch;
 
 public class Poi {
 private String address;

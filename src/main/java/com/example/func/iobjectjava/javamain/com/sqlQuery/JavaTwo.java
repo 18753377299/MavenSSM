@@ -1,4 +1,4 @@
-package com.iobjectjava.javamain.com.sqlQuery;
+package com.example.func.iobjectjava.javamain.com.sqlQuery;
 
 import java.util.HashMap;
 import java.util.Map;

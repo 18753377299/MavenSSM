@@ -174,7 +174,7 @@
       operatetimeforhis = #{operatetimeforhis,jdbcType=TIMESTAMP}
     where archivesno = #{archivesno,jdbcType=CHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.example.vo.RiskReportSaleMain">
+  <!-- <resultMap id="BaseResultMap" type="com.example.vo.RiskReportSaleMain">
     <id column="archivesno" jdbcType="CHAR" property="archivesno" />
     <result column="explorecomcode" jdbcType="CHAR" property="explorecomcode" />
     <result column="explorer" jdbcType="VARCHAR" property="explorer" />
@@ -346,5 +346,5 @@
       inserttimeforhis = #{inserttimeforhis,jdbcType=TIMESTAMP},
       operatetimeforhis = #{operatetimeforhis,jdbcType=TIMESTAMP}
     where archivesno = #{archivesno,jdbcType=CHAR}
-  </update>
+  </update> -->
 </mapper>

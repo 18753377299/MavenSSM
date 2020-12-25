@@ -1,4 +1,4 @@
-package com.iobjectjava.javamain.dissolveDatasetVector;
+package com.example.func.iobjectjava.javamain.dissolveDatasetVector;
 
 import com.supermap.analyst.spatialanalyst.DissolveParameter;
 import com.supermap.analyst.spatialanalyst.DissolveType;

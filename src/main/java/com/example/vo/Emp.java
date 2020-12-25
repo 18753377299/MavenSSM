@@ -28,6 +28,14 @@ public class Emp implements Serializable{
 	public void setEmpAge(String empAge) {
 		this.empAge = empAge;
 	}
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "Emp{" +
+				"empId=" + empId +
+				", empName='" + empName + '\'' +
+				", empAge='" + empAge + '\'' +
+				'}';
+	}
 }

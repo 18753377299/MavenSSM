@@ -1,4 +1,4 @@
-package com.map.vo;
+package com.example.func.map.vo;
 	/**
  * @author  作者 E-mail: liqiankun
  * @date 创建时间：2017年10月26日 下午3:56:59

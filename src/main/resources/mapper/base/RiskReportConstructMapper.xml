@@ -68,31 +68,25 @@
       operatetimeforhis = #{operatetimeforhis,jdbcType=TIMESTAMP}
     where riskfileno = #{riskfileno,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.example.vo.RiskReportConstruct">
-    <id column="riskfileno" jdbcType="VARCHAR" property="riskfileno" />
-    <result column="inserttimeforhis" jdbcType="TIMESTAMP" property="inserttimeforhis" />
-    <result column="operatetimeforhis" jdbcType="TIMESTAMP" property="operatetimeforhis" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    riskfileno, inserttimeforhis, operatetimeforhis
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+
+  
+ <!--  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from riskreport_construct
     where riskfileno = #{riskfileno,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  </select> -->
+ <!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from riskreport_construct
     where riskfileno = #{riskfileno,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.example.vo.RiskReportConstruct">
+  </delete> -->
+ <!--  <insert id="insert" parameterType="com.example.vo.RiskReportConstruct">
     insert into riskreport_construct (riskfileno, inserttimeforhis, operatetimeforhis
       )
     values (#{riskfileno,jdbcType=VARCHAR}, #{inserttimeforhis,jdbcType=TIMESTAMP}, #{operatetimeforhis,jdbcType=TIMESTAMP}
       )
-  </insert>
-  <insert id="insertSelective" parameterType="com.example.vo.RiskReportConstruct">
+  </insert> -->
+  <!-- <insert id="insertSelective" parameterType="com.example.vo.RiskReportConstruct">
     insert into riskreport_construct
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="riskfileno != null">
@@ -116,8 +110,8 @@
         #{operatetimeforhis,jdbcType=TIMESTAMP},
       </if>
     </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.RiskReportConstruct">
+  </insert> -->
+  <!-- <update id="updateByPrimaryKeySelective" parameterType="com.example.vo.RiskReportConstruct">
     update riskreport_construct
     <set>
       <if test="inserttimeforhis != null">
@@ -128,11 +122,6 @@
       </if>
     </set>
     where riskfileno = #{riskfileno,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.vo.RiskReportConstruct">
-    update riskreport_construct
-    set inserttimeforhis = #{inserttimeforhis,jdbcType=TIMESTAMP},
-      operatetimeforhis = #{operatetimeforhis,jdbcType=TIMESTAMP}
-    where riskfileno = #{riskfileno,jdbcType=VARCHAR}
-  </update>
+  </update> -->
+ 
 </mapper>

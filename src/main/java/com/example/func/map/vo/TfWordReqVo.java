@@ -1,4 +1,4 @@
-package com.map.vo;
+package com.example.func.map.vo;
 
 public class TfWordReqVo {
 	

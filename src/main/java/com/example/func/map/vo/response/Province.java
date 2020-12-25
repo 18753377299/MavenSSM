@@ -1,4 +1,4 @@
-package com.picc.riskctrl.map.vo.response;
+package com.example.func.map.vo.response;
 
 import java.io.Serializable;
 import java.util.ArrayList;

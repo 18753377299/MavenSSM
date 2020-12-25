@@ -84,6 +84,5 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 			</map>
 		</property>
 	</bean>
-    
-    
+
 </beans>

@@ -1,4 +1,4 @@
-package com.iobjectjava.javamain.mutualTransfer;
+package com.example.func.iobjectjava.javamain.mutualTransfer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

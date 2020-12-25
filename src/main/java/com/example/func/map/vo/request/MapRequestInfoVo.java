@@ -1,8 +1,9 @@
-package com.map.vo.request;
+package com.example.func.map.vo.request;
+
 
 import java.util.List;
 
-import com.map.vo.WzTFLsljVo;
+import com.example.func.map.vo.WzTFLsljVo;
 	/**
  * @author  作者 E-mail:liqiankun 
  * @date 创建时间：2017年10月30日 下午6:57:46

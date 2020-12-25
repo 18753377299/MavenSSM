@@ -44,7 +44,7 @@
                      <property name="name" value="default"/>
                 </bean> -->
                 
-                <bean class="com.redis.RedisCommonCache">
+                <bean class="com.example.redis.RedisCommonCache">
                     <property name="redisTemplate" ref="redisTemplate"/>
                     <property name="name" value="common"/>
                     <!-- common名称要在类或方法的注解中使用 -->

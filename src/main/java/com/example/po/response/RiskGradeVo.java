@@ -1,12 +1,15 @@
 package com.example.po.response;
 
+import com.example.vo.RiskReportAssess;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import lombok.Data;
-
-import com.example.vo.RiskReportAssess;
-	/**
+/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年7月19日 下午3:19:03
  * @version 1.0 
@@ -14,6 +17,9 @@ import com.example.vo.RiskReportAssess;
  * @since  
  * @return  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class RiskGradeVo implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

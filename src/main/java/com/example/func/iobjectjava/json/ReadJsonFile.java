@@ -1,4 +1,4 @@
-package com.iobjectjava.json;
+package com.example.func.iobjectjava.json;
 
 import java.io.File;
 import java.io.IOException;

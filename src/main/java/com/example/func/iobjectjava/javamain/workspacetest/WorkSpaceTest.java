@@ -1,4 +1,4 @@
-package com.iobjectjava.javamain.workspacetest;
+package com.example.func.iobjectjava.javamain.workspacetest;
 
 import com.supermap.data.Workspace;
 	/**
