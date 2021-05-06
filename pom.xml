@@ -7,7 +7,7 @@
   <groupId>com.ssm</groupId>
   <artifactId>MavenSSM</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+<!--  <packaging>pom</packaging>-->
 
   <name>MavenSSM Maven Webapp</name>
   <!-- FIXME change it to the project's website -->

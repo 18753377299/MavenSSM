@@ -7,7 +7,6 @@
           <element id="module-output" name="MavenSSM" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="com.supermap.analyst.spatialanalyst" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.2.RELEASE" />
