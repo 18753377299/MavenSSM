@@ -56,6 +56,8 @@ public class JwtFilter implements Filter{
 			HttpServletResponse res = (HttpServletResponse) response;
 			String requestUri = req.getRequestURI();
 		    System.out.println("requestURI："+requestUri);
+		    /**增加外系统标识，用于放过token校验*/
+			String  systemCode =  req.getParameter("systemCode");
 		    boolean jumpFlag = false;
 		    //首先看是否是需要放过的页面
 		    if(null!=ignoreKeys&&ignoreKeys.length>0){
@@ -67,7 +69,7 @@ public class JwtFilter implements Filter{
 		    		}
 		    	}
 		    }
-		    if(jumpFlag){
+		    if(jumpFlag || "1".equals(systemCode)){
 		    	chain.doFilter(request, response);
 		    }else{
 		    	// 每次请求将需要设置一下userInfo信息

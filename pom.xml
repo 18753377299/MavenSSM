@@ -410,6 +410,21 @@
 		  <artifactId>com.supermap.mapping</artifactId>
 		  <version>9.0.0-15319</version>
 	  </dependency>-->
+
+	  <!--Validator实现参数认证 begin-->
+	  <dependency>
+		  <groupId>org.hibernate</groupId>
+		  <artifactId>hibernate-validator</artifactId>
+		  <version>6.0.13.Final</version>
+	  </dependency>
+	  <!--validation api-->
+	  <dependency>
+		  <groupId>javax.validation</groupId>
+		  <artifactId>validation-api</artifactId>
+		  <version>2.0.1.Final</version>
+	  </dependency>
+	  <!--Validator实现参数认证 end-->
+
   </dependencies>
   
 	 <repositories>

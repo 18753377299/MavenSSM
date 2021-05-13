@@ -5,17 +5,25 @@ import com.example.po.response.AjaxResult;
 import com.example.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-	/**
+import javax.validation.Valid;
+import java.util.List;
+
+/**
  * @author  作者 E-mail: 
  * @date 创建时间：2019年11月5日 下午2:34:46
  * @version 1.0 
  * @parameter 
  * @since  
  * @return  */
-@Controller
+@Validated
+@RestController
 @RequestMapping("/login")
 public class LoginController {
 	
@@ -32,7 +40,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value="/userLogin",method={RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
-	public AjaxResult  userLogin(@RequestBody User user,HttpServletRequest request){
+	public AjaxResult  userLogin(@RequestBody User user, HttpServletRequest request){
 		AjaxResult ajaxResult =new AjaxResult();
 		try {
 			ajaxResult=loginService.userLogin(user,request);
@@ -60,5 +68,23 @@ public class LoginController {
 		}
 		return ajaxResult;
 	}
-	
+	@PostMapping(value="/test")
+	public AjaxResult test(@Valid @RequestBody User user, BindingResult bindingResult){
+		AjaxResult ajaxResult =new AjaxResult();
+		if (bindingResult.hasErrors()) {
+			//如果有参数不符合规则
+			List<FieldError> list = bindingResult.getFieldErrors();
+			for (ObjectError objectError : list) {
+				//具体的Error.getDefaultMessage();
+			}
+		}
+		return ajaxResult;
+	}
+
+
+
+
+
+
+
 }

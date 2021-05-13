@@ -1,13 +1,17 @@
 package com.example.vo;
 
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 public class User implements Serializable {
 	
     @ApiModelProperty(value = "用户代码")
+    @NotBlank(message="用户代码不能为空！")
     private String userCode;
 
+    @NotBlank(message="用户密码不能为空！")
     @ApiModelProperty(value = "用户密码")
     private String passWord;
 
